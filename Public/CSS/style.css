@@ -395,7 +395,7 @@ body {
     background-color: var(--background-color-3);
 }
 
-@media (max-width: 1160px) {
+@media (max-width: 1110px) {
     .home {
         padding: 80px 20px 40px;
     }
@@ -425,7 +425,7 @@ body {
     }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 940px) {
     .home {
         padding: 100px 20px 30px;
     }
