@@ -402,7 +402,7 @@ body {
 
 
     .navegationHeader::before {
-        content: "MENUa ☰";
+        content: "MENU ☰";
         display: block;
         padding: 12px;
         text-align: center;
