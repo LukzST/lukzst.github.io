@@ -90,6 +90,7 @@ body {
     align-items: center;
     gap: 20px;
     justify-content: flex-end;
+    transition: all 0.3s ease;
 }
 
 .home {
@@ -427,6 +428,15 @@ body {
 @media (max-width: 992px) {
     .home {
         padding: 100px 20px 30px;
+    }
+
+    .socialMedia {
+        gap: 15px;
+    }
+
+    .socialMedia a img {
+        width: 25px;
+        height: auto;
     }
 
     .navegationHeader {
