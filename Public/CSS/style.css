@@ -101,7 +101,7 @@ body {
     gap: 20px;
     justify-content: center;
     height: 65vh;
-    padding: 50px 20px;
+    padding: 80px 20px 40px;
     background-image: url('../IMG/1per2.png');
     background-size: cover;
     background-position: center;
@@ -398,11 +398,43 @@ body {
     background-color: var(--background-color-3);
 }
 
+@media (max-height: 720px) {
+
+    .logo_home img {
+        width: 200px;
+    }
+
+    .logo-box h1 {
+        text-align: center;
+        font-size: 2.5rem;
+        max-width: 400px;
+    }
+
+}
+@media (max-height: 600px) {
+
+    .logo_home img {
+        display: none;
+    }
+
+    .logo-box h1 {
+        text-align: center;
+        font-size: 2.5rem;
+        max-width: 600px;
+    }
+
+}
+
 @media (max-width: 1110px) {
     .home {
         padding: 80px 20px 40px;
     }
 
+    .logo-box h1 {
+        text-align: center;
+        font-size: 2.5rem;
+        max-width: 400px;
+    }
 
     .navegationHeader {
         gap: 20px;
@@ -432,6 +464,29 @@ body {
 @media (max-width: 940px) {
     .home {
         padding: 100px 20px 30px;
+    }
+
+    .logo_home img {
+        width: 200px;
+    }
+
+    .logo-box h1 {
+        text-align: center;
+        font-size: 2rem;
+        max-width: 170px;
+    }
+
+    .box-button {
+        text-align: center;
+        flex-direction: column;
+        width: 100%;
+        max-width: 230px;
+        margin: 20px auto;
+    }
+
+    .button_download_home a {
+        width: 100%;
+        font-size: 1.1rem;
     }
 
     .socialMedia {
