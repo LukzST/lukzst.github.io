@@ -366,7 +366,7 @@ body {
     background-color: var(--background-color-3);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1160px) {
     .header_web {
         height: auto;
         padding: 1rem;
