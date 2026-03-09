@@ -6,6 +6,7 @@
     <title>LIGHT by Lukzxdd</title>
     <link rel="stylesheet" href="./Public/CSS/style.css">
     <link rel="shortcut icon" href="./Public/ICO/favicon.ico" type="image/x-icon">
+    <script src="./Public/JS/scripts.js" defer></script>
 </head>
 <body>
     
@@ -243,27 +244,6 @@
         </div>
     </footer>
 
-    <script>
-        function itch() {
-            window.open('https://lukzxdd.itch.io/light/purchase?popup=1', 'Popup', 'width=500,height=400,scrollbars=no');
-        }
-
-        function support() {
-            window.open('mailto:contatosadberry@gmail.com', 'Popup', 'width=500,height=400,scrollbars=no');
-        }
-
-        const menu = document.getElementById('menuMobile');
-
-        menu.addEventListener('click', function() {
-            this.classList.toggle('active');
-        });
-
-        const links = document.querySelectorAll('.text_header');
-        links.forEach(link => {
-            link.addEventListener('mouseenter', () => {
-                menu.classList.remove('active');
-            });
-        });
-    </script>
+    
 </body>
 </html>

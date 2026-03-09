@@ -1,5 +1,6 @@
 :root {
     --primary-color: #f5f1b9;
+    --second-color: 'white';
     --secondary-color: #2f00ff;
     --background-color: #030305;
     --background-color-2: #0e0e18;
@@ -180,13 +181,19 @@ body {
     text-align: center;
     font-size: 1.7rem;
     color: var(--text-color-2);
+    transition: all 0.3s ease;
+}
+
+.about-text:hover {
+    color: var(--primary-color)
 }
 
 .title-screen {
     font-family: 'boldfont';
     font-size: 3rem;
     font-weight: bold;
-    color: var(--primary-color);
+    color: var(--second-color);
+    transition: all 0.3s ease;
 }
 
 .screenshots {
@@ -197,12 +204,14 @@ body {
     align-items: center;
     padding: 50px 20px;
     background-color: var(--background-color);
+    transition: all 0.3s ease;
 }
 
 .galeria-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
+    transition: all 0.3s ease;
 }
 
 .imagem img {
@@ -216,6 +225,7 @@ body {
 .imagem img:hover {
     border-color: var(--secondary-color);
     transform: scale(1.1);
+    transition: all 0.3s ease;
 }
 
 .title-video {
@@ -223,9 +233,10 @@ body {
     font-size: 3rem;
     font-weight: bold;
     max-width: 700px;
-    color: var(--primary-color);
+    color: var(--second-color);
     text-align: center;
     margin-top: 50px;
+    transition: all 0.3s ease;
 }
 
 .vids {
@@ -235,6 +246,7 @@ body {
     margin: 0px 40px;
     justify-content: center;
     align-items: center;
+    transition: all 0.3s ease;
 }
 
 .trailer-light {
@@ -252,13 +264,15 @@ body {
     gap: 50px;
     padding: 50px 20px;
     background-color: var(--background-color-2);
+    transition: all 0.3s ease;
 }
 
 .title-download {
     font-family: 'boldfont';
     font-size: 3rem;
     font-weight: bold;
-    color: var(--primary-color);
+    color: var(--second-color);
+    transition: all 0.3s ease;
 }
 
 .box-logo {
@@ -266,6 +280,7 @@ body {
     gap: 40px;
     justify-content: center;
     align-items: center;
+    transition: all 0.3s ease;
 }
 
 .itch-link img {
@@ -286,13 +301,15 @@ body {
     gap: 50px;
     padding: 50px 20px;
     background-color: var(--background-color);
+    transition: all 0.3s ease;
 }
 
 .title-g {
         font-family: 'boldfont';
         font-size: 3rem;
         font-weight: bold;
-        color: var(--primary-color);
+        color: var(--second-color);
+        transition: all 0.3s ease;
 }
 
 .box-gamejams {
@@ -300,6 +317,7 @@ body {
     gap: 40px;
     justify-content: center;
     align-items: center;
+    transition: all 0.3s ease;
 }
 
 .cyg-6 img {
@@ -317,13 +335,15 @@ body {
     gap: 50px;
     padding: 50px 20px;
     background-color: var(--background-color-2);
+    transition: all 0.3s ease;
 }
 
 .title-others {
     font-family: 'boldfont';
     font-size: 3rem;
     font-weight: bold;
-    color: var(--primary-color);
+    color: var(--second-color);
+    transition: all 0.3s ease;
 }
 
 .box-others {
@@ -332,6 +352,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: all 0.3s ease;
 }
 
 .PL img {
@@ -353,13 +374,15 @@ body {
     gap: 50px;
     padding: 50px 20px;
     background-color: var(--background-color);
+    transition: all 0.3s ease;
 }
 
 .title-team {
     font-family: 'boldfont';
     font-size: 3rem;
     font-weight: bold;
-    color: var(--primary-color);
+    color: var(---second-color);
+    transition: all 0.3s ease;
 }
 
 .box-team {
@@ -367,6 +390,7 @@ body {
     gap: 40px;
     justify-content: center;
     align-items: center;
+    transition: all 0.3s ease;
 }
 
 .team-member {
@@ -375,6 +399,7 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    transition: all 0.3s ease;
 }
 
 .team-member img {
@@ -388,6 +413,7 @@ body {
 .team-member img:hover {
     border-color: var(--secondary-color);
     transform: scale(1.1);
+    transition: all 0.3s ease;
 }
 
 .footer {
@@ -396,6 +422,7 @@ body {
     align-items: center;
     padding: 20px;
     background-color: var(--background-color-3);
+    transition: all 0.3s ease;
 }
 
 @media (max-height: 720px) {
@@ -436,6 +463,10 @@ body {
         max-width: 400px;
     }
 
+    .about-text {
+        font-size: 1.4rem;
+    }
+
     .navegationHeader {
         gap: 20px;
     }
@@ -455,7 +486,6 @@ body {
     }
 
     .about-text {
-        font-size: 1.2rem;
         line-height: 1.5;
         padding: 0;
     }
@@ -470,10 +500,14 @@ body {
         width: 200px;
     }
 
+    .about-text {
+        font-size: 1.4rem;
+    }
+
     .logo-box h1 {
         text-align: center;
         font-size: 2rem;
-        max-width: 170px;
+        max-width: 400px;
     }
 
     .box-button {
@@ -507,13 +541,12 @@ body {
     }
 
     .title-about, .title-screen, .title-download, .title-g, .title-others, .title-team {
-        font-size: 2rem;
+        font-size: 2.4rem;
         text-align: center;
         max-width: 400px;
     }
 
     .about-text {
-        font-size: 1rem;
         line-height: 1.5;
         padding: 0;
     }
@@ -641,8 +674,13 @@ body {
         padding: 0;
     }
 
+    .about-text {
+        font-size: 1.2rem;
+    }
+
     .title-about, .title-screen, .title-download, .title-g, .title-others, .title-team {
-        font-size: 1.8rem;
+        font-size: 2.1rem;
+        color: var(--text-color);
         text-align: center;
         max-width: 300px;
     }
@@ -681,12 +719,12 @@ body {
     }
     .itch-link img {
         content: url('../IMG/itchio-logo-textless-white.png');
-        max-width: 100px;
+        max-width: 90px;
     }
 
     .github-link img {
         content: url('../IMG/GitHub_Invertocat_White.png');
-        max-width: 100px;
+        max-width: 90px;
     }
 
     .cyg-6 img {
@@ -701,7 +739,7 @@ body {
         padding: 20px;
         flex-direction: column;
         text-align: center;
-        font-size: 0.7rem;
+        font-size: 0.6rem;
         gap: 10px;
     }
 }
