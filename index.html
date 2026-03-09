@@ -126,34 +126,36 @@
             </div>
             <div class="galeria-grid">
                 <div class="imagem">
-                    <img src="./Public/IMG/screen1.png" alt="">
+                    <img src="./Public/IMG/screen1.png" onclick="screenshot1()" alt="">
                 </div>
                 <div class="imagem">
-                    <img src="./Public/IMG/screen2.png" alt="">
+                    <img src="./Public/IMG/screen2.png" onclick="screenshot2()" alt="">
                 </div>
                 <div class="imagem">
-                    <img src="./Public/IMG/screen3.png" alt="">
+                    <img src="./Public/IMG/screen3.png" onclick="screenshot3()" alt="">
                 </div>
                 <div class="imagem">
-                    <img src="./Public/IMG/screen4.png" alt="">
+                    <img src="./Public/IMG/screen4.png" onclick="screenshot4()" alt="">
                 </div>
                 <div class="imagem">
-                    <img src="./Public/IMG/screen6.png" alt="">
+                    <img src="./Public/IMG/screen6.png" onclick="screenshot5()" alt="">
                 </div>
                 <div class="imagem">
-                    <img src="./Public/IMG/screen7.png" alt="">
+                    <img src="./Public/IMG/screen7.png" onclick="screenshot6()" alt="">
                 </div>
                 <div class="imagem">
-                    <img src="./Public/IMG/screen8.png" alt="">
+                    <img src="./Public/IMG/screen8.png" onclick="screenshot7()" alt="">
                 </div>
                 <div class="imagem">
-                    <img src="./Public/IMG/screen9.png" alt="">
+                    <img src="./Public/IMG/screen9.png" onclick="screenshot8()" alt="">
                 </div>
             </div>
             <h1 class="title-video">Videos</h1>
             <div class="vids">
-                <video src="./Public/VID/Trailer.mp4" class="trailer-light" poster="./Public/IMG/trailer-poster.webp" title="LIGHT | Official Trailer" controls></video>
-                <video src="./Public/VID/Date.mp4" class="trailer-light" poster="./Public/IMG/trailer-poster-2.jpg" title="LIGHT | Release Date" controls></video>
+                <video src="./Public/VID/Trailer.mp4" class="trailer-light" id="trailer-light" poster="./Public/IMG/trailer-poster.webp" title="LIGHT | Official Trailer" controls></video>
+                <label for="ttrailer-light" class="ttitle-vids">LIGHT | Official Trailer</label>
+                <video src="./Public/VID/Date.mp4" class="trailer-light" id="date-light" poster="./Public/IMG/trailer-poster-2.jpg" title="LIGHT | Release Date" controls></video>
+                <label for="date-light" class="title-vids">LIGHT | Date Annoucement</label>
             </div>
         </section>
 
@@ -215,10 +217,10 @@
             <div class="box-team">
                 <div class="team-member">
                     <a href="http://lukzxdd.itch.io/" class="link-others" target="_blank">
-                        <img src="https://img.itch.zone/aW1nLzI1NzU2MTQ2LnBuZw==/80x80%23/c%2BAZnJ.png" alt="" class="team-photo">
+                        <img src="./Public/IMG/lukz.jpg" alt="" class="team-photo">
                     </a>
                     <h2>Lukzxdd</h2>
-                    <p>Game Designer, Programmer, Sound Designer</p>
+                    <p>Game Designer, Programmer</p>
                 </div>
                 <div class="team-member">
                     <a href="https://hagrajag.itch.io/" class="link-others" target="_blank">
