@@ -185,8 +185,7 @@ body {
     align-items: center;
     padding: 20px;
     background-color: var(--background-color-2);
-    color: var(--text-color);
-    font-size: 0.9rem;
+    transition: all 0.3s ease;
 }
 
 @media (max-width: 768px) {
@@ -194,6 +193,13 @@ body {
     .navegationHeader { display: none; }
     .title-updates { font-size: 2.5rem; }
     .version-grid { grid-template-columns: 1fr; }
+    .footer {
+        padding: 20px;
+        flex-direction: column;
+        text-align: center;
+        font-size: 0.6rem;
+        gap: 10px;
+    }
 }
     </style>
 </head>
