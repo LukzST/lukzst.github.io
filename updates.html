@@ -48,6 +48,7 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     overflow-x: hidden;
+    flex-direction: column;
 }
 
 .header_web {
@@ -107,8 +108,8 @@ body {
     padding: 120px 20px 60px;
     display: flex;
     flex-direction: column;
+    flex: 1;
     align-items: center;
-    min-height: 100vh;
 }
 
 .title-updates {
@@ -183,6 +184,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     padding: 20px;
     background-color: var(--background-color-2);
     transition: all 0.3s ease;
@@ -205,20 +209,74 @@ body {
 <body>
 
     <header class="header_web">
-        <nav class="navegationHeader">
-            <a href="index.html" class="logo_header">
-                <img src="./Public/IMG/light_logo_2.png" class="logo" alt="Logo">
-            </a>
-        </nav>
+            <nav class="navegationHeader" id="menuMobile">
+                <a href="index.html" class="logo_header">
+                    <img src="./Public/IMG/light_logo_2.png" class="logo" width="60px" alt="">
+                </a>
+                <a href="index.html#about" class="text_header">
+                    <p>
+                        ABOUT
+                    </p>
+                </a>
+                <a href="index.html#screenshots" class="text_header">
+                    <p>
+                        Screenshots
+                    </p>
+                </a>
+                <a href="index.html#download" class="text_header">
+                    <p>
+                        Download
+                    </p>
+                </a>
+                <a href="index.html#gamejams" class="text_header">
+                    <p>
+                        Gamejams
+                    </p>
+                </a>
+                <a href="index.html#" onclick="soundtrack()" class="text_header">
+                    <p>
+                        SOUNDTRACK
+                    </p>
+                </a>
+                <a href="index.html#others" class="text_header">
+                    <p>
+                        GAMES
+                    </p>
+                </a>
+                <a href="index.html#team" class="text_header">
+                    <p>
+                        TEAM
+                    </p>
+                </a>
+                <a href="./updates.html" class="text_header">
+                    <p>
+                        UPDATES
+                    </p>
+                </a>
+                <a href="index.html#" onclick="support()" target="_blank" rel="noopener noreferrer" class="text_header">
+                    <p>
+                        SUPPORT
+                    </p>
+                </a>
+            </nav>
 
         <div class="socialMedia">
-            <a href="https://github.com/LukzST" target="_blank">
-                <img src="./Public/IMG/github.png" alt="Github">
-            </a>
-            <a href="https://lukzxdd.itch.io/" target="_blank">
-                <img src="./Public/IMG/itch.png" alt="Itch">
-            </a>
-        </div>
+                <a href="https://www.instagram.com/PlayLightGame/" target="_blank">
+                    <img src="./Public/IMG/instagram.png" width="30px" alt="">
+                </a>
+                <a href="https://bsky.app/profile/lukzst.github.io" target="_blank">
+                    <img src="./Public/IMG/bsky.png" width="30px" alt="">
+                </a>
+                <a href="https://www.youtube.com/@PlayLightGame?sub_confirmation=1" target="_blank">
+                    <img src="./Public/IMG/youtube.png" width="30px" alt="">
+                </a>
+                <a href="https://github.com/LukzST" target="_blank">
+                    <img src="./Public/IMG/github.png" width="30px" alt="">
+                </a>
+                <a href="https://lukzxdd.itch.io/" target="_blank">
+                    <img src="./Public/IMG/itch.png" width="30px" alt="">
+                </a>
+            </div>
     </header>
 
     <main class="updates-container">

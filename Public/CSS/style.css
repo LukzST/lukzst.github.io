@@ -452,7 +452,7 @@ body {
 
 }
 
-@media (max-width: 1110px) {
+@media (max-width: 1190px) {
     .home {
         padding: 80px 20px 40px;
     }
@@ -491,7 +491,7 @@ body {
     }
 }
 
-@media (max-width: 940px) {
+@media (max-width: 1000px) {
     .home {
         padding: 100px 20px 30px;
     }
@@ -552,7 +552,7 @@ body {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 820px) {
     .header_web {
         height: auto;
         padding: 1rem;
