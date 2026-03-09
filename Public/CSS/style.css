@@ -421,7 +421,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 20px;
-    background-color: var(--background-color-3);
+    background-color: var(--background-color-2);
     transition: all 0.3s ease;
 }
 
