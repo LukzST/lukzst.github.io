@@ -6,11 +6,12 @@
     <meta name="robots" content="noindex, nofollow">
     <title>LIGHT | Updates</title>
     <link rel="shortcut icon" href="./Public/ICO/favicon.ico" type="image/x-icon">
+    <script src="./Public/JS/scripts.js" defer></script>
     
     <style>
         :root {
     --primary-color: #f5f1b9;
-    --second-color: 'white';
+    --second-color: white;
     --secondary-color: #2f00ff;
     --background-color: #030305;
     --background-color-2: #0e0e18;
@@ -28,6 +29,7 @@
     font-family: 'lightFont-textNormal';
     src: url(./Public/FONTs/lightFontNormal.ttf);
 }
+
 @font-face {
     font-family: 'boldfont';
     src: url(./Public/FONTs/BebasNeue-Bold.ttf);
@@ -42,13 +44,17 @@
 
 html {
     scroll-behavior: smooth;
+    transition: all 0.3s ease;
+    height: 100%;
 }
 
 body {
     background-color: var(--background-color);
     color: var(--text-color);
     overflow-x: hidden;
+    display: flex;
     flex-direction: column;
+    min-height: 100%;
 }
 
 .header_web {
@@ -92,11 +98,16 @@ body {
     transform: scale(1.2);
 }
 
+.text_header:active {
+    color: var(--secondary-color);
+}
+
 .socialMedia {
     display: flex;
     align-items: center;
     gap: 20px;
     justify-content: flex-end;
+    transition: all 0.3s ease;
 }
 
 .socialMedia img {
@@ -105,7 +116,7 @@ body {
 }
 
 .updates-container {
-    padding: 120px 20px 60px;
+    padding: 140px 20px 60px;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -174,30 +185,114 @@ body {
     animation: spin 1s linear infinite;
 }
 
-#current-date {
-    color: var(--primary-color);
-}
-
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
 .footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
     padding: 20px;
     background-color: var(--background-color-2);
     transition: all 0.3s ease;
+    width: 100%;
 }
 
-@media (max-width: 768px) {
-    .header_web { height: auto; padding: 1rem; }
-    .title-updates { font-size: 2.5rem; }
-    .version-grid { grid-template-columns: 1fr; }
+@media (max-width: 1090px) {
+    .navegationHeader { 
+        gap: 20px; 
+    }
+    .navegationHeader .text_header { 
+        font-size: 1.2rem; 
+    }
+
+    .socialMedia {
+        order: 2;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 905px) {
+    .navegationHeader { 
+        gap: 15px; 
+    }
+    .navegationHeader .text_header { 
+        font-size: 1.1rem; 
+    }
+
+    .socialMedia {
+        order: 2;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 820px) {
+    .header_web {
+        height: auto;
+        padding: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .socialMedia {
+        order: 2;
+        gap: 15px;
+    }
+
+    .navegationHeader {
+        order: 3;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        background-color: var(--background-color);
+        max-height: 45px;
+        overflow: hidden;
+        transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        margin-top: 10px;
+        border: 2px solid rgba(245, 241, 185, 0.2);
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .navegationHeader::before {
+        content: "MENU ☰";
+        display: block;
+        padding: 12px;
+        text-align: center;
+        color: var(--primary-color);
+        font-weight: bold;
+        letter-spacing: 2px;
+        font-size: 0.9rem;
+    }
+
+    .navegationHeader.active {
+        max-height: 1000px;
+        border-color: var(--primary-color);
+    }
+
+    .navegationHeader.active::before {
+        content: "FECHAR ✕";
+    }
+
+    .text_header {
+        width: 100%;
+        padding: 15px;
+        text-align: center;
+        font-size: 1.3rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .text_header:hover {
+        background-color: var(--background-color-2);
+        transform: none;
+    }
+
+    .title-updates { font-size: 3rem; margin-top: 20px; }
+    
+    .version-grid {
+        grid-template-columns: 1fr;
+        padding: 0 10px;
+    }
+
     .footer {
-        padding: 20px;
         flex-direction: column;
         text-align: center;
         font-size: 0.6rem;
@@ -246,11 +341,6 @@ body {
                 <a href="index.html#team" class="text_header">
                     <p>
                         TEAM
-                    </p>
-                </a>
-                <a href="./updates.html" class="text_header">
-                    <p>
-                        UPDATES
                     </p>
                 </a>
                 <a href="index.html#" onclick="support()" target="_blank" rel="noopener noreferrer" class="text_header">
