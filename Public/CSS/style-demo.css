@@ -14,6 +14,11 @@
     --transition-speed: 0.3s;
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 @font-face {
     font-family: 'lightFont-textNormal';
     src: url(../FONTs/lightFontNormal.ttf);

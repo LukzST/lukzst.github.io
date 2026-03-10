@@ -23,6 +23,11 @@
     src: url(../FONTs/BebasNeue-Bold.ttf);
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 70px;
