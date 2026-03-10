@@ -260,7 +260,7 @@ body {
     }
 
     .text_download {
-        font-size: 1.5rem;
+        font-size: 1.7rem;
     }
     .lang {
     text-decoration: none;
@@ -333,7 +333,7 @@ body {
     .footer {
         flex-direction: column;
         text-align: center;
-        font-size: 0.6rem;
+        font-size: 0.4rem;
         gap: 10px;
     }
 }
