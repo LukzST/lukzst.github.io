@@ -336,6 +336,16 @@ body {
     transition: all 0.3s ease;
 }
 
+
+
+.box-p {
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #f5f1b9;
+    text-decoration: none
+}
+
 .gamejams {
     display: flex;
     flex-direction: column;
@@ -581,6 +591,14 @@ body {
     .navegationHeader .text_header {
         font-size: 1rem;
     }
+
+    .github-steam {
+        display:none;
+    }
+
+    .traco {
+    display: none;
+}
 
     .title-about, .title-screen, .title-download, .title-g, .title-others, .title-team {
         font-size: 2.4rem;
