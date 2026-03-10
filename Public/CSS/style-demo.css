@@ -262,6 +262,11 @@ body {
     .text_download {
         font-size: 2rem;
     }
+    .lang {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+}
 
     .socialMedia {
         order: 2;

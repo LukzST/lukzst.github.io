@@ -46,6 +46,12 @@ body {
     min-height: 100%;
 }
 
+.lang {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+}
+
 .header_web {
     display: flex;
     justify-content: space-between;

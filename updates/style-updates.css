@@ -24,6 +24,7 @@
     src: url(./Public/FONTs/BebasNeue-Bold.ttf);
 }
 
+
 * {
     margin: 0;
     padding: 0;
@@ -44,6 +45,12 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100%;
+}
+
+.lang {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
 }
 
 .header_web {
