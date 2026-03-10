@@ -21,100 +21,62 @@
     <script src="/Public/JS/scripts.js" defer></script>
 
     <style>
-    .brasil-flag {
-        position: relative;
-        background-color: #16b83e;
-        width: 250px;
-        height: 150px;
-        margin: 0 auto;
-        display: inline-block;
-        vertical-align: middle;
-    }
+        .brasil-flag {
+    position: relative;
+    background-color: #16b83e;
+    width: 60px;        /* Reduzido de 250px para 60px */
+    height: 36px;       /* Reduzido de 150px para 36px (proporcional) */
+    margin: 0 5px;      /* Margem reduzida */
+    display: inline-block;
+    vertical-align: middle;
+}
 
-    .brasil-flag .losangue {
-        position: relative;
-        width: 100%;
-        height: 100%;
-    }
+.brasil-flag .losangue:before,
+.brasil-flag .losangue:after {
+    left: 5px;          /* Ajustado proporcionalmente */
+    right: 5px;         /* Ajustado proporcionalmente */
+}
 
-    .brasil-flag .losangue:before,
-    .brasil-flag .losangue:after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 0;
-        left: 20px;
-        right: 20px;
-    }
+.brasil-flag .losangue:before {
+    border-left: 25px solid transparent;     /* Reduzido de 105px */
+    border-right: 25px solid transparent;    /* Reduzido de 105px */
+    border-bottom: 16px solid #ffe11f;       /* Reduzido de 65px */
+    top: 2px;                                 /* Ajustado */
+}
 
-    .brasil-flag .losangue:before {
-        border-left: 105px solid transparent;
-        border-right: 105px solid transparent;
-        border-bottom: 65px solid #ffe11f;
-        top: 10px;
-    }
+.brasil-flag .losangue:after {
+    border-left: 25px solid transparent;     /* Reduzido de 105px */
+    border-right: 25px solid transparent;    /* Reduzido de 105px */
+    border-top: 16px solid #ffe11f;           /* Reduzido de 65px */
+    bottom: 2px;                               /* Ajustado */
+}
 
-    .brasil-flag .losangue:after {
-        border-left: 105px solid transparent;
-        border-right: 105px solid transparent;
-        border-top: 65px solid #ffe11f;
-        bottom: 10px;
-    }
+.brasil-flag .circle {
+    height: 20px;        /* Reduzido de 80px */
+    width: 20px;         /* Reduzido de 80px */
+    margin-top: -10px;   /* Ajustado (metade da altura) */
+    margin-left: -10px;  /* Ajustado (metade da largura) */
+}
 
-    .brasil-flag .circle {
-        position: absolute;
-        overflow: hidden;
-        z-index: 2;
-        display: block;
-        background-color: #1651b8;
-        height: 80px;
-        width: 80px;
-        top: 50%;
-        left: 50%;
-        margin-top: -40px;
-        margin-left: -40px;
-        border-radius: 50%;
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-    }
+.brasil-flag .circle:before,
+.brasil-flag .circle:after {
+    width: 22px;         /* Reduzido de 90px */
+    height: 10px;        /* Reduzido de 40px */
+    -ms-transform: rotate(14deg);
+    -webkit-transform: rotate(14deg);
+    transform: rotate(14deg);
+}
 
-    .brasil-flag .circle:before,
-    .brasil-flag .circle:after {
-        content: '';
-        position: absolute;
-        width: 90px;
-        height: 40px;
-        top: 50%;
-        left: 50%;
-        border-radius: 50%;
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        -ms-transform: rotate(14deg);
-        -webkit-transform: rotate(14deg);
-        transform: rotate(14deg);
-    }
+.brasil-flag .circle:before {
+    margin-top: -5px;    /* Ajustado */
+    margin-left: -11px;  /* Ajustado */
+}
 
-    .brasil-flag .circle:before {
-        z-index: 3;
-        margin-top: -20px;
-        margin-left: -45px;
-        background: #fff;
-    }
-
-    .brasil-flag .circle:after {
-        z-index: 4;
-        margin-top: -10px;
-        margin-left: -48px;
-        background-color: #1651b8;
-    }
-
-    .lang {
-        color: #fff;
-        text-decoration: none;
-        margin: 0 10px;
-        font-weight: bold;
-    }
-</style>
+.brasil-flag .circle:after {
+    margin-top: -3px;    /* Ajustado */
+    margin-left: -12px;  /* Ajustado */
+}
+    </style>
 
 </head>
 <body>
