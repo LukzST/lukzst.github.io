@@ -1,0 +1,25 @@
+/* TEAM */
+  
+  _      _____  _____  _   _  _____ 
+ | |    |_   _||  __ \| | | ||_   _|
+ | |      | |  | |  \/| |_| |  | |  
+ | |      | |  | | __ |  _  |  | |  
+ | |____ _| |_ | |_\ \| | | |  | |  
+ \_____/ \___/ \____/ \_| |_/  \_/  
+
+  Owner / Developer: Lukzst
+  Site: https://lukzst.github.io
+  GitHub: https://github.com/lukzst
+
+
+/* SITE */
+
+  Last update: 09/03/2026
+  Standards: HTML5, CSS3, JavaScript
+  Components: GitHub Pages
+  Software: VS Code
+
+
+/* THANKS */
+
+  To everyone who visits and tests the demos.
