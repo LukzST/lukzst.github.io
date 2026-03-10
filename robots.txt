@@ -1,6 +1,5 @@
 User-agent: *
 Disallow: /demo
 Disallow: /updates
-Disallow: /robots.txt
-Disallow: /humans.txt
-Disallow: /sitemap.xml
+
+Sitemap: https://lukzst.github.io/sitemap.xml
