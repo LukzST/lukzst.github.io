@@ -1,12 +1,12 @@
-function itch() {
-    window.open('https://lukzxdd.itch.io/light/purchase?popup=1', 'Popup', 'width=500,height=400,scrollbars=no');
-}
 
 window.addEventListener("beforeunload", function () {
-  document.body.classList.add("animate-out");
+    document.body.classList.add("animate-out");
 });
 
 
+function itch() {
+    window.open('https://lukzxdd.itch.io/light/purchase?popup=1', 'Popup', 'width=500,height=400,scrollbars=no');
+}
 function support() {
     window.open('mailto:contatosadberry@gmail.com', 'Popup', 'width=500,height=400,scrollbars=no');
 }
