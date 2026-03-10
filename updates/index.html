@@ -122,7 +122,7 @@
                 const data = await response.json();
                 container.innerHTML = '';
 
-                const folders = data.filter(item => item.type === 'dir' && item.name !== 'BETA_V1.0');
+                const folders = data.filter(item => item.type === 'dir' && item.name !== 'BETA_V1.0' && item.name !== 'V1.0.1');
 
                 folders.forEach(folder => {
                     const card = document.createElement('a');
