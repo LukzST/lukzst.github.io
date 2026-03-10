@@ -457,7 +457,7 @@ body {
 .team-member img {
     width: 150px;
     height: auto;
-    border-radius: 16px;
+    border-radius: 100%;
     border: 3px solid #0e0e18;
     transition: all 0.3s ease;
 }
