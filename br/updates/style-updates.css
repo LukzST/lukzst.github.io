@@ -290,7 +290,7 @@ body {
     .footer {
         flex-direction: column;
         text-align: center;
-        font-size: 0.4rem;
+        font-size: 0.6rem;
         gap: 10px;
     }
 }
