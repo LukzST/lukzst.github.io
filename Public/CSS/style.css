@@ -719,6 +719,9 @@ body {
         padding: 0;
         width: 100%;
     }
+    .logo-box h1 {
+        max-width: 400px;
+    }
 
     .logo_home img {
         width: 200px;
