@@ -549,7 +549,7 @@ body {
     }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1060px) {
     .home {
         padding: 100px 20px 30px;
     }
