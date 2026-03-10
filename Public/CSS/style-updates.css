@@ -16,12 +16,12 @@
 
 @font-face {
     font-family: 'lightFont-textNormal';
-    src: url(./Public/FONTs/lightFontNormal.ttf);
+    src: url(../FONTs/lightFontNormal.ttf);
 }
 
 @font-face {
     font-family: 'boldfont';
-    src: url(./Public/FONTs/BebasNeue-Bold.ttf);
+    src: url(../FONTs/BebasNeue-Bold.ttf);
 }
 
 * {
