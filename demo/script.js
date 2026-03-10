@@ -1,17 +1,4 @@
-function setCurrentDate() {
-        const dateElement = document.getElementById('current-date');
-        const today = new Date();
-        
-        const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
-        dateElement.innerText = today.toLocaleDateString('pt-BR', options);
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-        setCurrentDate();
-        fetchVersions();
-    });
-
-        const repoOwner = 'lukzst';
+const repoOwner = 'lukzst';
         const repoName = 'light';
         const targetPath = 'FINAL';
 
