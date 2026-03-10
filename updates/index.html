@@ -4,58 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>LIGHT | Download Demo</title>
-    <link rel="shortcut icon" href="../Public/ICO/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../Public/CSS/style-demo.css">
+    <title>LIGHT | Updates</title>
+    <link rel="shortcut icon" href="./Public/ICO/favicon.ico" type="image/x-icon">
+    <script src="./Public/JS/scripts.js" defer></script>
+    <link rel="stylesheet" href="../Public/CSS/style-updates.css">
 </head>
 <body>
 
     <header class="header_web">
             <nav class="navegationHeader" id="menuMobile">
-                <a href="../" class="logo_header">
-                    <img src="../Public/IMG/light_logo_2.png" class="logo" width="60px" alt="">
+                <a href="index.html" class="logo_header">
+                    <img src="./Public/IMG/light_logo_2.png" class="logo" width="60px" alt="">
                 </a>
-                <a href="../#about" class="text_header">
+                <a href="index.html#about" class="text_header">
                     <p>
                         ABOUT
                     </p>
                 </a>
-                <a href="../#screenshots" class="text_header">
+                <a href="index.html#screenshots" class="text_header">
                     <p>
                         Screenshots
                     </p>
                 </a>
-                <a href="../#download" class="text_header">
+                <a href="index.html#download" class="text_header">
                     <p>
                         Download
                     </p>
                 </a>
-                <a href="../#gamejams" class="text_header">
+                <a href="index.html#gamejams" class="text_header">
                     <p>
                         Gamejams
                     </p>
                 </a>
-                <a href="../" onclick="soundtrack()" class="text_header">
+                <a href="index.html#" onclick="soundtrack()" class="text_header">
                     <p>
                         SOUNDTRACK
                     </p>
                 </a>
-                <a href="../#others" class="text_header">
+                <a href="index.html#others" class="text_header">
                     <p>
                         GAMES
                     </p>
                 </a>
-                <a href="../#team" class="text_header">
+                <a href="index.html#team" class="text_header">
                     <p>
                         TEAM
                     </p>
                 </a>
-                <a href="../updates/" class="text_header">
-                    <p>
-                        UPDATES
-                    </p>
-                </a>
-                <a href="../" onclick="support()" target="_blank" rel="noopener noreferrer" class="text_header">
+                <a href="index.html#" onclick="support()" target="_blank" rel="noopener noreferrer" class="text_header">
                     <p>
                         SUPPORT
                     </p>
@@ -64,64 +60,31 @@
 
         <div class="socialMedia">
                 <a href="https://www.instagram.com/PlayLightGame/" target="_blank">
-                    <img src="../Public/IMG/instagram.png" width="30px" alt="">
+                    <img src="./Public/IMG/instagram.png" width="30px" alt="">
                 </a>
                 <a href="https://bsky.app/profile/lukzst.github.io" target="_blank">
-                    <img src="../Public/IMG/bsky.png" width="30px" alt="">
+                    <img src="./Public/IMG/bsky.png" width="30px" alt="">
                 </a>
                 <a href="https://www.youtube.com/@PlayLightGame?sub_confirmation=1" target="_blank">
-                    <img src="../Public/IMG/youtube.png" width="30px" alt="">
+                    <img src="./Public/IMG/youtube.png" width="30px" alt="">
                 </a>
                 <a href="https://github.com/LukzST" target="_blank">
-                    <img src="../Public/IMG/github.png" width="30px" alt="">
+                    <img src="./Public/IMG/github.png" width="30px" alt="">
                 </a>
                 <a href="https://lukzxdd.itch.io/" target="_blank">
-                    <img src="../Public/IMG/itch.png" width="30px" alt="">
+                    <img src="./Public/IMG/itch.png" width="30px" alt="">
                 </a>
             </div>
     </header>
 
-    <main class="updates-container" style="justify-content: center; text-align: center;">
-    
-    <img src="../Public/IMG/light_logo_2.png" class="logo-demo-img" alt="">
+    <main class="updates-container">
+        <h1 class="title-updates">RELEASES & VERSIONS</h1>
+        <p class="subtitle">All versions of LIGHT released up to <span id="current-date"></span></p>
 
-    <div style="margin-bottom: 50px;">
-        <p class="subtitle" style="margin-bottom: 0;">This is the old DEMO for LIGHT.</p>
-        <p class="subtitle">Learn if you will like the game.</p>
-    </div>
-
-    <div style="margin-bottom: 60px;" class="text_download1">
-        <a href="https://raw.githubusercontent.com/LukzST/LIGHT/refs/heads/main/BETA/V3/LIGHT-BETA-V3.zip" target="_blank" class="text_download">
-            Download WINDOWS DEMO
-        </a>
-        
-        <a href="#" class="text_download">
-            Download LINUX DEMO (SOON)
-        </a>
-    </div>
-
-    <div style="max-width: 600px; margin: 0 auto;">
-        <p class="subtitle1" style="font-size: 1rem; color: var(--text-color); text-transform: uppercase;">
-            ! NOTE: DEMO was created on older software with different capabilities.
-        </p>
-        <p class="subtitle1" style="font-size: 1rem; color: var(--text-color);">
-            Therefore, may not be 100% indicative of full game.
-        </p>
-        <p class="subtitle1" style="font-size: 1rem; color: var(--text-color-2); font-style: italic;">
-            However, it’s slightly special in some respects...
-        </p>
-        
-        <br>
-        
-        <p class="subtitle1" style="font-size: 1rem; color: var(--text-color); text-transform: uppercase;">
-            ! NOTE: Save file won’t transfer from DEMO to fullgame.
-        </p>
-        <p class="subtitle1" style="font-size: 1rem; color: var(--text-color-2); font-style: italic;">
-            But the DEMO is so short you really won’t care...
-        </p>
-    </div>
-
-</main>
+        <div id="version-container" class="version-grid">
+            <div class="loader"></div>
+        </div>
+    </main>
 
     <footer class="footer">
         <h1>2026 © LIGHT by Lukzxdd. All rights reserved.</h1>
