@@ -183,13 +183,13 @@
         audio.src = musicas[musicaAtual].src;
         audio.volume = 0.3;
         audio.muted = true;
+        musicName.textContent = musicas[musicaAtual].nome;
         
         audio.addEventListener('ended', function() {
             musicaAtual = (musicaAtual + 1) % musicas.length;
             audio.src = musicas[musicaAtual].src;
             musicName.textContent = musicas[musicaAtual].nome;
-            
-            if (!isMuted && audioIniciado) {
+            if (!isMuted) {
                 audio.play();
             }
         });
@@ -200,21 +200,18 @@
             if (!audioIniciado) {
                 audio.muted = false;
                 audio.play();
-                musicName.textContent = musicas[musicaAtual].nome;
-                volumeIcon.src = "https://img.icons8.com/sf-black-filled/64/medium-volume.png"; // ON
+                volumeIcon.src = "https://img.icons8.com/sf-black-filled/64/medium-volume.png";
                 audioIniciado = true;
                 isMuted = false;
             } else {
                 if (isMuted) {
                     audio.muted = false;
                     audio.play();
-                    musicName.textContent = musicas[musicaAtual].nome;
-                    volumeIcon.src = "https://img.icons8.com/sf-black-filled/64/medium-volume.png"; // ON
+                    volumeIcon.src = "https://img.icons8.com/sf-black-filled/64/medium-volume.png";
                     isMuted = false;
                 } else {
                     audio.muted = true;
-                    musicName.textContent = musicas[musicaAtual].nome;
-                    volumeIcon.src = "https://img.icons8.com/sf-black-filled/64/sound-speaker.png"; // OFF
+                    volumeIcon.src = "https://img.icons8.com/sf-black-filled/64/sound-speaker.png";
                     isMuted = true;
                 }
             }
