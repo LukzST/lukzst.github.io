@@ -220,7 +220,7 @@ body {
     width: 100%;
 }
 
-@media (max-width: 1180px) {
+@media (max-width: 1200px) {
     .navegationHeader { 
         gap: 20px; 
     }
@@ -234,7 +234,7 @@ body {
     }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1040px) {
     .navegationHeader { 
         gap: 15px; 
     }
@@ -248,7 +248,7 @@ body {
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 950px) {
     .header_web {
         height: auto;
         padding: 1rem;
