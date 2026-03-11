@@ -164,7 +164,7 @@
 
     <div class="music-info" id="musicInfo">
         <img width="24" height="24" src="/Public/IMG/m.png"/>
-        <a href="https://youtube.com/watch?v=m0O7RZwpQIY&list=PLstaXaIuDSEidUQAif2ptoqswAv8qTJ6y&index=2" style="text-decoration: none;" target="_blank" class="link">
+        <a href="https://youtube.com/playlist?list=PLstaXaIuDSEidUQAif2ptoqswAv8qTJ6y" style="text-decoration: none;" target="_blank" class="link">
             <span id="musicName">The Last Choice - LIGHT OST</span>
         </a>
     </div>
@@ -198,7 +198,10 @@
         musicName.textContent = musicas[musicaAtual].nome;
         
         audio.addEventListener('ended', function() {
-            musicaAtual = (musicaAtual + 1)
+            musicaAtual = musicaAtual + 1;
+            if (musicaAtual >= musicas.length) {
+                musicaAtual = 0;
+            }
             audio.src = musicas[musicaAtual].src;
             musicName.textContent = musicas[musicaAtual].nome;
             if (!isMuted) {
