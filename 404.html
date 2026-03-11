@@ -198,7 +198,7 @@
         musicName.textContent = musicas[musicaAtual].nome;
         
         audio.addEventListener('ended', function() {
-            musicaAtual = (musicaAtual + 1) % musicas.length;
+            musicaAtual = (musicaAtual + 1)
             audio.src = musicas[musicaAtual].src;
             musicName.textContent = musicas[musicaAtual].nome;
             if (!isMuted) {
