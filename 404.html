@@ -200,6 +200,7 @@
             if (!audioIniciado) {
                 audio.muted = false;
                 audio.play();
+                musicName.textContent = musicas[musicaAtual].nome;
                 volumeIcon.src = "https://img.icons8.com/sf-black-filled/64/medium-volume.png"; // ON
                 audioIniciado = true;
                 isMuted = false;
@@ -207,10 +208,12 @@
                 if (isMuted) {
                     audio.muted = false;
                     audio.play();
+                    musicName.textContent = musicas[musicaAtual].nome;
                     volumeIcon.src = "https://img.icons8.com/sf-black-filled/64/medium-volume.png"; // ON
                     isMuted = false;
                 } else {
                     audio.muted = true;
+                    musicName.textContent = musicas[musicaAtual].nome;
                     volumeIcon.src = "https://img.icons8.com/sf-black-filled/64/sound-speaker.png"; // OFF
                     isMuted = true;
                 }
