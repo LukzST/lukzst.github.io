@@ -11,6 +11,8 @@
             --secondary-color: #2f00ff;
             --background-color: #030305;
             --text-color: #ffffff;
+            --background-color-3: #1a1a2e;
+            --transition-speed: 0.3s;
         }
 
         @font-face {
@@ -28,7 +30,6 @@
             background-color: var(--background-color);
             color: var(--text-color);
             height: 100vh;
-
             display: flex;
             justify-content: center;
             align-items: center;
@@ -98,9 +99,92 @@
             box-shadow: inset 0 0 150px rgba(0,0,0,0.9);
             pointer-events: none;
         }
+
+        /* Botão de volume com ícone Icons8 */
+        .volume-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 9999;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            background: rgba(3, 3, 5, 0.7);
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 8px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .volume-btn:hover {
+            transform: scale(1.1);
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 20px rgba(47, 0, 255, 0.4);
+        }
+
+        .volume-btn img {
+            width: 30px;
+            height: 30px;
+            filter: brightness(0) invert(1);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .volume-btn:hover img {
+            filter: brightness(0) invert(0.8) sepia(1) hue-rotate(200deg);
+        }
+
+        /* Nome da música */
+        .music-info {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            color: var(--primary-color);
+            font-family: 'boldfont', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: rgba(3, 3, 5, 0.7);
+            border: 1px solid var(--primary-color);
+            padding: 8px 20px;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            opacity: 0.9;
+        }
+
+        .music-info:hover {
+            opacity: 1;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 20px rgba(47, 0, 255, 0.4);
+        }
+
+        #bg-audio {
+            display: none;
+        }
     </style>
 </head>
 <body>
+    <!-- Áudio de fundo -->
+    <audio id="bg-audio" loop></audio>
+
+    <!-- Botão de volume com ícone Icons8 -->
+    <div class="volume-btn" id="volumeBtn">
+        <img src="https://img.icons8.com/sf-black-filled/64/medium-volume.png" alt="Volume" id="volumeIcon">
+    </div>
+
+    <!-- Nome da música -->
+    <div class="music-info" id="musicInfo">
+        <span id="musicName">The Last Choice - LIGHT OST</span>
+    </div>
+
     <div class="vignette"></div>
 
     <div class="error-container">
@@ -109,5 +193,57 @@
         <a href="/" class="back-home">Return to Light</a>
     </div>
 
+    <script>
+        window.addEventListener('load', function() {
+            const audio = document.getElementById('bg-audio');
+            const volumeBtn = document.getElementById('volumeBtn');
+            const volumeIcon = document.getElementById('volumeIcon');
+            const musicName = document.getElementById('musicName');
+            
+            // Lista de músicas
+            const musicas = [
+                { src: '/Public/MP3/404.mp3', nome: 'The Last Choice - LIGHT OST' },
+                { src: '/Public/MP3/404-2.mp3', nome: 'The True Light - LIGHT OST' }
+            ];
+            
+            let musicaAtual = 0;
+            let isMuted = false;
+            
+            // Configurar áudio
+            audio.src = musicas[musicaAtual].src;
+            audio.volume = 0.3;
+            
+            // Quando uma música terminar, tocar a próxima
+            audio.addEventListener('ended', function() {
+                musicaAtual = (musicaAtual + 1) % musicas.length;
+                audio.src = musicas[musicaAtual].src;
+                musicName.textContent = musicas[musicaAtual].nome;
+                
+                if (!isMuted) {
+                    audio.play();
+                }
+            });
+            
+            // Tenta tocar automaticamente
+            audio.play().catch(function(error) {
+                console.log("Autoplay bloqueado");
+                volumeIcon.src = "https://img.icons8.com/sf-black-filled/64/sound-speaker.png";
+                isMuted = true;
+            });
+
+            // Botão de mute/unmute
+            volumeBtn.addEventListener('click', function() {
+                if (isMuted) {
+                    audio.play();
+                    audio.muted = false;
+                    volumeIcon.src = "https://img.icons8.com/sf-black-filled/64/medium-volume.png";
+                } else {
+                    audio.muted = true;
+                    volumeIcon.src = "https://img.icons8.com/sf-black-filled/64/sound-speaker.png";
+                }
+                isMuted = !isMuted;
+            });
+        });
+    </script>
 </body>
 </html>
