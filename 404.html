@@ -200,18 +200,18 @@
             if (!audioIniciado) {
                 audio.muted = false;
                 audio.play();
-                volumeIcon.src = "https://img.icons8.com/sf-black-filled/64/sound-speaker.png";
+                volumeIcon.src = "https://img.icons8.com/sf-black-filled/64/medium-volume.png"; // ON
                 audioIniciado = true;
                 isMuted = false;
             } else {
                 if (isMuted) {
                     audio.muted = false;
                     audio.play();
-                    volumeIcon.src = "https://img.icons8.com/sf-black-filled/64/medium-volume.png";
+                    volumeIcon.src = "https://img.icons8.com/sf-black-filled/64/medium-volume.png"; // ON
                     isMuted = false;
                 } else {
                     audio.muted = true;
-                    volumeIcon.src = "https://img.icons8.com/sf-black-filled/64/sound-speaker.png";
+                    volumeIcon.src = "https://img.icons8.com/sf-black-filled/64/sound-speaker.png"; // OFF
                     isMuted = true;
                 }
             }
