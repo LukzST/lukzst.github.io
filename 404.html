@@ -28,7 +28,6 @@
             background-color: var(--background-color);
             color: var(--text-color);
             height: 100vh;
-
             display: flex;
             justify-content: center;
             align-items: center;
@@ -98,9 +97,15 @@
             box-shadow: inset 0 0 150px rgba(0,0,0,0.9);
             pointer-events: none;
         }
+
+        #bg-audio {
+            display: none;
+        }
     </style>
 </head>
 <body>
+    <audio id="bg-audio" src="/Public/MP3/404.mp3" autoplay loop></audio>
+
     <div class="vignette"></div>
 
     <div class="error-container">
@@ -109,5 +114,20 @@
         <a href="/" class="back-home">Return to Light</a>
     </div>
 
+    <script>
+        window.addEventListener('load', function() {
+            const audio = document.getElementById('bg-audio');
+            audio.volume = 0.3; // Volume baixo para não assustar
+            
+            audio.play().catch(function(error) {
+                console.log("Autoplay bloqueado. Clique na página para ativar o áudio.");
+                
+                document.body.addEventListener('click', function playOnce() {
+                    audio.play();
+                    document.body.removeEventListener('click', playOnce);
+                }, { once: true });
+            });
+        });
+    </script>
 </body>
 </html>
