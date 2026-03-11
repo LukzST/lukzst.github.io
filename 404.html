@@ -100,41 +100,21 @@
             pointer-events: none;
         }
 
-        .volume-btn {
+        #volumeIcon {
             position: fixed;
             top: 20px;
             left: 20px;
             z-index: 9999;
-            cursor: pointer;
-            width: 50px;
-            height: 50px;
-            background: rgba(3, 3, 5, 0.7);
-            border: 2px solid var(--primary-color);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 8px;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: all var(--transition-speed) ease;
-        }
-
-        .volume-btn:hover {
-            transform: scale(1.1);
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 20px rgba(47, 0, 255, 0.4);
-        }
-
-        .volume-btn img {
             width: 30px;
             height: 30px;
+            cursor: pointer;
             filter: brightness(0) invert(1);
             transition: all var(--transition-speed) ease;
         }
 
-        .volume-btn:hover img {
+        #volumeIcon:hover {
             filter: brightness(0) invert(0.8) sepia(1) hue-rotate(200deg);
+            transform: scale(1.1);
         }
 
         .music-info {
@@ -161,7 +141,7 @@
     </style>
 </head>
 <body>
-    <audio id="bg-audio" loop autoplay></audio>
+    <audio id="bg-audio" loop></audio>
 
     <img src="https://img.icons8.com/sf-black-filled/64/medium-volume.png" alt="Volume" id="volumeIcon">
 
@@ -180,7 +160,6 @@
     <script>
         window.addEventListener('load', function() {
             const audio = document.getElementById('bg-audio');
-            const volumeBtn = document.getElementById('volumeBtn');
             const volumeIcon = document.getElementById('volumeIcon');
             const musicName = document.getElementById('musicName');
             
@@ -205,15 +184,27 @@
                 }
             });
             
-            audio.play().catch(function() {
+            audio.play().then(function() {
+                console.log("Áudio iniciado");
+            }).catch(function(error) {
+                console.log("Autoplay bloqueado, aguardando clique");
                 volumeIcon.src = "https://img.icons8.com/sf-black-filled/64/sound-speaker.png";
                 isMuted = true;
-            });
-
-            volumeBtn.addEventListener('click', function() {
-                if (isMuted) {
+                
+                document.body.addEventListener('click', function initAudio() {
                     audio.play();
                     audio.muted = false;
+                    volumeIcon.src = "https://img.icons8.com/sf-black-filled/64/medium-volume.png";
+                    isMuted = false;
+                    document.body.removeEventListener('click', initAudio);
+                }, { once: true });
+            });
+
+            volumeIcon.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (isMuted) {
+                    audio.muted = false;
+                    audio.play();
                     volumeIcon.src = "https://img.icons8.com/sf-black-filled/64/medium-volume.png";
                 } else {
                     audio.muted = true;
