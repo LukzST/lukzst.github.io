@@ -1,4 +1,169 @@
-<script>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 | Lost in the Dark</title>
+    <link rel="shortcut icon" href="/Public/ICO/favicon.ico" type="image/x-icon">
+    <style>
+        :root {
+            --primary-color: #f5f1b9;
+            --secondary-color: #2f00ff;
+            --background-color: #030305;
+            --text-color: #ffffff;
+            --background-color-3: #1a1a2e;
+            --transition-speed: 0.3s;
+        }
+
+        @font-face {
+            font-family: 'boldfont';
+            src: url(/Public/FONTs/BebasNeue-Bold.ttf);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden;
+            font-family: sans-serif;
+            text-align: center;
+        }
+
+        .error-container {
+            position: relative;
+        }
+        .code-404 {
+            font-family: 'boldfont', sans-serif;
+            font-size: clamp(8rem, 25vw, 15rem);
+            color: var(--primary-color);
+            line-height: 1;
+            letter-spacing: 0px;
+            animation: flicker 3s infinite;
+            text-shadow: 0 0 20px rgba(245, 241, 185, 0.3);
+        }
+
+        .message {
+            font-family: 'boldfont', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 5px;
+            margin-top: -10px;
+            margin-bottom: 40px;
+            color: var(--text-color);
+            opacity: 0.8;
+            text-transform: uppercase;
+        }
+
+        .back-home {
+            margin-top: 50px;
+            text-decoration: none;
+            border-radius: 16px;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 12px 30px;
+            font-family: 'boldfont', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .back-home:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: white;
+            box-shadow: 0 0 30px var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; text-shadow: 0 0 20px var(--primary-color); }
+            20%, 24%, 55% { opacity: 0.3; text-shadow: none; }
+        }
+
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: inset 0 0 150px rgba(0,0,0,0.9);
+            pointer-events: none;
+        }
+
+        #volumeIcon {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 9999;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            filter: brightness(0) invert(1);
+            transition: all var(--transition-speed) ease;
+        }
+
+        #volumeIcon:hover {
+            filter: brightness(0) invert(0.8) sepia(1) hue-rotate(200deg);
+            transform: scale(1.1);
+        }
+
+        .music-info {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            color: var(--text-color);
+            font-family: 'boldfont', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 8px 20px;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            opacity: 0.9;
+        }
+
+        #bg-audio {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .music-info {
+                font-size: 0.6;
+            }
+        }
+    </style>
+</head>
+<body>
+    <audio id="bg-audio" loop></audio>
+
+    <img src="https://img.icons8.com/sf-black-filled/64/medium-volume.png" alt="Volume" id="volumeIcon">
+
+    <div class="music-info" id="musicInfo">
+        <span id="musicName">The Last Choice - LIGHT OST</span>
+    </div>
+
+    <div class="vignette"></div>
+
+    <div class="error-container">
+        <h1 class="code-404">404</h1>
+        <p class="message">You are lost in the dark</p>
+        <a href="/" class="back-home">Return to Light</a>
+    </div>
+
+    <script>
     window.addEventListener('load', function() {
         const audio = document.getElementById('bg-audio');
         const volumeIcon = document.getElementById('volumeIcon');
@@ -51,3 +216,5 @@
         });
     });
 </script>
+</body>
+</html>
