@@ -11,8 +11,6 @@
             --secondary-color: #2f00ff;
             --background-color: #030305;
             --text-color: #ffffff;
-            --background-color-3: #1a1a2e;
-            --transition-speed: 0.3s;
         }
 
         @font-face {
@@ -30,6 +28,7 @@
             background-color: var(--background-color);
             color: var(--text-color);
             height: 100vh;
+
             display: flex;
             justify-content: center;
             align-items: center;
@@ -99,161 +98,9 @@
             box-shadow: inset 0 0 150px rgba(0,0,0,0.9);
             pointer-events: none;
         }
-
-        /* Botão de volume - estilo igual à bandeira */
-        .volume-btn {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 9999;
-            color: var(--text-color);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            font-weight: bold;
-            background: var(--background-color-3);
-            border: 2px solid var(--primary-color);
-            padding: 12px 20px;
-            border-radius: 50px;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: all var(--transition-speed) ease;
-            gap: 10px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-        }
-
-        .volume-btn:hover {
-            transform: scale(1.05);
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 20px rgba(47, 0, 255, 0.4);
-        }
-
-        .volume-btn.muted {
-            opacity: 0.7;
-            border-color: gray;
-        }
-
-        /* Ícone de volume feito em CSS puro */
-        .volume-icon {
-            position: relative;
-            width: 24px;
-            height: 24px;
-            display: inline-block;
-        }
-
-        .volume-icon .speaker {
-            position: absolute;
-            width: 10px;
-            height: 14px;
-            background: var(--primary-color);
-            clip-path: polygon(0 30%, 40% 30%, 70% 0, 70% 100%, 40% 70%, 0 70%);
-            top: 5px;
-            left: 2px;
-            transition: all var(--transition-speed) ease;
-        }
-
-        .volume-icon .wave-1,
-        .volume-icon .wave-2,
-        .volume-icon .wave-3 {
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            border: 2px solid var(--primary-color);
-            border-radius: 50%;
-            top: 6px;
-            left: 12px;
-            border-left-color: transparent;
-            border-bottom-color: transparent;
-            transform: rotate(45deg);
-            transition: all var(--transition-speed) ease;
-        }
-
-        .volume-icon .wave-2 {
-            width: 18px;
-            height: 18px;
-            top: 3px;
-            left: 15px;
-        }
-
-        .volume-icon .wave-3 {
-            width: 24px;
-            height: 24px;
-            top: 0px;
-            left: 18px;
-        }
-
-        .volume-btn.muted .speaker,
-        .volume-btn.muted .wave-1,
-        .volume-btn.muted .wave-2,
-        .volume-btn.muted .wave-3 {
-            border-color: gray;
-            background: gray;
-            opacity: 0.5;
-        }
-
-        .volume-btn:hover .speaker,
-        .volume-btn:hover .wave-1,
-        .volume-btn:hover .wave-2,
-        .volume-btn:hover .wave-3 {
-            border-color: var(--secondary-color);
-            background: var(--secondary-color);
-        }
-
-        /* Nome da música */
-        .music-info {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 9999;
-            color: var(--primary-color);
-            font-family: 'boldfont', sans-serif;
-            font-size: 1rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            background: rgba(3, 3, 5, 0.7);
-            border: 1px solid var(--primary-color);
-            padding: 8px 20px;
-            border-radius: 50px;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            opacity: 0.9;
-        }
-
-        .music-info:hover {
-            opacity: 1;
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 20px rgba(47, 0, 255, 0.4);
-        }
-
-        #bg-audio {
-            display: none;
-        }
     </style>
 </head>
 <body>
-    <!-- Áudio de fundo -->
-    <audio id="bg-audio" loop></audio>
-
-    <!-- Botão de volume com ícone CSS puro -->
-    <div class="volume-btn" id="volumeBtn">
-        <span class="volume-icon">
-            <span class="speaker"></span>
-            <span class="wave-1"></span>
-            <span class="wave-2"></span>
-            <span class="wave-3"></span>
-        </span>
-        <span>ÁUDIO</span>
-    </div>
-
-    <!-- Nome da música -->
-    <div class="music-info" id="musicInfo">
-        <span id="musicName">The Last Choice - LIGHT OST</span>
-    </div>
-
     <div class="vignette"></div>
 
     <div class="error-container">
@@ -262,56 +109,5 @@
         <a href="/" class="back-home">Return to Light</a>
     </div>
 
-    <script>
-        window.addEventListener('load', function() {
-            const audio = document.getElementById('bg-audio');
-            const volumeBtn = document.getElementById('volumeBtn');
-            const musicName = document.getElementById('musicName');
-            
-            // Lista de músicas
-            const musicas = [
-                { src: '/Public/MP3/404.mp3', nome: 'The Last Choice - LIGHT OST' },
-                { src: '/Public/MP3/404-2.mp3', nome: 'The True Light - LIGHT OST' }
-            ];
-            
-            let musicaAtual = 0;
-            let isMuted = false;
-            
-            // Configurar áudio
-            audio.src = musicas[musicaAtual].src;
-            audio.volume = 0.3;
-            
-            // Quando uma música terminar, tocar a próxima
-            audio.addEventListener('ended', function() {
-                musicaAtual = (musicaAtual + 1) % musicas.length;
-                audio.src = musicas[musicaAtual].src;
-                musicName.textContent = musicas[musicaAtual].nome;
-                
-                if (!isMuted) {
-                    audio.play();
-                }
-            });
-            
-            // Tenta tocar automaticamente
-            audio.play().catch(function(error) {
-                console.log("Autoplay bloqueado");
-                isMuted = true;
-                volumeBtn.classList.add('muted');
-            });
-
-            // Botão de mute/unmute
-            volumeBtn.addEventListener('click', function() {
-                if (isMuted) {
-                    audio.play();
-                    audio.muted = false;
-                    volumeBtn.classList.remove('muted');
-                } else {
-                    audio.muted = true;
-                    volumeBtn.classList.add('muted');
-                }
-                isMuted = !isMuted;
-            });
-        });
-    </script>
 </body>
 </html>
