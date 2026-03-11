@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 | Lost in the Dark</title>
     <link rel="shortcut icon" href="/Public/ICO/favicon.ico" type="image/x-icon">
+    <!-- Font Awesome -->
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <style>
         :root {
             --primary-color: #f5f1b9;
@@ -98,13 +100,105 @@
             pointer-events: none;
         }
 
+        /* Botão de volume estilo bandeira */
+        .volume-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 9999;
+            color: var(--text-color);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            font-weight: bold;
+            background: var(--background-color-3, #1a1a2e);
+            border: 2px solid var(--primary-color);
+            padding: 10px 15px;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all var(--transition-speed, 0.3s) ease;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .volume-btn:hover {
+            transform: scale(1.05);
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 20px rgba(47, 0, 255, 0.4);
+        }
+
+        .volume-btn.muted {
+            opacity: 0.7;
+            border-color: gray;
+        }
+
+        .volume-icon {
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        .volume-btn:hover .volume-icon {
+            color: var(--secondary-color);
+        }
+
+        /* Nome da música */
+        .music-info {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            color: var(--primary-color);
+            font-family: 'boldfont', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: rgba(3, 3, 5, 0.7);
+            border: 1px solid var(--primary-color);
+            padding: 8px 20px;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .music-info:hover {
+            opacity: 1;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 20px rgba(47, 0, 255, 0.4);
+        }
+
+        .music-icon {
+            font-size: 18px;
+            color: var(--primary-color);
+        }
+
         #bg-audio {
             display: none;
         }
     </style>
 </head>
 <body>
-    <audio id="bg-audio" src="/Public/MP3/404.mp3" autoplay loop></audio>
+    <!-- Áudio de fundo -->
+    <audio id="bg-audio" loop></audio>
+
+    <!-- Botão de volume estilo bandeira com Font Awesome -->
+    <div class="volume-btn" id="volumeBtn">
+        <i class='fas fa-music volume-icon'></i>
+        <span>Áudio</span>
+    </div>
+
+    <!-- Nome da música com ícone -->
+    <div class="music-info" id="musicInfo">
+        <i class='fas fa-music music-icon'></i>
+        <span id="musicName">The Last Choice - LIGHT OST</span>
+    </div>
 
     <div class="vignette"></div>
 
@@ -117,15 +211,56 @@
     <script>
         window.addEventListener('load', function() {
             const audio = document.getElementById('bg-audio');
-            audio.volume = 0.3; // Volume baixo para não assustar
+            const volumeBtn = document.getElementById('volumeBtn');
+            const volumeIcon = volumeBtn.querySelector('.volume-icon');
+            const musicName = document.getElementById('musicName');
+            const musicIcon = document.querySelector('.music-info .music-icon');
             
-            audio.play().catch(function(error) {
-                console.log("Autoplay bloqueado. Clique na página para ativar o áudio.");
+            // Lista de músicas
+            const musicas = [
+                { src: '/Public/MP3/404.mp3', nome: 'The Last Choice - LIGHT OST' },
+                { src: '/Public/MP3/404-2.mp3', nome: 'The True Light - LIGHT OST' }
+            ];
+            
+            let musicaAtual = 0;
+            let isMuted = false;
+            
+            // Configurar áudio
+            audio.src = musicas[musicaAtual].src;
+            audio.volume = 0.3;
+            
+            // Quando uma música terminar, tocar a próxima
+            audio.addEventListener('ended', function() {
+                musicaAtual = (musicaAtual + 1) % musicas.length;
+                audio.src = musicas[musicaAtual].src;
+                musicName.textContent = musicas[musicaAtual].nome;
                 
-                document.body.addEventListener('click', function playOnce() {
+                if (!isMuted) {
                     audio.play();
-                    document.body.removeEventListener('click', playOnce);
-                }, { once: true });
+                }
+            });
+            
+            // Tenta tocar automaticamente
+            audio.play().catch(function(error) {
+                console.log("Autoplay bloqueado");
+                volumeIcon.className = 'fas fa-volume-off volume-icon';
+                isMuted = true;
+                volumeBtn.classList.add('muted');
+            });
+
+            // Botão de mute/unmute
+            volumeBtn.addEventListener('click', function() {
+                if (isMuted) {
+                    audio.play();
+                    audio.muted = false;
+                    volumeIcon.className = 'fas fa-music volume-icon';
+                    volumeBtn.classList.remove('muted');
+                } else {
+                    audio.muted = true;
+                    volumeIcon.className = 'fas fa-volume-off volume-icon';
+                    volumeBtn.classList.add('muted');
+                }
+                isMuted = !isMuted;
             });
         });
     </script>
