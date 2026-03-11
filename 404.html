@@ -100,7 +100,6 @@
             pointer-events: none;
         }
 
-        /* Botão de volume com ícone Icons8 */
         .volume-btn {
             position: fixed;
             top: 20px;
@@ -138,31 +137,21 @@
             filter: brightness(0) invert(0.8) sepia(1) hue-rotate(200deg);
         }
 
-        /* Nome da música */
         .music-info {
             position: fixed;
             bottom: 20px;
             left: 50%;
-            transform: translateX(-50%);
             z-index: 9999;
             color: var(--text-color);
             font-family: 'boldfont', sans-serif;
             font-size: 1rem;
             letter-spacing: 2px;
             text-transform: uppercase;
-            background: rgba(3, 3, 5, 0.7);
             padding: 8px 20px;
             border-radius: 50px;
             backdrop-filter: blur(5px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
             opacity: 0.9;
-        }
-
-        .music-info:hover {
-            opacity: 1;
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 20px rgba(47, 0, 255, 0.4);
         }
 
         #bg-audio {
@@ -171,15 +160,12 @@
     </style>
 </head>
 <body>
-    <!-- Áudio de fundo -->
-    <audio id="bg-audio" loop></audio>
+    <audio id="bg-audio" loop autoplay></audio>
 
-    <!-- Botão de volume com ícone Icons8 -->
     <div class="volume-btn" id="volumeBtn">
         <img src="https://img.icons8.com/sf-black-filled/64/medium-volume.png" alt="Volume" id="volumeIcon">
     </div>
 
-    <!-- Nome da música -->
     <div class="music-info" id="musicInfo">
         <span id="musicName">The Last Choice - LIGHT OST</span>
     </div>
@@ -199,7 +185,6 @@
             const volumeIcon = document.getElementById('volumeIcon');
             const musicName = document.getElementById('musicName');
             
-            // Lista de músicas
             const musicas = [
                 { src: '/Public/MP3/404.mp3', nome: 'The Last Choice - LIGHT OST' },
                 { src: '/Public/MP3/404-2.mp3', nome: 'The True Light - LIGHT OST' }
@@ -208,11 +193,9 @@
             let musicaAtual = 0;
             let isMuted = false;
             
-            // Configurar áudio
             audio.src = musicas[musicaAtual].src;
             audio.volume = 0.3;
             
-            // Quando uma música terminar, tocar a próxima
             audio.addEventListener('ended', function() {
                 musicaAtual = (musicaAtual + 1) % musicas.length;
                 audio.src = musicas[musicaAtual].src;
@@ -223,14 +206,11 @@
                 }
             });
             
-            // Tenta tocar automaticamente
-            audio.play().catch(function(error) {
-                console.log("Autoplay bloqueado");
+            audio.play().catch(function() {
                 volumeIcon.src = "https://img.icons8.com/sf-black-filled/64/sound-speaker.png";
                 isMuted = true;
             });
 
-            // Botão de mute/unmute
             volumeBtn.addEventListener('click', function() {
                 if (isMuted) {
                     audio.play();
