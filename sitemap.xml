@@ -3,14 +3,13 @@
   <url>
     <loc>https://lukzst.github.io/</loc>
     <lastmod>2026-03-10</lastmod>
-    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://lukzst.github.io/demo/</loc>
-    <priority>0.8</priority>
+    <lastmod>2026-03-10</lastmod>
   </url>
   <url>
     <loc>https://lukzst.github.io/updates/</loc>
-    <priority>0.7</priority>
+    <lastmod>2026-03-10</lastmod>
   </url>
 </urlset>
