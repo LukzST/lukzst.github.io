@@ -1,93 +1,93 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="404 - Page not found. You are lost in the dark.">
     <title>404 | Lost in the Dark</title>
+    <link rel="stylesheet" href="/Public/CSS/about.C7pInJ8y.css">
     <link rel="shortcut icon" href="/Public/ICO/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+
     <style>
-        :root {
-            --primary-color: #f5f1b9;
-            --secondary-color: #2f00ff;
-            --background-color: #030305;
-            --text-color: #ffffff;
-            --background-color-3: #1a1a2e;
-            --transition-speed: 0.3s;
+        /* FONTES ADICIONAIS */
+        @font-face {
+            font-family: 'Junicode';
+            src: url('/Public/fonts/junicode.regular.ttf') format('truetype');
+            font-display: swap;
+            font-weight: 400;
         }
 
         @font-face {
-            font-family: 'boldfont';
-            src: url(/Public/FONTs/BebasNeue-Bold.ttf);
+            font-family: 'Junicode';
+            src: url('/Public/fonts/junicode.bold.ttf') format('truetype');
+            font-display: swap;
+            font-weight: 700;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: var(--background-color);
-            color: var(--text-color);
-            height: 100vh;
+        /* ESTILOS ESPECÍFICOS PARA 404 */
+        .error-container {
+            min-height: 70vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
-            overflow: hidden;
-            font-family: sans-serif;
             text-align: center;
+            padding: 2rem;
         }
 
-        .error-container {
-            position: relative;
-        }
         .code-404 {
-            font-family: 'boldfont', sans-serif;
+            font-family: 'Junicode', serif;
             font-size: clamp(8rem, 25vw, 15rem);
-            color: var(--primary-color);
+            font-weight: 700;
+            color: var(--zen-coral);
             line-height: 1;
-            letter-spacing: 0px;
             animation: flicker 3s infinite;
-            text-shadow: 0 0 20px rgba(245, 241, 185, 0.3);
+            text-shadow: 0 0 30px rgba(247, 111, 83, 0.3);
         }
 
-        .message {
-            font-family: 'boldfont', sans-serif;
+        .message-404 {
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-size: 1.5rem;
-            letter-spacing: 5px;
-            margin-top: -10px;
-            margin-bottom: 40px;
-            color: var(--text-color);
+            letter-spacing: 2px;
+            margin-top: -0.5rem;
+            margin-bottom: 2rem;
             opacity: 0.8;
             text-transform: uppercase;
         }
 
         .back-home {
-            margin-top: 50px;
+            display: inline-block;
+            background-color: var(--zen-dark);
+            color: var(--zen-paper);
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            font-size: 1.125rem;
             text-decoration: none;
-            border-radius: 5px;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-            padding: 12px 30px;
-            font-family: 'boldfont', sans-serif;
-            font-size: 1.2rem;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-top: 1rem;
         }
 
         .back-home:hover {
-            background-color: var(--secondary-color);
-            border-color: var(--secondary-color);
-            color: white;
-            box-shadow: 0 0 30px var(--secondary-color);
-            transform: scale(1.1);
+            transform: scale(1.05);
+            background-color: var(--zen-coral);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
         }
 
         @keyframes flicker {
-            0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; text-shadow: 0 0 20px var(--primary-color); }
-            20%, 24%, 55% { opacity: 0.3; text-shadow: none; }
+            0%, 18%, 22%, 25%, 53%, 57%, 100% { 
+                opacity: 1; 
+                text-shadow: 0 0 30px var(--zen-coral);
+            }
+            20%, 24%, 55% { 
+                opacity: 0.3; 
+                text-shadow: none;
+            }
         }
 
         .vignette {
@@ -96,143 +96,185 @@
             left: 0;
             width: 100%;
             height: 100%;
-            box-shadow: inset 0 0 150px rgba(0,0,0,0.9);
+            box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.9);
             pointer-events: none;
+            z-index: 1;
         }
 
-        #volumeIcon {
+        /* Controles de música */
+        .music-controls {
             position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 9999;
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-            filter: brightness(0) invert(1);
-            transition: all var(--transition-speed) ease;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            background-color: var(--zen-subtle);
+            backdrop-filter: blur(8px);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            border: 1px solid var(--zen-subtle);
+            z-index: 20;
+            transition: all 0.2s ease;
         }
 
-        #volumeIcon:hover {
+        .music-controls:hover {
+            border-color: var(--zen-coral);
+        }
+
+        .volume-icon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            filter: brightness(0) invert(1);
+        }
+
+        [data-theme="dark"] .volume-icon {
+            filter: brightness(0) invert(1);
+        }
+
+        .volume-icon:hover {
             filter: brightness(0) invert(0.8) sepia(1) hue-rotate(200deg);
             transform: scale(1.1);
         }
 
         .music-info {
-            position: fixed;
-            bottom: 20px;
             display: flex;
-            flex-direction: column;
-            left: 50%;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transform: translateX(-50%);
-            z-index: 9999;
-            color: var(--text-color);
-            font-family: 'boldfont', sans-serif;
-            font-size: 1rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            padding: 8px 20px;
-            border-radius: 50px;
-            backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
-            opacity: 0.9;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            opacity: 0.8;
         }
 
-        .link {
-            color: var(--text-color);
+        .music-info img {
+            width: 18px;
+            height: 18px;
+            filter: brightness(0) invert(1);
+        }
+
+        .music-info a {
+            color: var(--zen-dark);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        [data-theme="dark"] .music-info a {
+            color: var(--zen-paper);
+        }
+
+        .music-info a:hover {
+            color: var(--zen-coral);
         }
 
         #bg-audio {
             display: none;
         }
-
-        @media (max-width: 768px) {
-            .music-info {
-                font-size: 0.6;
-                width: 10000px;
-                max-width: 1000000px;
-            }
-            
-            .message {
-                letter-spacing: 2px;
-            }
-        }
     </style>
 </head>
-<body>
-    <audio id="bg-audio"></audio>
+<body class="min-h-screen overflow-x-hidden bg-paper font-['bricolage-grotesque'] text-dark">
 
-    <img src="https://img.icons8.com/sf-black-filled/64/sound-speaker.png" alt="Volume" id="volumeIcon">
-
-    <div class="music-info" id="musicInfo">
-        <img width="24" height="24" src="/Public/IMG/m.png"/>
-        <a href="https://youtube.com/playlist?list=PLstaXaIuDSEidUQAif2ptoqswAv8qTJ6y" style="text-decoration: none;" target="_blank" class="link">
-            <span id="musicName">The Last Choice - LIGHT OST</span>
+    <!-- NAVEGAÇÃO SIMPLES -->
+    <nav class="container relative z-20 flex w-full items-center justify-between bg-paper py-3 lg:py-6">
+        <a class="flex items-center gap-2 text-lg font-bold" href="/">
+            <img src="/Public/IMG/studio-logo-without.png" width="50" height="50" alt="Logo">
+            <span>LIGHT</span>
         </a>
-    </div>
+        
+        <div class="flex items-center gap-4">
+            <a href="https://lukzxdd.itch.io/" target="_blank" class="flex items-center justify-center gap-2 rounded-xl bg-dark px-6 py-3 text-paper shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-transform">
+                Itch.io <img src="/Public/IMG/asset 12.svg" width="20" alt="">
+            </a>
+        </div>
+    </nav>
 
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="container flex-1">
+        <div class="error-container">
+            <h1 class="code-404">404</h1>
+            <p class="message-404">You are lost in the dark</p>
+            <a href="/" class="back-home">Return to Light</a>
+        </div>
+    </main>
+
+    <!-- VIGNETTE EFFECT -->
     <div class="vignette"></div>
 
-    <div class="error-container">
-        <h1 class="code-404">404</h1>
-        <p class="message">You are lost in the dark</p>
-        <a href="/" class="back-home">Return to Light</a>
+    <!-- CONTROLES DE MÚSICA -->
+    <div class="music-controls">
+        <img src="https://img.icons8.com/sf-black-filled/64/sound-speaker.png" alt="Volume" id="volumeIcon" class="volume-icon">
+        <div class="music-info">
+            <img src="/Public/IMG/m.png" alt="Music">
+            <a href="https://youtube.com/playlist?list=PLstaXaIuDSEidUQAif2ptoqswAv8qTJ6y" target="_blank" id="musicName">
+                The Last Choice - LIGHT OST
+            </a>
+        </div>
     </div>
 
-    <script>
-    window.addEventListener('load', function() {
-        const audio = document.getElementById('bg-audio');
-        const volumeIcon = document.getElementById('volumeIcon');
-        const musicName = document.getElementById('musicName');
-        
-        const musicas = [
-            { src: '/Public/MP3/4042.mp3', nome: 'The True Light - LIGHT OST' },
-            { src: '/Public/MP3/404.mp3', nome: 'The Last Choice - LIGHT OST' }
-        ];
-        
-        let musicaAtual = 0;
-        let isMuted = true;
-        let audioIniciado = false;
-        
-        audio.src = musicas[musicaAtual].src;
-        audio.volume = 0.3;
-        audio.muted = true;
-        musicName.textContent = musicas[musicaAtual].nome;
-        
-        audio.addEventListener('ended', function() {
-            musicaAtual = (musicaAtual + 1) % musicas.length;
-            audio.src = musicas[musicaAtual].src;
-            musicName.textContent = musicas[musicaAtual].nome;
-            if (!isMuted) {
-                audio.play();
-            }
-        });
+    <audio id="bg-audio"></audio>
 
-        volumeIcon.addEventListener('click', function(e) {
-            e.stopPropagation();
+    <footer class="bg-dark text-paper py-8 mt-12 border-t border-dark">
+        <div class="container text-center opacity-50 text-sm">
+            2026 © LIGHT by Lukzxdd. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('load', function() {
+            const audio = document.getElementById('bg-audio');
+            const volumeIcon = document.getElementById('volumeIcon');
+            const musicName = document.getElementById('musicName');
             
-            if (!audioIniciado) {
-                audio.muted = false;
-                audio.play();
-                volumeIcon.src = "https://img.icons8.com/sf-black-filled/64/medium-volume.png";
-                audioIniciado = true;
-                isMuted = false;
-            } else {
-                if (isMuted) {
+            const musicas = [
+                { src: '/Public/MP3/4042.mp3', nome: 'The True Light - LIGHT OST' },
+                { src: '/Public/MP3/404.mp3', nome: 'The Last Choice - LIGHT OST' }
+            ];
+            
+            let musicaAtual = 0;
+            let isMuted = true;
+            let audioIniciado = false;
+            
+            audio.src = musicas[musicaAtual].src;
+            audio.volume = 0.3;
+            audio.muted = true;
+            musicName.textContent = musicas[musicaAtual].nome;
+            
+            audio.addEventListener('ended', function() {
+                musicaAtual = (musicaAtual + 1) % musicas.length;
+                audio.src = musicas[musicaAtual].src;
+                musicName.textContent = musicas[musicaAtual].nome;
+                if (!isMuted) {
+                    audio.play();
+                }
+            });
+
+            volumeIcon.addEventListener('click', function(e) {
+                e.stopPropagation();
+                
+                if (!audioIniciado) {
                     audio.muted = false;
                     audio.play();
                     volumeIcon.src = "https://img.icons8.com/sf-black-filled/64/medium-volume.png";
+                    audioIniciado = true;
                     isMuted = false;
                 } else {
-                    audio.muted = true;
-                    volumeIcon.src = "https://img.icons8.com/sf-black-filled/64/sound-speaker.png";
-                    isMuted = true;
+                    if (isMuted) {
+                        audio.muted = false;
+                        audio.play();
+                        volumeIcon.src = "https://img.icons8.com/sf-black-filled/64/medium-volume.png";
+                        isMuted = false;
+                    } else {
+                        audio.muted = true;
+                        volumeIcon.src = "https://img.icons8.com/sf-black-filled/64/sound-speaker.png";
+                        isMuted = true;
+                    }
                 }
-            }
+            });
         });
-    });
-</script>
+    </script>
 </body>
 </html>
