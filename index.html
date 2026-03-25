@@ -193,7 +193,7 @@
             <h2 class="mb-12 text-4xl font-bold sm:text-6xl text-center font-junicode">The <span class="italic text-coral">Mission</span></h2>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="md:col-span-2 bg-subtle p-10 rounded-3xl border border-subtle" style="padding: 20px;">
+                <div class="md:col-span-2 bg-subtle rounded-3xl border border-subtle" style="padding: 20px;">
                     <h3 class="text-3xl font-bold mb-4">Operator 07</h3>
                     <p class="text-xl opacity-70 leading-relaxed">
                         You are the last sentinel in an isolated relay bunker. Outside, the "Fade" has consumed cities and hope. 
@@ -201,7 +201,7 @@
                     </p>
                 </div>
                 
-                <div class="bg-coral/10 border border-coral p-10 rounded-3xl flex flex-col justify-between" style="padding: 20px;">
+                <div class="bg-coral/10 border border-coral rounded-3xl flex flex-col justify-between" style="padding: 20px;">
                     <div class="size-12 bg-coral rounded-full flex items-center justify-center text-paper font-bold">!</div>
                     <div>
                         <h3 class="text-2xl font-bold text-coral">WARNING</h3>
@@ -209,11 +209,23 @@
                     </div>
                 </div>
 
-                <div id="screenshots" class="md:col-span-3 grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-                    <img src="/Public/IMG/screen1.png" class="rounded-2xl border border-subtle hover:scale-[1.02] transition-all cursor-pointer shadow-sm" onclick="screenshot1()" alt="Screen">
-                    <img src="/Public/IMG/screen2.png" class="rounded-2xl border border-subtle hover:scale-[1.02] transition-all cursor-pointer shadow-sm" onclick="screenshot2()" alt="Screen">
-                    <img src="/Public/IMG/screen3.png" class="rounded-2xl border border-subtle hover:scale-[1.02] transition-all cursor-pointer shadow-sm" onclick="screenshot3()" alt="Screen">
-                    <img src="/Public/IMG/screen4.png" class="rounded-2xl border border-subtle hover:scale-[1.02] transition-all cursor-pointer shadow-sm" onclick="screenshot4()" alt="Screen">
+                <!-- SCREENSHOTS AUMENTADAS -->
+                <div id="screenshots" class="md:col-span-3 mt-8">
+                    <h3 class="text-2xl font-bold text-center mb-6 font-junicode">Screenshots</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="group cursor-pointer" onclick="screenshot1()">
+                            <img src="/Public/IMG/screen1.png" class="rounded-2xl border border-subtle w-full h-64 object-cover transition-all group-hover:scale-[1.02] group-hover:shadow-xl" alt="Screen">
+                        </div>
+                        <div class="group cursor-pointer" onclick="screenshot2()">
+                            <img src="/Public/IMG/screen2.png" class="rounded-2xl border border-subtle w-full h-64 object-cover transition-all group-hover:scale-[1.02] group-hover:shadow-xl" alt="Screen">
+                        </div>
+                        <div class="group cursor-pointer" onclick="screenshot3()">
+                            <img src="/Public/IMG/screen3.png" class="rounded-2xl border border-subtle w-full h-64 object-cover transition-all group-hover:scale-[1.02] group-hover:shadow-xl" alt="Screen">
+                        </div>
+                        <div class="group cursor-pointer" onclick="screenshot4()">
+                            <img src="/Public/IMG/screen4.png" class="rounded-2xl border border-subtle w-full h-64 object-cover transition-all group-hover:scale-[1.02] group-hover:shadow-xl" alt="Screen">
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
