@@ -4,204 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LIGHT | by Lukzxdd</title>
-    <link rel="stylesheet" href="/Public/CSS/style.css">
+    <link rel="stylesheet" href="/Public/CSS/about.C7pInJ8y.css">
     <script src="/Public/JS/scripts.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="shortcut icon" href="/Public/ICO/favicon.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
-
-    <style>
-        /* VARIÁVEIS DO TEMA */
-        :root {
-            --zen-paper: #f2f0e3;
-            --zen-dark: #2e2e2e;
-            --zen-muted: rgba(0, 0, 0, 0.05);
-            --zen-subtle: rgba(0, 0, 0, 0.05);
-            --zen-coral: #f76f53;
-        }
-
-        [data-theme="dark"] {
-            --zen-paper: #1f1f1f;
-            --zen-dark: #d1cfc0;
-            --zen-muted: rgba(255, 255, 255, 0.05);
-            --zen-subtle: rgba(255, 255, 255, 0.1);
-            --zen-coral: #f76f53;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            background-color: var(--zen-paper);
-            color: var(--zen-dark);
-            line-height: 1.5;
-            overflow-x: hidden;
-        }
-
-        .font-junicode {
-            font-family: 'Junicode', serif;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1280px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-
-        @media (min-width: 1024px) {
-            .container {
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
-            }
-        }
-
-        /* UTILITÁRIOS */
-        .min-h-screen { min-height: 100vh; }
-        .overflow-x-hidden { overflow-x: hidden; }
-        .bg-paper { background-color: var(--zen-paper); }
-        .bg-dark { background-color: var(--zen-dark); }
-        .bg-subtle { background-color: var(--zen-subtle); }
-        .bg-coral\/10 { background-color: rgba(247, 111, 83, 0.1); }
-        .bg-coral { background-color: var(--zen-coral); }
-        .text-dark { color: var(--zen-dark); }
-        .text-paper { color: var(--zen-paper); }
-        .text-coral { color: var(--zen-coral); }
-        .border-subtle { border-color: var(--zen-subtle); }
-        .border-dark { border-color: var(--zen-dark); }
-        .border-coral { border-color: var(--zen-coral); }
-        .border-white\/10 { border-color: rgba(255, 255, 255, 0.1); }
-        .rounded-xl { border-radius: 0.75rem; }
-        .rounded-2xl { border-radius: 1rem; }
-        .rounded-3xl { border-radius: 1.5rem; }
-        .rounded-full { border-radius: 9999px; }
-        .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
-        .shadow-xl { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
-        .transition-all { transition: all 0.3s ease; }
-        .transition-colors { transition: color 0.2s ease, background-color 0.2s ease; }
-        .transition-transform { transition: transform 0.2s ease; }
-        .hover\:scale-105:hover { transform: scale(1.05); }
-        .hover\:scale-110:hover { transform: scale(1.1); }
-        .hover\:scale-\[1\.02\]:hover { transform: scale(1.02); }
-        .hover\:text-coral:hover { color: var(--zen-coral); }
-        .hover\:bg-black\/10:hover { background-color: rgba(0, 0, 0, 0.1); }
-        .active\:scale-\[0\.98\]:active { transform: scale(0.98); }
-        .grid { display: grid; }
-        .flex { display: flex; }
-        .hidden { display: none; }
-        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-        .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-        .flex-col { flex-direction: column; }
-        .items-center { align-items: center; }
-        .items-start { align-items: flex-start; }
-        .justify-between { justify-content: space-between; }
-        .justify-center { justify-content: center; }
-        .gap-2 { gap: 0.5rem; }
-        .gap-3 { gap: 0.75rem; }
-        .gap-4 { gap: 1rem; }
-        .gap-6 { gap: 1.5rem; }
-        .gap-8 { gap: 2rem; }
-        .gap-12 { gap: 3rem; }
-        .gap-16 { gap: 4rem; }
-        .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
-        .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
-        .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
-        .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
-        .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
-        .py-24 { padding-top: 6rem; padding-bottom: 6rem; }
-        .px-4 { padding-left: 1rem; padding-right: 1rem; }
-        .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
-        .px-8 { padding-left: 2rem; padding-right: 2rem; }
-        .mt-2 { margin-top: 0.5rem; }
-        .mt-4 { margin-top: 1rem; }
-        .mt-6 { margin-top: 1.5rem; }
-        .mt-8 { margin-top: 2rem; }
-        .mt-12 { margin-top: 3rem; }
-        .mt-16 { margin-top: 4rem; }
-        .mb-2 { margin-bottom: 0.5rem; }
-        .mb-4 { margin-bottom: 1rem; }
-        .mb-6 { margin-bottom: 1.5rem; }
-        .mb-8 { margin-bottom: 2rem; }
-        .mb-12 { margin-bottom: 3rem; }
-        .text-xs { font-size: 0.75rem; line-height: 1rem; }
-        .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
-        .text-base { font-size: 1rem; line-height: 1.5rem; }
-        .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
-        .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
-        .text-2xl { font-size: 1.5rem; line-height: 2rem; }
-        .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
-        .text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
-        .text-5xl { font-size: 3rem; line-height: 1; }
-        .font-bold { font-weight: 700; }
-        .font-semibold { font-weight: 600; }
-        .font-normal { font-weight: 400; }
-        .italic { font-style: italic; }
-        .uppercase { text-transform: uppercase; }
-        .tracking-wider { letter-spacing: 0.05em; }
-        .text-center { text-align: center; }
-        .max-w-xl { max-width: 36rem; }
-        .max-w-5xl { max-width: 64rem; }
-        .opacity-60 { opacity: 0.6; }
-        .opacity-70 { opacity: 0.7; }
-        .opacity-80 { opacity: 0.8; }
-        .border-t { border-top-width: 1px; }
-        .space-y-2 > * + * { margin-top: 0.5rem; }
-        .leading-none { line-height: 1; }
-        .leading-relaxed { line-height: 1.625; }
-        .cursor-pointer { cursor: pointer; }
-        .w-auto { width: auto; }
-        .h-12 { height: 3rem; }
-        .object-cover { object-fit: cover; }
-        .aspect-square { aspect-ratio: 1 / 1; }
-        
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        video {
-            max-width: 100%;
-            height: auto;
-        }
-        
-        [data-theme="dark"] .dark\:invert {
-            filter: invert(100%);
-        }
-        
-        @media (min-width: 768px) {
-            .md\:block { display: block; }
-            .md\:flex { display: flex; }
-            .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-            .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-            .md\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-            .md\:col-span-2 { grid-column: span 2 / span 2; }
-            .md\:col-span-3 { grid-column: span 3 / span 3; }
-            .md\:flex-row { flex-direction: row; }
-            .md\:gap-8 { gap: 2rem; }
-            .md\:text-7xl { font-size: 4.5rem; line-height: 1; }
-            .md\:text-9xl { font-size: 8rem; line-height: 1; }
-            .md\:py-32 { padding-top: 8rem; padding-bottom: 8rem; }
-        }
-        
-        @media (min-width: 1024px) {
-            .lg\:flex { display: flex; }
-            .lg\:py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
-            .lg\:py-24 { padding-top: 6rem; padding-bottom: 6rem; }
-            .lg\:py-36 { padding-top: 9rem; padding-bottom: 9rem; }
-            .lg\:px-24 { padding-left: 6rem; padding-right: 6rem; }
-            .lg\:text-9xl { font-size: 8rem; line-height: 1; }
-        }
-    </style>
 </head>
-<body>
+<body class="min-h-screen overflow-x-hidden bg-paper font-['bricolage-grotesque'] text-dark">
 
     <nav class="container relative z-20 flex w-full items-center justify-between bg-paper py-3 lg:py-6">
         <a class="flex items-center gap-2 text-lg font-bold" href="#home">
@@ -216,8 +26,8 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <a href="https://lukzxdd.itch.io/" target="_blank" class="flex items-center justify-center gap-2 rounded-xl bg-dark px-6 py-3 text-paper shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-transform">
-                Itch.io <img src="/Public/IMG/asset 12.svg" width="20" alt="">
+            <a href="https://lukzxdd.itch.io/" target="_blank" class="transition-bg flex items-center justify-center gap-2 rounded-xl border-dark bg-dark px-6 py-3 text-paper shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-transform">
+                Itch.io <img src="/Public/IMG/asset 12.svg" width="20px" alt="">
             </a>
         </div>
     </nav>
@@ -248,7 +58,7 @@
             <h2 class="mb-12 text-4xl font-bold sm:text-6xl text-center font-junicode">The <span class="italic text-coral">Mission</span></h2>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="md:col-span-2 bg-subtle rounded-3xl border border-subtle" style="padding: 20px;">
+                <div class="md:col-span-2 bg-subtle p-10 rounded-3xl border border-subtle" style="padding: 20px;">
                     <h3 class="text-3xl font-bold mb-4">Operator 07</h3>
                     <p class="text-xl opacity-70 leading-relaxed">
                         You are the last sentinel in an isolated relay bunker. Outside, the "Fade" has consumed cities and hope. 
@@ -256,7 +66,7 @@
                     </p>
                 </div>
                 
-                <div class="bg-coral/10 border border-coral rounded-3xl flex flex-col justify-between" style="padding: 20px;">
+                <div class="bg-coral/10 border border-coral p-10 rounded-3xl flex flex-col justify-between" style="padding: 20px;">
                     <div class="size-12 bg-coral rounded-full flex items-center justify-center text-paper font-bold">!</div>
                     <div>
                         <h3 class="text-2xl font-bold text-coral">WARNING</h3>
@@ -277,122 +87,102 @@
             <h3 class="text-4xl font-junicode mb-12">Available on</h3>
             <div class="flex flex-wrap items-center justify-center gap-12 opacity-80">
                 <a href="https://lukzxdd.itch.io/LIGHT" target="_blank" class="hover:scale-110 transition-transform">
-                    <img src="/Public/IMG/itchio-logo-white.png" class="h-12 w-auto dark:invert" width="300" alt="Itch" style="max-width: 300px; filter: brightness(0) invert(1);">
+                    <img src="/Public/IMG/itchio-logo-white.png" class="h-12 w-auto dark:invert" width="300" alt="Itch" style="max-width: 300px;filter: brightness(0) invert(1);">
                 </a>
                 <a href="https://github.com/LukzST/LIGHT" target="_blank" class="hover:scale-110 transition-transform">
-                    <img src="/Public/IMG/GitHub_Lockup_White_Clearspace.png" class="h-12 w-auto dark:invert" width="300" alt="GitHub" style="max-width: 300px; filter: brightness(0) invert(1);">
+                    <img src="/Public/IMG/GitHub_Lockup_White_Clearspace.png" class="h-12 w-auto dark:invert" width="300" alt="GitHub" style="max-width: 300px;filter: brightness(0) invert(1);">
                 </a>
-                <a href="#" class="hover:scale-110 transition-transform relative">
+                <a href="#" class="hover:scale-110 transition-transform">
                     <img src="/Public/IMG/steam.png" class="h-12 w-auto dark:invert" width="300" alt="Steam" style="filter: brightness(0) invert(1); max-width: 300px;">
-                    <span class="absolute -top-2 -right-4 text-xs bg-coral text-paper px-2 py-0.5 rounded-full">SOON</span>
+                    <span>SOON</span>
                 </a>
             </div>
         </section>
         
-        <section id="team" class="py-12 lg:py-24">
-            <h2 class="mb-12 text-4xl font-bold sm:text-6xl text-center font-junicode">The <span class="italic text-coral">Team</span></h2>
+
+        <section id="team" class="py-12 lg:py-24 border-t border-subtle">
+            <h2 class="mb-8 text-4xl font-bold sm:text-6xl text-center font-junicode">The <span class="italic text-coral">Team</span></h2>
             
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <!-- Lukzxdd -->
-                <div class="bg-subtle rounded-2xl border border-subtle overflow-hidden transition-all hover:scale-[1.03] hover:border-coral hover:shadow-lg">
-                    <div class="aspect-square overflow-hidden bg-dark/5">
-                        <img src="/Public/IMG/lukz.jpg" alt="Lukzxdd" class="w-full h-full object-cover transition-all hover:scale-105 duration-300">
+                <div class="bg-subtle rounded-2xl border border-subtle overflow-hidden transition-all hover:scale-[1.02] hover:border-coral">
+                    <div class="aspect-square overflow-hidden">
+                        <img src="/Public/IMG/lukz.jpg" alt="Lukzxdd" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-4 text-center">
-                        <h3 class="text-lg font-bold">Lukzxdd</h3>
-                        <p class="text-coral text-sm mt-1">Game Designer</p>
-                        <div class="flex items-center justify-center gap-3 mt-3">
-                            <a href="https://lukzxdd.itch.io/" target="_blank" class="text-dark opacity-50 hover:text-coral hover:opacity-100 transition-all">
-                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.22-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.86 1.23 1.09 1.83 2.835 1.315 3.525.995.105-.78.42-1.315.765-1.62-2.67-.3-5.46-1.335-5.46-5.925 0-1.31.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                            </a>
-                            <a href="https://github.com/LukzST" target="_blank" class="text-dark opacity-50 hover:text-coral hover:opacity-100 transition-all">
-                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.604-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-                            </a>
-                        </div>
+                    <div class="p-3 text-center">
+                        <h3 class="text-base font-bold">Lukzxdd</h3>
+                        <p class="text-coral text-xs mt-0.5">Game Designer</p>
                     </div>
                 </div>
 
                 <!-- Hagrajag -->
-                <div class="bg-subtle rounded-2xl border border-subtle overflow-hidden transition-all hover:scale-[1.03] hover:border-coral hover:shadow-lg">
-                    <div class="aspect-square overflow-hidden bg-dark/5">
-                        <img src="https://img.itch.zone/aW1nLzI1Mjg4NDI5LmdpZg==/80x80%23/iGX%2FHx.gif" alt="Hagrajag" class="w-full h-full object-cover transition-all hover:scale-105 duration-300">
+                <div class="bg-subtle rounded-2xl border border-subtle overflow-hidden transition-all hover:scale-[1.02] hover:border-coral">
+                    <div class="aspect-square overflow-hidden">
+                        <img src="https://img.itch.zone/aW1nLzI1Mjg4NDI5LmdpZg==/80x80%23/iGX%2FHx.gif" alt="Hagrajag" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-4 text-center">
-                        <h3 class="text-lg font-bold">Hagrajag</h3>
-                        <p class="text-coral text-sm mt-1">Special Thanks</p>
-                        <div class="flex items-center justify-center gap-3 mt-3">
-                            <a href="https://hagrajag.itch.io/" target="_blank" class="text-dark opacity-50 hover:text-coral hover:opacity-100 transition-all">
-                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.22-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.86 1.23 1.09 1.83 2.835 1.315 3.525.995.105-.78.42-1.315.765-1.62-2.67-.3-5.46-1.335-5.46-5.925 0-1.31.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                            </a>
-                        </div>
+                    <div class="p-3 text-center">
+                        <h3 class="text-base font-bold">Hagrajag</h3>
+                        <p class="text-coral text-xs mt-0.5">Special Thanks</p>
                     </div>
                 </div>
 
                 <!-- Luiz -->
-                <div class="bg-subtle rounded-2xl border border-subtle overflow-hidden transition-all hover:scale-[1.03] hover:border-coral hover:shadow-lg">
-                    <div class="aspect-square overflow-hidden bg-dark/5">
-                        <img src="/Public/IMG/luiz.jpg" alt="Luiz" class="w-full h-full object-cover transition-all hover:scale-105 duration-300">
+                <div class="bg-subtle rounded-2xl border border-subtle overflow-hidden transition-all hover:scale-[1.02] hover:border-coral">
+                    <div class="aspect-square overflow-hidden">
+                        <img src="/Public/IMG/luiz.jpg" alt="Luiz" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-4 text-center">
-                        <h3 class="text-lg font-bold">Luiz</h3>
-                        <p class="text-coral text-sm mt-1">Beta Tester</p>
+                    <div class="p-3 text-center">
+                        <h3 class="text-base font-bold">Luiz</h3>
+                        <p class="text-coral text-xs mt-0.5">Beta Tester</p>
                     </div>
                 </div>
 
                 <!-- Isabella -->
-                <div class="bg-subtle rounded-2xl border border-subtle overflow-hidden transition-all hover:scale-[1.03] hover:border-coral hover:shadow-lg">
-                    <div class="aspect-square overflow-hidden bg-dark/5">
-                        <img src="/Public/IMG/isabella.jpg" alt="Isabella" class="w-full h-full object-cover transition-all hover:scale-105 duration-300">
+                <div class="bg-subtle rounded-2xl border border-subtle overflow-hidden transition-all hover:scale-[1.02] hover:border-coral">
+                    <div class="aspect-square overflow-hidden">
+                        <img src="/Public/IMG/isabella.jpg" alt="Isabella" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-4 text-center">
-                        <h3 class="text-lg font-bold">Isabella</h3>
-                        <p class="text-coral text-sm mt-1">Sound Designer</p>
+                    <div class="p-3 text-center">
+                        <h3 class="text-base font-bold">Isabella</h3>
+                        <p class="text-coral text-xs mt-0.5">Sound Designer</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-paper border-t border-subtle py-12 mt-12">
-        <div class="container">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-8">
-                <div class="text-center md:text-left">
-                    <img src="/Public/IMG/light_logo.png" alt="" width="60" style="filter: brightness(0) invert(0.12); margin-bottom: 1rem;">
-                    <p class="text-dark opacity-60 max-w-md text-sm">Beautifully atmospheric, horror-focused, and made with passion. We care about the light, not the void.</p>
+    
+
+    <footer class="bg-dark text-paper py-16 lg:px-24 border-t border-dark">
+        <div class="container flex flex-col md:flex-row justify-between items-start gap-12">
+            <div class="max-w-md">
+                <p class="mt-4 opacity-70">Beautifully atmospheric, horror-focused, and made with passion. We care about the light, not the void.</p>
+            </div>
+            <div class="grid grid-cols-2 gap-16">
+                <div>
+                    <h4 class="font-semibold mb-4">Follow</h4>
+                    <ul class="space-y-2 opacity-60 text-sm">
+                        <li>
+                            <a href="https://www.instagram.com/PlayLightGame" target="_blank" class="hover:text-coral">Instagram</a>
+                        </li>
+                        <li>
+                            <a href="https://bsky.app/profile/lukzst.github.io" target="_blank" class="hover:text-coral">Bluesky</a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="flex gap-12">
-                    <div>
-                        <h4 class="font-semibold text-dark mb-3 text-sm uppercase tracking-wider">Follow</h4>
-                        <ul class="space-y-2">
-                            <li><a href="https://www.instagram.com/PlayLightGame" target="_blank" class="text-dark opacity-60 hover:text-coral hover:opacity-100 transition-colors text-sm">Instagram</a></li>
-                            <li><a href="https://bsky.app/profile/lukzst.github.io" target="_blank" class="text-dark opacity-60 hover:text-coral hover:opacity-100 transition-colors text-sm">Bluesky</a></li>
-                            <li><a href="https://github.com/LukzST" target="_blank" class="text-dark opacity-60 hover:text-coral hover:opacity-100 transition-colors text-sm">GitHub</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold text-dark mb-3 text-sm uppercase tracking-wider">Support</h4>
-                        <ul class="space-y-2">
-                            <li><a href="#" onclick="support()" class="text-dark opacity-60 hover:text-coral hover:opacity-100 transition-colors text-sm">Contact</a></li>
-                            <li><a href="/updates/" class="text-dark opacity-60 hover:text-coral hover:opacity-100 transition-colors text-sm">Updates</a></li>
-                            <li><a href="/privacy/" class="text-dark opacity-60 hover:text-coral hover:opacity-100 transition-colors text-sm">Privacy</a></li>
-                        </ul>
-                    </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Get Help</h4>
+                    <ul class="space-y-2 opacity-60 text-sm">
+                        <li><a href="#" onclick="support()" class="hover:text-coral">Support</a></li>
+                        <li><a href="/updates/" class="hover:text-coral">Updates</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="border-t border-subtle pt-6 text-center">
-                <p class="text-dark opacity-50 text-xs">2026 © LIGHT by Lukzxdd. All rights reserved.</p>
-            </div>
+        </div>
+        <div class="container mt-24 pt-8 border-t border-white/10 opacity-50 text-sm">
+            2026 © LIGHT by Lukzxdd. All rights reserved.
         </div>
     </footer>
 
-    <script>
-        function itch() { window.location.href = "https://lukzxdd.itch.io/LIGHT"; }
-        function support() { window.location.href = "/support/"; }
-        function soundtrack() { window.location.href = "/soundtrack/"; }
-        function screenshot1() { window.open("/Public/IMG/screen1.png", "_blank"); }
-        function screenshot2() { window.open("/Public/IMG/screen2.png", "_blank"); }
-        function screenshot3() { window.open("/Public/IMG/screen3.png", "_blank"); }
-        function screenshot4() { window.open("/Public/IMG/screen4.png", "_blank"); }
-    </script>
 </body>
 </html>
