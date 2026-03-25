@@ -4,261 +4,173 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <meta name="description" content="Download the LIGHT Demo - Experience the atmospheric horror game before the full release.">
-    <meta name="author" content="Lukzxdd">
     <title>LIGHT | Download Demo</title>
-    <link rel="author" href="humans.txt">
-    <link rel="shortcut icon" href="/Public/ICO/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/Public/CSS/about.C7pInJ8y.css">
+    <script src="/Public/JS/scripts.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="shortcut icon" href="/Public/ICO/favicon.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
-    <script src="/Public/JS/scripts.js" defer></script>
 
     <style>
-        /* VARIÁVEIS DO TEMA ZEN */
-        :root {
-            --zen-paper: #f2f0e3;
-            --zen-dark: #2e2e2e;
-            --zen-muted: rgba(0, 0, 0, 0.05);
-            --zen-subtle: rgba(0, 0, 0, 0.05);
-            --zen-coral: #f76f53;
+        /* FONTS - BRICOLAGE GROTESQUE COMPLETO */
+        @font-face {
+            font-family: 'Bricolage Grotesque';
+            font-style: normal;
+            font-display: swap;
+            font-weight: 400;
+            src: url('/Public/fonts/BricolageGrotesque_36pt-Regular.ttf') format('truetype');
         }
 
-        [data-theme="dark"] {
-            --zen-paper: #1f1f1f;
-            --zen-dark: #d1cfc0;
-            --zen-muted: rgba(255, 255, 255, 0.05);
-            --zen-subtle: rgba(255, 255, 255, 0.1);
-            --zen-coral: #f76f53;
+        @font-face {
+            font-family: 'Bricolage Grotesque';
+            font-style: normal;
+            font-display: swap;
+            font-weight: 500;
+            src: url('/Public/fonts/BricolageGrotesque_24pt-Medium.ttf') format('truetype');
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            background-color: var(--zen-paper);
-            color: var(--zen-dark);
-            line-height: 1.5;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1280px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-
-        @media (min-width: 1024px) {
-            .container {
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
-            }
-        }
-
-        /* NAVEGAÇÃO */
-        nav {
-            background-color: var(--zen-paper);
-            border-bottom: 1px solid var(--zen-subtle);
-            position: sticky;
-            top: 0;
-            z-index: 50;
-        }
-
-        .nav-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.75rem 1rem;
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-
-        .nav-links {
-            display: none;
-            gap: 1.5rem;
-        }
-
-        .nav-links a {
-            font-size: 0.875rem;
+        @font-face {
+            font-family: 'Bricolage Grotesque';
+            font-style: normal;
+            font-display: swap;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--zen-dark);
-            text-decoration: none;
-            transition: color 0.2s ease;
+            src: url('/Public/fonts/BricolageGrotesque_24pt-SemiBold.ttf') format('truetype');
         }
 
-        .nav-links a:hover {
-            color: var(--zen-coral);
+        @font-face {
+            font-family: 'Bricolage Grotesque';
+            font-style: normal;
+            font-display: swap;
+            font-weight: 700;
+            src: url('/Public/fonts/BricolageGrotesque_24pt-Bold.ttf') format('truetype');
         }
 
-        .social-links {
-            display: flex;
-            gap: 0.75rem;
+        /* FONT JUNICODE */
+        @font-face {
+            font-family: 'Junicode';
+            src: url('/Public/fonts/junicode.regular.ttf') format('truetype');
+            font-display: swap;
+            font-weight: 400;
         }
 
-        .social-links a {
-            opacity: 0.6;
-            transition: opacity 0.2s ease, transform 0.2s ease;
+        @font-face {
+            font-family: 'Junicode';
+            src: url('/Public/fonts/junicode.bold.ttf') format('truetype');
+            font-display: swap;
+            font-weight: 700;
         }
 
-        .social-links a:hover {
-            opacity: 1;
-            transform: scale(1.05);
+        /* ESTILOS ADICIONAIS PARA A PÁGINA DE DEMO */
+        .demo-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
         }
 
-        .social-links img {
-            width: 24px;
-            height: 24px;
-            filter: brightness(0);
-        }
-
-        [data-theme="dark"] .social-links img {
-            filter: brightness(0) invert(1);
-        }
-
-        @media (min-width: 768px) {
-            .nav-links {
-                display: flex;
-            }
-            .mobile-menu-btn {
-                display: none;
-            }
-        }
-
-        /* MAIN CONTENT */
-        main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 3rem 1rem;
-        }
-
-        .logo-demo {
+        .demo-logo {
             text-align: center;
             margin-bottom: 2rem;
         }
 
-        .logo-demo img {
+        .demo-logo img {
             max-width: 180px;
             height: auto;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
-        .subtitle {
+        .demo-title {
+            font-family: 'Junicode', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .demo-subtitle {
+            text-align: center;
             font-size: 1.125rem;
-            color: var(--zen-dark);
             opacity: 0.7;
-            text-align: center;
+            margin-bottom: 2rem;
         }
 
-        .subtitle-small {
-            font-size: 0.875rem;
-            color: var(--zen-dark);
-            opacity: 0.6;
-            text-align: center;
-        }
-
-        .download-buttons {
+        .demo-buttons {
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            margin: 2rem 0;
+            margin-bottom: 2rem;
         }
 
-        .btn-download {
-            display: inline-block;
-            background-color: var(--zen-dark);
-            color: var(--zen-paper);
+        .demo-buttons .btn-demo {
+            display: block;
+            text-align: center;
             padding: 1rem 2rem;
             border-radius: 0.75rem;
             font-weight: 700;
             font-size: 1.125rem;
-            text-decoration: none;
-            text-align: center;
             transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-demo-primary {
+            background-color: var(--zen-dark);
+            color: var(--zen-paper);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
-        .btn-download:hover {
+        .btn-demo-primary:hover {
             transform: scale(1.02);
             background-color: var(--zen-coral);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
         }
 
-        .btn-download-disabled {
+        .btn-demo-disabled {
             background-color: var(--zen-subtle);
             color: var(--zen-dark);
             opacity: 0.5;
             cursor: not-allowed;
+        }
+
+        .btn-demo-disabled:hover {
             transform: none;
         }
 
-        .btn-download-disabled:hover {
-            transform: none;
+        .demo-info-card {
             background-color: var(--zen-subtle);
-        }
-
-        .info-box {
-            max-width: 600px;
-            margin: 2rem auto;
-            padding: 1.5rem;
-            background-color: var(--zen-subtle);
-            border-radius: 1rem;
             border: 1px solid var(--zen-subtle);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
-        .info-text {
+        .demo-info-card .info-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--zen-coral);
+            margin-bottom: 0.75rem;
+        }
+
+        .demo-info-card .info-text {
             font-size: 0.875rem;
             line-height: 1.6;
-            text-align: center;
-        }
-
-        .info-text strong {
-            color: var(--zen-coral);
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            letter-spacing: 0.05em;
-        }
-
-        .info-text em {
-            color: var(--zen-dark);
             opacity: 0.8;
-            font-style: italic;
         }
 
-        .info-divider {
+        .demo-info-card .info-emphasis {
+            font-style: italic;
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+            opacity: 0.7;
+        }
+
+        .demo-divider {
             height: 1px;
             background-color: var(--zen-subtle);
             margin: 1.5rem 0;
         }
 
-        /* FOOTER */
-        footer {
-            background-color: var(--zen-paper);
-            border-top: 1px solid var(--zen-subtle);
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-
-        footer p {
-            font-size: 0.75rem;
-            color: var(--zen-dark);
-            opacity: 0.5;
-        }
-
-        /* BACK BUTTON */
         .back-link {
             display: inline-flex;
             align-items: center;
@@ -276,57 +188,42 @@
             color: var(--zen-coral);
         }
 
-        /* RESPONSIVIDADE */
         @media (min-width: 640px) {
-            .download-buttons {
+            .demo-buttons {
                 flex-direction: row;
                 justify-content: center;
             }
-            .btn-download {
-                min-width: 220px;
+            .demo-buttons .btn-demo {
+                min-width: 240px;
             }
         }
     </style>
 </head>
-<body>
+<body class="min-h-screen overflow-x-hidden bg-paper font-['bricolage-grotesque'] text-dark">
 
-    <nav>
-        <div class="nav-container">
-            <a href="/" class="logo_header">
-                <img src="/Public/IMG/light_logo_2.png" width="50" alt="LIGHT Logo">
+    <!-- MESMO HEADER DO INDEX -->
+    <nav class="container relative z-20 flex w-full items-center justify-between bg-paper py-3 lg:py-6">
+        <a class="flex items-center gap-2 text-lg font-bold" href="/">
+            <img src="/Public/IMG/studio-logo-without.png" width="50" height="50" alt="Logo">
+        </a>
+        
+        <div class="hidden items-center gap-6 lg:flex text-sm font-semibold uppercase tracking-wider">
+            <a href="/#about" class="hover:text-coral transition-colors">About</a>
+            <a href="/#screenshots" class="hover:text-coral transition-colors">Media</a>
+            <a href="/#download" class="hover:text-coral transition-colors">Download</a>
+            <a href="/#team" class="hover:text-coral transition-colors">Team</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <a href="https://lukzxdd.itch.io/" target="_blank" class="flex items-center justify-center gap-2 rounded-xl bg-dark px-6 py-3 text-paper shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-transform">
+                Itch.io <img src="/Public/IMG/asset 12.svg" width="20" alt="">
             </a>
-            
-            <div class="nav-links">
-                <a href="/#about">About</a>
-                <a href="/#screenshots">Screenshots</a>
-                <a href="/#download">Download</a>
-                <a href="/#team">Team</a>
-                <a href="/updates/">Updates</a>
-                <a href="#" onclick="support()">Support</a>
-            </div>
-
-            <div class="social-links">
-                <a href="https://www.instagram.com/PlayLightGame/" target="_blank">
-                    <img src="/Public/IMG/instagram.png" width="24" alt="Instagram">
-                </a>
-                <a href="https://bsky.app/profile/lukzst.github.io" target="_blank">
-                    <img src="/Public/IMG/bsky.png" width="24" alt="Bluesky">
-                </a>
-                <a href="https://www.youtube.com/@PlayLightGame" target="_blank">
-                    <img src="/Public/IMG/youtube.png" width="24" alt="YouTube">
-                </a>
-                <a href="https://github.com/LukzST" target="_blank">
-                    <img src="/Public/IMG/github.png" width="24" alt="GitHub">
-                </a>
-                <a href="https://lukzxdd.itch.io/" target="_blank">
-                    <img src="/Public/IMG/itch.png" width="24" alt="Itch.io">
-                </a>
-            </div>
         </div>
     </nav>
 
-    <main>
-        <div class="container" style="text-align: center;">
+    <!-- MAIN CONTENT DA DEMO -->
+    <main class="container">
+        <div class="demo-container">
             <a href="/" class="back-link">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M19 12H5M12 19l-7-7 7-7"/>
@@ -334,47 +231,72 @@
                 Back to Home
             </a>
 
-            <div class="logo-demo">
+            <div class="demo-logo">
                 <img src="/Public/IMG/light_logo_2.png" alt="LIGHT">
-                <h1 class="font-junicode" style="font-size: 2.5rem; margin-bottom: 0.5rem;">DEMO VERSION</h1>
-                <p class="subtitle">Experience the atmospheric horror before the full release</p>
+                <h1 class="demo-title">DEMO VERSION</h1>
+                <p class="demo-subtitle">Experience the atmospheric horror before the full release</p>
             </div>
 
-            <div class="download-buttons">
-                <a href="https://raw.githubusercontent.com/LukzST/LIGHT/refs/heads/main/BETA/V3/LIGHT-BETA-V3.zip" target="_blank" class="btn-download">
+            <div class="demo-buttons">
+                <a href="https://raw.githubusercontent.com/LukzST/LIGHT/refs/heads/main/BETA/V3/LIGHT-BETA-V3.zip" target="_blank" class="btn-demo btn-demo-primary">
                     ⬇️ Download Windows Demo
                 </a>
-                <a href="#" class="btn-download btn-download-disabled" onclick="return false;">
+                <a href="#" class="btn-demo btn-demo-disabled" onclick="return false;">
                     🐧 Linux Demo (Soon)
                 </a>
             </div>
 
-            <div class="info-box">
-                <div class="info-text">
-                    <strong>⚠️ NOTE</strong>
-                    <p>Demo was created on older software with different capabilities.<br>
-                    Therefore, may not be 100% indicative of full game.</p>
-                    <p class="subtitle-small" style="margin-top: 0.75rem;"><em>However, it's slightly special in some respects...</em></p>
-                </div>
-                
-                <div class="info-divider"></div>
-                
-                <div class="info-text">
-                    <strong>📁 SAVE FILE</strong>
-                    <p>Save file won't transfer from DEMO to full game.<br>
-                    But the DEMO is so short you really won't care...</p>
-                </div>
+            <div class="demo-info-card">
+                <div class="info-title">⚠️ NOTE</div>
+                <p class="info-text">Demo was created on older software with different capabilities.<br>
+                Therefore, may not be 100% indicative of full game.</p>
+                <p class="info-emphasis">However, it's slightly special in some respects...</p>
             </div>
 
-            <p class="subtitle-small" style="margin-top: 1rem;">
+            <div class="demo-divider"></div>
+
+            <div class="demo-info-card">
+                <div class="info-title">📁 SAVE FILE</div>
+                <p class="info-text">Save file won't transfer from DEMO to full game.<br>
+                But the DEMO is so short you really won't care...</p>
+            </div>
+
+            <p class="text-center text-sm opacity-50 mt-8">
                 Made with passion. We care about the light, not the void.
             </p>
         </div>
     </main>
 
-    <footer>
-        <div class="container">
-            <p>2026 © LIGHT by Lukzxdd. All rights reserved.</p>
+    <!-- MESMO FOOTER DO INDEX -->
+    <footer class="bg-dark text-paper py-16 lg:px-24 border-t border-dark">
+        <div class="container flex flex-col md:flex-row justify-between items-start gap-12">
+            <div class="max-w-md">
+                <p id="footer-title" class="text-6xl font-bold !text-paper">Pale Luna Developer</p>
+                <p class="mt-4 opacity-70">Beautifully atmospheric, horror-focused, and made with passion. We care about the light, not the void.</p>
+            </div>
+            <div class="grid grid-cols-2 gap-16">
+                <div>
+                    <h4 class="font-semibold mb-4">Follow</h4>
+                    <ul class="space-y-2 opacity-60 text-sm">
+                        <li>
+                            <a href="https://www.instagram.com/PlayLightGame" target="_blank" class="hover:text-coral">Instagram</a>
+                        </li>
+                        <li>
+                            <a href="https://bsky.app/profile/lukzst.github.io" target="_blank" class="hover:text-coral">Bluesky</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Get Help</h4>
+                    <ul class="space-y-2 opacity-60 text-sm">
+                        <li><a href="#" onclick="support()" class="hover:text-coral">Support</a></li>
+                        <li><a href="/updates/" class="hover:text-coral">Updates</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-24 pt-8 border-t border-white/10 opacity-50 text-sm">
+            2026 © LIGHT by Lukzxdd. All rights reserved.
         </div>
     </footer>
 
@@ -383,9 +305,14 @@
             window.location.href = "/support/";
         }
         
-        function soundtrack() {
-            window.location.href = "/soundtrack/";
+        function itch() {
+            window.location.href = "https://lukzxdd.itch.io/LIGHT";
         }
+        
+        function screenshot1() { window.open("/Public/IMG/screen1.png", "_blank"); }
+        function screenshot2() { window.open("/Public/IMG/screen2.png", "_blank"); }
+        function screenshot3() { window.open("/Public/IMG/screen3.png", "_blank"); }
+        function screenshot4() { window.open("/Public/IMG/screen4.png", "_blank"); }
     </script>
 </body>
 </html>
