@@ -181,7 +181,13 @@
                 const data = await response.json();
                 
                 // Filtrar apenas pastas (diretórios)
-                const folders = data.filter(item => item.type === 'dir');
+                        const folders = data.filter(item => {
+                            return item.type === 'dir' && 
+                                item.name !== 'BETA_V1.0' && 
+                                item.name !== 'V1.0.1' &&
+                                item.name !== 'BETA' &&
+                                !item.name.includes('BETA');
+                        });
                 
                 if (folders.length === 0) {
                     container.innerHTML = '<div class="error-message">No versions found yet. Check back soon!</div>';
