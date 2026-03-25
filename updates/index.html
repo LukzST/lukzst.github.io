@@ -95,9 +95,139 @@
             text-align: center;
             margin-top: 0.5rem;
         }
+
+        /* MENU MOBILE */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 100;
+}
+
+.mobile-menu-btn span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: var(--zen-dark);
+    margin: 5px 0;
+    transition: 0.3s;
+}
+
+.mobile-menu-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background-color: var(--zen-paper);
+    border-left: 1px solid var(--zen-subtle);
+    padding: 5rem 2rem 2rem;
+    transition: right 0.3s ease;
+    z-index: 99;
+}
+
+.mobile-nav.active {
+    right: 0;
+}
+
+.mobile-nav a {
+    display: block;
+    padding: 1rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--zen-dark);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    border-bottom: 1px solid var(--zen-subtle);
+}
+
+.mobile-nav a:hover {
+    color: var(--zen-coral);
+}
+
+.mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    z-index: 98;
+}
+
+.mobile-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+@media (max-width: 1024px) {
+    .desktop-nav {
+        display: none !important;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+}
     </style>
 </head>
 <body class="min-h-screen overflow-x-hidden bg-paper font-['bricolage-grotesque'] text-dark">
+
+    <nav class="container relative z-20 flex w-full items-center justify-between bg-paper py-3 lg:py-6">
+    <a class="flex items-center gap-2 text-lg font-bold" href="/">
+        <img src="/Public/IMG/studio-logo-without.png" width="50" height="50" alt="Logo">
+    </a>
+    
+    <!-- MENU DESKTOP -->
+    <div class="desktop-nav hidden items-center gap-6 lg:flex text-sm font-semibold uppercase tracking-wider">
+        <a href="/#about" class="hover:text-coral transition-colors">About</a>
+        <a href="/#screenshots" class="hover:text-coral transition-colors">Media</a>
+        <a href="/#download" class="hover:text-coral transition-colors">Download</a>
+        <a href="/#team" class="hover:text-coral transition-colors">Team</a>
+    </div>
+
+    <!-- BOTÃO HAMBURGER (MOBILE) -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <div class="flex items-center gap-4">
+        <a href="https://lukzxdd.itch.io/" target="_blank" class="flex items-center justify-center gap-2 rounded-xl bg-dark px-6 py-3 text-paper shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-transform">
+            Itch.io <img src="/Public/IMG/asset 12.svg" width="20" alt="">
+        </a>
+    </div>
+</nav>
+
+<!-- MENU MOBILE (FORA DO NAV) -->
+<div class="mobile-nav" id="mobileNav">
+    <a href="/#about" onclick="closeMobileMenu()">About</a>
+    <a href="/#screenshots" onclick="closeMobileMenu()">Media</a>
+    <a href="/#download" onclick="closeMobileMenu()">Download</a>
+    <a href="/#team" onclick="closeMobileMenu()">Team</a>
+</div>
+<div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
 
     <!-- MESMO HEADER DO INDEX -->
     <nav class="container relative z-20 flex w-full items-center justify-between bg-paper py-3 lg:py-6">
@@ -154,6 +284,35 @@
     </main>
 
     <script>
+    // Menu Mobile
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+
+    function openMobileMenu() {
+        mobileNav.classList.add('active');
+        mobileOverlay.classList.add('active');
+        mobileMenuBtn.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileMenu() {
+        mobileNav.classList.remove('active');
+        mobileOverlay.classList.remove('active');
+        mobileMenuBtn.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (mobileNav.classList.contains('active')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        });
+    }
         // Configuração do GitHub
         const repoOwner = 'lukzst';
         const repoName = 'light';
