@@ -1,28 +1,23 @@
-/* Importação das fontes (Google Fonts para Bricolage e CDN para Junicode) */
+
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
-/* Nota: Para a Junicode VF, certifique-se de que os arquivos .woff2 estão na sua pasta de fontes ou use o @font-face abaixo */
 
 :root {
-    /* --- PALETA DE CORES (ATUALIZADA) --- */
-    --primary-color: #CF573E;    /* Laranja Terroso */
-    --secondary-color: #537CF7;  /* Azul Vibrante */
-    --third-color: #53F77F;      /* Verde Lima */
+    --primary-color: #CF573E;    
+    --secondary-color: #537CF7;  
+    --third-color: #53F77F;      
     
-    --background-color: #202020;   /* Back Dark */
+    --background-color: #202020;   
     --background-color-2: #2a2a2a; 
-    --background-color-3: #F2F0E3; /* Back Light */
+    --background-color-3: #F2F0E3; 
     --background-color-4: #151515; 
     
-    --text-color: #F2F0E3;       /* Off-white */
-    --text-color-2: #a0a0a0;     /* Cinza */
+    --text-color: #F2F0E3;       
+    --text-color-2: #a0a0a0;     
     
     --btn-bg: #F2F0E3;           
     --btn-text: #202020;         
 
-    /* --- TIPOGRAFIA (ATUALIZADA) --- */
-    /* Para Títulos e Ênfase Estilizada */
     --font-serif: "Junicode VF", "Junicode", serif; 
-    /* Para Textos de Leitura, Menus e Interface */
     --font-sans: "Bricolage Grotesque", sans-serif;
 
     --spacing-sm: 0.5rem;
@@ -31,25 +26,23 @@
     --transition-speed: 0.3s;
 }
 
-/* --- APLICAÇÃO BASE --- */
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: var(--font-sans); /* Padrão do site */
+    font-family: var(--font-sans);
     font-weight: 400;
 }
 
 h1, h2, .title-about, .title-screen, .title-download, .logo-box h1 {
     font-family: var(--font-serif);
-    font-weight: 300; /* Junicode Condensed Light */
+    font-weight: 300;
     font-stretch: condensed;
     text-transform: uppercase;
     letter-spacing: -1px;
 }
 
-/* Itálico elegante para descrições ou citações */
 .about-text, .hero-subtitle {
     font-family: var(--font-serif);
     font-style: italic;
@@ -59,15 +52,14 @@ h1, h2, .title-about, .title-screen, .title-download, .logo-box h1 {
 
 .text_header, .button_download, .text_download {
     font-family: var(--font-sans);
-    font-weight: 600; /* Bricolage Grotesque Semi-Bold */
+    font-weight: 600; 
     letter-spacing: 0.5px;
 }
 
-/* Ajuste nos botões conforme o novo esquema */
 .button_download_home a, .text_download {
     background-color: var(--btn-bg) !important;
     color: var(--btn-text) !important;
-    border-radius: 8px; /* Bordas mais retas combinam com Junicode */
+    border-radius: 8px;
     transition: all var(--transition-speed) ease;
 }
 

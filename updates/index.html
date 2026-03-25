@@ -16,7 +16,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
     
     <style>
-        /* ESTILOS ESPECÍFICOS PARA UPDATES - USANDO CLASSES ZEN */
         @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap');
         
         .font-junicode {
@@ -99,7 +98,6 @@
 </head>
 <body class="min-h-screen overflow-x-hidden bg-paper font-['bricolage-grotesque'] text-dark">
 
-    <!-- MESMO HEADER DO INDEX -->
     <nav class="container relative z-20 flex w-full items-center justify-between bg-paper py-3 lg:py-6">
         <a class="flex items-center gap-2 text-lg font-bold" href="/">
             <img src="/Public/IMG/studio-logo-without.png" width="50" height="50" alt="Logo">
@@ -120,9 +118,7 @@
         </div>
     </nav>
 
-    <!-- MAIN CONTENT - UPDATES -->
     <main class="container py-12 lg:py-24">
-        <!-- Cabeçalho -->
         <div class="text-center mb-12">
             <h1 class="font-junicode font-bold text-dark text-5xl md:text-7xl leading-none mb-4">
                 RELEASES
@@ -132,7 +128,6 @@
             </p>
         </div>
 
-        <!-- Botão voltar -->
         <div class="mb-8">
             <a href="/" class="inline-flex items-center gap-2 text-sm opacity-60 hover:text-coral hover:opacity-100 transition-colors">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -142,24 +137,20 @@
             </a>
         </div>
 
-        <!-- Container das versões -->
         <div id="version-container" class="updates-grid">
             <div class="loader"></div>
         </div>
 
-        <!-- Mensagem final -->
         <div class="text-center mt-12 pt-8">
             <p class="text-sm opacity-50">Stay tuned for future updates. The light never dies.</p>
         </div>
     </main>
 
     <script>
-        // Configuração do GitHub
         const repoOwner = 'lukzst';
         const repoName = 'light';
         const targetPath = 'FINAL';
 
-        // Função para setar a data atual
         function setCurrentDate() {
             const dateElement = document.getElementById('current-date');
             if (dateElement) {
@@ -169,7 +160,6 @@
             }
         }
 
-        // Função para buscar as versões do GitHub
         async function fetchVersions() {
             const container = document.getElementById('version-container');
             if (!container) return;
@@ -180,7 +170,6 @@
                 
                 const data = await response.json();
                 
-                // Filtrar apenas pastas (diretórios)
                         const folders = data.filter(item => {
                             return item.type === 'dir' && 
                                 item.name !== 'BETA_V1.0' && 
@@ -220,7 +209,6 @@
             }
         }
 
-        // Funções globais
         function support() {
             window.location.href = "/support/";
         }
@@ -229,7 +217,6 @@
             window.location.href = "/soundtrack/";
         }
 
-        // Inicializar quando o DOM estiver carregado
         document.addEventListener('DOMContentLoaded', () => {
             setCurrentDate();
             fetchVersions();
