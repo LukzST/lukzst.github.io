@@ -18,6 +18,20 @@
     .font-junicode {
         font-family: 'Crimson Pro', serif;
     }
+body {
+    animation: fadeInPage 0.5s ease-out;
+}
+
+@keyframes fadeInPage {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 </style>
 
 </head>
@@ -101,6 +115,11 @@
     </main>
 
     <script>
+        function mudarPagina() {
+            document.body.style.animation = 'none';
+            document.body.offsetHeight;
+            document.body.style.animation = 'fadeInPage 0.5s ease-out';
+        }
         function support() {
             window.location.href = "/support/";
         }
