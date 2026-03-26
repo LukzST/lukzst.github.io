@@ -2086,17 +2086,17 @@ h1 .italic {
     flex-direction: row; 
     font-size: 0.9rem;
   }
-  .itch-link img {
+    .itch-link {
         content: url('/Public/IMG/itchio-logo-textless-white.png');
         max-width: 90px;
     }
 
-    .github-link img {
+    .github-link {
         content: url('/Public/IMG/GitHub_Invertocat_White.png');
         max-width: 90px;
     }
 
-    .steam-link img {
+    .steam-link {
         content: url('/Public/IMG/steam2.png');
         max-width: 90px;
     }
