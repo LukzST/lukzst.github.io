@@ -63,6 +63,20 @@
             background: var(--zen-coral);
             transform: scale(1.05);
         }
+        
+        .section-spacing {
+            margin-bottom: 4rem;
+        }
+        
+        .card-spacing {
+            margin-bottom: 2rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .section-spacing {
+                margin-bottom: 2rem;
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen overflow-x-hidden bg-paper font-['bricolage-grotesque'] text-dark">
@@ -90,19 +104,19 @@
     </nav>
 
     <main class="container py-12 lg:py-24">
-        <div class="text-center mb-12">
+        <div class="text-center mb-16">
             <h1 class="text-4xl font-bold sm:text-6xl mb-4">BRAND KIT</h1>
             <p class="max-w-xl mx-auto opacity-70 text-lg">Assets and guidelines for LIGHT</p>
         </div>
 
-        <div class="mb-8">
+        <div class="mb-12">
             <a href="/" class="inline-flex items-center gap-2 text-sm opacity-60 hover:text-coral hover:opacity-100 transition-colors">
                 <i class="fa-solid fa-chevron-left"></i>
                 Back to Home
             </a>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 section-spacing">
             <div class="brand-card">
                 <h2 class="text-2xl font-bold mb-6">Logo</h2>
                 <div class="flex flex-col items-center gap-6">
@@ -127,48 +141,48 @@
 
             <div class="brand-card">
                 <h2 class="text-2xl font-bold mb-6">Color Palette</h2>
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-2 gap-6">
                     <div class="text-center">
-                        <div class="color-swatch" style="background: #f76f53;"></div>
-                        <p class="font-mono text-sm">#f76f53</p>
+                        <div class="color-swatch mx-auto" style="background: #f76f53;"></div>
+                        <p class="font-mono text-sm mt-2">#f76f53</p>
                         <p class="text-sm opacity-60">Coral</p>
                     </div>
                     <div class="text-center">
-                        <div class="color-swatch" style="background: #2e2e2e;"></div>
-                        <p class="font-mono text-sm">#2e2e2e</p>
+                        <div class="color-swatch mx-auto" style="background: #2e2e2e;"></div>
+                        <p class="font-mono text-sm mt-2">#2e2e2e</p>
                         <p class="text-sm opacity-60">Dark</p>
                     </div>
                     <div class="text-center">
-                        <div class="color-swatch" style="background: #f2f0e3;"></div>
-                        <p class="font-mono text-sm">#f2f0e3</p>
+                        <div class="color-swatch mx-auto" style="background: #f2f0e3;"></div>
+                        <p class="font-mono text-sm mt-2">#f2f0e3</p>
                         <p class="text-sm opacity-60">Paper</p>
                     </div>
                     <div class="text-center">
-                        <div class="color-swatch" style="background: #1f1f1f;"></div>
-                        <p class="font-mono text-sm">#1f1f1f</p>
+                        <div class="color-swatch mx-auto" style="background: #1f1f1f;"></div>
+                        <p class="font-mono text-sm mt-2">#1f1f1f</p>
                         <p class="text-sm opacity-60">Dark Mode Paper</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 section-spacing">
             <div class="brand-card">
                 <h2 class="text-2xl font-bold mb-6">Typography</h2>
                 <div class="space-y-6">
                     <div>
-                        <p class="text-sm opacity-60 mb-2">Primary Font - Bricolage Grotesque</p>
+                        <p class="text-sm opacity-60 mb-3">Primary Font - Bricolage Grotesque</p>
                         <div class="font-demo">
-                            <p class="text-2xl font-bold">ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
-                            <p class="text-xl">abcdefghijklmnopqrstuvwxyz</p>
+                            <p class="text-2xl font-bold mb-2">ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+                            <p class="text-xl mb-2">abcdefghijklmnopqrstuvwxyz</p>
                             <p class="text-lg">0123456789 !@#$%^&*()</p>
                         </div>
                     </div>
                     <div>
-                        <p class="text-sm opacity-60 mb-2">Secondary Font - Junicode</p>
+                        <p class="text-sm opacity-60 mb-3">Secondary Font - Junicode</p>
                         <div class="font-demo-junicode">
-                            <p class="text-2xl font-bold">ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
-                            <p class="text-xl">abcdefghijklmnopqrstuvwxyz</p>
+                            <p class="text-2xl font-bold mb-2">ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+                            <p class="text-xl mb-2">abcdefghijklmnopqrstuvwxyz</p>
                             <p class="text-lg">0123456789 !@#$%^&*()</p>
                         </div>
                     </div>
@@ -177,36 +191,36 @@
 
             <div class="brand-card">
                 <h2 class="text-2xl font-bold mb-6">Icons & Assets</h2>
-                <div class="grid grid-cols-3 gap-6 text-center">
+                <div class="grid grid-cols-3 gap-8 text-center">
                     <div>
-                        <i class="fa-solid fa-gamepad text-4xl text-coral mb-2"></i>
+                        <i class="fa-solid fa-gamepad text-4xl text-coral mb-3"></i>
                         <p class="text-sm">Gamepad</p>
                     </div>
                     <div>
-                        <i class="fa-solid fa-download text-4xl text-coral mb-2"></i>
+                        <i class="fa-solid fa-download text-4xl text-coral mb-3"></i>
                         <p class="text-sm">Download</p>
                     </div>
                     <div>
-                        <i class="fa-solid fa-music text-4xl text-coral mb-2"></i>
+                        <i class="fa-solid fa-music text-4xl text-coral mb-3"></i>
                         <p class="text-sm">Music</p>
                     </div>
                     <div>
-                        <i class="fa-solid fa-image text-4xl text-coral mb-2"></i>
+                        <i class="fa-solid fa-image text-4xl text-coral mb-3"></i>
                         <p class="text-sm">Media</p>
                     </div>
                     <div>
-                        <i class="fa-solid fa-lightbulb text-4xl text-coral mb-2"></i>
+                        <i class="fa-solid fa-lightbulb text-4xl text-coral mb-3"></i>
                         <p class="text-sm">Light</p>
                     </div>
                     <div>
-                        <i class="fa-solid fa-skull text-4xl text-coral mb-2"></i>
+                        <i class="fa-solid fa-skull text-4xl text-coral mb-3"></i>
                         <p class="text-sm">Darkness</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 section-spacing">
             <div class="brand-card text-center">
                 <img src="https://picsum.photos/id/104/400/300" alt="Stock" class="w-full h-48 object-cover rounded-lg mb-4">
                 <h3 class="font-bold mb-2">Screenshot Template</h3>
@@ -224,17 +238,17 @@
             </div>
         </div>
 
-        <div class="brand-card text-center">
+        <div class="brand-card text-center mb-12">
             <h2 class="text-2xl font-bold mb-4">Download All Assets</h2>
             <p class="opacity-70 mb-6">Get everything in one package</p>
-            <a href="#" class="download-btn text-lg px-8 py-4">
+            <a href="#" class="download-btn text-lg px-8 py-4 inline-flex items-center gap-2">
                 <i class="fa-solid fa-download"></i>
                 Download Brand Kit ZIP
                 <i class="fa-solid fa-chevron-right"></i>
             </a>
         </div>
 
-        <div class="text-center mt-12 pt-8 border-t border-subtle">
+        <div class="text-center pt-8 border-t border-subtle">
             <p class="text-sm opacity-50">© 2026 LIGHT by Lukzxdd. All rights reserved.</p>
         </div>
     </main>
