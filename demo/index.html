@@ -62,62 +62,80 @@ body {
     </nav>
 
     <main class="container">
-        <div class="mt-8 mb-4">
-            <a href="/" class="inline-flex items-center gap-2 text-sm opacity-60 hover:text-coral hover:opacity-100 transition-colors">
-                <i class="fa-solid fa-chevron-left"></i>
-                Back to Home
-            </a>
-        </div>
+    <div class="mt-8 mb-4">
+        <a href="/" class="inline-flex items-center gap-2 text-sm opacity-60 hover:text-coral hover:opacity-100 transition-colors">
+            <i class="fa-solid fa-chevron-left"></i>
+            Back to Home
+        </a>
+    </div>
 
-        <div class="flex flex-col items-center justify-center gap-4 py-8 text-center">
-            <h1 class="mb-2 text-4xl font-bold sm:text-6xl">DEMO VERSION</h1>
-            <p class="max-w-xl opacity-70 text-lg">Experience the atmospheric horror before the full release</p>
-        </div>
+    <div class="flex flex-col items-center justify-center gap-4 py-8 text-center">
+        <h1 class="mb-2 text-4xl font-bold sm:text-6xl">DEMO VERSION</h1>
+        <p class="max-w-xl opacity-70 text-lg">Experience the atmospheric horror before the full release. Step into the darkness and see what awaits you in this terrifying preview.</p>
+    </div>
 
-        <div class="flex flex-col md:flex-row items-center justify-center gap-4 py-8">
-            <a href="https://raw.githubusercontent.com/LukzST/LIGHT/refs/heads/main/BETA/V3/LIGHT-BETA-V3.zip" class="transition-bg flex items-center justify-center gap-2 rounded-xl px-6 py-4 transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98] download-button w-fit border-dark bg-dark text-paper shadow-lg">
-               <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="windows" class="svg-inline--fa fa-windows" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 93.7l183.6-25.3v177.4H0V93.7zm0 324.6l183.6 25.3V268.4H0v149.9zm203.8 28L448 480V268.4H203.8v177.9zm0-380.6v180.1H448V32L203.8 65.7z"></path></svg> Download Windows Demo
-            </a>
-            <a href="#" onclick="return false;" class="transition-bg flex items-center justify-center gap-2 rounded-xl px-6 py-4 transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98] download-button w-fit bg-subtle text-dark shadow-lg">
-                <i class="fa-brands fa-linux fa-lg"></i>
-                Linux Demo (Soon)
-            </a>
-        </div>
+    <div class="flex flex-col md:flex-row items-center justify-center gap-4 py-8">
+        <a href="https://raw.githubusercontent.com/LukzST/LIGHT/refs/heads/main/BETA/V3/LIGHT-BETA-V3.zip" class="transition-bg flex items-center justify-center gap-2 rounded-xl px-6 py-4 transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98] download-button w-fit border-dark bg-dark text-paper shadow-lg">
+           <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="windows" class="svg-inline--fa fa-windows" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 93.7l183.6-25.3v177.4H0V93.7zm0 324.6l183.6 25.3V268.4H0v149.9zm203.8 28L448 480V268.4H203.8v177.9zm0-380.6v180.1H448V32L203.8 65.7z"></path></svg> Download Windows Demo
+        </a>
+        <a href="#" onclick="return false;" class="transition-bg flex items-center justify-center gap-2 rounded-xl px-6 py-4 transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98] download-button w-fit bg-subtle text-dark shadow-lg">
+            <i class="fa-brands fa-linux fa-lg"></i>
+            Linux Demo (Coming Soon)
+        </a>
+    </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 py-8 max-w-4xl mx-auto">
-            <div class="bg-subtle border border-subtle rounded-3xl p-6">
-                <div class="flex items-center gap-2 mb-4">
-                    <div class="bg-coral rounded-full w-8 h-8 flex items-center justify-center text-paper font-bold text-sm">!</div>
-                    <h3 class="text-coral font-bold uppercase text-sm tracking-wider">NOTE</h3>
-                </div>
-                <p class="text-dark opacity-70 text-sm leading-relaxed">
-                    Demo was created on older software with different capabilities.<br>
-                    Therefore, may not be 100% indicative of full game.
-                </p>
-                <p class="text-dark opacity-60 text-sm italic mt-3">
-                    However, it's slightly special in some respects...
-                </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 py-8 max-w-4xl mx-auto">
+        <div class="bg-subtle border border-subtle rounded-3xl p-6">
+            <div class="flex items-center gap-2 mb-4">
+                <div class="bg-coral rounded-full w-8 h-8 flex items-center justify-center text-paper font-bold text-sm">!</div>
+                <h3 class="text-coral font-bold uppercase text-sm tracking-wider">IMPORTANT NOTE</h3>
             </div>
+            <p class="text-dark opacity-70 text-sm leading-relaxed">
+                This demo version was created using older development tools and may not fully represent the final game experience. Some features, visuals, and mechanics have been refined in the full version.
+            </p>
+            <p class="text-dark opacity-60 text-sm italic mt-3">
+                That said, this demo has its own unique charm that even the final version can't replicate...
+            </p>
+        </div>
 
-            <div class="bg-subtle border border-subtle rounded-3xl p-6">
-                <div class="flex items-center gap-2 mb-4">
-                    <div class="bg-coral rounded-full w-8 h-8 flex items-center justify-center text-paper font-bold text-sm">
-                        <i class="fa-solid fa-folder"></i>
-                    </div>
-                    <h3 class="text-coral font-bold uppercase text-sm tracking-wider">SAVE FILE</h3>
+        <div class="bg-subtle border border-subtle rounded-3xl p-6">
+            <div class="flex items-center gap-2 mb-4">
+                <div class="bg-coral rounded-full w-8 h-8 flex items-center justify-center text-paper font-bold text-sm">
+                    <i class="fa-solid fa-folder"></i>
                 </div>
-                <p class="text-dark opacity-70 text-sm leading-relaxed">
-                    Save file won't transfer from DEMO to full game.<br>
-                    But the DEMO is so short you really won't care...
-                </p>
+                <h3 class="text-coral font-bold uppercase text-sm tracking-wider">SAVE FILE COMPATIBILITY</h3>
             </div>
+            <p class="text-dark opacity-70 text-sm leading-relaxed">
+                Your progress in this demo will not carry over to the full version of LIGHT. The demo is designed as a standalone experience that gives you a taste of the atmosphere and gameplay.
+            </p>
+            <p class="text-dark opacity-60 text-sm italic mt-3">
+                Don't worry though — the demo is short enough that you'll want to replay it anyway!
+            </p>
         </div>
-        
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 py-8 max-w-5xl mx-auto">
+        <div class="bg-subtle border border-subtle rounded-2xl p-5 text-center">
+            <i class="fa-solid fa-head-side-vr text-3xl text-coral mb-3"></i>
+            <h4 class="font-bold mb-2">Immersive Atmosphere</h4>
+            <p class="text-xs opacity-60">Experience the tension of keeping the generator running in complete darkness.</p>
+        </div>
+        <div class="bg-subtle border border-subtle rounded-2xl p-5 text-center">
+            <i class="fa-solid fa-ear-listen text-3xl text-coral mb-3"></i>
+            <h4 class="font-bold mb-2">Original Soundtrack</h4>
+            <p class="text-xs opacity-60">Haunting audio design that will keep you on edge throughout your journey.</p>
+        </div>
+        <div class="bg-subtle border border-subtle rounded-2xl p-5 text-center">
+            <i class="fa-solid fa-clock text-3xl text-coral mb-3"></i>
+            <h4 class="font-bold mb-2">15-20 Min Experience</h4>
+            <p class="text-xs opacity-60">Perfect for a quick horror fix. Play it once, or come back to discover secrets.</p>
+        </div>
+    </div>
 
-        <div class="text-center py-8">
-            <p class="text-sm opacity-50">Made with passion. We care about the light, not the void.</p>
-        </div>
-    </main>
+    <div class="text-center py-8">
+        <p class="text-sm opacity-50">Made with passion. We care about the light, not the void. Stay tuned for more updates.</p>
+    </div>
+</main>
 
     <footer class="relative flex w-full flex-col items-center gap-16 overflow-hidden border-t border-dark bg-dark px-4 py-12 text-paper lg:p-24">
     <div class="container flex w-full flex-col items-start justify-between gap-12">
