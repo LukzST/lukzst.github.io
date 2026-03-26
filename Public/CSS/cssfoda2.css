@@ -2363,3 +2363,16 @@ h1 .italic {
   text-decoration-line: underline;
   text-underline-offset: 4px;
 }
+
+.credits {
+  flex-direction: row; 
+  font-size: 1rem;
+}
+
+@media (max-width:700px) {
+  .credits {
+    flex-direction: row; 
+    font-size: 0.9rem;
+  }
+
+}
