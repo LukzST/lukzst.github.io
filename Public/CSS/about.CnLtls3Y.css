@@ -197,12 +197,12 @@
 }
 @font-face {
   font-family: Junicode;
-  src: url(../fonts/junicode.bold.ttf) format("truetype");
+  src: url(/Public/FONTs/junicode.regular.ttf) format("truetype");
   font-display: swap;
 }
 @font-face {
   font-family: Junicode-Italic;
-  src: url(../fonts/junicode.bold-italic.ttf) format("truetype");
+  src: url(/Public/FONTs/junicode.bold-italic.ttf) format("truetype");
   font-display: swap;
 }
 * {
