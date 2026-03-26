@@ -175,44 +175,92 @@
         </div>
     </main>
 
-    <footer class="bg-dark text-paper py-16 lg:px-24 border-t border-dark">
-        <div class="container flex flex-col md:flex-row justify-between items-start gap-12">
-            <div class="max-w-md">
+    <footer class="relative flex w-full flex-col items-center gap-16 overflow-hidden border-t border-dark bg-dark px-4 py-12 text-paper lg:p-24">
+    <div class="container flex w-full flex-col items-start justify-between gap-12">
+        <section class="flex w-full flex-col gap-4 text-center lg:w-1/2 lg:text-left">
+            <a href="/">
                 <p id="footer-title" class="text-6xl font-bold !text-paper">Pale Luna Developer</p>
-                <p class="mt-4 opacity-70">Beautifully atmospheric, horror-focused, and made with passion. We care about the light, not the void.</p>
-            </div>
-            <div class="grid grid-cols-2 gap-16">
-                <div>
-                    <h4 class="font-semibold mb-4">Follow</h4>
-                    <ul class="space-y-2 opacity-60 text-sm">
-                        <li>
-                            <a href="https://www.instagram.com/PlayLightGame" target="_blank" class="hover:text-coral">Instagram</a>
-                        </li>
-                        <li>
-                            <a href="https://bsky.app/profile/lukzst.github.io" target="_blank" class="hover:text-coral">Bluesky</a>
-                        </li>
-                        <li>
-                            <a href="https://lukzxdd.itch.io" target="_blank" class="hover:text-coral">Itch.io</a>
-                        </li>
-                        <li>
-                            <a href="https://github.com/LukzST" target="_blank" class="hover:text-coral">Github</a>
-                        </li>
-                    </ul>
+            </a>
+            <p class="mx-auto max-w-xl lg:mx-0">Beautifully atmospheric, horror-focused, and made with passion. We care about the light, not the void.</p>
+        </section>
+        
+        <section class="grid gap-10 place-self-center lg:place-self-start">
+            <a href="/#download" class="transition-bg flex items-center justify-center gap-2 rounded-xl px-6 py-4 transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98] h-fit w-fit bg-paper !text-dark shadow-lg">
+                Download Game
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </section>
+        
+        <section class="grid w-full max-w-5xl place-items-center gap-12 text-center sm:text-left">
+            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:w-full">
+                <div class="grid gap-8 sm:col-span-2 sm:grid-cols-2 md:col-span-1 md:grid-cols-1">
+                    <section class="flex flex-col items-center gap-2 sm:items-start">
+                        <h2 class="text-base !font-semibold">Follow Us</h2>
+                        <ul class="flex items-center gap-4 opacity-80">
+                            <li>
+                                <a href="https://www.instagram.com/PlayLightGame" target="_blank" class="font-bold hover:text-coral transition-colors" aria-label="Instagram">
+                                    <i class="fab fa-instagram text-xl"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://lukzxdd.itch.io" target="_blank" class="font-normal hover:text-coral transition-colors" aria-label="Itch.io">
+                                    <i class="fab fa-itch-io text-xl"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/LukzST" target="_blank" class="font-normal hover:text-coral transition-colors" aria-label="GitHub">
+                                    <i class="fab fa-github text-xl"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </section>
+                    <section class="flex flex-col gap-2">
+                        <h2 class="text-base !font-semibold">About Us</h2>
+                        <ul class="grid gap-2 opacity-80">
+                            <li><a href="/#about" class="font-normal hover:text-coral transition-colors">About the Game</a></li>
+                            <li><a href="/updates/" class="font-normal hover:text-coral transition-colors">DevLogs</a></li>
+                            <li><a href="/brand-kit/" class="font-normal hover:text-coral transition-colors">Brand Kit</a></li>
+                        </ul>
+                    </section>
                 </div>
-                <div>
-                    <h4 class="font-semibold mb-4">Get Help</h4>
-                    <ul class="space-y-2 opacity-60 text-sm">
-                        <li><a href="#" onclick="support()" class="hover:text-coral">Support</a></li>
-                        <li><a href="/updates/" class="hover:text-coral">Updates</a></li>
-                        <li><a href="/brand-kit/" class="hover:text-coral">Brand Kit</a></li>
+                <nav class="flex flex-col gap-2">
+                    <h2 class="text-base !font-semibold">Get Started</h2>
+                    <ul class="grid gap-2 opacity-80">
+                        <li><a href="/demo/" class="font-normal hover:text-coral transition-colors">Demo Version</a></li>
+                        <li><a href="/#download" class="font-normal hover:text-coral transition-colors">Download Game</a></li>
+                        <li><a href="/#screenshots" class="font-normal hover:text-coral transition-colors">Screenshots</a></li>
                     </ul>
+                </nav>
+                <nav class="flex flex-col gap-2">
+                    <h2 class="text-base !font-semibold">Get Help</h2>
+                    <ul class="grid gap-2 opacity-80">
+                        <li><a href="#" onclick="support()" class="font-normal hover:text-coral transition-colors">Support</a></li>
+                        <li><a href="/updates/" class="font-normal hover:text-coral transition-colors">Updates</a></li>
+                        <li><a href="https://github.com/LukzST/LIGHT/issues" target="_blank" class="font-normal hover:text-coral transition-colors">Report Issue</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+        
+        <section class="grid w-full grid-cols-[1fr_auto] items-center gap-2">
+            <p class="flex justify-center gap-2 lg:justify-start">
+                Made with <span aria-label="love">❤️</span> by 
+                <a href="https://github.com/LukzST" target="_blank" class="zen-link inline-block font-bold">Lukzxdd</a>
+            </p>
+        </section>
+        
+        <section class="absolute bottom-0 right-0">
+            <div id="circles" class="pointer-events-none inset-0 overflow-hidden mb-[-100px] ml-auto mr-[-80px] hidden lg:block">
+                <div class="mx-auto opacity-10 lg:opacity-100">
+                    <div class="absolute -translate-x-1/2 -translate-y-1/2 rounded-full border-paper" style="width: 151.2px; height: 151.2px; border-width: 14px"></div>
+                    <div class="absolute -translate-x-1/2 -translate-y-1/2 rounded-full border-paper" style="width: 277.2px; height: 277.2px; border-width: 21px"></div>
+                    <div class="absolute -translate-x-1/2 -translate-y-1/2 rounded-full border-paper" style="width: 403.2px; height: 403.2px; border-width: 28px"></div>
+                    <div class="absolute -translate-x-1/2 -translate-y-1/2 rounded-full border-paper" style="width: 529.2px; height: 529.2px; border-width: 35px"></div>
                 </div>
             </div>
-        </div>
-        <div class="container mt-24 pt-8 border-t border-white/10 opacity-50 text-sm">
-            2026 © LIGHT by Lukzxdd. All rights reserved.
-        </div>
-    </footer>
+        </section>
+    </div>
+</footer>
 
     <script>
         const repoOwner = 'lukzst';
