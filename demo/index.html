@@ -118,11 +118,7 @@ body {
     </main>
 
     <script>
-        function mudarPagina() {
-            document.body.style.animation = 'none';
-            document.body.offsetHeight;
-            document.body.style.animation = 'fadeInPage 0.5s ease-out';
-        }
+        
         function support() {
             window.location.href = "/support/";
         }
@@ -135,6 +131,113 @@ body {
         function screenshot2() { window.open("/Public/IMG/screen2.png", "_blank"); }
         function screenshot3() { window.open("/Public/IMG/screen3.png", "_blank"); }
         function screenshot4() { window.open("/Public/IMG/screen4.png", "_blank"); }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            function animateElements(elements, delayBetween = 150) {
+                elements.forEach((el, index) => {
+                    setTimeout(() => {
+                        el.style.transition = 'opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), filter 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)';
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                        el.style.filter = 'blur(0px)';
+                    }, index * delayBetween);
+                });
+            }
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const section = entry.target;
+                        
+                        if (section.id === 'demo-header') {
+                            const elements = section.querySelectorAll('h1, p, .download-button');
+                            elements.forEach(el => {
+                                el.style.opacity = '0';
+                                el.style.transform = 'translateY(20px)';
+                                el.style.filter = 'blur(4px)';
+                            });
+                            
+                            const elementsArray = Array.from(elements);
+                            elementsArray.forEach((el, index) => {
+                                const isTitle = el.tagName === 'H1';
+                                const delay = isTitle ? 400 + (index * 200) : index * 150;
+                                
+                                setTimeout(() => {
+                                    el.style.transition = 'opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), filter 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)';
+                                    el.style.opacity = '1';
+                                    el.style.transform = 'translateY(0)';
+                                    el.style.filter = 'blur(0px)';
+                                }, delay);
+                            });
+                        }
+                        
+                        if (section.id === 'demo-cards') {
+                            const elements = section.querySelectorAll('.bg-subtle, .text-center p');
+                            elements.forEach(el => {
+                                el.style.opacity = '0';
+                                el.style.transform = 'translateY(20px)';
+                                el.style.filter = 'blur(4px)';
+                            });
+                            animateElements(Array.from(elements), 150);
+                        }
+                        
+                        if (section.id === 'back-link') {
+                            const element = section.querySelector('a');
+                            if (element) {
+                                element.style.opacity = '0';
+                                element.style.transform = 'translateY(20px)';
+                                element.style.filter = 'blur(4px)';
+                                setTimeout(() => {
+                                    element.style.transition = 'opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), filter 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)';
+                                    element.style.opacity = '1';
+                                    element.style.transform = 'translateY(0)';
+                                    element.style.filter = 'blur(0px)';
+                                }, 100);
+                            }
+                        }
+                        
+                        observer.unobserve(section);
+                    }
+                });
+            }, observerOptions);
+
+            const demoHeader = document.querySelector('.flex.flex-col.items-center.justify-center.gap-4.py-8.text-center');
+            const demoCards = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-2.gap-6.py-8.max-w-4xl.mx-auto');
+            const backLink = document.querySelector('.mt-8.mb-4');
+            
+            if (demoHeader) {
+                demoHeader.id = 'demo-header';
+                observer.observe(demoHeader);
+            }
+            if (demoCards) {
+                demoCards.id = 'demo-cards';
+                observer.observe(demoCards);
+            }
+            if (backLink) {
+                backLink.id = 'back-link';
+                observer.observe(backLink);
+            }
+            
+            const style = document.createElement('style');
+            style.textContent = `
+                #demo-header h1, #demo-header p, #demo-header .download-button,
+                #demo-cards .bg-subtle, #demo-cards .text-center p,
+                #back-link a {
+                    opacity: 0;
+                    transform: translateY(20px);
+                    filter: blur(4px);
+                    transition: opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), 
+                                transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), 
+                                filter 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+                }
+            `;
+            document.head.appendChild(style);
+        });
     </script>
 </body>
 </html>
