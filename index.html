@@ -55,7 +55,7 @@
         <header id="header" class="flex w-full flex-col items-center gap-6 py-16 text-center lg:py-32">
             <div class="flex flex-col items-center justify-center gap-4 md:gap-8">
                 <h1 class="font-junicode font-semibold text-dark text-5xl md:text-7xl lg:text-9xl leading-none">
-                    <b>
+                    <b style="transform: translateY(0px); opacity: 1; filter: blur(0px);">
                         welcome to a
                     </b> 
                     <br class="hidden md:block">
@@ -177,142 +177,12 @@
             2026 © LIGHT by Lukzxdd. All rights reserved.
         </div>
     </footer>
-
     <script>
-        function support() {
-            window.location.href = "/support/";
-        }
-        
-        function itch() {
-            window.location.href = "https://lukzxdd.itch.io/LIGHT";
-        }
-        
-        function screenshot1() { window.open("/Public/IMG/screen1.png", "_blank"); }
-        function screenshot2() { window.open("/Public/IMG/screen2.png", "_blank"); }
-        function screenshot3() { window.open("/Public/IMG/screen3.png", "_blank"); }
-        function screenshot4() { window.open("/Public/IMG/screen4.png", "_blank"); }
-
         function mudarPagina() {
             document.body.style.animation = 'none';
             document.body.offsetHeight;
             document.body.style.animation = 'fadeInPage 0.5s ease-out';
         }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const observerOptions = {
-                threshold: 0.2,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            function animateElements(elements, delayBetween = 150) {
-                elements.forEach((el, index) => {
-                    setTimeout(() => {
-                        el.style.transition = 'opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), filter 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)';
-                        el.style.opacity = '1';
-                        el.style.transform = 'translateY(0)';
-                        el.style.filter = 'blur(0px)';
-                    }, index * delayBetween);
-                });
-            }
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const section = entry.target;
-                        
-                        if (section.id === 'header') {
-                            const elements = section.querySelectorAll('h1 b, h1 span, p, .flex a, video, a[href*="youtube"]');
-                            elements.forEach(el => {
-                                if (el.style.opacity !== '1') {
-                                    el.style.opacity = '0';
-                                    el.style.transform = 'translateY(20px)';
-                                    el.style.filter = 'blur(4px)';
-                                }
-                            });
-                            
-                            const elementsArray = Array.from(elements);
-                            elementsArray.forEach((el, index) => {
-                                const isTitle = el.tagName === 'B' && el.closest('h1');
-                                const delay = isTitle ? 500 + (index * 200) : index * 150;
-                                
-                                setTimeout(() => {
-                                    el.style.transition = 'opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), filter 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)';
-                                    el.style.opacity = '1';
-                                    el.style.transform = 'translateY(0)';
-                                    el.style.filter = 'blur(0px)';
-                                }, delay);
-                            });
-                            observer.unobserve(section);
-                        }
-                        
-                        if (section.id === 'about') {
-                            const elements = section.querySelectorAll('h2, h2 span, .bg-subtle, .bg-coral\\/10, #screenshots img');
-                            elements.forEach(el => {
-                                if (el.style.opacity !== '1') {
-                                    el.style.opacity = '0';
-                                    el.style.transform = 'translateY(20px)';
-                                    el.style.filter = 'blur(4px)';
-                                }
-                            });
-                            animateElements(Array.from(elements), 150);
-                            observer.unobserve(section);
-                        }
-                        
-                        if (section.id === 'download') {
-                            const elements = section.querySelectorAll('h3, a');
-                            elements.forEach(el => {
-                                if (el.style.opacity !== '1') {
-                                    el.style.opacity = '0';
-                                    el.style.transform = 'translateY(20px)';
-                                    el.style.filter = 'blur(4px)';
-                                }
-                            });
-                            animateElements(Array.from(elements), 150);
-                            observer.unobserve(section);
-                        }
-                        
-                        if (section.tagName === 'FOOTER') {
-                            const elements = section.querySelectorAll('#footer-title, .max-w-md p, h4, li');
-                            elements.forEach(el => {
-                                if (el.style.opacity !== '1') {
-                                    el.style.opacity = '0';
-                                    el.style.transform = 'translateY(20px)';
-                                    el.style.filter = 'blur(4px)';
-                                }
-                            });
-                            animateElements(Array.from(elements), 100);
-                            observer.unobserve(section);
-                        }
-                    }
-                });
-            }, observerOptions);
-
-            const header = document.getElementById('header');
-            const about = document.getElementById('about');
-            const download = document.getElementById('download');
-            const footer = document.querySelector('footer');
-            
-            if (header) observer.observe(header);
-            if (about) observer.observe(about);
-            if (download) observer.observe(download);
-            if (footer) observer.observe(footer);
-            
-            const style = document.createElement('style');
-            style.textContent = `
-                #header h1 b, #header h1 span, #header p, #header .flex a, #header video, #header a[href*="youtube"],
-                #about h2, #about h2 span, #about .bg-subtle, #about .bg-coral\\/10, #about #screenshots img,
-                #download h3, #download a,
-                footer #footer-title, footer .max-w-md p, footer h4, footer li {
-                    opacity: 0;
-                    transform: translateY(20px);
-                    filter: blur(4px);
-                    transition: opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), 
-                                transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), 
-                                filter 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-                }
-            `;
-            document.head.appendChild(style);
-        });
     </script>
 </body>
 </html>
