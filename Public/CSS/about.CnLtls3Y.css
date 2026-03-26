@@ -1,122 +1,37 @@
 @font-face {
-  font-family: Bricolage Grotesque;
+  font-family: 'Bricolage Grotesque';
   font-style: normal;
   font-display: swap;
   font-weight: 400;
-  src:
-    url(/_astro/bricolage-grotesque-vietnamese-400-normal.B7Iv8-Rg.woff2)
-      format("woff2"),
-    url(/_astro/bricolage-grotesque-vietnamese-400-normal.Sle7MYWg.woff)
-      format("woff");
-  unicode-range:
-    U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1,
-    U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329,
-    U+1EA0-1EF9, U+20AB;
+  src: url('https://fonts.gstatic.com/s/bricolagegrotesque/v1/3y9U6as8bXq-nCBoH8K3pXqFfE5D5k9c.woff2') format('woff2');
 }
+
 @font-face {
-  font-family: Bricolage Grotesque;
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src:
-    url(/_astro/bricolage-grotesque-latin-ext-400-normal.D42HmrHD.woff2)
-      format("woff2"),
-    url(/_astro/bricolage-grotesque-latin-ext-400-normal.BH175q6o.woff)
-      format("woff");
-  unicode-range:
-    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
-    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
-    U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: Bricolage Grotesque;
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src:
-    url(/_astro/bricolage-grotesque-latin-400-normal.A6LyuA6R.woff2)
-      format("woff2"),
-    url(/_astro/bricolage-grotesque-latin-400-normal.D89K-qEP.woff)
-      format("woff");
-  unicode-range:
-    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
-    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
-    U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: Bricolage Grotesque;
+  font-family: 'Bricolage Grotesque';
   font-style: normal;
   font-display: swap;
   font-weight: 500;
-  src:
-    url(/_astro/bricolage-grotesque-vietnamese-500-normal.FzY9NZwK.woff2)
-      format("woff2"),
-    url(/_astro/bricolage-grotesque-vietnamese-500-normal.CAK5R6Iy.woff)
-      format("woff");
-  unicode-range:
-    U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1,
-    U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329,
-    U+1EA0-1EF9, U+20AB;
+  src: url('https://fonts.gstatic.com/s/bricolagegrotesque/v1/3y9U6as8bXq-nCBoH8K3pXqFfE5D5k9c.woff2') format('woff2');
 }
+
 @font-face {
-  font-family: Bricolage Grotesque;
-  font-style: normal;
-  font-display: swap;
-  font-weight: 500;
-  src:
-    url(/_astro/bricolage-grotesque-latin-ext-500-normal.DIhLz7G7.woff2)
-      format("woff2"),
-    url(/_astro/bricolage-grotesque-latin-ext-500-normal.B0ZDNVGf.woff)
-      format("woff");
-  unicode-range:
-    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
-    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
-    U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: Bricolage Grotesque;
-  font-style: normal;
-  font-display: swap;
-  font-weight: 500;
-  src:
-    url(/_astro/bricolage-grotesque-latin-500-normal.DEDBoLFO.woff2)
-      format("woff2"),
-    url(/_astro/bricolage-grotesque-latin-500-normal.CV-uA8Lw.woff)
-      format("woff");
-  unicode-range:
-    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
-    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
-    U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: Bricolage Grotesque;
+  font-family: 'Bricolage Grotesque';
   font-style: normal;
   font-display: swap;
   font-weight: 600;
-  src:
-    url(/_astro/bricolage-grotesque-vietnamese-600-normal.Ipewt4hn.woff2)
-      format("woff2"),
-    url(/_astro/bricolage-grotesque-vietnamese-600-normal.BppAn7jL.woff)
-      format("woff");
-  unicode-range:
-    U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1,
-    U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329,
-    U+1EA0-1EF9, U+20AB;
+  src: url('https://fonts.gstatic.com/s/bricolagegrotesque/v1/3y9U6as8bXq-nCBoH8K3pXqFfE5D5k9c.woff2') format('woff2');
 }
+
 @font-face {
-  font-family: Bricolage Grotesque;
-  font-style: normal;
+  font-family: 'Junicode';
+  src: url('/Public/FONTs/junicode.regular.ttf') format('truetype');
   font-display: swap;
-  font-weight: 600;
-  src:
-    url(/_astro/bricolage-grotesque-latin-ext-600-normal.CN5JKkBm.woff2)
-      format("woff2"),
-    url(/_astro/bricolage-grotesque-latin-ext-600-normal.DF26P3Q7.woff)
-      format("woff");
-  unicode-range:
-    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
-    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
-    U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Junicode-Italic';
+  src: url('/Public/FONTs/junicode.bold-italic.ttf') format('truetype');
+  font-display: swap;
 }
 
 #theme-switcher * {
@@ -194,16 +109,6 @@
   display: inline-block;
   height: 1em;
   vertical-align: -0.125em;
-}
-@font-face {
-  font-family: Junicode;
-  src: url(/Public/FONTs/junicode.regular.ttf) format("truetype");
-  font-display: swap;
-}
-@font-face {
-  font-family: Junicode-Italic;
-  src: url(/Public/FONTs/junicode.bold-italic.ttf) format("truetype");
-  font-display: swap;
 }
 * {
   margin: 0;
