@@ -151,12 +151,12 @@ h1 .italic {
   }
 
   .itch-link img {
-        content: url('../IMG/itchio-logo-textless-white.png');
+        content: url('/Public/IMG/itchio-logo-textless-white.png');
         max-width: 90px;
     }
 
     .github-link img {
-        content: url('../IMG/GitHub_Invertocat_White.png');
+        content: url('/Public/IMG/GitHub_Invertocat_White.png');
         max-width: 90px;
     }
 
