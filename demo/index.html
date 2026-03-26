@@ -4,40 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>LIGHT</title>
+    <title>Demo | LIGHT</title>
     <link rel="stylesheet" href="/Public/CSS/about.C7pInJ8y.css">
-    <link rel="stylesheet" href="/Public/CSS/about.CnLtls3Y.css">
-    <script src="/Public/JS/scripts.js" defer></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="shortcut icon" href="/Public/ICO/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-    
-    .font-junicode {
-        font-family: 'Crimson Pro', serif;
-    }
-body {
-    animation: fadeInPage 0.5s ease-out;
-}
-
-@keyframes fadeInPage {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-</style>
-
+    <style>
+        .download-btn {
+            background: var(--zen-dark);
+            color: var(--zen-paper);
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .download-btn:hover {
+            background: var(--zen-coral);
+            transform: scale(1.02);
+        }
+        
+        .soon-badge {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
 </head>
-<body class="min-h-screen overflow-x-hidden bg-paper font-['bricolage-grotesque'] text-dark">
+<body class="min-h-screen overflow-x-hidden bg-paper font-['bricolage-grotesque'] text-dark flex flex-col">
 
     <nav class="container relative z-20 flex w-full items-center justify-between bg-paper py-3 lg:py-6">
         <a class="flex items-center gap-2 text-lg font-bold" href="/">
@@ -61,169 +63,131 @@ body {
         </div>
     </nav>
 
-    <main class="container">
-        <div class="mt-8 mb-4">
+    <main class="container py-12 lg:py-24 flex-grow">
+        <div class="mb-8">
             <a href="/" class="inline-flex items-center gap-2 text-sm opacity-60 hover:text-coral hover:opacity-100 transition-colors">
                 <i class="fa-solid fa-chevron-left"></i>
                 Back to Home
             </a>
         </div>
 
-        <div class="flex flex-col items-center justify-center gap-4 py-8 text-center">
-            <h1 class="mb-2 text-4xl font-bold sm:text-6xl">DEMO VERSION</h1>
-            <p class="max-w-xl opacity-70 text-lg">Experience the atmospheric horror before the full release</p>
+        <div class="text-center mb-16">
+            <h1 class="text-5xl font-bold sm:text-7xl mb-4">DEMO VERSION</h1>
+            <p class="max-w-2xl mx-auto opacity-70 text-xl">Experience the atmospheric horror before the full release. Step into the darkness and see what awaits you in this terrifying preview.</p>
         </div>
 
-        <div class="flex flex-col md:flex-row items-center justify-center gap-4 py-8">
-            <a href="https://raw.githubusercontent.com/LukzST/LIGHT/refs/heads/main/BETA/V3/LIGHT-BETA-V3.zip" class="transition-bg flex items-center justify-center gap-2 rounded-xl px-6 py-4 transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98] download-button w-fit border-dark bg-dark text-paper shadow-lg">
-               <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="windows" class="svg-inline--fa fa-windows" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 93.7l183.6-25.3v177.4H0V93.7zm0 324.6l183.6 25.3V268.4H0v149.9zm203.8 28L448 480V268.4H203.8v177.9zm0-380.6v180.1H448V32L203.8 65.7z"></path></svg> Download Windows Demo
+        <div class="flex flex-col md:flex-row items-center justify-center gap-6 py-8">
+            <a href="https://raw.githubusercontent.com/LukzST/LIGHT/refs/heads/main/BETA/V3/LIGHT-BETA-V3.zip" class="download-btn text-lg">
+                <i class="fa-brands fa-windows fa-xl"></i>
+                Download Windows Demo
             </a>
-            <a href="#" onclick="return false;" class="transition-bg flex items-center justify-center gap-2 rounded-xl px-6 py-4 transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98] download-button w-fit bg-subtle text-dark shadow-lg">
-                <i class="fa-brands fa-linux fa-lg"></i>
-                Linux Demo (Soon)
+            <a href="#" onclick="return false;" class="download-btn text-lg opacity-60 cursor-not-allowed">
+                <i class="fa-brands fa-linux fa-xl"></i>
+                Linux Demo
+                <span class="soon-badge text-xs ml-2">(Soon)</span>
             </a>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 py-8 max-w-4xl mx-auto">
-            <div class="bg-subtle border border-subtle rounded-3xl p-6">
-                <div class="flex items-center gap-2 mb-4">
+        <div class="max-w-3xl mx-auto space-y-8 py-12">
+            <div>
+                <div class="flex items-center gap-3 mb-3">
                     <div class="bg-coral rounded-full w-8 h-8 flex items-center justify-center text-paper font-bold text-sm">!</div>
-                    <h3 class="text-coral font-bold uppercase text-sm tracking-wider">NOTE</h3>
+                    <h3 class="text-coral font-bold uppercase text-sm tracking-wider">IMPORTANT NOTE</h3>
                 </div>
-                <p class="text-dark opacity-70 text-sm leading-relaxed">
-                    Demo was created on older software with different capabilities.<br>
-                    Therefore, may not be 100% indicative of full game.
+                <p class="text-dark opacity-70 leading-relaxed">
+                    This demo version was created using older development tools and may not fully represent the final game experience. Some features, visuals, and mechanics have been refined in the full version.
                 </p>
-                <p class="text-dark opacity-60 text-sm italic mt-3">
-                    However, it's slightly special in some respects...
+                <p class="text-dark opacity-60 italic text-sm mt-2">
+                    That said, this demo has its own unique charm that even the final version can't replicate...
                 </p>
             </div>
 
-            <div class="bg-subtle border border-subtle rounded-3xl p-6">
-                <div class="flex items-center gap-2 mb-4">
-                    <div class="bg-coral rounded-full w-8 h-8 flex items-center justify-center text-paper font-bold text-sm">
+            <div>
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-coral rounded-full w-8 h-8 flex items-center justify-center text-paper text-sm">
                         <i class="fa-solid fa-folder"></i>
                     </div>
-                    <h3 class="text-coral font-bold uppercase text-sm tracking-wider">SAVE FILE</h3>
+                    <h3 class="text-coral font-bold uppercase text-sm tracking-wider">SAVE FILE COMPATIBILITY</h3>
                 </div>
-                <p class="text-dark opacity-70 text-sm leading-relaxed">
-                    Save file won't transfer from DEMO to full game.<br>
-                    But the DEMO is so short you really won't care...
+                <p class="text-dark opacity-70 leading-relaxed">
+                    Your progress in this demo will not carry over to the full version of LIGHT. The demo is designed as a standalone experience that gives you a taste of the atmosphere and gameplay.
+                </p>
+                <p class="text-dark opacity-60 italic text-sm mt-2">
+                    Don't worry though — the demo is short enough that you'll want to replay it anyway!
+                </p>
+            </div>
+
+            <div>
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-coral rounded-full w-8 h-8 flex items-center justify-center text-paper text-sm">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <h3 class="text-coral font-bold uppercase text-sm tracking-wider">ESTIMATED DURATION</h3>
+                </div>
+                <p class="text-dark opacity-70 leading-relaxed">
+                    The demo offers approximately 15-20 minutes of gameplay. Perfect for a quick horror fix, or replay it to discover hidden secrets and different approaches.
+                </p>
+            </div>
+
+            <div>
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-coral rounded-full w-8 h-8 flex items-center justify-center text-paper text-sm">
+                        <i class="fa-solid fa-head-side-vr"></i>
+                    </div>
+                    <h3 class="text-coral font-bold uppercase text-sm tracking-wider">IMMERSIVE ATMOSPHERE</h3>
+                </div>
+                <p class="text-dark opacity-70 leading-relaxed">
+                    Experience the tension of keeping the generator running in complete darkness. The haunting audio design will keep you on edge throughout your journey.
                 </p>
             </div>
         </div>
-        
 
-        <div class="text-center py-8">
-            <p class="text-sm opacity-50">Made with passion. We care about the light, not the void.</p>
+        <div class="text-center mt-12 pt-8 border-t border-subtle">
+            <p class="text-sm opacity-50">Made with passion. We care about the light, not the void. Stay tuned for more updates.</p>
         </div>
     </main>
 
-    <footer class="relative flex w-full flex-col items-center gap-16 overflow-hidden border-t border-dark bg-dark px-4 py-12 text-paper lg:p-24">
-    <div class="container flex w-full flex-col items-start justify-between gap-12">
-        <section class="flex w-full flex-col gap-4 text-center lg:w-1/2 lg:text-left">
-            <a href="/">
+    <footer class="bg-dark text-paper py-16 lg:px-24 border-t border-dark">
+        <div class="container flex flex-col md:flex-row justify-between items-start gap-12">
+            <div class="max-w-md">
                 <p id="footer-title" class="text-6xl font-bold !text-paper">Pale Luna Developer</p>
-            </a>
-            <p class="mx-auto max-w-xl lg:mx-0">Beautifully atmospheric, horror-focused, and made with passion. We care about the light, not the void.</p>
-        </section>
-        
-        <section class="grid gap-10 place-self-center lg:place-self-start">
-            <a href="/#download" class="transition-bg flex items-center justify-center gap-2 rounded-xl px-6 py-4 transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98] h-fit w-fit bg-paper !text-dark shadow-lg">
-                Download Game
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-        </section>
-        
-        <section class="grid w-full max-w-5xl place-items-center gap-12 text-center sm:text-left">
-            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:w-full">
-                <div class="grid gap-8 sm:col-span-2 sm:grid-cols-2 md:col-span-1 md:grid-cols-1">
-                    <section class="flex flex-col items-center gap-2 sm:items-start">
-                        <h2 class="text-base !font-semibold">Follow Us</h2>
-                        <ul class="flex items-center gap-4 opacity-80">
-                            <li>
-                                <a href="https://www.instagram.com/PlayLightGame" target="_blank" class="font-bold hover:text-coral transition-colors" aria-label="Instagram">
-                                    <i class="fab fa-instagram text-xl"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://lukzxdd.itch.io" target="_blank" class="font-normal hover:text-coral transition-colors" aria-label="Itch.io">
-                                    <i class="fab fa-itch-io text-xl"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://github.com/LukzST" target="_blank" class="font-normal hover:text-coral transition-colors" aria-label="GitHub">
-                                    <i class="fab fa-github text-xl"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </section>
-                    <section class="flex flex-col gap-2">
-                        <h2 class="text-base !font-semibold">About Us</h2>
-                        <ul class="grid gap-2 opacity-80">
-                            <li><a href="/#about" class="font-normal hover:text-coral transition-colors">About the Game</a></li>
-                            <li><a href="/updates/" class="font-normal hover:text-coral transition-colors">DevLogs</a></li>
-                            <li><a href="/brand-kit/" class="font-normal hover:text-coral transition-colors">Brand Kit</a></li>
-                        </ul>
-                    </section>
-                </div>
-                <nav class="flex flex-col gap-2">
-                    <h2 class="text-base !font-semibold">Get Started</h2>
-                    <ul class="grid gap-2 opacity-80">
-                        <li><a href="/demo/" class="font-normal hover:text-coral transition-colors">Demo Version</a></li>
-                        <li><a href="/#download" class="font-normal hover:text-coral transition-colors">Download Game</a></li>
-                        <li><a href="/#screenshots" class="font-normal hover:text-coral transition-colors">Screenshots</a></li>
-                    </ul>
-                </nav>
-                <nav class="flex flex-col gap-2">
-                    <h2 class="text-base !font-semibold">Get Help</h2>
-                    <ul class="grid gap-2 opacity-80">
-                        <li><a href="#" onclick="support()" class="font-normal hover:text-coral transition-colors">Support</a></li>
-                        <li><a href="/updates/" class="font-normal hover:text-coral transition-colors">Updates</a></li>
-                        <li><a href="https://github.com/LukzST/LIGHT/issues" target="_blank" class="font-normal hover:text-coral transition-colors">Report Issue</a></li>
-                    </ul>
-                </nav>
+                <p class="mt-4 opacity-70">Beautifully atmospheric, horror-focused, and made with passion. We care about the light, not the void.</p>
             </div>
-        </section>
-        
-        <section class="grid w-full grid-cols-[1fr_auto] items-center gap-2">
-            <p class="flex justify-center gap-2 lg:justify-start">
-                Made with <span aria-label="love">❤️</span> by 
-                <a href="https://github.com/LukzST" target="_blank" class="zen-link inline-block font-bold">Lukzxdd</a>
-            </p>
-        </section>
-        
-        <section class="absolute bottom-0 right-0">
-            <div id="circles" class="pointer-events-none inset-0 overflow-hidden mb-[-100px] ml-auto mr-[-80px] hidden lg:block">
-                <div class="mx-auto opacity-10 lg:opacity-100">
-                    <div class="absolute -translate-x-1/2 -translate-y-1/2 rounded-full border-paper" style="width: 151.2px; height: 151.2px; border-width: 14px"></div>
-                    <div class="absolute -translate-x-1/2 -translate-y-1/2 rounded-full border-paper" style="width: 277.2px; height: 277.2px; border-width: 21px"></div>
-                    <div class="absolute -translate-x-1/2 -translate-y-1/2 rounded-full border-paper" style="width: 403.2px; height: 403.2px; border-width: 28px"></div>
-                    <div class="absolute -translate-x-1/2 -translate-y-1/2 rounded-full border-paper" style="width: 529.2px; height: 529.2px; border-width: 35px"></div>
+            <div class="grid grid-cols-2 gap-16">
+                <div>
+                    <h4 class="font-semibold mb-4">Follow</h4>
+                    <ul class="space-y-2 opacity-60 text-sm">
+                        <li><a href="https://www.instagram.com/PlayLightGame" target="_blank" class="hover:text-coral">Instagram</a></li>
+                        <li><a href="https://bsky.app/profile/lukzst.github.io" target="_blank" class="hover:text-coral">Bluesky</a></li>
+                        <li><a href="https://lukzxdd.itch.io" target="_blank" class="hover:text-coral">Itch.io</a></li>
+                        <li><a href="https://github.com/LukzST" target="_blank" class="hover:text-coral">Github</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Get Help</h4>
+                    <ul class="space-y-2 opacity-60 text-sm">
+                        <li><a href="#" onclick="support()" class="hover:text-coral">Support</a></li>
+                        <li><a href="/updates/" class="hover:text-coral">Updates</a></li>
+                        <li><a href="/brand-kit/" class="hover:text-coral">Brand Kit</a></li>
+                    </ul>
                 </div>
             </div>
-        </section>
-    </div>
-</footer>
+        </div>
+        <div class="container mt-24 pt-8 border-t border-white/10 opacity-50 text-sm">
+            2026 © LIGHT by Lukzxdd. All rights reserved.
+        </div>
+    </footer>
 
     <script>
+        function support() {
+            window.location.href = "/support/";
+        }
+        
         function mudarPagina() {
             document.body.style.animation = 'none';
             document.body.offsetHeight;
             document.body.style.animation = 'fadeInPage 0.5s ease-out';
         }
-        function support() {
-            window.location.href = "/support/";
-        }
-        
-        function itch() {
-            window.location.href = "https://lukzxdd.itch.io/LIGHT";
-        }
-        
-        function screenshot1() { window.open("/Public/IMG/screen1.png", "_blank"); }
-        function screenshot2() { window.open("/Public/IMG/screen2.png", "_blank"); }
-        function screenshot3() { window.open("/Public/IMG/screen3.png", "_blank"); }
-        function screenshot4() { window.open("/Public/IMG/screen4.png", "_blank"); }
     </script>
 </body>
 </html>
