@@ -159,10 +159,5 @@ h1 .italic {
         content: url('/Public/IMG/GitHub_Invertocat_White.png');
         max-width: 90px;
     }
-    
-    .steam-link img {
-        content: url('/Public/IMG/steam2.png');
-        max-width: 90px;
-    }
 
 }
