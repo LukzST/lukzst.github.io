@@ -123,17 +123,30 @@
                     <div>
                         <p class="text-sm opacity-60 mb-3 text-center">Studio Logo</p>
                         <div class="flex flex-col items-center gap-4">
-                            <div class="logo-preview">
-                                <img src="/Public/IMG/studio-logo-without.png" alt="Studio Logo Light" class="w-32 h-auto">
+                            <div>
+                                <p class="text-xs opacity-60 mb-2 text-center">Light Version</p>
+                                <div class="logo-preview">
+                                    <img src="/Public/IMG/studio-logo-without.png" alt="Studio Logo Light" class="w-32 h-auto">
+                                </div>
+                                <div class="flex justify-center mt-2">
+                                    <a href="#" onclick="downloadLogo('png', 'studio-light'); return false;" class="download-btn text-sm">
+                                        <i class="fa-solid fa-download"></i>
+                                        PNG
+                                    </a>
+                                </div>
                             </div>
-                            <div class="logo-preview bg-dark">
-                                <img src="/Public/IMG/studio-logo-without.png" alt="Studio Logo Dark" class="w-32 h-auto invert">
-                            </div>
-                            <div class="flex gap-4 mt-2">
-                               <a href="#" onclick="downloadLogo('png', 'studio'); return false;" class="download-btn text-sm">
-                                    <i class="fa-solid fa-download"></i>
-                                    PNG
-                                </a>
+                            
+                            <div class="mt-4">
+                                <p class="text-xs opacity-60 mb-2 text-center">Dark Version</p>
+                                <div class="logo-preview bg-dark">
+                                    <img src="/Public/IMG/studio-logo-without.png" alt="Studio Logo Dark" class="w-32 h-auto invert">
+                                </div>
+                                <div class="flex justify-center mt-2">
+                                    <a href="#" onclick="downloadLogo('png', 'studio-dark'); return false;" class="download-btn text-sm">
+                                        <i class="fa-solid fa-download"></i>
+                                        PNG
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
