@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+
         body {
             animation: fadeInPage 0.5s ease-out;
         }
@@ -24,21 +25,6 @@
                 opacity: 1;
                 transform: translateY(0);
             }
-        }
-
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(20px);
-            filter: blur(4px);
-            transition: opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), 
-                        transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), 
-                        filter 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-        }
-
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-            filter: blur(0px);
         }
     </style>
 </head>
@@ -69,40 +55,38 @@
         <header id="header" class="flex w-full flex-col items-center gap-6 py-16 text-center lg:py-32">
             <div class="flex flex-col items-center justify-center gap-4 md:gap-8">
                 <h1 class="font-junicode font-semibold text-dark text-5xl md:text-7xl lg:text-9xl leading-none">
-                    <b class="animate-on-scroll" data-delay="0">
+                    <b>
                         welcome to a
                     </b> 
                     <br class="hidden md:block">
-                    <b class="font-normal italic text-coral animate-on-scroll" data-delay="200">
-                        darkness
-                    </b> world
+                    <b class="font-normal italic text-coral">darkness</b> world
                 </h1>
-                <p class="max-w-xl opacity-80 text-lg animate-on-scroll" data-delay="400">
+                <p class="max-w-xl opacity-80 text-lg">
                     In LIGHT, you are Operator 07. The Fade has consumed the stars. <br>
                     Keep the generator running. Don't let the light die.
                 </p>
                 <div class="flex flex-col md:flex-row gap-4 mt-4 items-center">
-                    <a href="#" onclick="itch()" class="transition-bg flex items-center justify-center gap-2 rounded-xl font-bold px-6 py-4 transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98] w-fit border-dark bg-dark text-paper shadow-lg animate-on-scroll" data-delay="600">
+                    <a href="#" onclick="itch()" class="transition-bg flex items-center justify-center gap-2 rounded-xl font-bold px-6 py-4 transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98] w-fit border-dark bg-dark text-paper shadow-lg">
                         Download Now! 
                         <i class="fa-solid fa-chevron-right" style="margin-left: 10px;"></i>
                     </a>
-                    <a href="/demo/" class="transition-bg flex items-center justify-center gap-2 rounded-xl px-6 py-4 transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98] w-fit bg-subtle animate-on-scroll" data-delay="750">
+                    <a href="/demo/" class="transition-bg flex items-center justify-center gap-2 rounded-xl px-6 py-4 transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98] w-fit bg-subtle">
                         Try Demo
                     </a>
                 </div>
             </div>
             
-            <video class="mt-12 w-full max-w-5xl rounded-3xl border border-subtle shadow-xl animate-on-scroll" data-delay="900" controls poster="/Public/IMG/trailer-poster.webp">
+            <video class="mt-12 w-full max-w-5xl rounded-3xl border border-subtle shadow-xl" controls poster="/Public/IMG/trailer-poster.webp">
                 <source src="/Public/VID/Trailer.mp4" type="video/mp4">
             </video>
-            <a class="hover:text-coral transition-colors animate-on-scroll" data-delay="1050" href="https://www.youtube.com/watch?v=UdhhqVTqYGc" target="_blank">Watch on YouTube</a>
+            <a class="hover:text-coral transition-colors" href="https://www.youtube.com/watch?v=UdhhqVTqYGc" target="_blank">Watch on YouTube</a>
         </header>
 
-        <section id="about" class="py-12 lg:py-36">
-            <h2 class="mb-2 text-4xl font-bold sm:text-6xl text-center animate-on-scroll" data-delay="0" style="margin-bottom: 20px;">The <span class="text-coral animate-on-scroll" data-delay="150">Mission</span></h2>
+        <section id="about" class="py-12 lg:py-36 ">
+            <h2 class="mb-2 text-4xl font-bold sm:text-6xl text-center" style="margin-bottom: 20px;">The <span class="text-coral">Mission</span></h2>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="md:col-span-2 bg-subtle rounded-3xl border border-subtle animate-on-scroll" data-delay="300" style="padding: 40px;">
+                <div class="md:col-span-2 bg-subtle rounded-3xl border border-subtle" style="padding: 40px;">
                     <h3 class="text-3xl font-bold mb-4">Operator 07</h3>
                     <p class="text-xl opacity-70 leading-relaxed">
                         You are the last sentinel in an isolated relay bunker. Outside, the "Fade" has consumed cities and hope. 
@@ -110,7 +94,7 @@
                     </p>
                 </div>
                 
-                <div class="bg-coral/10 border border-coral rounded-3xl flex flex-col justify-between animate-on-scroll" data-delay="450" style="padding: 40px;">
+                <div class="bg-coral/10 border border-coral rounded-3xl flex flex-col justify-between" style="padding: 40px;">
                     <div class="size-12 bg-coral rounded-full flex items-center justify-center text-paper font-bold">!</div>
                     <div>
                         <h3 class="text-2xl font-bold text-coral">WARNING</h3>
@@ -120,16 +104,16 @@
 
                 <div id="screenshots" class="md:col-span-3 mt-8">
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <div class="group cursor-pointer animate-on-scroll" data-delay="600" onclick="screenshot1()">
-                            <img src="/Public/IMG/screen1.png" class="rounded-2xl border border-subtle w-full h-64 object-cover transition-all group-hover:scale-[1.02] group-hover:shadow-xl" alt="Screen">
+                        <div class="group cursor-pointer" onclick="screenshot1()">
+                            <img src="/Public/IMG/screen1.png" class="rounded-2xl border border-subtle w-full h-64 object-cover transition-all group-hover:scale-[1.02] group-hover:shadow-xl" alt="Screen" >
                         </div>
-                        <div class="group cursor-pointer animate-on-scroll" data-delay="750" onclick="screenshot2()">
+                        <div class="group cursor-pointer" onclick="screenshot2()">
                             <img src="/Public/IMG/screen2.png" class="rounded-2xl border border-subtle w-full h-64 object-cover transition-all group-hover:scale-[1.02] group-hover:shadow-xl" alt="Screen">
                         </div>
-                        <div class="group cursor-pointer animate-on-scroll" data-delay="900" onclick="screenshot3()">
+                        <div class="group cursor-pointer" onclick="screenshot3()">
                             <img src="/Public/IMG/screen3.png" class="rounded-2xl border border-subtle w-full h-64 object-cover transition-all group-hover:scale-[1.02] group-hover:shadow-xl" alt="Screen">
                         </div>
-                        <div class="group cursor-pointer animate-on-scroll" data-delay="1050" onclick="screenshot4()">
+                        <div class="group cursor-pointer" onclick="screenshot4()">
                             <img src="/Public/IMG/screen4.png" class="rounded-2xl border border-subtle w-full h-64 object-cover transition-all group-hover:scale-[1.02] group-hover:shadow-xl" alt="Screen">
                         </div>
                     </div>
@@ -138,15 +122,15 @@
         </section>
         
         <section id="download" class="py-24 text-center border-t border-subtle">
-            <h3 class="mb-2 text-4xl font-bold sm:text-6xl animate-on-scroll" data-delay="0" style="margin-bottom: 40px;">Available on</h3>
+            <h3 class="mb-2 text-4xl font-bold sm:text-6xl " style="margin-bottom: 40px;">Available on</h3>
             <div class="flex flex-wrap items-center justify-center gap-12 opacity-80">
-                <a href="https://lukzxdd.itch.io/LIGHT" target="_blank" class="hover:scale-110 transition-transform animate-on-scroll" data-delay="200">
+                <a href="https://lukzxdd.itch.io/LIGHT" target="_blank" class="hover:scale-110 transition-transform">
                     <img src="/Public/IMG/itchio-logo-white.png" class="h-12 w-auto dark:invert" width="300" alt="Itch" style="max-width: 300px;filter: brightness(0) invert(1);">
                 </a>
-                <a href="https://github.com/LukzST/LIGHT" target="_blank" class="hover:scale-110 transition-transform animate-on-scroll" data-delay="400">
+                <a href="https://github.com/LukzST/LIGHT" target="_blank" class="hover:scale-110 transition-transform">
                     <img src="/Public/IMG/GitHub_Lockup_White_Clearspace.png" class="h-12 w-auto dark:invert" width="300" alt="GitHub" style="max-width: 300px;filter: brightness(0) invert(1);">
                 </a>
-                <a href="#" class="hover:scale-110 transition-transform animate-on-scroll" data-delay="600">
+                <a href="#" class="hover:scale-110 transition-transform">
                     <img src="/Public/IMG/steam.png" class="h-12 w-auto dark:invert" width="300" alt="Steam" style="filter: brightness(0) invert(1); max-width: 300px;">
                     <span>SOON</span>
                 </a>
@@ -154,32 +138,42 @@
         </section>
     </main>
 
+    
+    
     <footer class="bg-dark text-paper py-16 lg:px-24 border-t border-dark">
         <div class="container flex flex-col md:flex-row justify-between items-start gap-12">
             <div class="max-w-md">
-                <p id="footer-title" class="text-6xl font-bold !text-paper animate-on-scroll" data-delay="0">Pale Luna Developer</p>
-                <p class="mt-4 opacity-70 animate-on-scroll" data-delay="200">Beautifully atmospheric, horror-focused, and made with passion. We care about the light, not the void.</p>
+                <p id="footer-title" class="text-6xl font-bold !text-paper">Pale Luna Developer</p>
+                <p class="mt-4 opacity-70">Beautifully atmospheric, horror-focused, and made with passion. We care about the light, not the void.</p>
             </div>
             <div class="grid grid-cols-2 gap-16">
                 <div>
-                    <h4 class="font-semibold mb-4 animate-on-scroll" data-delay="400">Follow</h4>
+                    <h4 class="font-semibold mb-4">Follow</h4>
                     <ul class="space-y-2 opacity-60 text-sm">
-                        <li class="animate-on-scroll" data-delay="550"><a href="https://www.instagram.com/PlayLightGame" target="_blank" class="hover:text-coral transition-colors">Instagram</a></li>
-                        <li class="animate-on-scroll" data-delay="700"><a href="https://bsky.app/profile/lukzst.github.io" target="_blank" class="hover:text-coral transition-colors">Bluesky</a></li>
-                        <li class="animate-on-scroll" data-delay="850"><a href="https://lukzxdd.itch.io" target="_blank" class="hover:text-coral transition-colors">Itch.io</a></li>
-                        <li class="animate-on-scroll" data-delay="1000"><a href="https://github.com/LukzST" target="_blank" class="hover:text-coral transition-colors">Github</a></li>
+                        <li>
+                            <a href="https://www.instagram.com/PlayLightGame" target="_blank" class="hover:text-coral">Instagram</a>
+                        </li>
+                        <li>
+                            <a href="https://bsky.app/profile/lukzst.github.io" target="_blank" class="hover:text-coral">Bluesky</a>
+                        </li>
+                        <li>
+                            <a href="https://lukzxdd.itch.io" target="_blank" class="hover:text-coral">Itch.io</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/LukzST" target="_blank" class="hover:text-coral">Github</a>
+                        </li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4 animate-on-scroll" data-delay="1150">Get Help</h4>
+                    <h4 class="font-semibold mb-4">Get Help</h4>
                     <ul class="space-y-2 opacity-60 text-sm">
-                        <li class="animate-on-scroll" data-delay="1300"><a href="#" onclick="support()" class="hover:text-coral transition-colors">Support</a></li>
-                        <li class="animate-on-scroll" data-delay="1450"><a href="/updates/" class="hover:text-coral transition-colors">Updates</a></li>
+                        <li><a href="#" onclick="support()" class="hover:text-coral">Support</a></li>
+                        <li><a href="/updates/" class="hover:text-coral">Updates</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="container mt-24 pt-8 border-t border-white/10 opacity-50 text-sm" data-delay="1600">
+        <div class="container mt-24 pt-8 border-t border-white/10 opacity-50 text-sm">
             2026 © LIGHT by Lukzxdd. All rights reserved.
         </div>
     </footer>
@@ -210,36 +204,114 @@
                 rootMargin: '0px 0px -50px 0px'
             };
 
+            function animateElements(elements, delayBetween = 150) {
+                elements.forEach((el, index) => {
+                    setTimeout(() => {
+                        el.style.transition = 'opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), filter 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)';
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                        el.style.filter = 'blur(0px)';
+                    }, index * delayBetween);
+                });
+            }
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        const animatedElements = entry.target.querySelectorAll('.animate-on-scroll');
-                        animatedElements.forEach(el => {
-                            const delay = parseInt(el.getAttribute('data-delay') || 0);
-                            setTimeout(() => {
-                                el.classList.add('visible');
-                            }, delay);
-                        });
-                        observer.unobserve(entry.target);
+                        const section = entry.target;
+                        
+                        if (section.id === 'header') {
+                            const elements = section.querySelectorAll('h1 b, h1 span, p, .flex a, video, a[href*="youtube"]');
+                            elements.forEach(el => {
+                                if (el.style.opacity !== '1') {
+                                    el.style.opacity = '0';
+                                    el.style.transform = 'translateY(20px)';
+                                    el.style.filter = 'blur(4px)';
+                                }
+                            });
+                            
+                            const elementsArray = Array.from(elements);
+                            elementsArray.forEach((el, index) => {
+                                const isTitle = el.tagName === 'B' && el.closest('h1');
+                                const delay = isTitle ? 500 + (index * 200) : index * 150;
+                                
+                                setTimeout(() => {
+                                    el.style.transition = 'opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), filter 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)';
+                                    el.style.opacity = '1';
+                                    el.style.transform = 'translateY(0)';
+                                    el.style.filter = 'blur(0px)';
+                                }, delay);
+                            });
+                            observer.unobserve(section);
+                        }
+                        
+                        if (section.id === 'about') {
+                            const elements = section.querySelectorAll('h2, h2 span, .bg-subtle, .bg-coral\\/10, #screenshots img');
+                            elements.forEach(el => {
+                                if (el.style.opacity !== '1') {
+                                    el.style.opacity = '0';
+                                    el.style.transform = 'translateY(20px)';
+                                    el.style.filter = 'blur(4px)';
+                                }
+                            });
+                            animateElements(Array.from(elements), 150);
+                            observer.unobserve(section);
+                        }
+                        
+                        if (section.id === 'download') {
+                            const elements = section.querySelectorAll('h3, a');
+                            elements.forEach(el => {
+                                if (el.style.opacity !== '1') {
+                                    el.style.opacity = '0';
+                                    el.style.transform = 'translateY(20px)';
+                                    el.style.filter = 'blur(4px)';
+                                }
+                            });
+                            animateElements(Array.from(elements), 150);
+                            observer.unobserve(section);
+                        }
+                        
+                        if (section.tagName === 'FOOTER') {
+                            const elements = section.querySelectorAll('#footer-title, .max-w-md p, h4, li');
+                            elements.forEach(el => {
+                                if (el.style.opacity !== '1') {
+                                    el.style.opacity = '0';
+                                    el.style.transform = 'translateY(20px)';
+                                    el.style.filter = 'blur(4px)';
+                                }
+                            });
+                            animateElements(Array.from(elements), 100);
+                            observer.unobserve(section);
+                        }
                     }
                 });
             }, observerOptions);
 
-            const sections = document.querySelectorAll('header, section, footer');
-            sections.forEach(section => {
-                observer.observe(section);
-            });
-
-            const allAnimatedElements = document.querySelectorAll('.animate-on-scroll');
-            allAnimatedElements.forEach(el => {
-                const hasParentSection = el.closest('header, section, footer');
-                if (!hasParentSection) {
-                    const delay = parseInt(el.getAttribute('data-delay') || 0);
-                    setTimeout(() => {
-                        el.classList.add('visible');
-                    }, delay);
+            const header = document.getElementById('header');
+            const about = document.getElementById('about');
+            const download = document.getElementById('download');
+            const footer = document.querySelector('footer');
+            
+            if (header) observer.observe(header);
+            if (about) observer.observe(about);
+            if (download) observer.observe(download);
+            if (footer) observer.observe(footer);
+            
+            const style = document.createElement('style');
+            style.textContent = `
+                #header h1 b, #header h1 span, #header p, #header .flex a, #header video, #header a[href*="youtube"],
+                #about h2, #about h2 span, #about .bg-subtle, #about .bg-coral\\/10, #about #screenshots img,
+                #download h3, #download a,
+                footer #footer-title, footer .max-w-md p, footer h4, footer li {
+                    opacity: 0;
+                    transform: translateY(20px);
+                    filter: blur(4px);
+                    transition: opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), 
+                                transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), 
+                                filter 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
                 }
-            });
+            `;
+            document.head.appendChild(style);
         });
     </script>
 </body>
