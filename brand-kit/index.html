@@ -123,6 +123,7 @@
                     <div>
                         <p class="text-sm opacity-60 mb-3 text-center">Studio Logo</p>
                         <div class="flex flex-col items-center gap-4">
+                            <div class="flex flex-col items-center gap-4">
                             <div>
                                 <p class="text-xs opacity-60 mb-2 text-center">Light Version</p>
                                 <div class="logo-preview">
@@ -131,7 +132,7 @@
                                 <div class="flex justify-center mt-2">
                                     <a href="#" onclick="downloadLogo('png', 'studio-light'); return false;" class="download-btn text-sm">
                                         <i class="fa-solid fa-download"></i>
-                                        PNG
+                                        Download PNG
                                     </a>
                                 </div>
                             </div>
@@ -139,12 +140,12 @@
                             <div class="mt-4">
                                 <p class="text-xs opacity-60 mb-2 text-center">Dark Version</p>
                                 <div class="logo-preview bg-dark">
-                                    <img src="/Public/IMG/studio-logo-without.png" alt="Studio Logo Dark" class="w-32 h-auto invert">
+                                    <img src="/Public/IMG/studio-logo-without.png" alt="Studio Logo Dark" class="w-32 h-auto invert" id="studio-dark-img">
                                 </div>
                                 <div class="flex justify-center mt-2">
-                                    <a href="#" onclick="downloadLogo('png', 'studio-dark'); return false;" class="download-btn text-sm">
+                                    <a href="#" onclick="downloadDarkLogo(); return false;" class="download-btn text-sm">
                                         <i class="fa-solid fa-download"></i>
-                                        PNG
+                                        Download PNG
                                     </a>
                                 </div>
                             </div>
@@ -352,7 +353,6 @@
     function downloadLogo(type, logoType) {
         const logos = {
             'studio-light': '/Public/IMG/studio-logo-without.png',
-            'studio-dark': '/Public/IMG/studio-logo-without.png',
             'game-light': '/Public/IMG/light_logo.png',
             'game-dark': '/Public/IMG/light_logo_2.png'
         };
@@ -368,6 +368,30 @@
         } else {
             alert('Arquivo não encontrado');
         }
+    }
+    
+    function downloadDarkLogo() {
+        const img = document.getElementById('studio-dark-img');
+        
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = img.naturalWidth || img.width;
+        canvas.height = img.naturalHeight || img.height;
+        
+        ctx.filter = 'invert(1)';
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        
+        canvas.toBlob(function(blob) {
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'studio-dark.png';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }, 'image/png');
     }
     
     function downloadAllAssets() {
