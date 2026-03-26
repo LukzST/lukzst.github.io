@@ -184,13 +184,13 @@
                 
                 const data = await response.json();
                 
-                const folders = data.filter(item => {
-                    return item.type === 'dir' && 
-                        item.name !== 'BETA_V1.0' && 
-                        item.name !== 'V1.0.1' &&
-                        item.name !== 'BETA' &&
-                        !item.name.includes('BETA');
-                });
+                        const folders = data.filter(item => {
+                            return item.type === 'dir' && 
+                                item.name !== 'BETA_V1.0' && 
+                                item.name !== 'V1.0.1' &&
+                                item.name !== 'BETA' &&
+                                !item.name.includes('BETA');
+                        });
                 
                 if (folders.length === 0) {
                     container.innerHTML = '<div class="error-message">No versions found yet. Check back soon!</div>';
@@ -231,167 +231,15 @@
             window.location.href = "/soundtrack/";
         }
 
+        document.addEventListener('DOMContentLoaded', () => {
+            setCurrentDate();
+            fetchVersions();
+        });
         function mudarPagina() {
             document.body.style.animation = 'none';
             document.body.offsetHeight;
             document.body.style.animation = 'fadeInPage 0.5s ease-out';
         }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            setCurrentDate();
-            fetchVersions();
-            
-            const observerOptions = {
-                threshold: 0.2,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            function animateElements(elements, delayBetween = 150) {
-                elements.forEach((el, index) => {
-                    setTimeout(() => {
-                        el.style.transition = 'opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), filter 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)';
-                        el.style.opacity = '1';
-                        el.style.transform = 'translateY(0)';
-                        el.style.filter = 'blur(0px)';
-                    }, index * delayBetween);
-                });
-            }
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const section = entry.target;
-                        
-                        if (section.id === 'updates-header') {
-                            const elements = section.querySelectorAll('h1, p, #current-date');
-                            elements.forEach(el => {
-                                el.style.opacity = '0';
-                                el.style.transform = 'translateY(20px)';
-                                el.style.filter = 'blur(4px)';
-                            });
-                            
-                            const elementsArray = Array.from(elements);
-                            elementsArray.forEach((el, index) => {
-                                const isTitle = el.tagName === 'H1';
-                                const delay = isTitle ? 400 + (index * 200) : index * 150;
-                                
-                                setTimeout(() => {
-                                    el.style.transition = 'opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), filter 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)';
-                                    el.style.opacity = '1';
-                                    el.style.transform = 'translateY(0)';
-                                    el.style.filter = 'blur(0px)';
-                                }, delay);
-                            });
-                        }
-                        
-                        if (section.id === 'back-link') {
-                            const element = section.querySelector('a');
-                            if (element) {
-                                element.style.opacity = '0';
-                                element.style.transform = 'translateY(20px)';
-                                element.style.filter = 'blur(4px)';
-                                setTimeout(() => {
-                                    element.style.transition = 'opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), filter 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)';
-                                    element.style.opacity = '1';
-                                    element.style.transform = 'translateY(0)';
-                                    element.style.filter = 'blur(0px)';
-                                }, 100);
-                            }
-                        }
-                        
-                        if (section.id === 'versions-grid') {
-                            const cards = section.querySelectorAll('.version-card');
-                            if (cards.length > 0) {
-                                cards.forEach(card => {
-                                    card.style.opacity = '0';
-                                    card.style.transform = 'translateY(20px)';
-                                    card.style.filter = 'blur(4px)';
-                                });
-                                
-                                const cardsArray = Array.from(cards);
-                                cardsArray.forEach((card, index) => {
-                                    setTimeout(() => {
-                                        card.style.transition = 'opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), filter 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)';
-                                        card.style.opacity = '1';
-                                        card.style.transform = 'translateY(0)';
-                                        card.style.filter = 'blur(0px)';
-                                    }, index * 100);
-                                });
-                            }
-                        }
-                        
-                        if (section.id === 'updates-footer') {
-                            const element = section.querySelector('p');
-                            if (element) {
-                                element.style.opacity = '0';
-                                element.style.transform = 'translateY(20px)';
-                                element.style.filter = 'blur(4px)';
-                                setTimeout(() => {
-                                    element.style.transition = 'opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), filter 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)';
-                                    element.style.opacity = '1';
-                                    element.style.transform = 'translateY(0)';
-                                    element.style.filter = 'blur(0px)';
-                                }, 150);
-                            }
-                        }
-                        
-                        observer.unobserve(section);
-                    }
-                });
-            }, observerOptions);
-
-            const updatesHeader = document.querySelector('.text-center.mb-12');
-            const backLink = document.querySelector('.mb-8');
-            const versionsGrid = document.getElementById('version-container');
-            const updatesFooter = document.querySelector('.text-center.mt-12.pt-8');
-            
-            if (updatesHeader) {
-                updatesHeader.id = 'updates-header';
-                observer.observe(updatesHeader);
-            }
-            if (backLink) {
-                backLink.id = 'back-link';
-                observer.observe(backLink);
-            }
-            if (versionsGrid) {
-                versionsGrid.id = 'versions-grid';
-                
-                const checkCards = new MutationObserver((mutations) => {
-                    mutations.forEach((mutation) => {
-                        if (mutation.addedNodes.length > 0) {
-                            const cards = versionsGrid.querySelectorAll('.version-card');
-                            if (cards.length > 0 && !versionsGrid.hasAttribute('data-animated')) {
-                                versionsGrid.setAttribute('data-animated', 'true');
-                                observer.observe(versionsGrid);
-                            }
-                        }
-                    });
-                });
-                
-                checkCards.observe(versionsGrid, { childList: true, subtree: true });
-                observer.observe(versionsGrid);
-            }
-            if (updatesFooter) {
-                updatesFooter.id = 'updates-footer';
-                observer.observe(updatesFooter);
-            }
-            
-            const style = document.createElement('style');
-            style.textContent = `
-                #updates-header h1, #updates-header p, #updates-header #current-date,
-                #back-link a,
-                #versions-grid .version-card,
-                #updates-footer p {
-                    opacity: 0;
-                    transform: translateY(20px);
-                    filter: blur(4px);
-                    transition: opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), 
-                                transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), 
-                                filter 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-                }
-            `;
-            document.head.appendChild(style);
-        });
     </script>
 </body>
 </html>
