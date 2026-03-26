@@ -2369,7 +2369,7 @@ h1 .italic {
   font-size: 1rem;
 }
 
-@media (max-width:700px) {
+@media (max-width:800px) {
   .credits {
     flex-direction: row; 
     font-size: 0.9rem;
@@ -2383,6 +2383,7 @@ h1 .italic {
         content: url('/Public/IMG/GitHub_Invertocat_White.png');
         max-width: 90px;
     }
+
     .steam-link img {
         content: url('/Public/IMG/steam2.png');
         max-width: 90px;
