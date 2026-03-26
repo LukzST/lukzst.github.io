@@ -141,17 +141,30 @@
                     <div>
                         <p class="text-sm opacity-60 mb-3 text-center">Game Logo</p>
                         <div class="flex flex-col items-center gap-4">
-                            <div class="logo-preview">
-                                <img src="/Public/IMG/light_logo.png" alt="Game Logo Light" class="w-32 h-auto">
+                            <div>
+                                <p class="text-xs opacity-60 mb-2 text-center">Light Version</p>
+                                <div class="logo-preview">
+                                    <img src="/Public/IMG/light_logo.png" alt="Game Logo Light" class="w-32 h-auto">
+                                </div>
+                                <div class="flex justify-center mt-2">
+                                    <a href="#" onclick="downloadLogo('png', 'game-light'); return false;" class="download-btn text-sm">
+                                        <i class="fa-solid fa-download"></i>
+                                        PNG
+                                    </a>
+                                </div>
                             </div>
-                            <div class="logo-preview bg-dark">
-                                <img src="/Public/IMG/light_logo_2.png" alt="Game Logo Dark" class="w-32 h-auto" style="filter: brightness(0) invert(0);">
-                            </div>
-                            <div class="flex gap-4 mt-2">
-                                <a href="#" onclick="downloadLogo('png', 'game'); return false;" class="download-btn text-sm">
-                                    <i class="fa-solid fa-download"></i>
-                                    PNG
-                                </a>
+                            
+                            <div class="mt-4">
+                                <p class="text-xs opacity-60 mb-2 text-center">Dark Version</p>
+                                <div class="logo-preview bg-dark">
+                                    <img src="/Public/IMG/light_logo_2.png" alt="Game Logo Dark" class="w-32 h-auto">
+                                </div>
+                                <div class="flex justify-center mt-2">
+                                    <a href="#" onclick="downloadLogo('png', 'game-dark'); return false;" class="download-btn text-sm">
+                                        <i class="fa-solid fa-download"></i>
+                                        PNG
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -320,33 +333,33 @@
             document.body.offsetHeight;
             document.body.style.animation = 'fadeInPage 0.5s ease-out';
         }
+    </script>
 
+    <script>
     function downloadLogo(type, logoType) {
         const logos = {
-            'studio-png': '/Public/IMG/studio-logo-without.png',
-            'studio-svg': '/Public/IMG/studio-logo.svg',
-            'game-png': '/Public/IMG/light_logo.png',
-            'game-svg': '/Public/IMG/light_logo_2.png'
+            'studio-light': '/Public/IMG/studio-logo-without.png',
+            'studio-dark': '/Public/IMG/studio-logo-without.png',
+            'game-light': '/Public/IMG/light_logo.png',
+            'game-dark': '/Public/IMG/light_logo_2.png'
         };
         
-        const url = logos[`${logoType}-${type}`];
+        const url = logos[logoType];
         if (url) {
             const link = document.createElement('a');
             link.href = url;
-            link.download = `${logoType}-logo.${type}`;
+            link.download = `${logoType}.png`;
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
         } else {
-            console.log('Arquivo não encontrado');
-            alert('Download disponível em breve!');
+            alert('Arquivo não encontrado');
         }
     }
     
     function downloadAllAssets() {
         alert('Pacote completo estará disponível em breve!');
-        // window.location.href = '/assets/brand-kit.zip';
     }
-    </script>
+</script>
 </body>
 </html>
