@@ -358,7 +358,7 @@ video {
 }
 
 :root {
-  --zen-paper: #f2f0e3;
+  --zen-paper: #090909;
   --zen-dark: #f2f0e3;
   --zen-muted: rgba(0, 0, 0, 0.05);
   --zen-subtle: rgba(0, 0, 0, 0.05);
