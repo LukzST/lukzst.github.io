@@ -366,7 +366,7 @@ video {
 }
 
 [data-theme="dark"] {
-  --zen-paper: #090909;
+  --zen-paper: #1f1f1f;
   --zen-dark: #d1cfc0;
   --zen-muted: rgba(255, 255, 255, 0.05);
   --zen-subtle: rgba(255, 255, 255, 0.1);
