@@ -2369,24 +2369,34 @@ h1 .italic {
   flex-direction: row; 
   font-size: 1rem;
 }
+.itch-link, 
+.github-link, 
+.steam-link {
+    max-width: 90px;
+    height: auto;
+}
 
-@media (max-width: 800px) {
-  .credits {
-    flex-direction: row; 
-    font-size: 0.9rem;
-  }
-    .itch-link {
-        content: url('/Public/IMG/itchio-logo-textless-white.png');
-        max-width: 90px;
+@media (min-width: 768px) {
+    .credits {
+        flex-direction: row; 
+        font-size: 1rem;
     }
-
-    .github-link {
-        content: url('/Public/IMG/GitHub_Invertocat_White.png');
-        max-width: 90px;
-    }
-
+    
+    .itch-link, 
+    .github-link, 
     .steam-link {
-        content: url('/Public/IMG/steam2.png');
-        max-width: 90px;
+        max-width: 160px;
+    }
+    
+    .itch-link {
+        content: url('/Public/IMG/itchio-logo-white.png');
+    }
+    
+    .github-link {
+        content: url('/Public/IMG/GitHub_Lockup_White_Clearspace.png');
+    }
+    
+    .steam-link {
+        content: url('/Public/IMG/steam.png');
     }
 }
