@@ -1248,7 +1248,7 @@ h1 .italic {
 }
 
 .bg-paper {
-  background-color: var(--zen-paper)
+  background-color: var(--zen-paper);
 }
 
 .bg-red-200 {
