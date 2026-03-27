@@ -143,3 +143,11 @@ h1 .italic {
   flex-direction: row; 
   font-size: 1rem;
 }
+
+@media (max-width:700px) {
+  .credits {
+    flex-direction: row; 
+    font-size: 0.9rem;
+  }
+
+}

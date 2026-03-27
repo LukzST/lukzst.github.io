@@ -2082,7 +2082,6 @@ h1 .italic {
   .md\:py-32 {
     padding-top: 8rem;
   }
-    
 }
 
 @media (min-width: 1024px) {
@@ -2370,27 +2369,10 @@ h1 .italic {
   font-size: 1rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width:700px) {
   .credits {
-        flex-direction: row; 
-        font-size: 0.9rem;
-    }
-  .itch-link, 
-  .github-link, 
-  .steam-link {
-      max-width: 90px;
-      height: auto;
+    flex-direction: row; 
+    font-size: 0.9rem;
   }
 
-  .github-link img {
-    content: url(/Public/IMG/itchio-logo-textless-white.png);
-  }
-
-  .itch-link img {
-    content: url(/Public/IMG/GitHub_Invertocat_White_Clearspace.png);
-  }
-
-  .steam-link img {
-    content: url(/Public/IMG/steam2.png);
-  }
 }
