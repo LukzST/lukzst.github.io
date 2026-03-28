@@ -608,6 +608,7 @@ body.crt::after {
         <div class="taskbar-task taskbar-clock" id="crtToggleBtn" style="min-width: 60px;">
             <i class="fa-solid fa-tv"></i> CRT
         </div>
+
         <div class="taskbar-clock" id="clock">
             00:00
         </div>
@@ -795,71 +796,16 @@ document.addEventListener('DOMContentLoaded', () => {
         setupWindowControls(windowElement);
     });
 });
+</script>
 
-const crtToggleBtn = document.getElementById('crtToggleBtn');
-let crtEnabled = localStorage.getItem('crtEnabled') === 'true';
 
-if (crtEnabled) {
-    document.body.classList.add('crt');
-    crtToggleBtn.innerHTML = '<i class="fa-solid fa-tv"></i> CRT ON';
-    crtToggleBtn.style.background = '#2f498c';
-    crtToggleBtn.style.color = 'white';
-} else {
-    crtToggleBtn.innerHTML = '<i class="fa-solid fa-tv"></i> CRT OFF';
-    crtToggleBtn.style.background = 'silver';
-    crtToggleBtn.style.color = '#222';
-}
-
-function toggleCRT() {
-    crtEnabled = !crtEnabled;
-    
-    if (crtEnabled) {
-        document.body.classList.add('crt');
-        crtToggleBtn.innerHTML = '<i class="fa-solid fa-tv"></i> CRT ON';
-        crtToggleBtn.style.background = '#2f498c';
-        crtToggleBtn.style.color = 'white';
-        localStorage.setItem('crtEnabled', 'true');
-        
-        try {
-            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            const oscillator = audioCtx.createOscillator();
-            const gainNode = audioCtx.createGain();
-            oscillator.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
-            oscillator.type = 'sine';
-            oscillator.frequency.value = 880;
-            gainNode.gain.value = 0.1;
-            oscillator.start();
-            gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.1);
-            oscillator.stop(audioCtx.currentTime + 0.1);
-            if (audioCtx.state === 'suspended') audioCtx.resume();
-        } catch(e) {}
-        
-    } else {
-        document.body.classList.remove('crt');
-        crtToggleBtn.innerHTML = '<i class="fa-solid fa-tv"></i> CRT OFF';
-        crtToggleBtn.style.background = 'silver';
-        crtToggleBtn.style.color = '#222';
-        localStorage.setItem('crtEnabled', 'false');
-        
-        try {
-            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            const oscillator = audioCtx.createOscillator();
-            const gainNode = audioCtx.createGain();
-            oscillator.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
-            oscillator.type = 'sine';
-            oscillator.frequency.value = 440;
-            gainNode.gain.value = 0.1;
-            oscillator.start();
-            gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.1);
-            oscillator.stop(audioCtx.currentTime + 0.1);
-            if (audioCtx.state === 'suspended') audioCtx.resume();
-        } catch(e) {}
-    }
-}
-
-crtToggleBtn.addEventListener('click', toggleCRT);
-    </script>
+<script src="/Public/JS/crt-manager.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (window.CRTManager) {
+            window.CRTManager.init('crtToggleBtn');
+        }
+    });
+</script>
 </body>
 </html>
