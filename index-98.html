@@ -20,12 +20,14 @@
         }
         
         body {
-            background: #008080;
+            background: #008080 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32"><rect width="16" height="16" fill="%23006666"/><rect x="16" width="16" height="16" fill="%23007777"/><rect y="16" width="16" height="16" fill="%23007777"/><rect x="16" y="16" width="16" height="16" fill="%23008888"/></svg>');
+            background-repeat: repeat;
             font-size: 11px;
             font-family: "Pixelated MS Sans Serif", Arial;
             color: #222;
             line-height: 1.4;
-            padding: 20px;
+            padding-bottom: 50px;
+            min-height: 100vh;
         }
         
         /* Container principal */
@@ -33,6 +35,8 @@
             max-width: 1400px;
             margin: 0 auto;
             position: relative;
+            padding: 20px;
+            padding-bottom: 60px;
         }
         
         /* Janelas flutuantes estilo Windows 98 */
@@ -229,22 +233,222 @@
             font-size: 10px;
         }
         
+        /* ========== BARRA DE TAREFAS WINDOWS 98 ========== */
+        .taskbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: silver;
+            height: 48px;
+            box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
+            display: flex;
+            align-items: center;
+            padding: 0 4px;
+            z-index: 1000;
+            font-family: "Pixelated MS Sans Serif", Arial;
+        }
+        
+        /* Botão Iniciar */
+        .start-button {
+            background: silver;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 12px;
+            margin-right: 8px;
+            box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 13px;
+            min-width: 80px;
+        }
+        
+        .start-button:active {
+            box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a;
+        }
+        
+        .start-button img, .start-button i {
+            font-size: 18px;
+        }
+        
+        /* Menu Iniciar */
+        .start-menu {
+            position: fixed;
+            bottom: 48px;
+            left: 4px;
+            width: 280px;
+            background: silver;
+            box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
+            padding: 4px;
+            display: none;
+            z-index: 1001;
+        }
+        
+        .start-menu.open {
+            display: block;
+        }
+        
+        .start-menu-item {
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            margin: 2px 0;
+        }
+        
+        .start-menu-item:hover {
+            background: #2f498c;
+            color: white;
+        }
+        
+        .start-menu-separator {
+            height: 2px;
+            background: #808080;
+            margin: 4px 0;
+            box-shadow: inset 0 1px 0 #fff;
+        }
+        
+        /* Tarefas abertas */
+        .taskbar-tasks {
+            flex: 1;
+            display: flex;
+            gap: 4px;
+            overflow-x: auto;
+            height: 100%;
+            align-items: center;
+        }
+        
+        .taskbar-task {
+            background: silver;
+            padding: 4px 16px;
+            min-width: 140px;
+            text-align: center;
+            box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff;
+            cursor: pointer;
+            font-size: 11px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .taskbar-task.active {
+            background: #c3c3c3;
+            box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a;
+            font-weight: bold;
+        }
+        
+        /* Relógio */
+        .taskbar-clock {
+            background: silver;
+            padding: 4px 12px;
+            margin-left: 8px;
+            box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff;
+            font-family: monospace;
+            font-size: 11px;
+            min-width: 100px;
+            text-align: center;
+        }
+        
+        /* ========== FOOTER ESTILO MY COMPUTER ========== */
+        .mycomputer-footer {
+            margin-top: 30px;
+            background: silver;
+            box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
+            padding: 16px 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .footer-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-icon {
+            width: 48px;
+            height: 48px;
+            background: #c3c3c3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid;
+            border-top-color: #0a0a0a;
+            border-left-color: #0a0a0a;
+            border-right-color: #dfdfdf;
+            border-bottom-color: #dfdfdf;
+        }
+        
+        .footer-text h3 {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        
+        .footer-text p {
+            font-size: 10px;
+            color: #2f498c;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+        }
+        
+        .footer-copyright {
+            text-align: center;
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px solid #808080;
+            font-size: 9px;
+        }
+        
         /* Responsivo */
         @media (max-width: 900px) {
             .windows-grid {
                 grid-template-columns: 1fr;
             }
             body {
-                padding: 10px;
+                padding-bottom: 48px;
             }
             .screenshots-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            .taskbar-task {
+                min-width: 100px;
+                padding: 4px 8px;
+            }
+            .start-button span {
+                display: none;
+            }
+            .start-button {
+                min-width: auto;
             }
         }
         
         @media (max-width: 500px) {
             .screenshots-grid {
                 grid-template-columns: 1fr;
+            }
+            .taskbar-clock {
+                display: none;
             }
         }
         
@@ -266,7 +470,7 @@
             background: #000;
         }
         
-        /* Scrollbar estilo Win98 */
+        /* Scrollbar */
         ::-webkit-scrollbar {
             width: 16px;
             height: 16px;
@@ -296,6 +500,7 @@
             display: flex;
             gap: 12px;
             margin-top: 8px;
+            flex-wrap: wrap;
         }
         
         .social-icons a {
@@ -562,14 +767,115 @@
             </div>
         </div>
 
+        <!-- FOOTER ESTILO MY COMPUTER -->
+        <div class="mycomputer-footer">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="footer-icon">
+                        <i class="fa-solid fa-computer" style="font-size: 32px; color: #2f498c;"></i>
+                    </div>
+                    <div class="footer-text">
+                        <h3>Pale Luna Developer</h3>
+                        <p>Beautifully atmospheric, horror-focused, and made with passion. We care about the light, not the void.</p>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <a href="/#about"><i class="fa-solid fa-folder"></i> About</a>
+                    <a href="/#download"><i class="fa-solid fa-download"></i> Download</a>
+                    <a href="/updates/"><i class="fa-solid fa-newspaper"></i> DevLogs</a>
+                    <a href="/brand-kit/"><i class="fa-solid fa-palette"></i> Brand Kit</a>
+                    <a href="#" onclick="support()"><i class="fa-solid fa-envelope"></i> Support</a>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <span>© 2024 Pale Luna Developer | Made by Lukzxdd | Inspired by Zen Browser</span>
+            </div>
+        </div>
+
         <!-- Status Bar -->
         <div class="status-bar">
-            <span>📁 LIGHT.EXE | © 2024 Pale Luna Developer | Horror game inspired by the darkness within</span>
+            <span>📁 LIGHT.EXE | © 2024 Pale Luna Developer | Horror game inspired by the darkness within | System: Windows 98</span>
+        </div>
+    </div>
+
+    <!-- BARRA DE TAREFAS WINDOWS 98 -->
+    <div class="taskbar">
+        <div class="start-button" id="startButton">
+            <i class="fa-solid fa-windows"></i>
+            <span>Iniciar</span>
+        </div>
+        
+        <div class="taskbar-tasks">
+            <div class="taskbar-task active" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <i class="fa-solid fa-tv"></i> LIGHT
+            </div>
+            <div class="taskbar-task" onclick="document.getElementById('media').scrollIntoView({behavior: 'smooth'})">
+                <i class="fa-solid fa-image"></i> Media
+            </div>
+            <div class="taskbar-task" onclick="document.getElementById('download').scrollIntoView({behavior: 'smooth'})">
+                <i class="fa-solid fa-download"></i> Download
+            </div>
+        </div>
+        
+        <div class="taskbar-clock" id="clock">
+            00:00
+        </div>
+    </div>
+
+    <!-- MENU INICIAR -->
+    <div class="start-menu" id="startMenu">
+        <div class="start-menu-item" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); document.getElementById('startMenu').classList.remove('open')">
+            <i class="fa-solid fa-tv"></i> <span>LIGHT</span>
+        </div>
+        <div class="start-menu-item" onclick="window.open('https://lukzxdd.itch.io/light/purchase?popup=1', 'Popup', 'width=500,height=400,scrollbars=no'); document.getElementById('startMenu').classList.remove('open')">
+            <i class="fa-solid fa-download"></i> <span>Download Game</span>
+        </div>
+        <div class="start-menu-item" onclick="window.open('/demo/', '_self'); document.getElementById('startMenu').classList.remove('open')">
+            <i class="fa-solid fa-gamepad"></i> <span>Try Demo</span>
+        </div>
+        <div class="start-menu-separator"></div>
+        <div class="start-menu-item" onclick="window.open('https://github.com/LukzST', '_blank'); document.getElementById('startMenu').classList.remove('open')">
+            <i class="fa-brands fa-github"></i> <span>GitHub</span>
+        </div>
+        <div class="start-menu-item" onclick="window.open('https://www.instagram.com/PlayLightGame', '_blank'); document.getElementById('startMenu').classList.remove('open')">
+            <i class="fa-brands fa-instagram"></i> <span>Instagram</span>
+        </div>
+        <div class="start-menu-separator"></div>
+        <div class="start-menu-item" onclick="window.open('mailto:contatosadberry@gmail.com', '_blank'); document.getElementById('startMenu').classList.remove('open')">
+            <i class="fa-solid fa-envelope"></i> <span>Support</span>
+        </div>
+        <div class="start-menu-item" onclick="window.location.reload(); document.getElementById('startMenu').classList.remove('open')">
+            <i class="fa-solid fa-power-off"></i> <span>Reiniciar...</span>
         </div>
     </div>
 
     <script>
-        // Funções utilitárias
+        // Relógio
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            document.getElementById('clock').innerHTML = `${hours}:${minutes}`;
+        }
+        updateClock();
+        setInterval(updateClock, 1000);
+        
+        // Menu Iniciar
+        const startButton = document.getElementById('startButton');
+        const startMenu = document.getElementById('startMenu');
+        
+        startButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            startMenu.classList.toggle('open');
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (!startMenu.contains(e.target) && !startButton.contains(e.target)) {
+                startMenu.classList.remove('open');
+            }
+        });
+        
+        // Funções
         function itch() {
             window.open('https://lukzxdd.itch.io/light/purchase?popup=1', 'Popup', 'width=500,height=400,scrollbars=no');
         }
@@ -577,11 +883,6 @@
         function support() {
             window.open('mailto:contatosadberry@gmail.com', '_blank');
         }
-        
-        function screenshot1() { window.open("/Public/IMG/screen1.png", "_blank"); }
-        function screenshot2() { window.open("/Public/IMG/screen2.png", "_blank"); }
-        function screenshot3() { window.open("/Public/IMG/screen3.png", "_blank"); }
-        function screenshot4() { window.open("/Public/IMG/screen4.png", "_blank"); }
         
         // Smooth scroll para links internos
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
