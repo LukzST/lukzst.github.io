@@ -11,7 +11,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/98.css">
     <style>
         body {
             animation: fadeInPage 0.5s ease-out;
@@ -183,184 +182,6 @@
         }
     }
 
-    /* ========== MODO RETRO WINDOWS 98 ========== */
-body.retro-mode {
-    background: #008080;
-    font-size: 10px;
-    font-weight: 400;
-    color: #222;
-    letter-spacing: 1px;
-    line-height: 13px;
-}
-
-body.retro-mode,
-body.retro-mode * {
-    font-family: "Pixelated MS Sans Serif", Arial;
-}
-
-/* Fundos */
-body.retro-mode .bg-paper,
-body.retro-mode .bg-dark,
-body.retro-mode nav,
-body.retro-mode footer,
-body.retro-mode .mobile-menu {
-    background: #c3c3c3;
-}
-
-/* Cores do texto */
-body.retro-mode .text-dark,
-body.retro-mode h1,
-body.retro-mode h2,
-body.retro-mode h3,
-body.retro-mode p,
-body.retro-mode span,
-body.retro-mode .font-bold {
-    color: #222;
-}
-
-body.retro-mode .text-coral {
-    color: #2f498c;
-}
-
-body.retro-mode a {
-    color: #2f498c;
-    text-decoration: none;
-}
-
-body.retro-mode a:hover {
-    color: #444;
-}
-
-/* Estilo de janela para cards */
-body.retro-mode section {
-    background: #c3c3c3;
-    border: 2px solid;
-    border-top-color: #dfdfdf;
-    border-left-color: #dfdfdf;
-    border-right-color: #0a0a0a;
-    border-bottom-color: #0a0a0a;
-    padding: 8px;
-    margin: 8px 0;
-    box-shadow: inset 1px 1px 0 0 #fff, inset -1px -1px 0 0 #808080;
-}
-
-/* Barra de título estilo Windows */
-body.retro-mode .window-title {
-    background: linear-gradient(90deg, #2f498c, #4a6aa8);
-    color: white;
-    padding: 4px 6px;
-    margin: -8px -8px 8px -8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: bold;
-    font-size: 11px;
-}
-
-body.retro-mode .window-title button {
-    background: #c3c3c3;
-    min-width: 16px;
-    min-height: 14px;
-    padding: 0;
-    margin-left: 4px;
-    border: none;
-    box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff;
-}
-
-/* Botões estilo Windows 98 */
-body.retro-mode button,
-body.retro-mode a[href*="itch.io"] {
-    background: silver;
-    border: none;
-    box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
-    color: #222;
-    border-radius: 0;
-    min-height: 23px;
-    min-width: 75px;
-    padding: 0 12px;
-}
-
-body.retro-mode button:active,
-body.retro-mode a[href*="itch.io"]:active {
-    box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a;
-}
-
-/* Imagens com moldura 3D */
-body.retro-mode img,
-body.retro-mode video {
-    border: 2px solid;
-    border-top-color: #0a0a0a;
-    border-left-color: #0a0a0a;
-    border-right-color: #dfdfdf;
-    border-bottom-color: #dfdfdf;
-    background: #fff;
-    padding: 2px;
-}
-
-/* Cards */
-body.retro-mode .feature-item,
-body.retro-mode .group {
-    background: #c3c3c3;
-    border: 1px solid #808080;
-    padding: 6px;
-}
-
-/* Árvore de navegação */
-body.retro-mode ul.tree-view {
-    background: #fff;
-    border: 2px solid;
-    border-top-color: #0a0a0a;
-    border-left-color: #0a0a0a;
-    border-right-color: #dfdfdf;
-    border-bottom-color: #dfdfdf;
-    padding: 6px;
-    margin: 0;
-    list-style: none;
-}
-
-body.retro-mode ul.tree-view li {
-    list-style-type: none;
-    margin: 2px 0;
-}
-
-/* Scrollbar */
-body.retro-mode ::-webkit-scrollbar {
-    width: 16px;
-    height: 16px;
-}
-
-body.retro-mode ::-webkit-scrollbar-track {
-    background: #c3c3c3;
-    border: 1px solid #808080;
-}
-
-body.retro-mode ::-webkit-scrollbar-thumb {
-    background: #c3c3c3;
-    border: 1px solid;
-    border-top-color: #dfdfdf;
-    border-left-color: #dfdfdf;
-    border-right-color: #0a0a0a;
-    border-bottom-color: #0a0a0a;
-}
-
-/* Back to top */
-body.retro-mode .back-to-top {
-    background: #c3c3c3;
-    color: #222;
-    border: 2px solid;
-    border-top-color: #dfdfdf;
-    border-left-color: #dfdfdf;
-    border-right-color: #0a0a0a;
-    border-bottom-color: #0a0a0a;
-    box-shadow: none;
-    width: auto;
-    padding: 8px 16px;
-}
-
-body.retro-mode .back-to-top:hover {
-    background: #b5b5b5;
-}
-
     </style>
 </head>
 <body class="min-h-screen overflow-x-hidden bg-paper font-['bricolage-grotesque'] text-dark">
@@ -391,12 +212,6 @@ body.retro-mode .back-to-top:hover {
             <button class="menu-toggle" id="menuToggle" aria-label="Menu">
                 <i class="fa-solid fa-bars"></i>
             </button>
-
-            <button id="retroModeBtn" class="transition-bg flex items-center justify-center gap-2 rounded-xl px-4 py-3 font-bold shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-transform" style="background: #1e1e2e; color: #cdd6f4;">
-                <i class="fa-solid fa-tv"></i>
-                Retro
-            </button>
-            
             <a href="https://lukzxdd.itch.io/" target="_blank" class="transition-bg flex items-center justify-center gap-2 rounded-xl border-dark bg-dark px-5 py-3 font-bold text-paper shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-transform">
                 Store
                 <i class="fa-solid fa-chevron-right"></i>
@@ -735,40 +550,6 @@ body.retro-mode .back-to-top:hover {
             document.body.offsetHeight;
             document.body.style.animation = 'fadeInPage 0.5s ease-out';
         }
-
-        // Modo Retro
-const retroModeBtn = document.getElementById('retroModeBtn');
-let isRetroMode = false;
-
-// Carrega preferência
-if (localStorage.getItem('retroMode') === 'true') {
-    isRetroMode = true;
-    document.body.classList.add('retro-mode');
-    retroModeBtn.innerHTML = '<i class="fa-solid fa-palette"></i> Normal';
-    retroModeBtn.style.background = '#6d8ae0';
-    retroModeBtn.style.color = '#fff';
-}
-
-// Alterna o modo
-function toggleRetroMode() {
-    isRetroMode = !isRetroMode;
-    
-    if (isRetroMode) {
-        document.body.classList.add('retro-mode');
-        retroModeBtn.innerHTML = '<i class="fa-solid fa-palette"></i> Normal';
-        retroModeBtn.style.background = '#6d8ae0';
-        retroModeBtn.style.color = '#fff';
-        localStorage.setItem('retroMode', 'true');
-    } else {
-        document.body.classList.remove('retro-mode');
-        retroModeBtn.innerHTML = '<i class="fa-solid fa-tv"></i> Retro';
-        retroModeBtn.style.background = '#1e1e2e';
-        retroModeBtn.style.color = '#cdd6f4';
-        localStorage.setItem('retroMode', 'false');
-    }
-}
-
-retroModeBtn.addEventListener('click', toggleRetroMode);
         
     </script>
 </body>
