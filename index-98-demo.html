@@ -531,13 +531,33 @@ function makeWindowDraggable(windowElement) {
     if (!titleBar) return;
     
     let isDragging = false;
-    let offsetX, offsetY;
+    let startX, startY;
+    let startLeft, startTop;
     
-    function getMouseOffset(e) {
+    function initAbsolutePosition() {
+        if (windowElement.style.position === 'absolute') return;
+        
         const rect = windowElement.getBoundingClientRect();
-        const clientX = e.clientX ?? (e.touches ? e.touches[0].clientX : 0);
-        const clientY = e.clientY ?? (e.touches ? e.touches[0].clientY : 0);
-        return { x: clientX - rect.left, y: clientY - rect.top };
+        const parentRect = windowElement.parentElement.getBoundingClientRect();
+        
+        windowElement.style.position = 'absolute';
+        windowElement.style.left = (rect.left - parentRect.left) + 'px';
+        windowElement.style.top = (rect.top - parentRect.top) + 'px';
+        windowElement.style.width = rect.width + 'px';
+        windowElement.style.margin = '0';
+    }
+    
+    function getClientCoords(e) {
+        if (e.touches) {
+            return {
+                x: e.touches[0].clientX,
+                y: e.touches[0].clientY
+            };
+        }
+        return {
+            x: e.clientX,
+            y: e.clientY
+        };
     }
     
     function startDrag(e) {
@@ -545,39 +565,43 @@ function makeWindowDraggable(windowElement) {
         if (e.target.tagName === 'BUTTON') return;
         
         e.preventDefault();
+        e.stopPropagation();
         
-        const offset = getMouseOffset(e);
-        offsetX = offset.x;
-        offsetY = offset.y;
+        initAbsolutePosition();
+        
+        const coords = getClientCoords(e);
+        startX = coords.x;
+        startY = coords.y;
+        
+        startLeft = parseFloat(windowElement.style.left);
+        startTop = parseFloat(windowElement.style.top);
+        
         isDragging = true;
-        
-        if (windowElement.style.position !== 'absolute') {
-            const rect = windowElement.getBoundingClientRect();
-            windowElement.style.position = 'absolute';
-            windowElement.style.left = rect.left + 'px';
-            windowElement.style.top = rect.top + 'px';
-            windowElement.style.width = rect.width + 'px';
-            windowElement.style.margin = '0';
-        }
-        
         windowElement.classList.add('dragging');
+        
         document.body.style.userSelect = 'none';
         document.body.style.cursor = 'grabbing';
     }
     
     function onDrag(e) {
         if (!isDragging) return;
+        
         e.preventDefault();
         
-        const clientX = e.clientX ?? (e.touches ? e.touches[0].clientX : 0);
-        const clientY = e.clientY ?? (e.touches ? e.touches[0].clientY : 0);
+        const coords = getClientCoords(e);
+        const dx = coords.x - startX;
+        const dy = coords.y - startY;
         
-        windowElement.style.left = (clientX - offsetX) + 'px';
-        windowElement.style.top = (clientY - offsetY) + 'px';
+        const newLeft = startLeft + dx;
+        const newTop = startTop + dy;
+        
+        windowElement.style.left = newLeft + 'px';
+        windowElement.style.top = newTop + 'px';
     }
     
     function stopDrag() {
         if (!isDragging) return;
+        
         isDragging = false;
         windowElement.classList.remove('dragging');
         document.body.style.userSelect = '';
@@ -585,10 +609,11 @@ function makeWindowDraggable(windowElement) {
     }
     
     titleBar.addEventListener('mousedown', startDrag);
-    titleBar.addEventListener('touchstart', startDrag, { passive: false });
     window.addEventListener('mousemove', onDrag);
-    window.addEventListener('touchmove', onDrag, { passive: false });
     window.addEventListener('mouseup', stopDrag);
+    
+    titleBar.addEventListener('touchstart', startDrag, { passive: false });
+    window.addEventListener('touchmove', onDrag, { passive: false });
     window.addEventListener('touchend', stopDrag);
 }
 
@@ -620,14 +645,15 @@ function setupWindowControls(windowElement) {
                     setTimeout(() => {
                         windowElement.style.transition = '';
                     }, 200);
-                }, 5000);
+                }, 2000);
             }, 200);
         });
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.window').forEach(windowElement => {
+    const windows = document.querySelectorAll('.window');
+    windows.forEach(windowElement => {
         makeWindowDraggable(windowElement);
         setupWindowControls(windowElement);
     });
