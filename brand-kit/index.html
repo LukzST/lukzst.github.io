@@ -106,6 +106,20 @@
                 scrollbar-width: none;
             }
         }
+            @media (max-width: 768px) {
+                .font-demo p, 
+                .font-demo-junicode p {
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+                
+                .font-demo,
+                .font-demo-junicode {
+                    overflow: hidden;
+                    width: 100%;
+                }
+            }
         
         @media (max-width: 1024px) {
             .section-spacing {
