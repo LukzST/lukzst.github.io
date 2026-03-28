@@ -218,9 +218,14 @@
 
         
         <div class="flex items-center gap-4">
+            <button class="theme-toggle" id="themeToggle" aria-label="Trocar tema">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+
             <button class="menu-toggle" id="menuToggle" aria-label="Menu">
                 <i class="fa-solid fa-bars"></i>
             </button>
+
             <a href="https://lukzxdd.itch.io/" target="_blank" class="transition-bg flex items-center justify-center gap-2 rounded-xl border-dark bg-dark px-5 py-3 font-bold text-paper shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-transform">
                 Store
                 <i class="fa-solid fa-chevron-right"></i>
@@ -560,6 +565,40 @@
             document.body.style.animation = 'fadeInPage 0.5s ease-out';
         }
         
+
+
+            const themeToggle = document.getElementById('themeToggle');
+            const htmlElement = document.documentElement;
+
+            function updateThemeIcon(theme) {
+                const icon = themeToggle.querySelector('i');
+                if (theme === 'dark') {
+                    icon.className = 'fa-solid fa-sun';
+                } else {
+                    icon.className = 'fa-solid fa-moon';
+                }
+            }
+
+            function setTheme(theme) {
+                htmlElement.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+                updateThemeIcon(theme);
+            }
+
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                setTheme(savedTheme);
+            } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                setTheme('dark');
+            } else {
+                setTheme('light');
+            }
+
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = htmlElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                setTheme(newTheme);
+            });
     </script>
 </body>
 </html>
