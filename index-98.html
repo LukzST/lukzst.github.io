@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.7">
     <title>LIGHT - Windows 98 Edition</title>
     
-    <!-- 98.css framework -->
     <link rel="stylesheet" href="https://unpkg.com/98.css">
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -30,7 +28,6 @@
             min-height: 100vh;
         }
         
-        /* Container principal */
         .desktop {
             max-width: 1400px;
             margin: 0 auto;
@@ -39,7 +36,6 @@
             padding-bottom: 60px;
         }
         
-        /* Janelas flutuantes estilo Windows 98 */
         .window {
             margin-bottom: 20px;
             background: silver;
@@ -86,7 +82,6 @@
             cursor: pointer;
         }
         
-        /* Layout de grid */
         .windows-grid {
             display: grid;
             grid-template-columns: 280px 1fr;
@@ -168,7 +163,6 @@
             color: #2f498c;
         }
         
-        /* Botões */
         button, .btn {
             background: silver;
             border: none;
@@ -185,12 +179,6 @@
             box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a;
         }
         
-        .btn-primary {
-            background: silver;
-            font-weight: bold;
-        }
-        
-        /* Links */
         a {
             color: #2f498c;
             text-decoration: none;
@@ -200,7 +188,6 @@
             color: #444;
         }
         
-        /* Tree View */
         .tree-view {
             background: #fff;
             border: 2px solid;
@@ -224,7 +211,6 @@
             border-left: 1px dotted #808080;
         }
         
-        /* Status Bar */
         .status-bar {
             background: silver;
             box-shadow: inset -1px -1px #dfdfdf, inset 1px 1px grey;
@@ -233,7 +219,6 @@
             font-size: 10px;
         }
         
-        /* ========== BARRA DE TAREFAS WINDOWS 98 ========== */
         .taskbar {
             position: fixed;
             bottom: 0;
@@ -249,7 +234,6 @@
             font-family: "Pixelated MS Sans Serif", Arial;
         }
         
-        /* Botão Iniciar */
         .start-button {
             background: silver;
             display: flex;
@@ -268,11 +252,10 @@
             box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a;
         }
         
-        .start-button img, .start-button i {
+        .start-button i {
             font-size: 18px;
         }
         
-        /* Menu Iniciar */
         .start-menu {
             position: fixed;
             bottom: 48px;
@@ -310,7 +293,6 @@
             box-shadow: inset 0 1px 0 #fff;
         }
         
-        /* Tarefas abertas */
         .taskbar-tasks {
             flex: 1;
             display: flex;
@@ -339,7 +321,6 @@
             font-weight: bold;
         }
         
-        /* Relógio */
         .taskbar-clock {
             background: silver;
             padding: 4px 12px;
@@ -351,7 +332,6 @@
             text-align: center;
         }
         
-        /* ========== FOOTER ESTILO MY COMPUTER ========== */
         .mycomputer-footer {
             margin-top: 30px;
             background: silver;
@@ -420,46 +400,12 @@
             font-size: 9px;
         }
         
-        /* Responsivo */
-        @media (max-width: 900px) {
-            .windows-grid {
-                grid-template-columns: 1fr;
-            }
-            body {
-                padding-bottom: 48px;
-            }
-            .screenshots-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .taskbar-task {
-                min-width: 100px;
-                padding: 4px 8px;
-            }
-            .start-button span {
-                display: none;
-            }
-            .start-button {
-                min-width: auto;
-            }
-        }
-        
-        @media (max-width: 500px) {
-            .screenshots-grid {
-                grid-template-columns: 1fr;
-            }
-            .taskbar-clock {
-                display: none;
-            }
-        }
-        
-        /* Logo */
         .logo-svg {
             width: 48px;
             height: 48px;
             color: #2f498c;
         }
         
-        /* Vídeo */
         video {
             width: 100%;
             border: 2px solid;
@@ -470,7 +416,6 @@
             background: #000;
         }
         
-        /* Scrollbar */
         ::-webkit-scrollbar {
             width: 16px;
             height: 16px;
@@ -535,11 +480,113 @@
             height: 40px;
             filter: brightness(0);
         }
+        
+        @media (max-width: 900px) {
+            .windows-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .screenshots-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .taskbar-task {
+                min-width: 100px;
+                padding: 4px 8px;
+            }
+            
+            .start-button span {
+                display: none;
+            }
+            
+            .start-button {
+                min-width: auto;
+                padding: 4px 10px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-info {
+                justify-content: center;
+            }
+            
+            .footer-links {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 500px) {
+            .desktop {
+                padding: 12px;
+                padding-bottom: 60px;
+            }
+            
+            .screenshots-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .taskbar-clock {
+                display: none;
+            }
+            
+            .taskbar-task {
+                min-width: 70px;
+                padding: 4px 6px;
+                font-size: 9px;
+            }
+            
+            .start-button i {
+                font-size: 16px;
+            }
+            
+            .footer-links {
+                gap: 12px;
+            }
+            
+            .footer-links a {
+                font-size: 9px;
+            }
+            
+            .footer-text h3 {
+                font-size: 12px;
+            }
+            
+            .footer-text p {
+                font-size: 9px;
+            }
+            
+            .window-body {
+                margin: 6px;
+            }
+            
+            .title-bar-text {
+                font-size: 10px;
+            }
+        }
+        
+        @media (max-width: 380px) {
+            .taskbar-tasks {
+                gap: 2px;
+            }
+            
+            .taskbar-task {
+                min-width: 55px;
+                padding: 4px 4px;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="desktop">
-        <!-- Logo e Navegação -->
         <div class="window">
             <div class="title-bar">
                 <div class="title-bar-text">LIGHT.EXE</div>
@@ -563,7 +610,7 @@
                             <p style="margin: 0;">version 1.0</p>
                         </div>
                     </div>
-                    <div style="display: flex; gap: 8px;">
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
                         <button onclick="window.open('https://lukzxdd.itch.io/', '_blank')">Store</button>
                         <button onclick="window.open('https://lukzxdd.itch.io/light/purchase?popup=1', 'Popup', 'width=500,height=400,scrollbars=no')">Download</button>
                     </div>
@@ -572,7 +619,6 @@
         </div>
 
         <div class="windows-grid">
-            <!-- Barra lateral esquerda -->
             <div>
                 <div class="window">
                     <div class="title-bar">
@@ -628,9 +674,7 @@
                 </div>
             </div>
 
-            <!-- Coluna direita -->
             <div class="right-column">
-                <!-- Header com vídeo -->
                 <div class="window">
                     <div class="title-bar">
                         <div class="title-bar-text">🎬 LIGHT - Official Trailer</div>
@@ -641,9 +685,9 @@
                         </div>
                     </div>
                     <div class="window-body">
-                        <h2 style="font-size: 28px; margin-bottom: 8px;">welcome to a <span style="color: #2f498c;">darkness</span> world</h2>
+                        <h2 style="font-size: 28px; margin-bottom: 8px; word-break: break-word;">welcome to a <span style="color: #2f498c;">darkness</span> world</h2>
                         <p style="margin-bottom: 16px;">In LIGHT, you are Operator 07. The Fade has consumed the stars. Keep the generator running. Don't let the light die.</p>
-                        <div style="display: flex; gap: 12px; margin-bottom: 20px;">
+                        <div style="display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap;">
                             <button onclick="window.open('https://lukzxdd.itch.io/light/purchase?popup=1', 'Popup', 'width=500,height=400,scrollbars=no')">Download Now!</button>
                             <button onclick="window.open('/demo/', '_self')">Try Demo</button>
                         </div>
@@ -653,7 +697,6 @@
                     </div>
                 </div>
 
-                <!-- Screenshots -->
                 <div id="media" class="window">
                     <div class="title-bar">
                         <div class="title-bar-text">🖼️ Screenshots</div>
@@ -685,7 +728,6 @@
                     </div>
                 </div>
 
-                <!-- Download -->
                 <div id="download" class="window">
                     <div class="title-bar">
                         <div class="title-bar-text">⬇️ Available on</div>
@@ -707,7 +749,6 @@
                     </div>
                 </div>
 
-                <!-- Core Values -->
                 <div class="window">
                     <div class="title-bar">
                         <div class="title-bar-text">⭐ Our Core Values</div>
@@ -728,7 +769,6 @@
                     </div>
                 </div>
 
-                <!-- Team -->
                 <div class="window">
                     <div class="title-bar">
                         <div class="title-bar-text">👥 Meet the Team</div>
@@ -767,7 +807,6 @@
             </div>
         </div>
 
-        <!-- FOOTER ESTILO MY COMPUTER -->
         <div class="mycomputer-footer">
             <div class="footer-content">
                 <div class="footer-info">
@@ -780,8 +819,8 @@
                     </div>
                 </div>
                 <div class="footer-links">
-                    <a href="/#about"><i class="fa-solid fa-folder"></i> About</a>
-                    <a href="/#download"><i class="fa-solid fa-download"></i> Download</a>
+                    <a href="#about"><i class="fa-solid fa-folder"></i> About</a>
+                    <a href="#download"><i class="fa-solid fa-download"></i> Download</a>
                     <a href="/updates/"><i class="fa-solid fa-newspaper"></i> DevLogs</a>
                     <a href="/brand-kit/"><i class="fa-solid fa-palette"></i> Brand Kit</a>
                     <a href="#" onclick="support()"><i class="fa-solid fa-envelope"></i> Support</a>
@@ -792,13 +831,11 @@
             </div>
         </div>
 
-        <!-- Status Bar -->
         <div class="status-bar">
             <span>📁 LIGHT.EXE | © 2024 Pale Luna Developer | Horror game inspired by the darkness within | System: Windows 98</span>
         </div>
     </div>
 
-    <!-- BARRA DE TAREFAS WINDOWS 98 -->
     <div class="taskbar">
         <div class="start-button" id="startButton">
             <i class="fa-solid fa-windows"></i>
@@ -822,7 +859,6 @@
         </div>
     </div>
 
-    <!-- MENU INICIAR -->
     <div class="start-menu" id="startMenu">
         <div class="start-menu-item" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); document.getElementById('startMenu').classList.remove('open')">
             <i class="fa-solid fa-tv"></i> <span>LIGHT</span>
@@ -850,7 +886,6 @@
     </div>
 
     <script>
-        // Relógio
         function updateClock() {
             const now = new Date();
             const hours = now.getHours().toString().padStart(2, '0');
@@ -860,7 +895,6 @@
         updateClock();
         setInterval(updateClock, 1000);
         
-        // Menu Iniciar
         const startButton = document.getElementById('startButton');
         const startMenu = document.getElementById('startMenu');
         
@@ -875,16 +909,10 @@
             }
         });
         
-        // Funções
-        function itch() {
-            window.open('https://lukzxdd.itch.io/light/purchase?popup=1', 'Popup', 'width=500,height=400,scrollbars=no');
-        }
-        
         function support() {
             window.open('mailto:contatosadberry@gmail.com', '_blank');
         }
         
-        // Smooth scroll para links internos
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
