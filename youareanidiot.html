@@ -438,6 +438,7 @@ body.crt::after {
 <body class="crt">
     <div id="windowsContainer"></div>
     
+    
     <div class="bsod-overlay" id="bsodOverlay">
         <div class="bsod-content">
             <div class="bsod-title">
@@ -501,6 +502,12 @@ body.crt::after {
         <audio id="rickrollAudio" preload="auto">
             <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
         </audio>
+    </div>
+
+    <div style="position: fixed; bottom: 60px; right: 20px; z-index: 100000;">
+        <button id="crtToggleBtn" class="taskbar-task" style="min-width: 70px; background: silver;">
+            <i class="fa-solid fa-tv"></i> CRT
+        </button>
     </div>
 
     <script>
@@ -948,6 +955,75 @@ function makeRescueBoxDraggable() {
 document.addEventListener('DOMContentLoaded', () => {
     makeRescueBoxDraggable();
 });
+
+
+
+
+
+const crtToggleBtn = document.getElementById('crtToggleBtn');
+let crtEnabled = localStorage.getItem('crtEnabled') === 'true';
+
+if (crtEnabled) {
+    document.body.classList.add('crt');
+    crtToggleBtn.innerHTML = '<i class="fa-solid fa-tv"></i> CRT ON';
+    crtToggleBtn.style.background = '#2f498c';
+    crtToggleBtn.style.color = 'white';
+} else {
+    crtToggleBtn.innerHTML = '<i class="fa-solid fa-tv"></i> CRT OFF';
+    crtToggleBtn.style.background = 'silver';
+    crtToggleBtn.style.color = '#222';
+}
+
+function toggleCRT() {
+    crtEnabled = !crtEnabled;
+    
+    if (crtEnabled) {
+        document.body.classList.add('crt');
+        crtToggleBtn.innerHTML = '<i class="fa-solid fa-tv"></i> CRT ON';
+        crtToggleBtn.style.background = '#2f498c';
+        crtToggleBtn.style.color = 'white';
+        localStorage.setItem('crtEnabled', 'true');
+        
+        try {
+            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            oscillator.type = 'sine';
+            oscillator.frequency.value = 880;
+            gainNode.gain.value = 0.1;
+            oscillator.start();
+            gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.1);
+            oscillator.stop(audioCtx.currentTime + 0.1);
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+        } catch(e) {}
+        
+    } else {
+        document.body.classList.remove('crt');
+        crtToggleBtn.innerHTML = '<i class="fa-solid fa-tv"></i> CRT OFF';
+        crtToggleBtn.style.background = 'silver';
+        crtToggleBtn.style.color = '#222';
+        localStorage.setItem('crtEnabled', 'false');
+        
+        try {
+            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            oscillator.type = 'sine';
+            oscillator.frequency.value = 440;
+            gainNode.gain.value = 0.1;
+            oscillator.start();
+            gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.1);
+            oscillator.stop(audioCtx.currentTime + 0.1);
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+        } catch(e) {}
+    }
+}
+
+crtToggleBtn.addEventListener('click', toggleCRT);
     </script>
 </body>
 </html>
