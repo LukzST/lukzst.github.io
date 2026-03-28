@@ -182,6 +182,143 @@
         }
     }
 
+
+.retro-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.retro-popup-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.retro-popup {
+    background: var(--zen-paper);
+    border-radius: 1.5rem;
+    max-width: 450px;
+    width: 90%;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--zen-coral);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+    animation: popupGlow 2s infinite;
+}
+
+.retro-popup-overlay.show .retro-popup {
+    transform: scale(1);
+}
+
+@keyframes popupGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(247, 111, 83, 0.4); }
+    50% { box-shadow: 0 0 0 10px rgba(247, 111, 83, 0); }
+}
+
+.popup-icon {
+    font-size: 4rem;
+    color: var(--zen-coral);
+    margin-bottom: 1rem;
+}
+
+.popup-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--zen-dark), var(--zen-coral));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.popup-text {
+    color: var(--zen-dark);
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.popup-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.popup-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    font-family: inherit;
+}
+
+.popup-btn-primary {
+    background: var(--zen-coral);
+    color: white;
+}
+
+.popup-btn-primary:hover {
+    transform: scale(1.05);
+    background: #ff8a6e;
+}
+
+.popup-btn-secondary {
+    background: var(--zen-subtle);
+    color: var(--zen-dark);
+}
+
+.popup-btn-secondary:hover {
+    transform: scale(1.05);
+    background: var(--zen-muted);
+}
+
+.retro-features {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+}
+
+.retro-feature {
+    background: var(--zen-subtle);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.retro-feature i {
+    color: var(--zen-coral);
+}
+
+@media (max-width: 500px) {
+    .popup-title {
+        font-size: 1.4rem;
+    }
+    .popup-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}
     </style>
 </head>
 <body class="min-h-screen overflow-x-hidden bg-paper font-['bricolage-grotesque'] text-dark">
@@ -495,7 +632,62 @@
         Back to Top <i class="fa-solid fa-arrow-up"></i>
     </button>
 
+<div class="retro-popup-overlay" id="retroPopup">
+    <div class="retro-popup">
+        <div class="popup-icon">
+            <i class="fa-brands fa-windows"></i>
+        </div>
+        <h2 class="popup-title">Windows 98 Edition</h2>
+        <p class="popup-text">
+            Experience LIGHT like never before!<br>
+            We've created a special retro version inspired by Windows 98.
+        </p>
+        <div class="retro-features">
+            <div class="retro-feature">
+                <i class="fa-solid fa-tv"></i> Retro UI
+            </div>
+            <div class="retro-feature">
+                <i class="fa-solid fa-window-restore"></i> Movable Windows
+            </div>
+            <div class="retro-feature">
+                <i class="fa-solid fa-music"></i> 90s Vibe
+            </div>
+        </div>
+        <div class="popup-buttons">
+            <button class="popup-btn popup-btn-primary" onclick="window.location.href='/index-98.html'">
+                <i class="fa-brands fa-windows"></i> Try Retro Mode
+            </button>
+            <button class="popup-btn popup-btn-secondary" id="closePopup">
+                <i class="fa-solid fa-xmark"></i> Maybe Later
+            </button>
+        </div>
+        <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 1rem;">
+            You can always find Retro Mode in the menu
+        </p>
+    </div>
+</div>
+
     <script>
+const popup = document.getElementById('retroPopup');
+const closePopupBtn = document.getElementById('closePopup');
+
+if (!localStorage.getItem('retroPopupShown')) {
+    setTimeout(() => {
+        popup.classList.add('show');
+    }, 1500);
+}
+
+closePopupBtn.addEventListener('click', () => {
+    popup.classList.remove('show');
+    localStorage.setItem('retroPopupShown', 'true');
+});
+
+popup.addEventListener('click', (e) => {
+    if (e.target === popup) {
+        popup.classList.remove('show');
+        localStorage.setItem('retroPopupShown', 'true');
+    }
+});
 
         const backToTop = document.getElementById('backToTop');
 
