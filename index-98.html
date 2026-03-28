@@ -1122,7 +1122,7 @@ body.crt::after {
                             <li><a href="/index-98-demo.html">🎮 Demo</a></li>
                             <li><a href="/index-98-devlogs.html">📝 DevLogs</a></li>
                             <li><a href="/brand-kit/">🎨 Brand Kit</a></li>
-                            <li><a href="/">🌞 Modern Mode</a></li>
+                            <li><a href="#" onclick="modernModeShutdown(); return false;">🌞 Modern Mode</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1484,6 +1484,90 @@ body.crt::after {
 </div>
 
     <script>
+
+function modernModeShutdown() {
+    const startMenu = document.getElementById('startMenu');
+    if (startMenu && startMenu.classList.contains('open')) {
+        startMenu.classList.remove('open');
+    }
+    
+    let shutdownOverlay = document.getElementById('shutdownOverlayModern');
+    if (!shutdownOverlay) {
+        shutdownOverlay = document.createElement('div');
+        shutdownOverlay.id = 'shutdownOverlayModern';
+        shutdownOverlay.className = 'shutdown-overlay';
+        shutdownOverlay.innerHTML = `
+            <div class="shutdown-message">
+                <p>Returning to Modern Mode...</p>
+            </div>
+        `;
+        document.body.appendChild(shutdownOverlay);
+        
+        const style = document.createElement('style');
+        style.textContent = `
+            #shutdownOverlayModern {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: #000000;
+                z-index: 99999999;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                font-family: "Pixelated MS Sans Serif", Arial;
+                color: #ffffff;
+                text-align: center;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease;
+            }
+            #shutdownOverlayModern.show {
+                opacity: 1;
+                visibility: visible;
+            }
+            #shutdownOverlayModern .shutdown-message {
+                animation: shutdownPulse 1s infinite;
+            }
+            #shutdownOverlayModern .shutdown-message i {
+                font-size: 64px;
+                margin-bottom: 20px;
+            }
+            #shutdownOverlayModern .shutdown-message p {
+                font-size: 18px;
+                letter-spacing: 2px;
+                margin-top: 20px;
+            }
+            #shutdownOverlayModern .shutdown-text {
+                font-size: 14px;
+                margin-top: 30px;
+                color: #aaaaaa;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    
+    shutdownOverlay.classList.add('show');
+    
+    let dotCount = 0;
+    const dotsSpan = document.getElementById('shutdownDotsModern');
+    const dotInterval = setInterval(() => {
+        dotCount = (dotCount + 1) % 4;
+        if (dotsSpan) dotsSpan.innerHTML = '.'.repeat(dotCount);
+    }, 500);
+    
+    setTimeout(() => {
+        clearInterval(dotInterval);
+        const msg = shutdownOverlay.querySelector('.shutdown-message p');
+        if (msg) msg.innerHTML = 'It is now safe to switch to Modern Mode.';
+    }, 2000);
+
+    setTimeout(() => {
+        window.location.href = '/';
+    }, 3000);
+}
 
 
 const shutdownBtn = document.getElementById('shutdownBtn');
