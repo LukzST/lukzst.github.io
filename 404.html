@@ -1,183 +1,363 @@
 <!DOCTYPE html>
-<html lang="pt-br" data-theme="dark">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 | Lost in the Dark</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.7">
+    <title>404 | Lost in the Dark - Windows 98 Edition</title>
     <link rel="shortcut icon" href="/Public/ICO/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/Public/CSS/cssfoda.css">
-    <link rel="stylesheet" href="/Public/CSS/cssfoda2.css">
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
-        @keyframes glitch {
-            0%, 100% { transform: skew(0deg, 0deg); }
-            95% { transform: skew(0deg, 0deg); }
-            96% { transform: skew(2deg, 1deg); }
-            97% { transform: skew(-1deg, -0.5deg); }
-            98% { transform: skew(0deg, 0deg); }
+        body {
+            background: #008080 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32"><rect width="16" height="16" fill="%23006666"/><rect x="16" width="16" height="16" fill="%23007777"/><rect y="16" width="16" height="16" fill="%23007777"/><rect x="16" y="16" width="16" height="16" fill="%23008888"/></svg>');
+            background-repeat: repeat;
+            font-size: 11px;
+            font-family: "Pixelated MS Sans Serif", Arial;
+            color: #222;
+            line-height: 1.4;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
         
-        @keyframes glitch-overlay {
-            0%, 100% { transform: translate(0, 0); opacity: 0; }
-            95% { transform: translate(0, 0); opacity: 0; }
-            96% { transform: translate(-2px, 1px); opacity: 0.5; }
-            97% { transform: translate(2px, -1px); opacity: 0.5; }
-            98% { transform: translate(0, 0); opacity: 0; }
+        .desktop {
+            max-width: 700px;
+            margin: 0 auto;
+            width: 100%;
         }
         
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out;
+        .window {
+            background: silver;
+            box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #dfdfdf, inset -2px -2px grey, inset 2px 2px #fff;
+            padding: 3px;
         }
         
-        .glitch-text {
-            animation: glitch 3s infinite;
+        .window-body {
+            margin: 12px;
+            background: silver;
+            text-align: center;
         }
         
-        .glitch-overlay {
-            animation: glitch-overlay 2s infinite;
+        .title-bar {
+            background: linear-gradient(90deg, #2f498c, #4a6aa8);
+            padding: 3px 2px 3px 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .title-bar-text {
+            color: white;
+            font-weight: bold;
+            font-size: 11px;
+            letter-spacing: 0;
+        }
+        
+        .title-bar-controls {
+            display: flex;
+            gap: 2px;
+        }
+        
+        .title-bar-controls button {
+            min-width: 16px;
+            min-height: 14px;
+            padding: 0;
+            background: silver;
+            box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .error-number {
+            font-size: 120px;
+            font-weight: bold;
+            color: #2f498c;
+            font-family: "Pixelated MS Sans Serif", Arial;
+            text-shadow: 4px 4px 0 #0a0a0a;
+            margin: 20px 0;
+            letter-spacing: 10px;
+        }
+        
+        .error-text {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 16px;
+            color: #222;
+        }
+        
+        .error-description {
+            font-size: 11px;
+            margin-bottom: 24px;
+            color: #2f498c;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        button, .btn {
+            background: silver;
+            border: none;
+            box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
+            color: #222;
+            padding: 6px 16px;
+            min-height: 28px;
+            cursor: pointer;
+            font-family: "Pixelated MS Sans Serif", Arial;
+            font-size: 11px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        button:active, .btn:active {
+            box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a;
+        }
+        
+        a {
+            color: #2f498c;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: #444;
+        }
+        
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin: 24px 0;
+        }
+        
+        .separator {
+            border: none;
+            border-top: 1px solid #808080;
+            margin: 16px 0;
+            box-shadow: inset 0 1px 0 #fff;
+        }
+        
+        .links-section {
+            margin-top: 20px;
+            padding-top: 12px;
+        }
+        
+        .links-section h3 {
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #222;
+        }
+        
+        .links-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+        }
+        
+        .links-list a {
+            font-size: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .status-bar {
+            background: silver;
+            box-shadow: inset -1px -1px #dfdfdf, inset 1px 1px grey;
+            padding: 2px 4px;
+            margin-top: 16px;
+            font-size: 10px;
+            text-align: left;
         }
         
         .music-control {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 50;
-            background: var(--zen-subtle);
-            backdrop-filter: blur(8px);
-            padding: 10px 20px;
-            border-radius: 9999px;
+            bottom: 12px;
+            left: 12px;
+            background: silver;
+            box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff;
+            padding: 6px 12px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid var(--zen-subtle);
+            font-family: "Pixelated MS Sans Serif", Arial;
+            font-size: 10px;
+            z-index: 1000;
         }
         
-        .music-control:hover {
-            border-color: var(--zen-coral);
-            transform: scale(1.05);
+        .music-control:active {
+            box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a;
         }
         
         .music-info {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 50;
-            background: var(--zen-subtle);
-            backdrop-filter: blur(8px);
-            padding: 8px 16px;
-            border-radius: 9999px;
+            bottom: 12px;
+            right: 12px;
+            background: silver;
+            box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff;
+            padding: 6px 12px;
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 0.75rem;
-            color: var(--zen-dark);
-            opacity: 0.7;
+            gap: 6px;
+            font-size: 9px;
+            z-index: 1000;
         }
         
         .music-info a:hover {
-            color: var(--zen-coral);
+            color: #2f498c;
         }
         
-        .vignette {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 10;
-            box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.2);
-        }
-        
-        @media (max-width: 640px) {
+        @media (max-width: 600px) {
+            body {
+                padding: 12px;
+            }
+            .error-number {
+                font-size: 80px;
+                letter-spacing: 5px;
+            }
+            .error-text {
+                font-size: 14px;
+            }
+            .button-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            button, .btn {
+                justify-content: center;
+                width: 100%;
+            }
+            .links-list {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
             .music-control span {
                 display: none;
             }
             .music-info {
-                font-size: 0.6rem;
-                bottom: 15px;
-                right: 15px;
+                font-size: 7px;
+                bottom: 8px;
+                right: 8px;
             }
+            .music-control {
+                bottom: 8px;
+                left: 8px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .error-number {
+                font-size: 60px;
+            }
+            .window-body {
+                margin: 8px;
+            }
+        }
+        
+        ::-webkit-scrollbar {
+            width: 16px;
+            height: 16px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #c3c3c3;
+            border: 1px solid #808080;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #c3c3c3;
+            border: 1px solid;
+            border-top-color: #dfdfdf;
+            border-left-color: #dfdfdf;
+            border-right-color: #0a0a0a;
+            border-bottom-color: #0a0a0a;
+        }
+        
+        .logo-svg {
+            width: 32px;
+            height: 32px;
+            color: #2f498c;
+            margin-bottom: 8px;
         }
     </style>
 </head>
-<body class="min-h-screen overflow-x-hidden bg-paper font-['bricolage-grotesque'] text-dark">
-
-    <audio id="bg-audio"></audio>
-
-    <div class="music-control" id="musicControl">
-        <i class="fas fa-volume-mute text-coral text-lg" id="volumeIcon"></i>
-        <span class="text-sm font-medium text-dark">Toggle Music</span>
-    </div>
-
-    <div class="music-info">
-        <i class="fas fa-music text-coral text-xs"></i>
-        <a href="https://youtube.com/playlist?list=PLstaXaIuDSEidUQAif2ptoqswAv8qTJ6y" target="_blank" class="hover:text-coral transition-colors">
-            <span id="musicName">The Last Choice - LIGHT OST</span>
-        </a>
-    </div>
-
-    <div class="vignette"></div>
-
-    <main class="container min-h-screen flex items-center justify-center">
-        <div class="text-center fade-in-up">
-            <div class="relative mb-8">
-                <h1 class="font-bold font-bold text-coral text-[clamp(8rem,20vw,15rem)] leading-none tracking-[-5px] glitch-text" style="font-size: 16rem;">
-                    404
-                </h1>
-                <div class="absolute top-0 left-0 w-full h-full font-bold font-bold text-[clamp(8rem,20vw,15rem)] text-transparent glitch-overlay pointer-events-none" style="font-size: 16rem;">
-                    404
+<body>
+    <div class="desktop">
+        <div class="window">
+            <div class="title-bar">
+                <div class="title-bar-text">⚠️ LIGHT - Error 404</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Maximize"></button>
+                    <button aria-label="Close"></button>
                 </div>
             </div>
-            
-            <p class="text-2xl tracking-wider mb-4 text-dark opacity-80 uppercase font-semibold">
-                You are lost in the dark
-            </p>
-            
-            <p class="max-w-md mx-auto mb-8 text-dark opacity-60 leading-relaxed">
-                The page you're looking for has been consumed by the Fade. But don't worry, the light still guides you home.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                <a href="/" class="inline-flex items-center justify-center gap-2 rounded-xl font-bold px-6 py-4 transition-all duration-150 hover:scale-[1.02] active:scale-[0.98] w-fit border-dark bg-dark text-paper shadow-lg">
-                    <i class="fa-solid fa-chevron-left"></i>
-                    Return to Light
-                </a>
-                <a href="/#download" class="inline-flex items-center justify-center gap-2 rounded-xl px-6 py-4 transition-all duration-150 hover:scale-[1.02] active:scale-[0.98] w-fit bg-subtle text-dark">
-                    <i class="fa-solid fa-download"></i>
-                    Download Game
-                </a>
-                <a href="/demo/" class="inline-flex items-center justify-center gap-2 rounded-xl px-6 py-4 transition-all duration-150 hover:scale-[1.02] active:scale-[0.98] w-fit bg-subtle text-dark">
-                    <i class="fa-solid fa-gamepad"></i>
-                    Try Demo
-                </a>
-            </div>
-            
-            <div class="pt-8 border-t border-subtle">
-                <h3 class="text-sm font-semibold mb-3 text-dark opacity-70" style="margin-bottom:10px; margin-top:20px">Maybe you're looking for:</h3>
-                <div class="flex flex-wrap gap-4 justify-center">
-                    <a href="/#about" class="text-sm text-dark opacity-60 hover:text-coral hover:opacity-100 transition-colors">About the Game</a>
-                    <a href="/#screenshots" class="text-sm text-dark opacity-60 hover:text-coral hover:opacity-100 transition-colors">Screenshots</a>
-                    <a href="/updates/" class="text-sm text-dark opacity-60 hover:text-coral hover:opacity-100 transition-colors">DevLogs</a>
-                    <a href="/demo/" class="text-sm text-dark opacity-60 hover:text-coral hover:opacity-100 transition-colors">Demo Version</a>
+            <div class="window-body">
+                <div class="error-number">404</div>
+                <div class="error-text">You are lost in the dark</div>
+                <div class="error-description">
+                    The page you're looking for has been consumed by the Fade. But don't worry, the light still guides you home.
+                </div>
+                
+                <div class="button-group">
+                    <button onclick="window.location.href='/index-98.html'">
+                        <i class="fa-solid fa-arrow-left"></i> Return to Light
+                    </button>
+                    <button onclick="window.location.href='/index-98.html#download'">
+                        <i class="fa-solid fa-download"></i> Download Game
+                    </button>
+                    <button onclick="window.location.href='/index-98-demo.html'">
+                        <i class="fa-solid fa-gamepad"></i> Try Demo
+                    </button>
+                </div>
+                
+                <div class="separator"></div>
+                
+                <div class="links-section">
+                    <h3>📁 Maybe you're looking for:</h3>
+                    <div class="links-list">
+                        <a href="/index-98.html#about"><i class="fa-solid fa-folder"></i> About the Game</a>
+                        <a href="/index-98.html#media"><i class="fa-solid fa-image"></i> Screenshots</a>
+                        <a href="/index-98-devlogs.html"><i class="fa-solid fa-newspaper"></i> DevLogs</a>
+                        <a href="/index-98-demo.html"><i class="fa-solid fa-gamepad"></i> Demo Version</a>
+                    </div>
+                </div>
+                
+                <div class="status-bar">
+                    <span>📁 ERROR.EXE | File not found | Path: /unknown | Code: 404</span>
                 </div>
             </div>
         </div>
-    </main>
-
+    </div>
+    
+    <div class="music-control" id="musicControl">
+        <i class="fas fa-volume-mute" id="volumeIcon"></i>
+        <span>Toggle Music</span>
+    </div>
+    
+    <div class="music-info">
+        <i class="fas fa-music"></i>
+        <a href="https://youtube.com/playlist?list=PLstaXaIuDSEidUQAif2ptoqswAv8qTJ6y" target="_blank">
+            <span id="musicName">The Last Choice - LIGHT OST</span>
+        </a>
+    </div>
+    
+    <audio id="bg-audio" preload="auto"></audio>
+    
     <script>
         const audio = document.getElementById('bg-audio');
         const musicControl = document.getElementById('musicControl');
@@ -206,7 +386,7 @@
                 audio.play();
             }
         });
-
+        
         musicControl.addEventListener('click', function(e) {
             e.stopPropagation();
             
@@ -230,6 +410,13 @@
                     volumeIcon.classList.add('fa-volume-mute');
                     isMuted = true;
                 }
+            }
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.code === 'Space' || e.code === 'KeyM') {
+                e.preventDefault();
+                musicControl.click();
             }
         });
     </script>
