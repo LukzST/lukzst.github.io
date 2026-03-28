@@ -990,7 +990,7 @@ body.crt::before {
         transparent 4px
     );
     pointer-events: none;
-    z-index: 9998;
+    z-index: 999999;
 }
 
 body.crt::after {
@@ -1006,7 +1006,13 @@ body.crt::after {
         rgba(0, 0, 0, 0.25) 100%
     );
     pointer-events: none;
-    z-index: 9998;
+    z-index: 999999;
+}
+
+body.crt::before,
+body.crt::after {
+    z-index: 2147483647;
+    pointer-events: none;
 }
 
     </style>
