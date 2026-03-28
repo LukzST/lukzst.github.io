@@ -431,6 +431,26 @@ body.crt::after {
     z-index: 2147483647;
     pointer-events: none;
 }
+
+html, body {
+    overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+    html, body {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    body::-webkit-scrollbar {
+        width: 0;
+        background: transparent;
+    }
+    
+    body {
+        scrollbar-width: none;
+    }
+}
     </style>
 </head>
 <body class="crt">
