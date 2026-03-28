@@ -720,6 +720,7 @@ body.crt::after {
     </div>
     
     <script>
+
 const shutdownBtn = document.getElementById('shutdownBtn');
 const shutdownOverlay = document.getElementById('shutdownOverlay');
 const shutdownDots = document.getElementById('shutdownDots');
@@ -767,7 +768,7 @@ function performShutdown() {
     if (startMenu && startMenu.classList.contains('open')) {
         startMenu.classList.remove('open');
     }
-    
+
     const dotInterval = animateShutdownDots();
     
     setTimeout(() => {
