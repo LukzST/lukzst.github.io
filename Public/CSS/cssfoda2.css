@@ -367,7 +367,7 @@ video {
 
 [data-theme="dark"] {
   --zen-paper: #1f1f1f;
-  --zen-dark: #d1cfc0;
+  --zen-dark: #92a6e7;
   --zen-muted: rgba(255, 255, 255, 0.05);
   --zen-subtle: rgba(255, 255, 255, 0.1);
   --zen-coral: #f76f53;
@@ -1248,7 +1248,7 @@ h1 .italic {
 }
 
 .bg-paper {
-  background-color: #090909;
+  background-color: #060609;
 }
 
 .bg-red-200 {
