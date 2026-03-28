@@ -396,9 +396,27 @@
         
         function beep() {
             try {
-                const audio = new Audio('data:audio/wav;base64,U3RlYWQgbm8gc291bmRzIGF2YWlsYWJsZQ==');
-                audio.play().catch(e => {});
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                
+                oscillator.type = 'sine';
+                oscillator.frequency.value = 880;
+                
+                gainNode.gain.value = 0.2;
+                
+                oscillator.start();
+                gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.2);
+                oscillator.stop(audioCtx.currentTime + 0.2);
+                
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
             } catch(e) {}
+            
             if (navigator.vibrate) navigator.vibrate(50);
         }
         
