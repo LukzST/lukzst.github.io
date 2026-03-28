@@ -182,6 +182,91 @@
         }
     }
 
+    /* NOVAS CORES PRINCIPAIS */
+:root {
+  --zen-paper: #060609;      /* Fundo principal */
+  --zen-dark: #92a6e7;       /* Texto principal */
+  --zen-muted: rgba(146, 166, 231, 0.05);
+  --zen-subtle: rgba(146, 166, 231, 0.1);
+  --zen-coral: #6d8ae0;      /* Links e hover */
+}
+
+/* CORES DOS BOTÕES */
+.bg-dark, 
+button.bg-dark, 
+a.bg-dark {
+  background-color: #1e1e2e !important; /* Botão principal (Download Now, Store) */
+}
+
+.bg-subtle,
+a.bg-subtle {
+  background-color: #08080d !important; /* Botão secundário (Try Demo) */
+}
+
+/* Garante que o tema escuro use as mesmas cores */
+[data-theme="dark"] {
+  --zen-paper: #060609;
+  --zen-dark: #92a6e7;
+  --zen-muted: rgba(146, 166, 231, 0.05);
+  --zen-subtle: rgba(146, 166, 231, 0.1);
+  --zen-coral: #6d8ae0;
+}
+
+/* Textos em negrito/grossos (títulos, footers, etc) */
+h1, h2, h3, h4, 
+.font-bold,
+strong,
+b,
+#footer-title,
+footer .text-6xl,
+footer .font-bold {
+  color: #92a6e7 !important; /* Mesma cor do texto principal */
+  font-weight: 700;
+}
+
+/* Se quiser um tom diferente para dar destaque */
+.text-coral,
+span.text-coral,
+h1 .text-coral,
+h2 .text-coral {
+  color: #6d8ae0 !important; /* Azul mais vibrante para destaques */
+}
+
+/* Título "Pale Luna Developer" específico */
+#footer-title {
+  color: #92a6e7 !important;
+  font-weight: 800 !important; /* Mais negrito */
+}
+
+/* Outros textos em negrito no footer */
+footer .font-semibold,
+footer h2 {
+  color: #92a6e7 !important;
+  font-weight: 600;
+}
+
+/* Ícones sociais no hover */
+.social-icon:hover {
+  color: #6d8ae0 !important;
+}
+
+/* Links do menu no hover */
+nav a:hover,
+.mobile-menu nav a:hover {
+  color: #6d8ae0 !important;
+}
+
+/* Botão "Back to Top" */
+.back-to-top {
+  background: #1e1e2e !important;
+  color: #92a6e7 !important;
+}
+
+.back-to-top:hover {
+  background: #6d8ae0 !important;
+  color: #060609 !important;
+}
+
     </style>
 </head>
 <body class="min-h-screen overflow-x-hidden bg-paper font-['bricolage-grotesque'] text-dark">
