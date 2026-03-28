@@ -2,7 +2,7 @@
 <html lang="pt-br" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="robots" content="noindex, nofollow">
     <title>LIGHT</title>
     <link rel="stylesheet" href="/Public/CSS/cssfoda.css">
@@ -188,6 +188,27 @@
     }
     .back-to-top i {
         font-size: 1rem;
+    }
+}
+
+
+html, body {
+    overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+    html, body {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    body::-webkit-scrollbar {
+        width: 0;
+        background: transparent;
+    }
+    
+    body {
+        scrollbar-width: none;
     }
 }
     </style>

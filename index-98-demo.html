@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.7">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="robots" content="noindex, nofollow">
     <title>LIGHT - Demo Version (Windows 98 Edition)</title>
     <link rel="shortcut icon" href="/Public/ICO/favicon.ico" type="image/x-icon">
@@ -364,6 +364,26 @@
     .title-bar {
         cursor: default;
         touch-action: pan-y pinch-zoom;
+    }
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+    html, body {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    body::-webkit-scrollbar {
+        width: 0;
+        background: transparent;
+    }
+    
+    body {
+        scrollbar-width: none;
     }
 }
     </style>

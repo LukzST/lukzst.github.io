@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.7">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>LIGHT - Windows 98 Edition</title>
     <link rel="shortcut icon" href="/Public/ICO/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://unpkg.com/98.css">
@@ -769,6 +769,26 @@
 @keyframes popupFlash {
     0%, 100% { border-color: transparent; }
     50% { border-color: #2f498c; }
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+    html, body {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    body::-webkit-scrollbar {
+        width: 0;
+        background: transparent;
+    }
+    
+    body {
+        scrollbar-width: none;
+    }
 }
     </style>
 </head>
