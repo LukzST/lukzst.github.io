@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.7">
+    <meta name="robots" content="noindex, nofollow">
+    <title>LIGHT - Demo Version (Windows 98 Edition)</title>
+    <link rel="shortcut icon" href="/Public/ICO/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #008080 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32"><rect width="16" height="16" fill="%23006666"/><rect x="16" width="16" height="16" fill="%23007777"/><rect y="16" width="16" height="16" fill="%23007777"/><rect x="16" y="16" width="16" height="16" fill="%23008888"/></svg>');
+            background-repeat: repeat;
+            font-size: 11px;
+            font-family: "Pixelated MS Sans Serif", Arial;
+            color: #222;
+            line-height: 1.4;
+            padding-bottom: 50px;
+            min-height: 100vh;
+        }
+        
+        .desktop {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            padding: 20px;
+            padding-bottom: 60px;
+        }
+        
+        .window {
+            margin-bottom: 20px;
+            background: silver;
+            box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #dfdfdf, inset -2px -2px grey, inset 2px 2px #fff;
+            padding: 3px;
+        }
+        
+        .window-body {
+            margin: 8px;
+            background: silver;
+        }
+        
+        .title-bar {
+            background: linear-gradient(90deg, #2f498c, #4a6aa8);
+            padding: 3px 2px 3px 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .title-bar-text {
+            color: white;
+            font-weight: bold;
+            font-size: 11px;
+            letter-spacing: 0;
+        }
+        
+        .title-bar-controls {
+            display: flex;
+            gap: 2px;
+        }
+        
+        .title-bar-controls button {
+            min-width: 16px;
+            min-height: 14px;
+            padding: 0;
+            background: silver;
+            box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff;
+            border: none;
+            cursor: pointer;
+        }
+        
+        button, .btn {
+            background: silver;
+            border: none;
+            box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
+            color: #222;
+            padding: 4px 12px;
+            min-height: 23px;
+            cursor: pointer;
+            font-family: "Pixelated MS Sans Serif", Arial;
+            font-size: 11px;
+        }
+        
+        button:active, .btn:active {
+            box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a;
+        }
+        
+        a {
+            color: #2f498c;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: #444;
+        }
+        
+        .back-button {
+            margin-bottom: 16px;
+        }
+        
+        .download-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            font-size: 12px;
+        }
+        
+        .soon-badge {
+            display: inline-block;
+            background: #7c7c7c;
+            color: white;
+            padding: 2px 8px;
+            margin-left: 8px;
+            font-size: 9px;
+            box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff;
+        }
+        
+        .info-box {
+            background: #fff;
+            border: 2px solid;
+            border-top-color: #0a0a0a;
+            border-left-color: #0a0a0a;
+            border-right-color: #dfdfdf;
+            border-bottom-color: #dfdfdf;
+            padding: 12px;
+            margin: 16px 0;
+        }
+        
+        .status-bar {
+            background: silver;
+            box-shadow: inset -1px -1px #dfdfdf, inset 1px 1px grey;
+            padding: 2px 4px;
+            margin-top: 20px;
+            font-size: 10px;
+        }
+        
+        hr {
+            border: none;
+            border-top: 1px solid #808080;
+            margin: 8px 0;
+        }
+        
+        .taskbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: silver;
+            height: 48px;
+            box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
+            display: flex;
+            align-items: center;
+            padding: 0 4px;
+            z-index: 1000;
+            font-family: "Pixelated MS Sans Serif", Arial;
+        }
+        
+        .start-button {
+            background: silver;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 12px;
+            margin-right: 8px;
+            box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 13px;
+            min-width: 80px;
+        }
+        
+        .start-button:active {
+            box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a;
+        }
+        
+        .start-button i {
+            font-size: 18px;
+        }
+        
+        .start-menu {
+            position: fixed;
+            bottom: 48px;
+            left: 4px;
+            width: 280px;
+            background: silver;
+            box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
+            padding: 4px;
+            display: none;
+            z-index: 1001;
+        }
+        
+        .start-menu.open {
+            display: block;
+        }
+        
+        .start-menu-item {
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            margin: 2px 0;
+        }
+        
+        .start-menu-item:hover {
+            background: #2f498c;
+            color: white;
+        }
+        
+        .start-menu-separator {
+            height: 2px;
+            background: #808080;
+            margin: 4px 0;
+            box-shadow: inset 0 1px 0 #fff;
+        }
+        
+        .taskbar-tasks {
+            flex: 1;
+            display: flex;
+            gap: 4px;
+            overflow-x: auto;
+            height: 100%;
+            align-items: center;
+        }
+        
+        .taskbar-task {
+            background: silver;
+            padding: 4px 16px;
+            min-width: 140px;
+            text-align: center;
+            box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff;
+            cursor: pointer;
+            font-size: 11px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .taskbar-task.active {
+            background: #c3c3c3;
+            box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a;
+            font-weight: bold;
+        }
+        
+        .taskbar-clock {
+            background: silver;
+            padding: 4px 12px;
+            margin-left: 8px;
+            box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff;
+            font-family: monospace;
+            font-size: 11px;
+            min-width: 100px;
+            text-align: center;
+        }
+        
+        @media (max-width: 700px) {
+            .desktop {
+                padding: 12px;
+                padding-bottom: 60px;
+            }
+            .taskbar-task {
+                min-width: 100px;
+                padding: 4px 8px;
+            }
+            .start-button span {
+                display: none;
+            }
+            .start-button {
+                min-width: auto;
+                padding: 4px 10px;
+            }
+        }
+        
+        @media (max-width: 500px) {
+            .taskbar-clock {
+                display: none;
+            }
+            .taskbar-task {
+                min-width: 70px;
+                padding: 4px 6px;
+                font-size: 9px;
+            }
+            .start-button i {
+                font-size: 16px;
+            }
+            .window-body {
+                margin: 6px;
+            }
+            .title-bar-text {
+                font-size: 10px;
+            }
+        }
+        
+        ::-webkit-scrollbar {
+            width: 16px;
+            height: 16px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #c3c3c3;
+            border: 1px solid #808080;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #c3c3c3;
+            border: 1px solid;
+            border-top-color: #dfdfdf;
+            border-left-color: #dfdfdf;
+            border-right-color: #0a0a0a;
+            border-bottom-color: #0a0a0a;
+        }
+        
+        .logo-svg {
+            width: 48px;
+            height: 48px;
+            color: #2f498c;
+        }
+    </style>
+</head>
+<body>
+    <div class="desktop">
+        <div class="back-button">
+            <button onclick="window.location.href='/index-98.html'">
+                <i class="fa-solid fa-arrow-left"></i> Back to Main
+            </button>
+        </div>
+        
+        <div class="window">
+            <div class="title-bar">
+                <div class="title-bar-text">⬇️ Download Demo</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Maximize"></button>
+                    <button aria-label="Close"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <h2 style="font-size: 28px; margin-bottom: 8px; text-align: center;">DEMO VERSION</h2>
+                <p style="margin-bottom: 16px; text-align: center;">Experience the atmospheric horror before the full release</p>
+                
+                <div class="download-section">
+                    <button class="download-btn" onclick="window.open('https://raw.githubusercontent.com/LukzST/LIGHT/refs/heads/main/BETA/V3/LIGHT-BETA-V3.zip', '_blank')">
+                        <i class="fab fa-windows"></i> Download Windows Demo
+                    </button>
+                    <button class="download-btn" disabled style="opacity: 0.6; cursor: not-allowed;">
+                        <i class="fab fa-linux"></i> Linux Demo <span class="soon-badge">SOON</span>
+                    </button>
+                </div>
+                
+                <div class="info-box">
+                    <p><strong>⚠️ Important Information</strong></p>
+                    <hr>
+                    <p>This demo version was created using older development tools and may not fully represent the final game experience. Some features, visuals, and mechanics have been refined in the full version.</p>
+                    <p style="margin-top: 12px; font-style: italic;">That said, this demo has its own unique charm that even the final version can't replicate...</p>
+                </div>
+                
+                <div class="info-box">
+                    <p><strong>💾 Save Data</strong></p>
+                    <hr>
+                    <p>Your progress in this demo will not carry over to the full version of LIGHT. The demo is designed as a standalone experience that gives you a taste of the atmosphere and gameplay.</p>
+                    <p style="margin-top: 12px; font-style: italic;">Don't worry though — the demo is short enough that you'll want to replay it anyway!</p>
+                </div>
+                
+                <div class="info-box">
+                    <p><strong>📋 System Requirements</strong></p>
+                    <hr>
+                    <p><strong>Minimum:</strong> Windows 7/8/10/11, 2GB RAM, DirectX 10 compatible</p>
+                    <p><strong>Recommended:</strong> Windows 10/11, 4GB RAM, Dedicated GPU</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="window">
+            <div class="title-bar">
+                <div class="title-bar-text">❓ Need Help?</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Close"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <p>Having trouble running the demo? Check out our support page or report an issue on GitHub.</p>
+                <div style="display: flex; gap: 12px; margin-top: 12px; flex-wrap: wrap;">
+                    <button onclick="window.open('https://github.com/LukzST/LIGHT/issues', '_blank')">
+                        <i class="fab fa-github"></i> Report Issue
+                    </button>
+                    <button onclick="window.open('mailto:contatosadberry@gmail.com', '_blank')">
+                        <i class="fa-solid fa-envelope"></i> Contact Support
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="window" style="margin-top: 8px;">
+            <div class="title-bar">
+                <div class="title-bar-text">
+
+                </div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <span>Made with passion. We care about the light, not the void. Stay tuned for more updates.</span>
+            </div>
+        </div>
+        </div>
+    </div>
+    
+    <div class="taskbar">
+        <div class="start-button" id="startButton">
+            <i class="fa-brands fa-windows"></i>
+            <span>Iniciar</span>
+        </div>
+        
+        <div class="taskbar-tasks">
+            <div class="taskbar-task" onclick="window.location.href='/index-98.html'">
+                <i class="fa-solid fa-tv"></i> LIGHT Main
+            </div>
+            <div class="taskbar-task active" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <i class="fa-solid fa-download"></i> Demo Download
+            </div>
+        </div>
+        
+        <div class="taskbar-clock" id="clock">
+            00:00
+        </div>
+    </div>
+    
+    <div class="start-menu" id="startMenu">
+        <div class="start-menu-item" onclick="window.location.href='/index-98.html'; document.getElementById('startMenu').classList.remove('open')">
+            <i class="fa-solid fa-tv"></i> <span>LIGHT Main</span>
+        </div>
+        <div class="start-menu-item" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); document.getElementById('startMenu').classList.remove('open')">
+            <i class="fa-solid fa-download"></i> <span>Demo Version</span>
+        </div>
+        <div class="start-menu-separator"></div>
+        <div class="start-menu-item" onclick="window.open('https://github.com/LukzST', '_blank'); document.getElementById('startMenu').classList.remove('open')">
+            <i class="fa-brands fa-github"></i> <span>GitHub</span>
+        </div>
+        <div class="start-menu-item" onclick="window.open('https://www.instagram.com/PlayLightGame', '_blank'); document.getElementById('startMenu').classList.remove('open')">
+            <i class="fa-brands fa-instagram"></i> <span>Instagram</span>
+        </div>
+        <div class="start-menu-separator"></div>
+        <div class="start-menu-item" onclick="window.open('mailto:contatosadberry@gmail.com', '_blank'); document.getElementById('startMenu').classList.remove('open')">
+            <i class="fa-solid fa-envelope"></i> <span>Support</span>
+        </div>
+        <div class="start-menu-item" onclick="window.location.reload(); document.getElementById('startMenu').classList.remove('open')">
+            <i class="fa-solid fa-power-off"></i> <span>Reiniciar...</span>
+        </div>
+    </div>
+    
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            document.getElementById('clock').innerHTML = `${hours}:${minutes}`;
+        }
+        updateClock();
+        setInterval(updateClock, 1000);
+        
+        const startButton = document.getElementById('startButton');
+        const startMenu = document.getElementById('startMenu');
+        
+        startButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            startMenu.classList.toggle('open');
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (!startMenu.contains(e.target) && !startButton.contains(e.target)) {
+                startMenu.classList.remove('open');
+            }
+        });
+    </script>
+</body>
+</html>
