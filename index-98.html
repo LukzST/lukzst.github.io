@@ -584,6 +584,33 @@
                 gap: 8px;
             }
         }
+
+.window {
+    position: relative;
+    transition: opacity 0.2s ease;
+}
+
+.window.dragging {
+    opacity: 0.95;
+    z-index: 9999;
+    cursor: grabbing;
+}
+
+.title-bar {
+    cursor: grab;
+    user-select: none;
+}
+
+.title-bar:active {
+    cursor: grabbing;
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .title-bar {
+        cursor: default;
+        touch-action: pan-y pinch-zoom;
+    }
+}
     </style>
 </head>
 <body>
@@ -939,6 +966,115 @@
                 }
             });
         });
+
+        // ==================== FUNÇÃO PARA MOVER JANELAS ====================
+function makeWindowDraggable(windowElement) {
+    const titleBar = windowElement.querySelector('.title-bar');
+    if (!titleBar) return;
+    
+    let isDragging = false;
+    let offsetX, offsetY;
+    
+    function getMouseOffset(e) {
+        const rect = windowElement.getBoundingClientRect();
+        const clientX = e.clientX ?? (e.touches ? e.touches[0].clientX : 0);
+        const clientY = e.clientY ?? (e.touches ? e.touches[0].clientY : 0);
+        return { x: clientX - rect.left, y: clientY - rect.top };
+    }
+    
+    function startDrag(e) {
+        if (e.target.closest('.title-bar-controls')) return;
+        if (e.target.tagName === 'BUTTON') return;
+        
+        e.preventDefault();
+        
+        const offset = getMouseOffset(e);
+        offsetX = offset.x;
+        offsetY = offset.y;
+        isDragging = true;
+        
+        if (windowElement.style.position !== 'absolute') {
+            const rect = windowElement.getBoundingClientRect();
+            windowElement.style.position = 'absolute';
+            windowElement.style.left = rect.left + 'px';
+            windowElement.style.top = rect.top + 'px';
+            windowElement.style.width = rect.width + 'px';
+            windowElement.style.margin = '0';
+        }
+        
+        windowElement.classList.add('dragging');
+        document.body.style.userSelect = 'none';
+        document.body.style.cursor = 'grabbing';
+    }
+    
+    function onDrag(e) {
+        if (!isDragging) return;
+        e.preventDefault();
+        
+        const clientX = e.clientX ?? (e.touches ? e.touches[0].clientX : 0);
+        const clientY = e.clientY ?? (e.touches ? e.touches[0].clientY : 0);
+        
+        windowElement.style.left = (clientX - offsetX) + 'px';
+        windowElement.style.top = (clientY - offsetY) + 'px';
+    }
+    
+    function stopDrag() {
+        if (!isDragging) return;
+        isDragging = false;
+        windowElement.classList.remove('dragging');
+        document.body.style.userSelect = '';
+        document.body.style.cursor = '';
+    }
+    
+    titleBar.addEventListener('mousedown', startDrag);
+    titleBar.addEventListener('touchstart', startDrag, { passive: false });
+    window.addEventListener('mousemove', onDrag);
+    window.addEventListener('touchmove', onDrag, { passive: false });
+    window.addEventListener('mouseup', stopDrag);
+    window.addEventListener('touchend', stopDrag);
+}
+
+function setupWindowControls(windowElement) {
+    const controls = windowElement.querySelector('.title-bar-controls');
+    if (!controls) return;
+    
+    const buttons = controls.querySelectorAll('button');
+    const closeBtn = buttons[buttons.length - 1];
+    
+    if (closeBtn) {
+        closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            windowElement.style.transition = 'opacity 0.2s ease';
+            windowElement.style.opacity = '0';
+            
+            setTimeout(() => {
+                windowElement.style.display = 'none';
+                windowElement.style.opacity = '';
+                
+                setTimeout(() => {
+                    windowElement.style.display = 'block';
+                    windowElement.style.opacity = '0';
+                    windowElement.style.transition = 'opacity 0.2s ease';
+                    
+                    windowElement.offsetHeight;
+                    windowElement.style.opacity = '1';
+                    
+                    setTimeout(() => {
+                        windowElement.style.transition = '';
+                    }, 200);
+                }, 2000);
+            }, 200);
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const windows = document.querySelectorAll('.window');
+    windows.forEach(windowElement => {
+        makeWindowDraggable(windowElement);
+        setupWindowControls(windowElement);
+    });
+});
     </script>
 </body>
 </html>

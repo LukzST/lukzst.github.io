@@ -293,6 +293,41 @@
             color: #2f498c;
             margin-bottom: 8px;
         }
+
+.window {
+    position: relative;
+    resize: none;
+    overflow: visible;
+    transition: none !important;
+    box-sizing: border-box;
+}
+
+.window-body {
+    overflow: visible;
+}
+
+.window.dragging {
+    opacity: 0.98;
+    z-index: 9999;
+    transition: none !important;
+}
+
+.title-bar {
+    cursor: grab;
+    user-select: none;
+}
+
+.title-bar:active {
+    cursor: grabbing;
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .title-bar {
+        cursor: default;
+        touch-action: pan-y pinch-zoom;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -359,6 +394,81 @@
     <audio id="bg-audio" preload="auto"></audio>
     
     <script>
+function makeWindowDraggable(windowElement) {
+    const titleBar = windowElement.querySelector('.title-bar');
+    if (!titleBar) return;
+    
+    let isDragging = false;
+    let offsetX, offsetY;
+    
+    function getMouseOffset(e) {
+        const rect = windowElement.getBoundingClientRect();
+        const clientX = e.clientX ?? (e.touches ? e.touches[0].clientX : 0);
+        const clientY = e.clientY ?? (e.touches ? e.touches[0].clientY : 0);
+        
+        return {
+            x: clientX - rect.left,
+            y: clientY - rect.top
+        };
+    }
+    
+    function startDrag(e) {
+        if (e.target.closest('.title-bar-controls')) return;
+        if (e.target.tagName === 'BUTTON') return;
+        
+        e.preventDefault();
+        
+        const offset = getMouseOffset(e);
+        offsetX = offset.x;
+        offsetY = offset.y;
+        
+        isDragging = true;
+        
+        if (windowElement.style.position !== 'absolute') {
+            const rect = windowElement.getBoundingClientRect();
+            windowElement.style.position = 'absolute';
+            windowElement.style.left = rect.left + 'px';
+            windowElement.style.top = rect.top + 'px';
+            windowElement.style.width = rect.width + 'px';
+            windowElement.style.margin = '0';
+        }
+        
+        windowElement.classList.add('dragging');
+        document.body.style.userSelect = 'none';
+    }
+    
+    function onDrag(e) {
+        if (!isDragging) return;
+        
+        e.preventDefault();
+        
+        const clientX = e.clientX ?? (e.touches ? e.touches[0].clientX : 0);
+        const clientY = e.clientY ?? (e.touches ? e.touches[0].clientY : 0);
+        
+        let newLeft = clientX - offsetX;
+        let newTop = clientY - offsetY;
+        
+        windowElement.style.left = newLeft + 'px';
+        windowElement.style.top = newTop + 'px';
+    }
+    
+    function stopDrag() {
+        isDragging = false;
+        windowElement.classList.remove('dragging');
+        document.body.style.userSelect = '';
+    }
+    
+    titleBar.addEventListener('mousedown', startDrag);
+    titleBar.addEventListener('touchstart', startDrag, { passive: false });
+    window.addEventListener('mousemove', onDrag);
+    window.addEventListener('touchmove', onDrag, { passive: false });
+    window.addEventListener('mouseup', stopDrag);
+    window.addEventListener('touchend', stopDrag);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.window').forEach(makeWindowDraggable);
+});
         const audio = document.getElementById('bg-audio');
         const musicControl = document.getElementById('musicControl');
         const volumeIcon = document.getElementById('volumeIcon');
@@ -419,6 +529,32 @@
                 musicControl.click();
             }
         });
+function setupWindowControls(windowElement) {
+    const controls = windowElement.querySelector('.title-bar-controls');
+    if (!controls) return;
+    
+    const buttons = controls.querySelectorAll('button');
+    
+    const closeBtn = buttons[buttons.length - 1];
+    
+    if (closeBtn) {
+        closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            
+            windowElement.style.display = 'none';
+            
+            setTimeout(() => {
+                windowElement.style.display = 'block';
+            }, 2000);
+        });
+    }
+}
+
+// Inicializa todas as janelas
+document.addEventListener('DOMContentLoaded', () => {
+    const windows = document.querySelectorAll('.window');
+    windows.forEach(setupWindowControls);
+});
     </script>
 </body>
 </html>
