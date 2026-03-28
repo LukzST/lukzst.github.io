@@ -139,6 +139,11 @@ body {
   margin: 0;
   line-height: inherit;
 }
+[data-theme="light"] body,
+[data-theme="dark"] body {
+    background-color: var(--zen-paper);
+    transition: background-color 0.3s ease;
+}
 
 hr {
   height: 0;
@@ -1248,7 +1253,7 @@ h1 .italic {
 }
 
 .bg-paper {
-  background-color: #090909;
+  background-color: var(--zen-paper);
 }
 
 .bg-red-200 {
