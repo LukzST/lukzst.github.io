@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYSTEM ALERT - Windows 98</title>
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+        
+        body {
+            background: #008080 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32"><rect width="16" height="16" fill="%23006666"/><rect x="16" width="16" height="16" fill="%23007777"/><rect y="16" width="16" height="16" fill="%23007777"/><rect x="16" y="16" width="16" height="16" fill="%23008888"/></svg>');
+            background-repeat: repeat;
+            font-family: "Pixelated MS Sans Serif", Arial;
+            min-height: 100vh;
+            overflow: hidden;
+            cursor: default;
+        }
+        
+        .window {
+            position: absolute;
+            background: silver;
+            box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #dfdfdf, inset -2px -2px grey, inset 2px 2px #fff;
+            padding: 3px;
+            min-width: 380px;
+            animation: shake 0.15s infinite;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(2px, 1px); }
+            75% { transform: translate(-1px, -2px); }
+        }
+        
+        .window-body {
+            margin: 8px;
+            background: silver;
+            text-align: center;
+        }
+        
+        .title-bar {
+            background: linear-gradient(90deg, #2f498c, #4a6aa8);
+            padding: 3px 2px 3px 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .title-bar-text {
+            color: white;
+            font-weight: bold;
+            font-size: 11px;
+        }
+        
+        .title-bar-controls button {
+            min-width: 16px;
+            min-height: 14px;
+            padding: 0;
+            background: silver;
+            box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .error-number {
+            font-size: 72px;
+            font-weight: bold;
+            color: #ff0000;
+            font-family: "Pixelated MS Sans Serif", Arial;
+            text-shadow: 3px 3px 0 #0a0a0a;
+            margin: 10px 0;
+            animation: blink 0.5s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .error-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff0000;
+            margin: 10px 0;
+            text-transform: uppercase;
+        }
+        
+        .error-message {
+            font-size: 11px;
+            margin: 15px 0;
+            color: #222;
+        }
+        
+        button {
+            background: silver;
+            border: none;
+            box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
+            color: #222;
+            padding: 6px 20px;
+            cursor: pointer;
+            font-family: "Pixelated MS Sans Serif", Arial;
+            font-size: 11px;
+            margin: 5px;
+        }
+        
+        button:active {
+            box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a;
+        }
+        
+        .counter {
+            font-size: 10px;
+            color: #2f498c;
+            margin-top: 10px;
+        }
+        
+        .warning {
+            color: #ff0000;
+            font-weight: bold;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #fff;
+            border: 2px solid;
+            border-top-color: #0a0a0a;
+            border-left-color: #0a0a0a;
+            border-right-color: #dfdfdf;
+            border-bottom-color: #dfdfdf;
+            margin: 10px 0;
+        }
+        
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: #2f498c;
+            transition: width 0.1s linear;
+        }
+        
+        .blinking {
+            animation: blinkText 0.5s infinite;
+        }
+        
+        @keyframes blinkText {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .virus-icon {
+            font-size: 48px;
+            color: #ff0000;
+            margin: 10px 0;
+        }
+        
+.bsod-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0000aa;
+    z-index: 20000;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Courier New", "Lucida Console", monospace;
+    color: #ffffff;
+    text-align: left;
+    padding: 40px;
+}
+
+.bsod-overlay.show {
+    display: flex;
+}
+
+.bsod-content {
+    max-width: 850px;
+    width: 90%;
+    background: #0000aa;
+    border: 2px solid #ffffff;
+    padding: 30px;
+}
+
+.bsod-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.bsod-text {
+    font-size: 14px;
+    margin: 15px 0;
+    line-height: 1.6;
+    font-family: "Courier New", monospace;
+}
+
+.bsod-code {
+    font-size: 12px;
+    margin: 20px 0;
+    font-family: "Courier New", monospace;
+    background: transparent;
+    padding: 10px 0;
+    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+}
+
+.bsod-progress {
+    width: 100%;
+    height: 20px;
+    background: #ffffff;
+    margin: 20px 0;
+    border: none;
+}
+
+.bsod-progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #0000aa;
+    transition: width 0.05s linear;
+}
+
+.bsod-footer {
+    font-size: 11px;
+    margin-top: 25px;
+    text-align: center;
+    font-family: "Courier New", monospace;
+}
+
+.bsod-blink {
+    animation: bsodBlink 1s infinite;
+}
+
+@keyframes bsodBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+        
+        .rescue-box {
+            background: silver;
+            padding: 20px;
+            margin-top: 20px;
+            border: 2px solid;
+            border-top-color: #dfdfdf;
+            border-left-color: #dfdfdf;
+            border-right-color: #0a0a0a;
+            border-bottom-color: #0a0a0a;
+            text-align: center;
+        }
+        
+        .rescue-box h3 {
+            color: #2f498c;
+            margin-bottom: 10px;
+        }
+        
+        .token-code {
+            font-family: monospace;
+            font-size: 24px;
+            font-weight: bold;
+            color: #2f498c;
+            background: #fff;
+            padding: 10px;
+            margin: 10px 0;
+            letter-spacing: 2px;
+        }
+        
+        .email-input {
+            padding: 8px;
+            margin: 10px 0;
+            width: 80%;
+            font-family: monospace;
+            border: 2px solid;
+            border-top-color: #0a0a0a;
+            border-left-color: #0a0a0a;
+            border-right-color: #dfdfdf;
+            border-bottom-color: #dfdfdf;
+            background: #fff;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="windowsContainer"></div>
+    
+    <div class="bsod-overlay" id="bsodOverlay">
+    <div class="bsod-content">
+        <div class="bsod-title">
+            Windows 98
+        </div>
+        <div class="bsod-text">
+            A fatal exception 0E has occurred at 0028:C001E36D in VXD VMM(01) + 00010E36.
+            The current application will be terminated.
+        </div>
+        <div class="bsod-text">
+            * Press any key to terminate the current application.<br>
+            * Press CTRL+ALT+DEL again to restart your computer.<br>
+            You will lose any unsaved information in all applications.
+        </div>
+        <div class="bsod-code">
+            Press any key to continue <span class="bsod-blink">_</span>
+        </div>
+        <div class="bsod-progress">
+            <div class="bsod-progress-fill" id="bsodProgress"></div>
+        </div>
+        <div class="bsod-footer" id="bsodMessage">
+            Dumping physical memory to disk: XX%
+        </div>
+    </div>
+</div>
+    
+    <div class="rescue-box hidden" id="rescueBox" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 30000; width: 450px; max-width: 90%;">
+        <div class="title-bar" style="margin: -20px -20px 0 -20px;">
+            <div class="title-bar-text">
+                <i class="fa-solid fa-floppy-disk"></i> SYSTEM RECOVERY - LIGHT GAME
+            </div>
+            <div class="title-bar-controls">
+                <button id="closeRescue"><i class="fa-solid fa-times"></i></button>
+            </div>
+        </div>
+        <div style="padding: 20px;">
+            <div class="virus-icon" style="color: #2f498c;">
+                <i class="fa-solid fa-face-smile"></i>
+            </div>
+            <h3 style="color: #2f498c; font-size: 18px; margin-bottom: 10px;">IT WAS JUST A JOKE!</h3>
+            <p style="font-size: 11px; margin-bottom: 15px;">
+                Congratulations! You survived the YOU ARE AN IDIOT virus simulation.<br>
+                As a reward, here's a free key for the game LIGHT!
+            </p>
+            <div class="token-code" id="tokenDisplay">LIGHT-XXXX-XXXX-XXXX</div>
+            <p style="font-size: 10px; margin: 10px 0;">
+                Send an email to <strong>contatosadberry@gmail.com</strong> with your token to claim your free copy!
+            </p>
+            <input type="text" id="userEmail" class="email-input" placeholder="your@email.com">
+            <div style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
+                <button id="sendEmailBtn">SEND EMAIL</button>
+                <button id="closeRescueBtn">CLOSE</button>
+            </div>
+            <p style="font-size: 9px; margin-top: 10px; color: #2f498c;">
+                <i class="fa-solid fa-key"></i> Token valid for one free copy of LIGHT
+            </p>
+        </div>
+    </div>
+
+    <script>
+        let windowCount = 0;
+        let closeAttempts = 0;
+        let crashTriggered = false;
+
+        const tokens = [
+            "LIGHT-98WIN-2024-7G2K",
+            "LIGHT-98WIN-2024-3M9P",
+            "LIGHT-98WIN-2024-5R8Q",
+            "LIGHT-98WIN-2024-1T4L",
+            "LIGHT-98WIN-2024-9W6X",
+            "LIGHT-98WIN-2024-2F7C",
+            "LIGHT-98WIN-2024-8H3V",
+            "LIGHT-98WIN-2024-4D1B",
+            "LIGHT-98WIN-2024-6J0Z",
+            "LIGHT-98WIN-2024-0U9Y"
+        ];
+        
+        let currentToken = tokens[Math.floor(Math.random() * tokens.length)];
+        
+        function beep() {
+            try {
+                const audio = new Audio('data:audio/wav;base64,U3RlYWQgbm8gc291bmRzIGF2YWlsYWJsZQ==');
+                audio.play().catch(e => {});
+            } catch(e) {}
+            if (navigator.vibrate) navigator.vibrate(50);
+        }
+        
+        function createWindow(x, y) {
+            windowCount++;
+            const container = document.getElementById('windowsContainer');
+            const win = document.createElement('div');
+            win.className = 'window';
+            win.style.left = (x || Math.random() * (window.innerWidth - 400)) + 'px';
+            win.style.top = (y || Math.random() * (window.innerHeight - 300)) + 'px';
+            win.style.zIndex = windowCount;
+            
+            win.innerHTML = `
+                <div class="title-bar">
+                    <div class="title-bar-text">
+                        <i class="fa-solid fa-biohazard"></i> SYSTEM ALERT #${windowCount}
+                    </div>
+                    <div class="title-bar-controls">
+                        <button class="close-btn"><i class="fa-solid fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="window-body">
+                    <div class="error-text blinking">YOU ARE AN IDIOT!</div>
+                    <div class="error-message">
+                        <span id="msg-${windowCount}">Your system has been infected!</span><br>
+                        <span id="submsg-${windowCount}" style="font-size: 9px;">Do not close this window or the virus will spread!</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-${windowCount}"></div>
+                    </div>
+                    <button class="close-attempt">OK</button>
+                    <div class="counter">
+                        <i class="fa-solid fa-skull"></i> Windows open: <span id="counter">${windowCount}</span>
+                    </div>
+                </div>
+            `;
+            
+            container.appendChild(win);
+            
+            let progress = 0;
+            const progressBar = win.querySelector(`#progress-${windowCount}`);
+            const msgElement = win.querySelector(`#msg-${windowCount}`);
+            const subMsgElement = win.querySelector(`#submsg-${windowCount}`);
+            
+            const interval = setInterval(() => {
+                if (!win.parentNode || crashTriggered) {
+                    clearInterval(interval);
+                    return;
+                }
+                progress += Math.random() * 3;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    msgElement.innerHTML = '<span class="warning">INFECTION COMPLETE! CANNOT CLOSE!</span>';
+                    subMsgElement.innerHTML = 'The virus has spread through the entire system...';
+                    beep();
+                    
+                    if (!crashTriggered && windowCount >= 17) {
+                        triggerBlueScreen();
+                    }
+                }
+                progressBar.style.width = progress + '%';
+            }, 800);
+            
+            const okBtn = win.querySelector('.close-attempt');
+            okBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (crashTriggered) return;
+                closeAttempts++;
+                beep();
+                
+                if (progress >= 100) {
+                    msgElement.innerHTML = '<span class="warning">YOU CANNOT CLOSE THIS! ACCEPT YOUR FATE!</span>';
+                    return;
+                }
+                
+                if (closeAttempts < 3) {
+                    progress = Math.min(100, progress + 25);
+                    progressBar.style.width = progress + '%';
+                    msgElement.innerHTML = `YOU TRIED TO CLOSE ${closeAttempts} TIMES! IT GOT WORSE!`;
+                    subMsgElement.innerHTML = 'The more you try to close, the faster the virus spreads...';
+                    
+                    setTimeout(() => {
+                        if (windowCount < 12 && !crashTriggered) createWindow();
+                    }, 300);
+                } else {
+                    msgElement.innerHTML = 'YOU NEVER LEARN! MORE WINDOWS!';
+                    subMsgElement.innerHTML = 'MASS INFECTION ACTIVATED!';
+                    for (let i = 0; i < 3 && windowCount < 15 && !crashTriggered; i++) {
+                        setTimeout(() => createWindow(), i * 150);
+                    }
+                }
+            });
+            
+            const closeBtn = win.querySelector('.close-btn');
+            closeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (crashTriggered) return;
+                closeAttempts++;
+                beep();
+                
+                if (progress >= 100) return;
+                
+                progress = Math.min(100, progress + 40);
+                progressBar.style.width = progress + '%';
+                msgElement.innerHTML = 'CLOSING ONLY MAKES IT WORSE!';
+                subMsgElement.innerHTML = 'You are spreading the virus faster!';
+                
+                for (let i = 0; i < 2 && windowCount < 15 && !crashTriggered; i++) {
+                    setTimeout(() => createWindow(), i * 200);
+                }
+            });
+            
+            makeDraggable(win);
+            updateCounter();
+            beep();
+            
+            return win;
+        }
+        
+        function makeDraggable(win) {
+            const titleBar = win.querySelector('.title-bar');
+            let isDragging = false;
+            let startX, startY, startLeft, startTop;
+            
+            titleBar.addEventListener('mousedown', (e) => {
+                if (e.target.closest('.title-bar-controls')) return;
+                e.preventDefault();
+                const rect = win.getBoundingClientRect();
+                startX = e.clientX - rect.left;
+                startY = e.clientY - rect.top;
+                startLeft = rect.left;
+                startTop = rect.top;
+                isDragging = true;
+                win.style.position = 'absolute';
+                win.style.left = startLeft + 'px';
+                win.style.top = startTop + 'px';
+            });
+            
+            window.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                win.style.left = (e.clientX - startX) + 'px';
+                win.style.top = (e.clientY - startY) + 'px';
+            });
+            
+            window.addEventListener('mouseup', () => { isDragging = false; });
+            
+            titleBar.addEventListener('touchstart', (e) => {
+                if (e.target.closest('.title-bar-controls')) return;
+                e.preventDefault();
+                const touch = e.touches[0];
+                const rect = win.getBoundingClientRect();
+                startX = touch.clientX - rect.left;
+                startY = touch.clientY - rect.top;
+                startLeft = rect.left;
+                startTop = rect.top;
+                isDragging = true;
+                win.style.position = 'absolute';
+                win.style.left = startLeft + 'px';
+                win.style.top = startTop + 'px';
+            });
+            
+            window.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                const touch = e.touches[0];
+                win.style.left = (touch.clientX - startX) + 'px';
+                win.style.top = (touch.clientY - startY) + 'px';
+            });
+            
+            window.addEventListener('touchend', () => { isDragging = false; });
+        }
+        
+        function updateCounter() {
+            const windows = document.querySelectorAll('.window');
+            const counters = document.querySelectorAll('#counter');
+            counters.forEach(c => { if(c) c.innerText = windows.length; });
+        }
+        
+        function triggerBlueScreen() {
+    if (crashTriggered) return;
+    crashTriggered = true;
+    
+    const container = document.getElementById('windowsContainer');
+    container.innerHTML = '';
+    
+    const bsod = document.getElementById('bsodOverlay');
+    bsod.classList.add('show');
+    
+    let progress = 0;
+    const progressFill = document.getElementById('bsodProgress');
+    const bsodMessage = document.getElementById('bsodMessage');
+    
+    const progressInterval = setInterval(() => {
+        progress += Math.random() * 4;
+        if (progress >= 100) {
+            progress = 100;
+            clearInterval(progressInterval);
+            bsodMessage.innerHTML = 'Dumping physical memory to disk: 100%<br>System recovered! Press any key to continue...';
+            
+            const keyHandler = (e) => {
+                bsod.classList.remove('show');
+                showRescueBox();
+                document.removeEventListener('keydown', keyHandler);
+                document.removeEventListener('click', keyHandler);
+            };
+            
+            document.addEventListener('keydown', keyHandler);
+            document.addEventListener('click', keyHandler);
+            
+        } else {
+            bsodMessage.innerHTML = `Dumping physical memory to disk: ${Math.floor(progress)}%`;
+        }
+        progressFill.style.width = progress + '%';
+    }, 80);
+}
+        
+        function showRescueBox() {
+            const rescueBox = document.getElementById('rescueBox');
+            const tokenDisplay = document.getElementById('tokenDisplay');
+            tokenDisplay.innerText = currentToken;
+            rescueBox.classList.remove('hidden');
+            
+            document.getElementById('closeRescue').addEventListener('click', () => {
+                rescueBox.classList.add('hidden');
+            });
+            
+            document.getElementById('closeRescueBtn').addEventListener('click', () => {
+                rescueBox.classList.add('hidden');
+            });
+            
+            document.getElementById('sendEmailBtn').addEventListener('click', () => {
+                const email = document.getElementById('userEmail').value;
+                if (email && email.includes('@')) {
+                    window.location.href = `mailto:contatosadberry@gmail.com?subject=LIGHT%20FREE%20KEY%20REQUEST&body=Hello!%0D%0A%0D%0AI survived the YOU ARE AN IDIOT virus!%0D%0A%0D%0AMy token: ${currentToken}%0D%0AMy email: ${email}%0D%0A%0D%0AThank you!`;
+                    alert(`Email prepared!\n\nSend to: contatosadberry@gmail.com\nToken: ${currentToken}\n\nWe'll send your free LIGHT key soon!`);
+                } else {
+                    alert('Please enter a valid email address.');
+                }
+            });
+        }
+        
+        setTimeout(() => {
+            createWindow(100, 100);
+            createWindow(350, 180);
+            createWindow(600, 120);
+        }, 500);
+    
+let spawnTimer = 0;
+const spawnInterval = setInterval(() => {
+    if (!crashTriggered) {
+        const windows = document.querySelectorAll('.window');
+        if (windows.length < 16 && Math.random() > 0.6) {
+            createWindow();
+        }
+        if (!crashTriggered && document.querySelectorAll('.window').length >= 17) {
+            triggerBlueScreen();
+        }
+    }
+}, 4000);
+        
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'F5' || (e.ctrlKey && e.key === 'r')) {
+                e.preventDefault();
+                if (!crashTriggered) {
+                    alert('HAHAHA! RELOAD WON\'T SAVE YOU!');
+                    for(let i = 0; i < 3 && !crashTriggered; i++) {
+                        setTimeout(() => createWindow(), i * 200);
+                    }
+                }
+            }
+        });
+        
+        let originalTitle = document.title;
+        setInterval(() => {
+            if (!crashTriggered) {
+                document.title = document.title === originalTitle ? '!!! VIRUS DETECTED !!!' : originalTitle;
+            } else {
+                document.title = 'SYSTEM RECOVERED - LIGHT';
+            }
+        }, 1000);
+        
+        console.log('%c⚠️ IT WAS JUST A JOKE! ⚠️', 'color: #2f498c; font-size: 16px; font-weight: bold;');
+        console.log('%cYou survived! Check the screen for your LIGHT game token!', 'color: #2f498c; font-size: 12px;');
+    </script>
+</body>
+</html>

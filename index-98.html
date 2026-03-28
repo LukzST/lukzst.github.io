@@ -790,6 +790,122 @@ html, body {
         scrollbar-width: none;
     }
 }
+
+.notification-popup {
+    position: fixed;
+    bottom: 60px;
+    right: 20px;
+    width: 320px;
+    background: silver;
+    box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
+    padding: 3px;
+    z-index: 10000;
+    display: none;
+    animation: slideIn 0.3s ease-out;
+}
+
+.notification-popup.show {
+    display: block;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.notification-title-bar {
+    background: linear-gradient(90deg, #2f498c, #4a6aa8);
+    padding: 4px 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move;
+}
+
+.notification-title-bar-text {
+    color: white;
+    font-weight: bold;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.notification-title-bar button {
+    min-width: 16px;
+    min-height: 14px;
+    padding: 0;
+    background: silver;
+    box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.notification-body {
+    margin: 12px;
+    background: silver;
+    text-align: center;
+}
+
+.notification-icon {
+    font-size: 32px;
+    color: #2f498c;
+    margin-bottom: 8px;
+}
+
+.notification-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #222;
+}
+
+.notification-text {
+    font-size: 11px;
+    color: #222;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.notification-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.notification-btn {
+    background: silver;
+    border: none;
+    box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
+    color: #222;
+    padding: 4px 16px;
+    min-height: 23px;
+    cursor: pointer;
+    font-family: "Pixelated MS Sans Serif", Arial;
+    font-size: 11px;
+}
+
+.notification-btn:active {
+    box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a;
+}
+
+.notification-btn-primary {
+    background: #2f498c;
+    color: white;
+    box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #4a6aa8;
+}
+
+@keyframes blinkBg {
+    0%, 100% { background: silver; }
+    50% { background: #ffcc00; }
+}
     </style>
 </head>
 <body>
@@ -1151,7 +1267,199 @@ html, body {
         </div>
     </div>
 </div>
+
+<div class="notification-popup" id="promoPopup">
+    <div class="notification-title-bar" id="notificationTitleBar">
+        <div class="notification-title-bar-text">
+            <i class="fa-solid fa-gift"></i> SYSTEM MESSAGE
+        </div>
+        <div>
+            <button id="closeNotificationBtn" aria-label="Close">
+                <i class="fa-solid fa-times"></i>
+            </button>
+        </div>
+    </div>
+    <div class="notification-body">
+        <div class="notification-icon">
+            <i class="fa-solid fa-trophy"></i>
+        </div>
+        <div class="notification-title">
+            SPECIAL PROMOTION!
+        </div>
+        <div class="notification-text">
+            Congratulations! You've been selected for a<br>
+            <strong>FREE LIGHT GAME KEY</strong> promotion!<br>
+            Limited time offer - Click below to claim!
+        </div>
+        <div class="notification-buttons">
+            <button class="notification-btn notification-btn-primary" id="claimOfferBtn">
+                <i class="fa-solid fa-key"></i> CLAIM NOW
+            </button>
+            <button class="notification-btn" id="dismissNotificationBtn">
+                <i class="fa-solid fa-xmark"></i> LATER
+            </button>
+        </div>
+        <div style="font-size: 9px; margin-top: 8px; color: #2f498c;">
+            <i class="fa-solid fa-floppy-disk"></i> Offer expires in 5 minutes
+        </div>
+    </div>
+</div>
+
     <script>
+
+// ==================== PROMOTION NOTIFICATION ====================
+let closedWindowCount = 0;
+let notificationShown = false;
+const promoPopup = document.getElementById('promoPopup');
+const closeNotificationBtn = document.getElementById('closeNotificationBtn');
+const dismissNotificationBtn = document.getElementById('dismissNotificationBtn');
+const claimOfferBtn = document.getElementById('claimOfferBtn');
+
+// Function to show notification
+function showPromoNotification() {
+    if (notificationShown) return;
+    notificationShown = true;
+    promoPopup.classList.add('show');
+    
+    // Auto-hide after 15 seconds
+    setTimeout(() => {
+        if (promoPopup.classList.contains('show')) {
+            promoPopup.classList.remove('show');
+        }
+    }, 15000);
+}
+
+// Function to track window closures
+function trackWindowClosure() {
+    closedWindowCount++;
+    console.log(`Windows closed: ${closedWindowCount}`);
+    
+    if (closedWindowCount >= 5 && !notificationShown) {
+        showPromoNotification();
+    }
+}
+
+// Modify the setupWindowControls function to track closures
+// Find the existing setupWindowControls function and add tracking
+function setupWindowControlsWithTracking(windowElement) {
+    const controls = windowElement.querySelector('.title-bar-controls');
+    if (!controls) return;
+    
+    const buttons = controls.querySelectorAll('button');
+    const closeBtn = buttons[buttons.length - 1];
+    
+    if (closeBtn) {
+        // Remove existing listeners and add new one with tracking
+        const newCloseBtn = closeBtn.cloneNode(true);
+        closeBtn.parentNode.replaceChild(newCloseBtn, closeBtn);
+        
+        newCloseBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            
+            // Track closure
+            trackWindowClosure();
+            
+            // Original close behavior
+            windowElement.style.transition = 'opacity 0.2s ease';
+            windowElement.style.opacity = '0';
+            
+            setTimeout(() => {
+                windowElement.style.display = 'none';
+                windowElement.style.opacity = '';
+                
+                setTimeout(() => {
+                    windowElement.style.display = 'block';
+                    windowElement.style.opacity = '0';
+                    windowElement.style.transition = 'opacity 0.2s ease';
+                    windowElement.offsetHeight;
+                    windowElement.style.opacity = '1';
+                    
+                    setTimeout(() => {
+                        windowElement.style.transition = '';
+                    }, 200);
+                }, 5000);
+            }, 200);
+        });
+    }
+}
+
+// Override the setupWindowControls function
+window.setupWindowControls = setupWindowControlsWithTracking;
+
+// Also track closures from the "OK" buttons in windows
+function addTrackingToOkButtons() {
+    const okButtons = document.querySelectorAll('.close-attempt');
+    okButtons.forEach(btn => {
+        if (!btn.hasAttribute('data-tracked')) {
+            btn.setAttribute('data-tracked', 'true');
+            const originalClick = btn.onclick;
+            btn.addEventListener('click', () => {
+                trackWindowClosure();
+            });
+        }
+    });
+}
+
+const observer = new MutationObserver(() => {
+    addTrackingToOkButtons();
+});
+observer.observe(document.body, { childList: true, subtree: true });
+
+closeNotificationBtn.addEventListener('click', () => {
+    promoPopup.classList.remove('show');
+});
+
+dismissNotificationBtn.addEventListener('click', () => {
+    promoPopup.classList.remove('show');
+});
+
+claimOfferBtn.addEventListener('click', () => {
+    window.location.href = '/youareanidiota.html';
+});
+
+function makeNotificationDraggable() {
+    const titleBar = document.getElementById('notificationTitleBar');
+    const popup = document.getElementById('promoPopup');
+    if (!titleBar || !popup) return;
+    
+    let isDragging = false;
+    let startX, startY, startLeft, startTop;
+    
+    titleBar.addEventListener('mousedown', (e) => {
+        if (e.target.closest('button')) return;
+        e.preventDefault();
+        
+        const rect = popup.getBoundingClientRect();
+        startX = e.clientX - rect.left;
+        startY = e.clientY - rect.top;
+        startLeft = rect.left;
+        startTop = rect.top;
+        
+        isDragging = true;
+        popup.style.position = 'fixed';
+        popup.style.left = startLeft + 'px';
+        popup.style.top = startTop + 'px';
+        popup.style.right = 'auto';
+        popup.style.bottom = 'auto';
+    });
+    
+    window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        popup.style.left = (e.clientX - startX) + 'px';
+        popup.style.top = (e.clientY - startY) + 'px';
+    });
+    
+    window.addEventListener('mouseup', () => {
+        isDragging = false;
+    });
+}
+
+makeNotificationDraggable();
+
+setTimeout(() => {
+    addTrackingToOkButtons();
+}, 1000);
+
 const retroPopup = document.getElementById('retroPopup');
 const closePopupBtn = document.getElementById('closePopupBtn');
 const gotItBtn = document.getElementById('gotItBtn');
