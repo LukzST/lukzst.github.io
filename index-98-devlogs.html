@@ -718,6 +718,15 @@ body.crt::after {
             </div>
         
     </div>
+
+    <div class="shutdown-overlay" id="shutdownOverlay">
+    <div class="shutdown-message">
+        <p>Windows 98 is shutting down...</p>
+        <div class="shutdown-text">
+            <span id="shutdownDots">...</span>
+        </div>
+    </div>
+</div>
     
     <script>
 
@@ -750,10 +759,6 @@ function showSafeToTurnOff() {
     }
     if (shutdownDots) {
         shutdownDots.innerHTML = '';
-    }
-    const icon = document.querySelector('.shutdown-message i');
-    if (icon) {
-        icon.className = 'fa-solid fa-check-circle';
     }
 }
 
