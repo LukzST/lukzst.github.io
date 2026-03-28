@@ -2,7 +2,7 @@
 <html lang="pt-br" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Brand Kit | LIGHT</title>
     <link rel="shortcut icon" href="/Public/ICO/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/Public/CSS/cssfoda.css">
@@ -87,6 +87,25 @@
         .card-spacing {
             margin-bottom: 2rem;
         }
+        html, body {
+            overflow-x: hidden;
+        }
+
+        @media (max-width: 768px) {
+            html, body {
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            body::-webkit-scrollbar {
+                width: 0;
+                background: transparent;
+            }
+            
+            body {
+                scrollbar-width: none;
+            }
+        }
         
         @media (max-width: 1024px) {
             .section-spacing {
@@ -94,142 +113,142 @@
             }
         }
         .menu-toggle {
-    display: none;
-    cursor: pointer;
-    font-size: 1.5rem;
-    background: none;
-    border: none;
-    color: var(--zen-dark);
-    padding: 0.5rem;
-}
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--zen-dark);
+            padding: 0.5rem;
+        }
 
-.mobile-menu {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 280px;
-    height: 100%;
-    background: var(--zen-paper);
-    z-index: 1000;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
-    padding: 1.5rem;
-    overflow-y: auto;
-}
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 280px;
+            height: 100%;
+            background: var(--zen-paper);
+            z-index: 1000;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            overflow-y: auto;
+        }
 
-.mobile-menu.open {
-    transform: translateX(0);
-}
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
 
-.mobile-menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    z-index: 999;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
 
-.mobile-menu-overlay.open {
-    opacity: 1;
-    visibility: visible;
-}
+        .mobile-menu-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
 
-.menu-close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    cursor: pointer;
-    font-size: 1.5rem;
-    background: none;
-    border: none;
-    color: var(--zen-dark);
-}
+        .menu-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--zen-dark);
+        }
 
-.mobile-menu nav ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 3rem;
-}
+        .mobile-menu nav ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 3rem;
+        }
 
-.mobile-menu nav li {
-    margin-bottom: 1rem;
-}
+        .mobile-menu nav li {
+            margin-bottom: 1rem;
+        }
 
-.mobile-menu nav a {
-    color: var(--zen-dark);
-    text-decoration: none;
-    font-size: 1.1rem;
-    display: block;
-    padding: 0.5rem 0;
-    transition: color 0.2s ease;
-}
+        .mobile-menu nav a {
+            color: var(--zen-dark);
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: block;
+            padding: 0.5rem 0;
+            transition: color 0.2s ease;
+        }
 
-.mobile-menu nav a:hover {
-    color: var(--zen-coral);
-}
+        .mobile-menu nav a:hover {
+            color: var(--zen-coral);
+        }
 
-@media (max-width: 1024px) {
-    .desktop-nav {
-        display: none !important;
-    }
-    .menu-toggle {
-        display: block;
-    }
-}
+        @media (max-width: 1024px) {
+            .desktop-nav {
+                display: none !important;
+            }
+            .menu-toggle {
+                display: block;
+            }
+        }
 
-.back-to-top {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    z-index: 99;
-    background: var(--zen-dark);
-    color: var(--zen-paper);
-    width: 10rem;
-    height: 3rem;
-    border-radius: 0.75rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    opacity: 0;
-    visibility: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    border: 1px solid var(--zen-subtle);
-    gap: 15px;
-}
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 99;
+            background: var(--zen-dark);
+            color: var(--zen-paper);
+            width: 10rem;
+            height: 3rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--zen-subtle);
+            gap: 15px;
+        }
 
-.back-to-top:hover {
-    background: var(--zen-coral);
-    transform: scale(1.05);
-}
+        .back-to-top:hover {
+            background: var(--zen-coral);
+            transform: scale(1.05);
+        }
 
-.back-to-top.show {
-    opacity: 1;
-    visibility: visible;
-}
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
 
-.back-to-top i {
-    font-size: 1.25rem;
-}
+        .back-to-top i {
+            font-size: 1.25rem;
+        }
 
-@media (max-width: 768px) {
-    .back-to-top {
-        bottom: 1.5rem;
-        right: 1.5rem;
-        width: 2.5rem;
-        height: 2.5rem;
-    }
-    .back-to-top i {
-        font-size: 1rem;
-    }
-}
+        @media (max-width: 768px) {
+            .back-to-top {
+                bottom: 1.5rem;
+                right: 1.5rem;
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+            .back-to-top i {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen overflow-x-hidden bg-paper font-['bricolage-grotesque'] text-dark">
@@ -512,12 +531,12 @@
                 </div>
             </section>
             
-            <section class="grid w-full grid-cols-[1fr_auto] items-center gap-2"">
+            <section class="grid w-full grid-cols-[1fr_auto] items-center gap-2">
                 <p class="flex justify-center credits gap-2 lg:justify-start">
                     Made by 
-                    <a href="https://github.com/LukzST" target="_blank" class="zen-link inline-block font-bold">Lukzxdd</a>
+                    <a href="https://github.com/LukzST" target="_blank" class="zen-link inline-block font-bold" style="text-decoration:none">Lukzxdd</a>
                     inspired by
-                    <a href="https://github.com/zen-browser" target="_blank" class="zen-link inline-block font-bold">Zen Browser</a>
+                    <a href="https://github.com/zen-browser" target="_blank" class="zen-link inline-block font-bold" style="text-decoration:none">Zen Browser</a>
                 </p>
             </section>
 
@@ -541,7 +560,7 @@
         </nav>
     </div>
 
-     <button class="back-to-top" id="backToTop" aria-label="Back to top">
+     <button class="back-to-top" id="backToTop" aria-label="Back to top" style="width:10rem">
         Back to Top <i class="fa-solid fa-arrow-up"></i>
     </button>
 
