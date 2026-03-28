@@ -525,6 +525,12 @@ body.crt::after {
     pointer-events: none;
     z-index: 9998;
 }
+
+body.crt::before,
+body.crt::after {
+    z-index: 2147483647;
+    pointer-events: none;
+}
     </style>
 </head>
 <body class="crt">
