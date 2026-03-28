@@ -385,6 +385,29 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Define o fundo do body baseado no tema */
+body {
+    background-color: var(--zen-paper);
+    color: var(--zen-dark);
+}
+
+/* Garante que o container também use as cores do tema */
+.bg-paper {
+    background-color: var(--zen-paper);
+}
+
+.bg-dark {
+    background-color: var(--zen-dark);
+}
+
+.text-dark {
+    color: var(--zen-dark);
+}
+
+.text-paper {
+    color: var(--zen-paper);
+}
+
 body,
 body > * {
   font-family: 'Bricolage Grotesque', sans-serif;
