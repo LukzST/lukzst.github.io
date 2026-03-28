@@ -374,12 +374,17 @@
 .window {
     position: relative;
     transition: opacity 0.2s ease;
+    z-index: 1;
 }
 
 .window.dragging {
     opacity: 0.95;
-    z-index: 9999;
+    z-index: 9999 !important;
     cursor: grabbing;
+}
+
+.window[style*="position: absolute"] {
+    z-index: 100;
 }
 
 .title-bar {
