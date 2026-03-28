@@ -197,6 +197,21 @@
   --zen-subtle: rgba(255, 255, 255, 0.1);
   --zen-coral: #f76f53;
 }
+
+/* Garante que bg-paper use a variável do tema */
+.bg-paper {
+    background-color: var(--zen-paper);
+}
+
+/* Garante que o body também tenha a cor de fundo */
+body {
+    background-color: var(--zen-paper);
+}
+
+/* Garante que o nav também atualize */
+nav.bg-paper {
+    background-color: var(--zen-paper);
+}
     </style>
 </head>
 <body class="min-h-screen overflow-x-hidden bg-paper font-['bricolage-grotesque'] text-dark">
