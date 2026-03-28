@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
     <style>
         body {
             animation: fadeInPage 0.5s ease-out;
@@ -182,6 +183,107 @@
         }
     }
 
+    /* Estilos do Modo Retro */
+body.retro-mode {
+    background: #008080 !important;
+    font-family: "Pixelated MS Sans Serif", Arial !important;
+    font-size: 11px !important;
+    color: #222 !important;
+}
+
+body.retro-mode .window,
+body.retro-mode .title-bar,
+body.retro-mode button:not(.no-retro),
+body.retro-mode .box {
+    font-family: "Pixelated MS Sans Serif", Arial !important;
+}
+
+body.retro-mode .bg-paper,
+body.retro-mode .bg-dark {
+    background: #c3c3c3 !important;
+}
+
+body.retro-mode .text-dark,
+body.retro-mode h1,
+body.retro-mode h2,
+body.retro-mode h3,
+body.retro-mode p {
+    color: #222 !important;
+}
+
+body.retro-mode .text-coral {
+    color: #2f498c !important;
+}
+
+body.retro-mode a:not(.no-retro) {
+    color: #2f498c !important;
+}
+
+body.retro-mode a:not(.no-retro):hover {
+    color: #444 !important;
+}
+
+body.retro-mode .container {
+    max-width: 1200px !important;
+}
+
+body.retro-mode nav {
+    background: #c3c3c3 !important;
+    border-bottom: 2px solid #666 !important;
+    padding: 8px !important;
+}
+
+body.retro-mode .back-to-top {
+    background: #c3c3c3 !important;
+    color: #222 !important;
+    border: 2px solid #666 !important;
+    box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff !important;
+}
+
+body.retro-mode .back-to-top:hover {
+    background: #b5b5b5 !important;
+}
+
+body.retro-mode button:not(.no-retro),
+body.retro-mode a.bg-dark:not(.no-retro) {
+    background: silver !important;
+    border: none !important;
+    box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf !important;
+    color: #222 !important;
+}
+
+body.retro-mode button:not(.no-retro):active {
+    box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a !important;
+}
+
+body.retro-mode .mobile-menu {
+    background: #c3c3c3 !important;
+    border: 2px solid #666 !important;
+}
+
+body.retro-mode .mobile-menu nav a {
+    color: #222 !important;
+}
+
+body.retro-mode footer {
+    background: #c3c3c3 !important;
+    border-top: 2px solid #666 !important;
+}
+
+body.retro-mode .feature-item,
+body.retro-mode .social-icon {
+    color: #222 !important;
+}
+
+body.retro-mode .social-icon:hover {
+    color: #2f498c !important;
+}
+
+/* Mantém a imagem de fundo se tiver */
+body.retro-mode {
+    background-image: url() !important;
+}
+
     </style>
 </head>
 <body class="min-h-screen overflow-x-hidden bg-paper font-['bricolage-grotesque'] text-dark">
@@ -212,6 +314,12 @@
             <button class="menu-toggle" id="menuToggle" aria-label="Menu">
                 <i class="fa-solid fa-bars"></i>
             </button>
+
+            <button id="retroModeBtn" class="transition-bg flex items-center justify-center gap-2 rounded-xl border-dark bg-dark px-4 py-3 font-bold text-paper shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-transform" style="background: #1e1e2e;">
+                <i class="fa-solid fa-tv"></i>
+                Retro Mode
+            </button>
+
             <a href="https://lukzxdd.itch.io/" target="_blank" class="transition-bg flex items-center justify-center gap-2 rounded-xl border-dark bg-dark px-5 py-3 font-bold text-paper shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-transform">
                 Store
                 <i class="fa-solid fa-chevron-right"></i>
@@ -550,6 +658,40 @@
             document.body.offsetHeight;
             document.body.style.animation = 'fadeInPage 0.5s ease-out';
         }
+
+        // Coloque isso dentro da tag <script> existente
+
+const retroModeBtn = document.getElementById('retroModeBtn');
+let isRetroMode = false;
+
+// Função para alternar o modo retro
+function toggleRetroMode() {
+    isRetroMode = !isRetroMode;
+    
+    if (isRetroMode) {
+        document.body.classList.add('retro-mode');
+        retroModeBtn.innerHTML = '<i class="fa-solid fa-palette"></i> Normal';
+        retroModeBtn.style.background = '#6d8ae0';
+        
+        // Salva no localStorage
+        localStorage.setItem('retroMode', 'true');
+    } else {
+        document.body.classList.remove('retro-mode');
+        retroModeBtn.innerHTML = '<i class="fa-solid fa-tv"></i> Retro';
+        retroModeBtn.style.background = '#1e1e2e';
+        
+        // Salva no localStorage
+        localStorage.setItem('retroMode', 'false');
+    }
+}
+
+// Verifica se o usuário já tinha o modo retro ativado
+if (localStorage.getItem('retroMode') === 'true') {
+    toggleRetroMode();
+}
+
+// Adiciona o evento ao botão
+retroModeBtn.addEventListener('click', toggleRetroMode);
         
     </script>
 </body>
