@@ -366,8 +366,8 @@ video {
 }
 
 [data-theme="dark"] {
-  --zen-paper: #090909;
-  --zen-dark: #d1cfc0; 
+  --zen-paper: #1f1f1f;
+  --zen-dark: #d1cfc0;
   --zen-muted: rgba(255, 255, 255, 0.05);
   --zen-subtle: rgba(255, 255, 255, 0.1);
   --zen-coral: #f76f53;
@@ -399,15 +399,6 @@ h1 .italic {
   font-weight: 400;
   font-feature-settings: "swsh" 0;
   font-style: italic;
-}
-
-body {
-    background-color: var(--zen-paper);
-    transition: background-color 0.3s ease;
-}
-
-[data-theme="dark"] body {
-    background-color: var(--zen-dark);
 }
 
 .\!container,
@@ -1257,7 +1248,7 @@ body {
 }
 
 .bg-paper {
-    background-color: var(--zen-paper);
+  background-color: #090909;
 }
 
 .bg-red-200 {
