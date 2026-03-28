@@ -183,7 +183,7 @@
         }
     }
 
-    /* Estilos do Modo Retro */
+    /* Estilos do Modo Retro - SÓ ativa quando a classe retro-mode está no body */
 body.retro-mode {
     background: #008080 !important;
     font-family: "Pixelated MS Sans Serif", Arial !important;
@@ -191,15 +191,16 @@ body.retro-mode {
     color: #222 !important;
 }
 
-body.retro-mode .window,
-body.retro-mode .title-bar,
-body.retro-mode button:not(.no-retro),
-body.retro-mode .box {
+body.retro-mode * {
     font-family: "Pixelated MS Sans Serif", Arial !important;
 }
 
+/* Fundo e cores principais */
 body.retro-mode .bg-paper,
-body.retro-mode .bg-dark {
+body.retro-mode .bg-dark,
+body.retro-mode nav,
+body.retro-mode footer,
+body.retro-mode .mobile-menu {
     background: #c3c3c3 !important;
 }
 
@@ -207,7 +208,9 @@ body.retro-mode .text-dark,
 body.retro-mode h1,
 body.retro-mode h2,
 body.retro-mode h3,
-body.retro-mode p {
+body.retro-mode p,
+body.retro-mode span,
+body.retro-mode .font-bold {
     color: #222 !important;
 }
 
@@ -215,73 +218,142 @@ body.retro-mode .text-coral {
     color: #2f498c !important;
 }
 
-body.retro-mode a:not(.no-retro) {
+body.retro-mode a {
     color: #2f498c !important;
 }
 
-body.retro-mode a:not(.no-retro):hover {
+body.retro-mode a:hover {
     color: #444 !important;
 }
 
-body.retro-mode .container {
-    max-width: 1200px !important;
+/* Estilo de janela para cards e seções */
+body.retro-mode .window-style,
+body.retro-mode section:not(.no-retro) {
+    background: #c3c3c3;
+    border: 2px solid;
+    border-top-color: #dfdfdf;
+    border-left-color: #dfdfdf;
+    border-right-color: #0a0a0a;
+    border-bottom-color: #0a0a0a;
+    padding: 8px;
+    margin: 8px 0;
+    box-shadow: inset 1px 1px 0px 0px #fff, inset -1px -1px 0px 0px #808080;
 }
 
-body.retro-mode nav {
-    background: #c3c3c3 !important;
-    border-bottom: 2px solid #666 !important;
-    padding: 8px !important;
+/* Barra de título para as janelas */
+body.retro-mode .window-title {
+    background: linear-gradient(90deg, #2f498c, #4a6aa8);
+    color: white;
+    padding: 4px 6px;
+    margin: -8px -8px 8px -8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 11px;
 }
 
-body.retro-mode .back-to-top {
-    background: #c3c3c3 !important;
-    color: #222 !important;
-    border: 2px solid #666 !important;
+body.retro-mode .window-title button {
+    background: #c3c3c3;
+    min-width: 16px;
+    min-height: 14px;
+    padding: 0;
+    margin-left: 4px;
     box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff !important;
 }
 
-body.retro-mode .back-to-top:hover {
-    background: #b5b5b5 !important;
-}
-
-body.retro-mode button:not(.no-retro),
-body.retro-mode a.bg-dark:not(.no-retro) {
+/* Botões */
+body.retro-mode button,
+body.retro-mode .bg-dark:not(.no-retro) {
     background: silver !important;
     border: none !important;
     box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf !important;
     color: #222 !important;
+    border-radius: 0 !important;
 }
 
-body.retro-mode button:not(.no-retro):active {
+body.retro-mode button:active {
     box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a !important;
 }
 
-body.retro-mode .mobile-menu {
-    background: #c3c3c3 !important;
-    border: 2px solid #666 !important;
+/* Imagens com moldura */
+body.retro-mode img:not(.no-retro) {
+    border: 2px solid;
+    border-top-color: #0a0a0a;
+    border-left-color: #0a0a0a;
+    border-right-color: #dfdfdf;
+    border-bottom-color: #dfdfdf;
+    background: #fff;
+    padding: 2px;
 }
 
-body.retro-mode .mobile-menu nav a {
-    color: #222 !important;
+body.retro-mode video {
+    border: 2px solid;
+    border-top-color: #0a0a0a;
+    border-left-color: #0a0a0a;
+    border-right-color: #dfdfdf;
+    border-bottom-color: #dfdfdf;
 }
 
-body.retro-mode footer {
-    background: #c3c3c3 !important;
-    border-top: 2px solid #666 !important;
-}
-
+/* Cards e containers */
 body.retro-mode .feature-item,
-body.retro-mode .social-icon {
+body.retro-mode .group {
+    background: #c3c3c3;
+    border: 1px solid #808080;
+    padding: 6px;
+}
+
+/* Árvore de navegação */
+body.retro-mode ul.tree-view {
+    background: #fff;
+    border: 2px solid;
+    border-top-color: #0a0a0a;
+    border-left-color: #0a0a0a;
+    border-right-color: #dfdfdf;
+    border-bottom-color: #dfdfdf;
+    padding: 6px;
+    margin: 0;
+}
+
+body.retro-mode ul.tree-view li {
+    list-style-type: none;
+    margin: 2px 0;
+}
+
+/* Scrollbar estilo Win98 */
+body.retro-mode ::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+}
+
+body.retro-mode ::-webkit-scrollbar-track {
+    background: #c3c3c3;
+    border: 1px solid #808080;
+}
+
+body.retro-mode ::-webkit-scrollbar-thumb {
+    background: #c3c3c3;
+    border: 1px solid;
+    border-top-color: #dfdfdf;
+    border-left-color: #dfdfdf;
+    border-right-color: #0a0a0a;
+    border-bottom-color: #0a0a0a;
+}
+
+/* Botão back to top */
+body.retro-mode .back-to-top {
+    background: #c3c3c3 !important;
     color: #222 !important;
+    border: 2px solid !important;
+    border-top-color: #dfdfdf !important;
+    border-left-color: #dfdfdf !important;
+    border-right-color: #0a0a0a !important;
+    border-bottom-color: #0a0a0a !important;
+    box-shadow: none !important;
 }
 
-body.retro-mode .social-icon:hover {
-    color: #2f498c !important;
-}
-
-/* Mantém a imagem de fundo se tiver */
-body.retro-mode {
-    background-image: url() !important;
+body.retro-mode .back-to-top:hover {
+    background: #b5b5b5 !important;
 }
 
     </style>
@@ -659,12 +731,20 @@ body.retro-mode {
             document.body.style.animation = 'fadeInPage 0.5s ease-out';
         }
 
-        // Coloque isso dentro da tag <script> existente
-
+        // Modo Retro
 const retroModeBtn = document.getElementById('retroModeBtn');
 let isRetroMode = false;
 
-// Função para alternar o modo retro
+// Carrega preferência salva
+if (localStorage.getItem('retroMode') === 'true') {
+    isRetroMode = true;
+    document.body.classList.add('retro-mode');
+    retroModeBtn.innerHTML = '<i class="fa-solid fa-palette"></i> Normal';
+    retroModeBtn.style.background = '#6d8ae0';
+    retroModeBtn.style.color = '#fff';
+}
+
+// Função toggle
 function toggleRetroMode() {
     isRetroMode = !isRetroMode;
     
@@ -672,27 +752,18 @@ function toggleRetroMode() {
         document.body.classList.add('retro-mode');
         retroModeBtn.innerHTML = '<i class="fa-solid fa-palette"></i> Normal';
         retroModeBtn.style.background = '#6d8ae0';
-        
-        // Salva no localStorage
+        retroModeBtn.style.color = '#fff';
         localStorage.setItem('retroMode', 'true');
     } else {
         document.body.classList.remove('retro-mode');
         retroModeBtn.innerHTML = '<i class="fa-solid fa-tv"></i> Retro';
         retroModeBtn.style.background = '#1e1e2e';
-        
-        // Salva no localStorage
+        retroModeBtn.style.color = '#cdd6f4';
         localStorage.setItem('retroMode', 'false');
     }
 }
 
-// Verifica se o usuário já tinha o modo retro ativado
-if (localStorage.getItem('retroMode') === 'true') {
-    toggleRetroMode();
-}
-
-// Adiciona o evento ao botão
-retroModeBtn.addEventListener('click', toggleRetroMode);
-        
+retroModeBtn.addEventListener('click', toggleRetroMode);   
     </script>
 </body>
 </html>
