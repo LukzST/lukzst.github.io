@@ -358,15 +358,15 @@ video {
 }
 
 :root {
-  --zen-paper: #d1cfc0;
-  --zen-dark: #090909;
+  --zen-paper: #f2f0e3;
+  --zen-dark: #2e2e2e;
   --zen-muted: rgba(0, 0, 0, 0.05);
   --zen-subtle: rgba(0, 0, 0, 0.05);
   --zen-coral: #f76f53;
 }
 
 [data-theme="dark"] {
-  --zen-paper: #090909;
+  --zen-paper: #1f1f1f;
   --zen-dark: #d1cfc0;
   --zen-muted: rgba(255, 255, 255, 0.05);
   --zen-subtle: rgba(255, 255, 255, 0.1);
@@ -383,29 +383,6 @@ video {
 
 html {
   scroll-behavior: smooth;
-}
-
-/* Define o fundo do body baseado no tema */
-body {
-    background-color: var(--zen-paper);
-    color: var(--zen-dark);
-}
-
-/* Garante que o container também use as cores do tema */
-.bg-paper {
-    background-color: var(--zen-paper);
-}
-
-.bg-dark {
-    background-color: var(--zen-dark);
-}
-
-.text-dark {
-    color: var(--zen-dark);
-}
-
-.text-paper {
-    color: var(--zen-paper);
 }
 
 body,
@@ -1271,7 +1248,7 @@ h1 .italic {
 }
 
 .bg-paper {
-  background-color: var(--zen-paper);
+  background-color: #090909;
 }
 
 .bg-red-200 {
