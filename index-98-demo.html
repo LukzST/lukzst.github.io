@@ -494,6 +494,60 @@ body.crt::after {
     z-index: 2147483647;
     pointer-events: none;
 }
+
+
+.shutdown-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    z-index: 9999999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Pixelated MS Sans Serif", Arial;
+    color: #ffffff;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.shutdown-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.shutdown-message {
+    animation: shutdownPulse 1s infinite;
+}
+
+.shutdown-message i {
+    font-size: 64px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.shutdown-message p {
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-top: 20px;
+}
+
+@keyframes shutdownPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.shutdown-text {
+    font-size: 14px;
+    margin-top: 30px;
+    color: #aaaaaa;
+}
+
     </style>
 </head>
 <body class="crt">
@@ -638,9 +692,83 @@ body.crt::after {
         <div class="start-menu-item" onclick="window.location.reload(); document.getElementById('startMenu').classList.remove('open')">
             <i class="fa-solid fa-power-off"></i> <span>Restart...</span>
         </div>
+
+        <div class="start-menu-separator"></div>
+            <div class="start-menu-item" id="shutdownBtn">
+                <i class="fa-solid fa-power-off"></i> <span>Shutdown...</span>
+            </div>
     </div>
     
     <script>
+
+const shutdownBtn = document.getElementById('shutdownBtn');
+const shutdownOverlay = document.getElementById('shutdownOverlay');
+const shutdownDots = document.getElementById('shutdownDots');
+const shutdownMessage = document.querySelector('.shutdown-message p');
+
+let dotCount = 0;
+let isShuttingDown = false;
+
+function animateShutdownDots() {
+    const interval = setInterval(() => {
+        if (!isShuttingDown) {
+            clearInterval(interval);
+            return;
+        }
+        dotCount = (dotCount + 1) % 4;
+        const dots = '.'.repeat(dotCount);
+        if (shutdownDots) {
+            shutdownDots.innerHTML = dots;
+        }
+    }, 500);
+    return interval;
+}
+
+function showSafeToTurnOff() {
+    if (shutdownMessage) {
+        shutdownMessage.innerHTML = 'It is now safe to turn off your computer.';
+    }
+    if (shutdownDots) {
+        shutdownDots.innerHTML = '';
+    }
+    const icon = document.querySelector('.shutdown-message i');
+    if (icon) {
+        icon.className = 'fa-solid fa-check-circle';
+    }
+}
+
+function performShutdown() {
+    if (isShuttingDown) return;
+    isShuttingDown = true;
+    
+    if (!shutdownOverlay) return;
+    
+    shutdownOverlay.classList.add('show');
+    
+    if (startMenu && startMenu.classList.contains('open')) {
+        startMenu.classList.remove('open');
+    }
+    
+    const dotInterval = animateShutdownDots();
+    
+    setTimeout(() => {
+        clearInterval(dotInterval);
+        showSafeToTurnOff();
+    }, 2000);
+    
+    setTimeout(() => {
+        window.location.href = '/';
+    }, 3500);
+}
+
+if (shutdownBtn) {
+    shutdownBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        performShutdown();
+    });
+}
+
+
         function updateClock() {
             const now = new Date();
             const hours = now.getHours().toString().padStart(2, '0');
