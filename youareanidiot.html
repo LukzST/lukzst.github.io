@@ -24,25 +24,24 @@
             cursor: default;
         }
         html, body {
-    overflow-x: hidden;
-}
+            overflow-x: hidden;
+        }
 
-@media (max-width: 768px) {
-    html, body {
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-    
-    body::-webkit-scrollbar {
-        width: 0;
-        background: transparent;
-    }
-    
-    body {
-        scrollbar-width: none;
-    }
-}
-
+        @media (max-width: 768px) {
+            html, body {
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            body::-webkit-scrollbar {
+                width: 0;
+                background: transparent;
+            }
+            
+            body {
+                scrollbar-width: none;
+            }
+        }
         
         .window {
             position: absolute;
@@ -179,92 +178,92 @@
             margin: 10px 0;
         }
         
-.bsod-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #0000aa;
-    z-index: 20000;
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: "Courier New", "Lucida Console", monospace;
-    color: #ffffff;
-    text-align: left;
-    padding: 40px;
-}
-
-.bsod-overlay.show {
-    display: flex;
-}
-
-.bsod-content {
-    max-width: 850px;
-    width: 90%;
-    background: #0000aa;
-    border: 2px solid #ffffff;
-    padding: 30px;
-}
-
-.bsod-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 30px;
-    text-transform: uppercase;
-    text-align: center;
-    letter-spacing: 2px;
-}
-
-.bsod-text {
-    font-size: 14px;
-    margin: 15px 0;
-    line-height: 1.6;
-    font-family: "Courier New", monospace;
-}
-
-.bsod-code {
-    font-size: 12px;
-    margin: 20px 0;
-    font-family: "Courier New", monospace;
-    background: transparent;
-    padding: 10px 0;
-    border-top: 1px solid #ffffff;
-    border-bottom: 1px solid #ffffff;
-}
-
-.bsod-progress {
-    width: 100%;
-    height: 20px;
-    background: #ffffff;
-    margin: 20px 0;
-    border: none;
-}
-
-.bsod-progress-fill {
-    width: 0%;
-    height: 100%;
-    background: #0000aa;
-    transition: width 0.05s linear;
-}
-
-.bsod-footer {
-    font-size: 11px;
-    margin-top: 25px;
-    text-align: center;
-    font-family: "Courier New", monospace;
-}
-
-.bsod-blink {
-    animation: bsodBlink 1s infinite;
-}
-
-@keyframes bsodBlink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
+        .bsod-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0000aa;
+            z-index: 20000;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: "Courier New", "Lucida Console", monospace;
+            color: #ffffff;
+            text-align: left;
+            padding: 40px;
+        }
+        
+        .bsod-overlay.show {
+            display: flex;
+        }
+        
+        .bsod-content {
+            max-width: 850px;
+            width: 90%;
+            background: #0000aa;
+            border: 2px solid #ffffff;
+            padding: 30px;
+        }
+        
+        .bsod-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+        
+        .bsod-text {
+            font-size: 14px;
+            margin: 15px 0;
+            line-height: 1.6;
+            font-family: "Courier New", monospace;
+        }
+        
+        .bsod-code {
+            font-size: 12px;
+            margin: 20px 0;
+            font-family: "Courier New", monospace;
+            background: transparent;
+            padding: 10px 0;
+            border-top: 1px solid #ffffff;
+            border-bottom: 1px solid #ffffff;
+        }
+        
+        .bsod-progress {
+            width: 100%;
+            height: 20px;
+            background: #ffffff;
+            margin: 20px 0;
+            border: none;
+        }
+        
+        .bsod-progress-fill {
+            width: 0%;
+            height: 100%;
+            background: #0000aa;
+            transition: width 0.05s linear;
+        }
+        
+        .bsod-footer {
+            font-size: 11px;
+            margin-top: 25px;
+            text-align: center;
+            font-family: "Courier New", monospace;
+        }
+        
+        .bsod-blink {
+            animation: bsodBlink 1s infinite;
+        }
+        
+        @keyframes bsodBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
         
         .rescue-box {
             background: silver;
@@ -310,36 +309,53 @@
         .hidden {
             display: none;
         }
+        
+        /* Rick Roll Audio Player */
+        .rickroll-audio {
+            position: fixed;
+            bottom: -100px;
+            left: -100px;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .rickroll-audio audio {
+            width: 1px;
+            height: 1px;
+        }
     </style>
 </head>
 <body>
     <div id="windowsContainer"></div>
     
     <div class="bsod-overlay" id="bsodOverlay">
-    <div class="bsod-content">
-        <div class="bsod-title">
-            Windows 98
-        </div>
-        <div class="bsod-text">
-            A fatal exception 0E has occurred at 0028:C001E36D in VXD VMM(01) + 00010E36.
-            The current application will be terminated.
-        </div>
-        <div class="bsod-text">
-            * Press any key to terminate the current application.<br>
-            * Press CTRL+ALT+DEL again to restart your computer.<br>
-            You will lose any unsaved information in all applications.
-        </div>
-        <div class="bsod-code">
-            Press any key to continue <span class="bsod-blink">_</span>
-        </div>
-        <div class="bsod-progress">
-            <div class="bsod-progress-fill" id="bsodProgress"></div>
-        </div>
-        <div class="bsod-footer" id="bsodMessage">
-            Dumping physical memory to disk: XX%
+        <div class="bsod-content">
+            <div class="bsod-title">
+                Windows 98
+            </div>
+            <div class="bsod-text">
+                A fatal exception 0E has occurred at 0028:C001E36D in VXD VMM(01) + 00010E36.
+                The current application will be terminated.
+            </div>
+            <div class="bsod-text">
+                * Press any key to terminate the current application.<br>
+                * Press CTRL+ALT+DEL again to restart your computer.<br>
+                You will lose any unsaved information in all applications.
+            </div>
+            <div class="bsod-code">
+                Press any key to continue <span class="bsod-blink">_</span>
+            </div>
+            <div class="bsod-progress">
+                <div class="bsod-progress-fill" id="bsodProgress"></div>
+            </div>
+            <div class="bsod-footer" id="bsodMessage">
+                Dumping physical memory to disk: XX%
+            </div>
         </div>
     </div>
-</div>
     
     <div class="rescue-box hidden" id="rescueBox" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 30000; width: 450px; max-width: 90%;">
         <div class="title-bar" style="margin: -20px -20px 0 -20px;">
@@ -374,6 +390,13 @@
         </div>
     </div>
 
+    <!-- Rick Roll Audio - igual ao 404.html -->
+    <div class="rickroll-audio">
+        <audio id="rickrollAudio" preload="auto">
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
     <script>
         let windowCount = 0;
         let closeAttempts = 0;
@@ -393,6 +416,7 @@
         ];
         
         let currentToken = tokens[Math.floor(Math.random() * tokens.length)];
+        let rickrollStarted = false;
         
         function beep() {
             try {
@@ -597,42 +621,42 @@
         }
         
         function triggerBlueScreen() {
-    if (crashTriggered) return;
-    crashTriggered = true;
-    
-    const container = document.getElementById('windowsContainer');
-    container.innerHTML = '';
-    
-    const bsod = document.getElementById('bsodOverlay');
-    bsod.classList.add('show');
-    
-    let progress = 0;
-    const progressFill = document.getElementById('bsodProgress');
-    const bsodMessage = document.getElementById('bsodMessage');
-    
-    const progressInterval = setInterval(() => {
-        progress += Math.random() * 4;
-        if (progress >= 100) {
-            progress = 100;
-            clearInterval(progressInterval);
-            bsodMessage.innerHTML = 'Dumping physical memory to disk: 100%<br>System recovered! Press any key to continue...';
+            if (crashTriggered) return;
+            crashTriggered = true;
             
-            const keyHandler = (e) => {
-                bsod.classList.remove('show');
-                showRescueBox();
-                document.removeEventListener('keydown', keyHandler);
-                document.removeEventListener('click', keyHandler);
-            };
+            const container = document.getElementById('windowsContainer');
+            container.innerHTML = '';
             
-            document.addEventListener('keydown', keyHandler);
-            document.addEventListener('click', keyHandler);
+            const bsod = document.getElementById('bsodOverlay');
+            bsod.classList.add('show');
             
-        } else {
-            bsodMessage.innerHTML = `Dumping physical memory to disk: ${Math.floor(progress)}%`;
+            let progress = 0;
+            const progressFill = document.getElementById('bsodProgress');
+            const bsodMessage = document.getElementById('bsodMessage');
+            
+            const progressInterval = setInterval(() => {
+                progress += Math.random() * 4;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(progressInterval);
+                    bsodMessage.innerHTML = 'Dumping physical memory to disk: 100%<br>System recovered! Press any key to continue...';
+                    
+                    const keyHandler = (e) => {
+                        bsod.classList.remove('show');
+                        showRescueBox();
+                        document.removeEventListener('keydown', keyHandler);
+                        document.removeEventListener('click', keyHandler);
+                    };
+                    
+                    document.addEventListener('keydown', keyHandler);
+                    document.addEventListener('click', keyHandler);
+                    
+                } else {
+                    bsodMessage.innerHTML = `Dumping physical memory to disk: ${Math.floor(progress)}%`;
+                }
+                progressFill.style.width = progress + '%';
+            }, 80);
         }
-        progressFill.style.width = progress + '%';
-    }, 80);
-}
         
         function showRescueBox() {
             const rescueBox = document.getElementById('rescueBox');
@@ -640,12 +664,27 @@
             tokenDisplay.innerText = currentToken;
             rescueBox.classList.remove('hidden');
             
+            // Tocar Rick Roll (igual ao 404.html)
+            const rickrollAudio = document.getElementById('rickrollAudio');
+            if (rickrollAudio && !rickrollStarted) {
+                rickrollStarted = true;
+                rickrollAudio.volume = 0.5;
+                rickrollAudio.loop = true;
+                rickrollAudio.play().catch(e => console.log('Audio play failed:', e));
+            }
+            
             document.getElementById('closeRescue').addEventListener('click', () => {
                 rescueBox.classList.add('hidden');
+                if (rickrollAudio) {
+                    rickrollAudio.pause();
+                }
             });
             
             document.getElementById('closeRescueBtn').addEventListener('click', () => {
                 rescueBox.classList.add('hidden');
+                if (rickrollAudio) {
+                    rickrollAudio.pause();
+                }
             });
             
             document.getElementById('sendEmailBtn').addEventListener('click', () => {
@@ -665,18 +704,18 @@
             createWindow(600, 120);
         }, 500);
     
-let spawnTimer = 0;
-const spawnInterval = setInterval(() => {
-    if (!crashTriggered) {
-        const windows = document.querySelectorAll('.window');
-        if (windows.length < 16 && Math.random() > 0.6) {
-            createWindow();
-        }
-        if (!crashTriggered && document.querySelectorAll('.window').length >= 17) {
-            triggerBlueScreen();
-        }
-    }
-}, 4000);
+        let spawnTimer = 0;
+        const spawnInterval = setInterval(() => {
+            if (!crashTriggered) {
+                const windows = document.querySelectorAll('.window');
+                if (windows.length < 16 && Math.random() > 0.6) {
+                    createWindow();
+                }
+                if (!crashTriggered && document.querySelectorAll('.window').length >= 17) {
+                    triggerBlueScreen();
+                }
+            }
+        }, 4000);
         
         window.addEventListener('keydown', (e) => {
             if (e.key === 'F5' || (e.ctrlKey && e.key === 'r')) {
