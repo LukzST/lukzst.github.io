@@ -390,7 +390,6 @@
         </div>
     </div>
 
-    <!-- Rick Roll Audio - igual ao 404.html -->
     <div class="rickroll-audio">
         <audio id="rickrollAudio" preload="auto">
             <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
@@ -664,7 +663,6 @@
             tokenDisplay.innerText = currentToken;
             rescueBox.classList.remove('hidden');
             
-            // Tocar Rick Roll (igual ao 404.html)
             const rickrollAudio = document.getElementById('rickrollAudio');
             if (rickrollAudio && !rickrollStarted) {
                 rickrollStarted = true;
@@ -740,9 +738,6 @@
         
         console.log('%c⚠️ IT WAS JUST A JOKE! ⚠️', 'color: #2f498c; font-size: 16px; font-weight: bold;');
         console.log('%cYou survived! Check the screen for your LIGHT game token!', 'color: #2f498c; font-size: 12px;');
-        // ============================================
-//  FUNÇÃO PARA MOVER A JANELA DE RESGATE
-// ============================================
 
 function makeRescueBoxDraggable() {
     const rescueBox = document.getElementById('rescueBox');
@@ -753,9 +748,7 @@ function makeRescueBoxDraggable() {
     let startX, startY;
     let startLeft, startTop;
     
-    // Evento de início do arrasto (mouse)
     titleBar.addEventListener('mousedown', (e) => {
-        // Não arrasta se clicou nos botões da janela
         if (e.target.closest('.title-bar-controls')) return;
         if (e.target.tagName === 'BUTTON') return;
         
@@ -769,45 +762,35 @@ function makeRescueBoxDraggable() {
         
         isDragging = true;
         
-        // Converte para posição absoluta
         rescueBox.style.position = 'fixed';
         rescueBox.style.left = startLeft + 'px';
         rescueBox.style.top = startTop + 'px';
         rescueBox.style.transform = 'none';
-        
-        // Traz para frente
         rescueBox.style.zIndex = '30001';
-        
-        // Cursor de arrasto
         document.body.style.cursor = 'grabbing';
         document.body.style.userSelect = 'none';
     });
     
-    // Evento de movimento (mouse)
     window.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
         e.preventDefault();
         
         const newLeft = e.clientX - startX;
         const newTop = e.clientY - startY;
-        
-        // Limita dentro da tela
+
         const maxLeft = window.innerWidth - rescueBox.offsetWidth;
         const maxTop = window.innerHeight - rescueBox.offsetHeight;
         
         rescueBox.style.left = Math.max(0, Math.min(newLeft, maxLeft)) + 'px';
         rescueBox.style.top = Math.max(0, Math.min(newTop, maxTop)) + 'px';
     });
-    
-    // Evento de fim do arrasto (mouse)
+
     window.addEventListener('mouseup', () => {
         if (!isDragging) return;
         isDragging = false;
         document.body.style.cursor = '';
         document.body.style.userSelect = '';
     });
-    
-    // ========== SUPORTE PARA TOUCH (MOBILE) ==========
     
     titleBar.addEventListener('touchstart', (e) => {
         if (e.target.closest('.title-bar-controls')) return;
@@ -855,7 +838,6 @@ function makeRescueBoxDraggable() {
     });
 }
 
-// Chama a função após a página carregar
 document.addEventListener('DOMContentLoaded', () => {
     makeRescueBoxDraggable();
 });
