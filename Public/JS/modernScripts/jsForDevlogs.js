@@ -75,22 +75,50 @@
                 container.innerHTML = '';
                 
                 folders.forEach(folder => {
-                    const card = document.createElement('a');
-                    card.href = `https://github.com/${repoOwner}/${repoName}/tree/main/${targetPath}/${folder.name}`;
-                    card.target = "_blank";
-                    card.className = 'version-card';
-                    card.rel = "noopener noreferrer";
-                    
-                    card.innerHTML = `
-                        <h2 style="font-family: Bricolage Grotesque;">${folder.name.toUpperCase()}</h2>
-                        <p>Final build located in the repository. Click to access the files for this version.</p>
-                        <div class="explore-link">
-                            EXPLORE →
+    // 1. Criar o elemento de seção (estilo Zen)
+                const section = document.createElement('section');
+                section.className = "release-note-item relative mt-12 flex flex-col pt-24 lg:flex-row";
+                section.style.borderTop = "1px solid var(--zen-subtle)";
+                section.id = folder.name;
+
+                // 2. Injetar o HTML de texto limpo
+                section.innerHTML = `
+                    <div class="flex w-full flex-col gap-2 px-5 md:px-10 md:pr-32 text-left">
+                        
+                        <div class="w-full justify-between sm:flex items-center">
+                            <div class="flex flex-col gap-1 text-sm font-bold opacity-80 sm:flex-row sm:items-center sm:gap-0">
+                                <span style="font-family: 'Bricolage Grotesque'; font-size: 1.3rem; color: var(--zen-dark);">${folder.name.toUpperCase()}</span>
+                                <span class="text-muted-foreground mx-3 hidden sm:block opacity-30">•</span> 
+                                <a href="https://github.com/${repoOwner}/${repoName}/tree/main/${targetPath}/${folder.name}" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                class="zen-link text-xs !no-underline font-bold"
+                                style="color: var(--zen-coral);">
+                                VIEW ON GITHUB →
+                                </a>
+                            </div>
+                            <div class="text-xs font-bold opacity-40" style="color: var(--zen-dark);">FINAL BUILD</div>
                         </div>
-                    `;
-                    
-                    container.appendChild(card);
-                });
+
+                        <div class="mt-6 flex flex-col gap-8">
+                            <ul class="flex flex-col gap-1" style="list-style: none; padding: 0;">
+                                <li class="flex gap-4 items-start">
+                                    <div style="color: var(--zen-coral); min-width: 65px; font-weight: 800; font-size: 0.85rem; text-transform: uppercase;">Note</div>
+                                    <div>
+                                        <span class="text-base opacity-80" style="color: var(--zen-dark); line-height: 1.7;">
+                                            Final build for ${folder.name} is available. This release includes all compiled assets. 
+                                            Access the repository link above to see full details and source code.
+                                        </span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                `;
+
+                container.appendChild(section);
+            });
                 
             } catch (error) {
                 console.error('Error fetching versions:', error);
