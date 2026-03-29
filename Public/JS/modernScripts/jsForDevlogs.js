@@ -100,7 +100,6 @@ async function fetchVersions() {
       const section = document.createElement("section");
       section.className =
         "release-note-item relative mt-12 flex flex-col pt-24 lg:flex-row";
-      section.style.borderTop = "1px solid var(--zen-subtle)";
 
       section.innerHTML = `
                 <div class="flex w-full flex-col gap-2 px-5 md:px-10 md:pr-32 text-left">
