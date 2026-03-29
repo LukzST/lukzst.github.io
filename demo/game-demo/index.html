@@ -59,7 +59,6 @@
             flex-direction: column;
         }
 
-        /* ── Title Bar ── */
         #title-bar {
             display: flex;
             align-items: center;
@@ -74,7 +73,6 @@
             align-items: center;
             gap: 0.6rem;
         }
-        /* Moon icon */
         #title-bar .moon {
             width: 22px;
             height: 22px;
@@ -98,7 +96,6 @@
             margin-left: 0.15rem;
         }
 
-        /* Traffic-light dots */
         .window-dots {
             display: flex;
             gap: 5px;
@@ -114,7 +111,6 @@
         .dot.yellow { background: #ffbd2e; }
         .dot.green  { background: #28c840; }
 
-        /* ── Status Bar ── */
         #status-bar {
             padding: 0.5rem 1.25rem;
             border-bottom: 1px dashed var(--border);
@@ -142,7 +138,6 @@
             50% { opacity: 0.3; }
         }
 
-        /* ── Text Box ── */
         #text-box {
             padding: 1.5rem 1.5rem 1rem;
             min-height: 260px;
@@ -153,12 +148,10 @@
             flex: 1;
             scroll-behavior: smooth;
         }
-        /* Scrollbar */
         #text-box::-webkit-scrollbar { width: 4px; }
         #text-box::-webkit-scrollbar-track { background: transparent; }
         #text-box::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 
-        /* ── Text color classes ── */
         .ascii-art  { color: #8ab4c9; font-family: 'Courier New', monospace; font-size: 0.78rem; line-height: 1.3; }
         .red-text   { color: #c0392b; }
         .green-text { color: #27ae60; }
@@ -166,14 +159,12 @@
         .yellow-text{ color: var(--coral); }
         .center-text{ text-align: center; display: block; }
 
-        /* ── Divider ── */
         #divider {
             height: 1px;
             background: var(--border);
             margin: 0 1.25rem;
         }
 
-        /* ── Choice Box ── */
         #choice-box {
             padding: 0.875rem 1.25rem 1.25rem;
             display: flex;
@@ -185,7 +176,6 @@
             padding: 0;
         }
 
-        /* Choice label above buttons */
         #choice-label {
             font-size: 0.68rem;
             letter-spacing: 0.1em;
@@ -237,7 +227,6 @@
             transform: translateX(1px) scale(0.99);
         }
 
-        /* ── Footer Bar ── */
         #footer-bar {
             padding: 0.6rem 1.25rem;
             border-top: 1.5px solid var(--border);
@@ -264,7 +253,6 @@
             opacity: 0.8;
         }
 
-        /* ── Responsive ── */
         @media (max-width: 520px) {
             body { padding: 0; align-items: flex-start; }
             #game-container {
