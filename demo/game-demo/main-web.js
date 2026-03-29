@@ -1,9 +1,9 @@
-// --- Elementos do DOM ---
+// --- DOM Elements ---
 const statusBar = document.getElementById('status-bar');
 const textBox = document.getElementById('text-box');
 const choiceBox = document.getElementById('choice-box');
 
-// --- Variáveis de Estado do Jogo ---
+// --- Game State Variables ---
 let nomeJogador = "Michael Nevins";
 let Vida = 100;
 let valorsanidade = 100;
@@ -18,10 +18,10 @@ let destruir = false;
 let jafoinorte = false; 
 let casafora = false;
 
-// Estado dos caminhos visitados
+// Visited path states
 let N = false, L = false, O = false, S = false;
 
-// --- Controles de Finais ---
+// --- Ending Controls ---
 let BAD_ENDING = false;
 let BAD_ENDING_2 = false;
 let BAD_ENDING_3 = false;
@@ -29,7 +29,7 @@ let GOOD_ENDING = false;
 let REAL_ENDING = false;
 let SECRET_ENDING = false;
 
-// --- ARTE ASCII (Adaptadas do mainBR.js) ---
+// --- ASCII ART ---
 const ASCII_GAMEOVER = [
     "",
     " ███████████████    ████████████    █████████████████████     █████████████",
@@ -55,8 +55,8 @@ const ASCII_SALA_ITENS = [
     "██                                                               ██",
     "██    █      █                                                   ██",
     "██   ███     █                                                   ██",
-    "██  (Pote)  ███                                                  ██",
-    "██          (Pá)                                                 ██",
+    "██  (Pot)   ███                                                  ██",
+    "██          (Shovel)                                             ██",
     "██                                                            █████",
     "██                               ██                           █  ██",
     "██                             ██████                         █  ██",
@@ -71,27 +71,26 @@ const ASCII_FLORESTA_1 = [
     "██████████████████████████████████████████████████████         ████",
     "                   ██                                              ",
     "                 ██                                       /\\      ",
-    "               ██                                        OESTE     ",
+    "               ██                                        WEST      ",
     "         ██  ██                                                    ",
     "       ██  ██                                                      ",
     "     ██                                                            ",
-    "██   ██                            ██                 NORTE >      ",
+    "██   ██                            ██                 NORTH >      ",
     "██   ██                          ██████                            ",
     "██   ██                         █  ██  █                           ",
     "██   ██                            ██                              ",
-    "██   ██                          ██  ██                 LESTE      ",
+    "██   ██                          ██  ██                 EAST       ",
     "██   ██                         ██    ██                 \\/       ",                                            
     "██████████████████████████████████████████████████████         ████"
 ];
 
-// --- Funções de Ajuda da Interface Web ---
+// --- Web Interface Helper Functions ---
 
 function renderAscii(asciiArray) {
     return `<div class="ascii-art">${asciiArray.join('\n')}</div>`;
 }
 
 function replaceTags(text) {
-    // CORREÇÃO DE SINTAXE: Escapando as chaves {} nas expressões regulares.
     return text
         .replace(/\{center\}/g, '<span class="center-text">') 
         .replace(/\{\/center\}/g, '</span>')                 
@@ -103,27 +102,23 @@ function replaceTags(text) {
 }
 
 function updateStatus() {
-    let status = `[Vida: <span class="green-text">${Vida}%</span>] | [Sanidade: <span class="cyan-text">${valorsanidade}%</span>] | [Itens: <span class="yellow-text">`;
+    let status = `[Health: <span class="green-text">${Vida}%</span>] | [Sanity: <span class="cyan-text">${valorsanidade}%</span>] | [Items: <span class="yellow-text">`;
     let itens = [];
-    if (papega) itens.push('Pá');
-    if (temChave) itens.push('Chave(Pote)');
-    if (chavedois) itens.push('Chave(Lápide)');
-    if (mapaachado) itens.push('Mapa');
-    if (kitm) itens.push('Kit Médico');
-    if (fotopega) itens.push('Foto');
+    if (papega) itens.push('Shovel');
+    if (temChave) itens.push('Key (Pot)');
+    if (chavedois) itens.push('Key (Gravestone)');
+    if (mapaachado) itens.push('Map');
+    if (kitm) itens.push('Med Kit');
+    if (fotopega) itens.push('Photo');
 
-    status += itens.join(', ') || 'Nenhum';
+    status += itens.join(', ') || 'None';
     status += '</span> ]';
     statusBar.innerHTML = status;
 }
 
 function showAlert(message) {
-    // Remove tags HTML do output de alert()
     let formattedMessage = replaceTags(message);
-    
-    // Remove todas as tags HTML e formatação, deixando apenas texto puro
     formattedMessage = formattedMessage.replace(/<[^>]*>/g, '');
-    
     alert(formattedMessage);
 }
 
@@ -145,11 +140,11 @@ function displayScene(text, choices, choiceHandler) {
     textBox.scrollTop = textBox.scrollHeight;
 }
 
-// --- Funções de Estado e Efeitos ---
+// --- State & Effect Functions ---
 
 function checkGameOver() {
-    if (Vida < 20) return 'MORTE';
-    if (valorsanidade <= 10) return 'LOUCURA';
+    if (Vida < 20) return 'DEATH';
+    if (valorsanidade <= 10) return 'MADNESS';
     return null;
 }
 
@@ -157,14 +152,14 @@ function alterarVida(valor, showPopup = true) {
     const oldVida = Vida;
     Vida = Math.min(100, Math.max(0, Vida + valor));
     
-    if (checkGameOver() === 'MORTE') {
-        endGame('Você perdeu muita vida!');
+    if (checkGameOver() === 'DEATH') {
+        endGame('You lost too much health!');
         return true; 
     } 
     
     if (showPopup && Vida !== oldVida) {
-        let tipo = valor < 0 ? 'CAIU GRAVEMENTE' : 'SUBIU';
-        showAlert(`[AVISO] SUA VIDA ${tipo}!\nVocê agora tem ${Vida}% de vida.`);
+        let tipo = valor < 0 ? 'DROPPED SEVERELY' : 'INCREASED';
+        showAlert(`[WARNING] YOUR HEALTH ${tipo}!\nYou now have ${Vida}% health.`);
         updateStatus();
     }
     updateStatus(); 
@@ -175,12 +170,12 @@ function alterarSanidade(valor, showPopup = true) {
     const oldSanidade = valorsanidade;
     valorsanidade = Math.min(100, Math.max(0, valorsanidade + valor));
 
-    if (checkGameOver() === 'LOUCURA') {
-        endGame('Você chegou em um nível muito baixo de sanidade durante o jogo!\nVocê enlouqueceu e se perdeu na floresta para sempre!');
+    if (checkGameOver() === 'MADNESS') {
+        endGame('Your sanity reached a critical low during the game!\nYou lost your mind and vanished into the forest forever!');
         return true; 
     } else if (showPopup && valorsanidade !== oldSanidade) {
-        let tipo = valor < 0 ? 'CAIU' : 'SUBIU';
-        showAlert(`[AVISO] SUA SANIDADE ${tipo}!\nVocê agora tem ${valorsanidade}% de sanidade.`);
+        let tipo = valor < 0 ? 'DROPPED' : 'INCREASED';
+        showAlert(`[WARNING] YOUR SANITY ${tipo}!\nYou now have ${valorsanidade}% sanity.`);
         updateStatus(); 
     }
     updateStatus(); 
@@ -190,20 +185,19 @@ function alterarSanidade(valor, showPopup = true) {
 function inventarioScene(currentSceneName) {
     let itensNoInventario = 0;
     
-    // REMOVIDO: Linhas de separação e tags {center} para o alerta
     let inventarioText = "-------------------------------------------------\n";
-    inventarioText += "Você tem no seu inventário:\n";
+    inventarioText += "Your inventory contains:\n";
     inventarioText += "-------------------------------------------------\n";
 
-    if (papega) { inventarioText += "- Pá\n"; itensNoInventario++; }
-    if (temChave) { inventarioText += "- Chaves (Pote)\n"; itensNoInventario++; }
-    if (chavedois) { inventarioText += "- Chave (Lápide)\n"; itensNoInventario++; }
-    if (mapaachado) { inventarioText += "- Mapa\n"; itensNoInventario++; }
-    if (kitm) { inventarioText += "- Kit Médico\n"; itensNoInventario++; }
-    if (fotopega) { inventarioText += "- Foto\n"; itensNoInventario++; }
+    if (papega) { inventarioText += "- Shovel\n"; itensNoInventario++; }
+    if (temChave) { inventarioText += "- Key (Pot)\n"; itensNoInventario++; }
+    if (chavedois) { inventarioText += "- Key (Gravestone)\n"; itensNoInventario++; }
+    if (mapaachado) { inventarioText += "- Map\n"; itensNoInventario++; }
+    if (kitm) { inventarioText += "- Med Kit\n"; itensNoInventario++; }
+    if (fotopega) { inventarioText += "- Photo\n"; itensNoInventario++; }
 
     if (itensNoInventario === 0) {
-        inventarioText += "Você ainda não pegou nenhum item!\n";
+        inventarioText += "You haven't picked up any items yet!\n";
     }
     inventarioText += "-------------------------------------------------";
 
@@ -211,7 +205,7 @@ function inventarioScene(currentSceneName) {
     transitionTo(currentSceneName, 0);
 }
 
-// --- Lógica de Cenas e Transição ---
+// --- Scene Logic & Transition ---
 let currentScene = 'intro';
 
 function transitionTo(sceneName, optionSelected = 0) {
@@ -220,7 +214,7 @@ function transitionTo(sceneName, optionSelected = 0) {
 
     if (checkGameOver()) {
         const type = checkGameOver();
-        endGame(type === 'MORTE' ? 'Você perdeu muita vida!' : 'Você enlouqueceu e se perdeu na floresta para sempre!');
+        endGame(type === 'DEATH' ? 'You lost too much health!' : 'You lost your mind and vanished into the forest forever!');
         return;
     }
     
@@ -236,18 +230,17 @@ function transitionTo(sceneName, optionSelected = 0) {
 }
 
 function sceneIntro() {
-    // REMOVIDO: Linhas de separação
-    let text = `{center}[CONTEXTO]\n\n`;
-    text += `Você é {yellow-fg}${nomeJogador}{/}, um engenheiro elétrico que foi chamado para consertar\n`;
-    text += `postes, porém nem tudo ocorreu como planejado e\n`;
-    text += `você foi sequestrado por alguém!\n\n`;
-    text += `Seu objetivo é tentar fugir!{/center}`;
+    let text = `{center}[CONTEXT]\n\n`;
+    text += `You are {yellow-fg}${nomeJogador}{/}, an electrical engineer who was called\n`;
+    text += `to fix power poles — but nothing went as planned,\n`;
+    text += `and you were kidnapped by someone!\n\n`;
+    text += `Your goal is to escape.{/center}`;
 
     textBox.innerHTML = replaceTags(text).replace(/\n/g, '<br>');
     choiceBox.innerHTML = ''; 
 
     const startButton = document.createElement('button');
-    startButton.innerHTML = replaceTags('[1] INICIAR O JOGO');
+    startButton.innerHTML = replaceTags('[1] START GAME');
     startButton.onclick = () => {
         transitionTo('salaInicial');
     };
@@ -257,42 +250,42 @@ function sceneIntro() {
 function sceneSalaInicial(choice) {
     let asciiArt = renderAscii(ASCII_SALA_ITENS);
     
-    const narrativeText = "\n\n{center}Você está em uma sala escura. A luz da lua raia pela janela.\n" +
-                          "Há um POTE de OURO no canto da sala, junto com uma PÁ. E do outro lado existe uma PORTA.{/center}";
+    const narrativeText = "\n\n{center}You are in a dark room. Moonlight seeps through the window.\n" +
+                          "There is a GOLDEN POT in the corner, along with a SHOVEL. On the other side there is a DOOR.{/center}";
     
     let currentText = asciiArt + narrativeText;
 
     const choices = [
-        { text: `Examinar PÁ ${papega ? '(PEGO)' : ''}`, action: 1 },
-        { text: `Examinar POTE de OURO ${temChave ? '(PEGO)' : ''}`, action: 2 },
-        { text: `Tentar abrir PORTA`, action: 3 },
-        { text: `INVENTÁRIO`, action: 4 },
-        { text: `VER STATUS`, action: 5 }
+        { text: `Examine SHOVEL ${papega ? '(TAKEN)' : ''}`, action: 1 },
+        { text: `Examine GOLDEN POT ${temChave ? '(TAKEN)' : ''}`, action: 2 },
+        { text: `Try to open the DOOR`, action: 3 },
+        { text: `INVENTORY`, action: 4 },
+        { text: `VIEW STATUS`, action: 5 }
     ];
 
     if (choice === 1) {
         if (papega) {
-            showAlert('Você já pegou a pá!');
+            showAlert('You already picked up the shovel!');
         } else {
             papega = true;
-            showAlert('Você pegou a pá, talvez seja útil no futuro.');
+            showAlert('You picked up the shovel. It might come in handy later.');
         }
         transitionTo('salaInicial'); return;
     } else if (choice === 2) {
         if (temChave) {
-            showAlert('Você já pegou o pote de ouro e a chave!');
+            showAlert('You already picked up the golden pot and the key!');
         } else {
             temChave = true;
-            showAlert('Você pegou o pote de ouro, dentro dele você achou uma chave.');
+            showAlert('You picked up the golden pot. Inside, you found a key.');
         }
         transitionTo('salaInicial'); return;
     } else if (choice === 3) {
         if (temChave) {
             temChave = false;
-            showAlert('Você consegue abrir a porta com a chave encontrada!\n[AVISO] Você usou a chave!');
+            showAlert('You manage to open the door with the key you found!\n[WARNING] You used the key!');
             transitionTo('floresta1');
         } else {
-            showAlert('Você tenta abrir a porta, porém ela está trancada...');
+            showAlert('You try to open the door, but it is locked...');
             transitionTo('salaInicial');
         }
         return;
@@ -300,7 +293,7 @@ function sceneSalaInicial(choice) {
         inventarioScene('salaInicial');
         return;
     } else if (choice === 5) {
-        showAlert(`VIDA: {green-fg}${Vida}%{/}\nSANIDADE: {cyan-fg}${valorsanidade}%{/}`);
+        showAlert(`HEALTH: {green-fg}${Vida}%{/}\nSANITY: {cyan-fg}${valorsanidade}%{/}`);
         transitionTo('salaInicial');
         return;
     }
@@ -311,54 +304,53 @@ function sceneSalaInicial(choice) {
 function sceneFloresta1(choice) {
     let asciiArt = renderAscii(ASCII_FLORESTA_1);
     
-    // REMOVIDO: Linhas de separação
-    let narrativeText = "\n\n{center}Pegue sua recompensa. A lua pálida sorri para você.\n";
-    narrativeText += "Você está em uma floresta, Existem caminhos para o NORTE, OESTE e LESTE:{/center}";
+    let narrativeText = "\n\n{center}Claim your reward. The pale moon smiles at you.\n";
+    narrativeText += "You are in a forest. There are paths leading NORTH, WEST and EAST:{/center}";
     
     let currentText = asciiArt + narrativeText;
 
     const choices = [
-        { text: `Ir para NORTE ${jafoinorte ? '(Já tentou)' : ''}`, action: 1 },
-        { text: `Ir para OESTE ${O ? '(Já tentou)' : ''}`, action: 2 },
-        { text: `Ir para LESTE`, action: 3 },
-        { text: `INVENTÁRIO`, action: 4 },
-        { text: `VER STATUS`, action: 5 }
+        { text: `Go NORTH ${jafoinorte ? '(Already tried)' : ''}`, action: 1 },
+        { text: `Go WEST ${O ? '(Already tried)' : ''}`, action: 2 },
+        { text: `Go EAST`, action: 3 },
+        { text: `INVENTORY`, action: 4 },
+        { text: `VIEW STATUS`, action: 5 }
     ];
 
-    if (choice === 1) { // NORTE
+    if (choice === 1) {
         if (jafoinorte) {
-            showAlert('Você já foi pelo Norte!');
+            showAlert('You have already gone North!');
             transitionTo('floresta1'); return;
         }
 
         jafoinorte = true; 
         
         const choicesAtalho = [
-            { text: 'Ir pelo atalho ({yellow-fg}BAD ENDING{/})', action: 1 },
-            { text: 'Ignorar o atalho', action: 2 }
+            { text: 'Take the shortcut ({yellow-fg}BAD ENDING{/})', action: 1 },
+            { text: 'Ignore the shortcut', action: 2 }
         ];
         
-        displayScene("{center}Você se sente mais confiante em ir pelo norte...\nVocê encontra um atalho secreto!{/center}", choicesAtalho, (c) => {
+        displayScene("{center}You feel more confident heading North...\nYou find a secret shortcut!{/center}", choicesAtalho, (c) => {
             if (c === 1) {
                 BAD_ENDING = true;
-                endGame('Você avança rapidamente pela floresta, mas ainda restam segredos esperando para serem descobertos...');
+                endGame('You rush through the forest, but there are still secrets waiting to be uncovered...');
             } else if (c === 2) {
-                showAlert('Você acha perigoso e ignora o atalho');
+                showAlert('It feels dangerous. You ignore the shortcut.');
                 transitionTo('floresta1');
             } else {
-                showAlert('Opção Inválida! Voltando ao caminho.');
+                showAlert('Invalid option! Returning to the path.');
                 transitionTo('floresta1');
             }
         });
         return;
         
-    } else if (choice === 2) { // OESTE (COMBINADO)
+    } else if (choice === 2) {
         O = true;
         const choicesOeste = [
-            { text: 'Fugir', action: 1 },
-            { text: 'Se esconder', action: 2 }
+            { text: 'Run', action: 1 },
+            { text: 'Hide', action: 2 }
         ];
-        displayScene("{center}Você vai pelo caminho Oeste...\nUm homem alto, com um machado e não muito amigável se aproxima.{/center}", choicesOeste, (c) => {
+        displayScene("{center}You head West...\nA tall man with an axe — and no friendly intentions — approaches you.{/center}", choicesOeste, (c) => {
             let resultado = '';
             if (c === 1 || c === 2) {
                 alterarSanidade(-10, false); 
@@ -367,30 +359,30 @@ function sceneFloresta1(choice) {
                 if (checkGameOver()) return;
 
                 if (c === 1) {
-                    resultado = 'Você começa a correr, tropeça em uma raiz e leva uma machadada do homem.';
+                    resultado = 'You start running, trip over a root, and get hit with the axe.';
                 } else {
-                    resultado = 'Você decide se esconder, mas ele te vê e te dá uma machadada!';
+                    resultado = 'You try to hide, but he spots you and strikes you with the axe!';
                 }
 
-                showAlert(`${resultado}\n\nDano Recebido:\n- Vida atual: ${Vida}%\n- Sanidade atual: ${valorsanidade}%`);
+                showAlert(`${resultado}\n\nDamage taken:\n- Current health: ${Vida}%\n- Current sanity: ${valorsanidade}%`);
                 transitionTo('floresta1');
             } else {
-                showAlert('Opção Inválida!');
+                showAlert('Invalid option!');
                 transitionTo('floresta1');
             }
         });
         return;
 
-    } else if (choice === 3) { // LESTE
+    } else if (choice === 3) {
         L = true;
-        showAlert('Depois de pensar, você decide ir pelo Leste...\nVocê começa a adentrar a floresta densa...');
+        showAlert('After thinking it over, you decide to head East...\nYou begin pushing deeper into the dense forest...');
         transitionTo('floresta2');
         return;
     } else if (choice === 4) {
         inventarioScene('floresta1');
         return;
     } else if (choice === 5) {
-        showAlert(`VIDA: {green-fg}${Vida}%{/}\nSANIDADE: {cyan-fg}${valorsanidade}%{/}`);
+        showAlert(`HEALTH: {green-fg}${Vida}%{/}\nSANITY: {cyan-fg}${valorsanidade}%{/}`);
         transitionTo('floresta1');
         return;
     }
@@ -401,107 +393,106 @@ function sceneFloresta1(choice) {
 function sceneFloresta2(choice) {
     let asciiArt = renderAscii(ASCII_FLORESTA_1);
     
-    // REMOVIDO: Linhas de separação
-    let narrativeText = "\n\n{center}Pegue sua recompensa. A lua pálida sorri para você.\n";
-    narrativeText += "Você está em uma floresta, Existem caminhos para o NORTE, SUL e LESTE:{/center}";
+    let narrativeText = "\n\n{center}Claim your reward. The pale moon smiles at you.\n";
+    narrativeText += "You are in a forest. There are paths leading NORTH, SOUTH and EAST:{/center}";
     
     let currentText = asciiArt + narrativeText;
 
     const choices = [
-        { text: `Ir para NORTE ${N ? '(Já foi)' : ''}`, action: 1 },
-        { text: `Ir para SUL ${S ? '(Já foi)' : ''}`, action: 2 },
-        { text: `Ir para LESTE`, action: 3 },
-        { text: `INVENTÁRIO`, action: 4 },
-        { text: `VER STATUS`, action: 5 }
+        { text: `Go NORTH ${N ? '(Already went)' : ''}`, action: 1 },
+        { text: `Go SOUTH ${S ? '(Already went)' : ''}`, action: 2 },
+        { text: `Go EAST`, action: 3 },
+        { text: `INVENTORY`, action: 4 },
+        { text: `VIEW STATUS`, action: 5 }
     ];
 
-    if (choice === 1) { // NORTE (Cabana)
+    if (choice === 1) {
         N = true;
         
         const choicesCabana = [
-            { text: 'Entrar na cabana', action: 1 },
-            { text: 'Ignorar a cabana', action: 2 }
+            { text: 'Enter the cabin', action: 1 },
+            { text: 'Ignore the cabin', action: 2 }
         ];
         
-        displayScene("{center}Você decide ir pelo Norte...\nVocê encontra uma cabana velha feita de madeira{/center}", choicesCabana, (c) => {
-            if (c === 1) { // Entrar na cabana
+        displayScene("{center}You decide to head North...\nYou find an old wooden cabin.{/center}", choicesCabana, (c) => {
+            if (c === 1) {
                 const choicesBau = [
-                    { text: 'Pegar o mapa', action: 1 },
-                    { text: 'Voltar para a bifurcação', action: 2 },
-                    { text: `Pegar Kit Médico ${kitm ? '(PEGO)' : ''} (Cura 50% da vida)`, action: 3 }
+                    { text: 'Take the map', action: 1 },
+                    { text: 'Return to the fork', action: 2 },
+                    { text: `Take Med Kit ${kitm ? '(TAKEN)' : ''} (Restores 50% health)`, action: 3 }
                 ];
                 
-                displayScene("{center}Você entra na cabana e encontra um baú velho. Dentro dele, um pergaminho com um mapa.{/center}", choicesBau, (c2) => {
-                    if (c2 === 1) { // Pegar o mapa
+                displayScene("{center}You enter the cabin and find an old chest. Inside, a parchment with a map drawn on it.{/center}", choicesBau, (c2) => {
+                    if (c2 === 1) {
                         mapaachado = true;
-                        showAlert('Você pega o mapa!'); 
+                        showAlert('You take the map!'); 
                         transitionTo('floresta2');
-                    } else if (c2 === 2) { // Voltar
+                    } else if (c2 === 2) {
                         transitionTo('floresta2');
-                    } else if (c2 === 3) { // Kit Médico
+                    } else if (c2 === 3) {
                         if (kitm) {
-                            showAlert('Você já pegou o kit médico!');
+                            showAlert('You already took the med kit!');
                             transitionTo('floresta2');
                         } else {
                             kitm = true;
                             alterarVida(50, false); 
-                            showAlert(`[KIT MÉDICO USADO]\n\nSua vida foi restaurada em 50 pontos. Vida atual: ${Vida}%`);
+                            showAlert(`[MED KIT USED]\n\nYour health was restored by 50 points. Current health: ${Vida}%`);
                             transitionTo('floresta2');
                         }
                     } else {
-                        showAlert('Opção Inválida!');
+                        showAlert('Invalid option!');
                         transitionTo('floresta2');
                     }
                 });
-            } else if (c === 2) { // Ignorar a cabana
+            } else if (c === 2) {
                 const choicesPonte = [
-                    { text: 'Pular a ponte', action: 1 },
-                    { text: 'Voltar para a bifurcação', action: 2 }
+                    { text: 'Jump across the bridge', action: 1 },
+                    { text: 'Return to the fork', action: 2 }
                 ];
-                displayScene("{center}Você ignora a cabana e continua...\nEncontra uma ponte quebrada.{/center}", choicesPonte, (c2) => {
+                displayScene("{center}You ignore the cabin and keep going...\nYou find a broken bridge.{/center}", choicesPonte, (c2) => {
                     if (c2 === 1) {
-                        endGame('Você tenta pular a ponte, porém você cai e morre');
+                        endGame('You try to jump across the bridge, but you fall and die.');
                     } else if (c2 === 2) {
                         transitionTo('floresta2');
                     } else {
-                        showAlert('Opção Inválida!');
+                        showAlert('Invalid option!');
                         transitionTo('floresta2');
                     }
                 });
             } else {
-                showAlert('Opção Inválida!');
+                showAlert('Invalid option!');
                 transitionTo('floresta2');
             }
         });
         return;
-    } else if (choice === 2) { // SUL (Barco/Pergaminho)
+    } else if (choice === 2) {
         S = true;
         const choicesSul = [
-            { text: 'Pegar o barco', action: 1 },
-            { text: 'Ignorar o barco', action: 2 },
-            { text: 'Voltar para a bifurcação', action: 3 }
+            { text: 'Take the boat', action: 1 },
+            { text: 'Ignore the boat', action: 2 },
+            { text: 'Return to the fork', action: 3 }
         ];
         
-        displayScene("{center}Você vai pelo Sul.\nVocê encontra um lago, e um barco a sua frente.{/center}", choicesSul, (c) => {
-            if (c === 1) { // Pegar o barco
+        displayScene("{center}You head South.\nYou find a lake, and a boat in front of you.{/center}", choicesSul, (c) => {
+            if (c === 1) {
                 const choicesCaverna = [
-                    { text: 'Ignorar caverna', action: 1 },
-                    { text: 'Entrar dentro da caverna', action: 2 }
+                    { text: 'Ignore the cave', action: 1 },
+                    { text: 'Enter the cave', action: 2 }
                 ];
 
-                displayScene("{center}O barco afunda. Você vê uma caverna submersa!{/center}", choicesCaverna, (c2) => {
+                displayScene("{center}The boat sinks. You spot a submerged cave!{/center}", choicesCaverna, (c2) => {
                     if (c2 === 1) {
-                        showAlert('Você ignora a caverna e decide voltar nadando.');
+                        showAlert('You ignore the cave and decide to swim back.');
                         transitionTo('floresta2');
-                    } else if (c2 === 2) { // Caverna / Pergaminho
+                    } else if (c2 === 2) {
                         const choicesPergaminho = [
-                            { text: 'Ler (Perde Sanidade)', action: 1 },
-                            { text: 'Não Ler', action: 2 },
-                            { text: 'DESTRUIR! (Altera Final Secreto)', action: 3 }
+                            { text: 'Read it (Loses Sanity)', action: 1 },
+                            { text: 'Don\'t read it', action: 2 },
+                            { text: 'DESTROY it! (Affects Secret Ending)', action: 3 }
                         ];
 
-                        displayScene("{center}Você encontra um cemitério submerso com um pergaminho aberto...{/center}", choicesPergaminho, (c3) => {
-                            if (c3 === 1) { // Ler
+                        displayScene("{center}You find a submerged graveyard with an open parchment...{/center}", choicesPergaminho, (c3) => {
+                            if (c3 === 1) {
                                 let sanidadePerdida = false;
                                 if (!destruir) {
                                     sanidadePerdida = alterarSanidade(-10, false); 
@@ -509,95 +500,95 @@ function sceneFloresta2(choice) {
                                 
                                 if (checkGameOver()) return; 
 
-                                showAlert('O diário é assustador. Você teme pelo autor.' + 
-                                    (sanidadePerdida ? `\n\n[AVISO] Sua sanidade caiu para ${valorsanidade}%` : ''));
+                                showAlert('The diary is terrifying. You fear for whoever wrote it.' + 
+                                    (sanidadePerdida ? `\n\n[WARNING] Your sanity dropped to ${valorsanidade}%` : ''));
 
                                 const choicesVoltar = [
-                                    { text: 'Tentar voltar nadando (50% de chance de afogar)', action: 1 },
-                                    { text: 'Ficar na caverna e procurar (Encontra Chave)', action: 2 }
+                                    { text: 'Try to swim back (50% chance of drowning)', action: 1 },
+                                    { text: 'Stay in the cave and search (Find a Key)', action: 2 }
                                 ];
-                                displayScene("{center}O que fazer agora?{/center}", choicesVoltar, (c4) => {
+                                displayScene("{center}What now?{/center}", choicesVoltar, (c4) => {
                                     if (c4 === 1) {
                                         if (Math.random() < 0.5) {
-                                            showAlert('Você consegue voltar!');
+                                            showAlert('You make it back!');
                                             transitionTo('floresta2');
                                         } else {
                                             if(alterarVida(-100)) return;
                                         }
                                     } else if (c4 === 2) {
                                         chavedois = true;
-                                        showAlert('Você encontra uma chave na lápide e volta à superfície.');
+                                        showAlert('You find a key on the gravestone and resurface.');
                                         transitionTo('floresta2');
                                     } else {
-                                        showAlert('Opção Inválida!');
+                                        showAlert('Invalid option!');
                                         transitionTo('floresta2');
                                     }
                                 });
-                            } else if (c3 === 2) { // Não Ler
-                                showAlert('Você decide não ler e tenta voltar nadando.');
+                            } else if (c3 === 2) {
+                                showAlert('You decide not to read it and try to swim back.');
                                 transitionTo('floresta2');
-                            } else if (c3 === 3) { // DESTRUIR!
+                            } else if (c3 === 3) {
                                 destruir = true;
-                                showAlert('VOCÊ DESTRUIU O PERGUMINHO! ISSO AFETARÁ O FINAL SECRETO...');
+                                showAlert('YOU DESTROYED THE PARCHMENT! THIS WILL AFFECT THE SECRET ENDING...');
                                 transitionTo('floresta2');
                             } else {
-                                showAlert('Opção Inválida!');
+                                showAlert('Invalid option!');
                                 transitionTo('floresta2');
                             }
                         });
                     } else {
-                        showAlert('Opção Inválida!');
+                        showAlert('Invalid option!');
                         transitionTo('floresta2');
                     }
                 });
 
-            } else if (c === 2) { // Ignorar o barco (Lobo)
+            } else if (c === 2) {
                 const choicesLobo = [
-                    { text: 'Correr', action: 1 },
-                    { text: 'Se esconder', action: 2 }
+                    { text: 'Run', action: 1 },
+                    { text: 'Hide', action: 2 }
                 ];
 
-                displayScene("{center}Você ignora o barco e encontra um lobo.{/center}", choicesLobo, (c2) => {
+                displayScene("{center}You ignore the boat and encounter a wolf.{/center}", choicesLobo, (c2) => {
                     let resultado = '';
                     let dano = 0;
                     if (c2 === 1) {
                         dano = -20;
                         alterarVida(dano, false);
-                        resultado = 'Você corre, mas o lobo te morde. Ferido em nível médio!';
+                        resultado = 'You run, but the wolf bites you. Moderate injury!';
                     } else if (c2 === 2) {
                         dano = -70;
                         alterarVida(dano, false);
-                        resultado = 'Você se esconde na caverna do lobo e é gravemente ferido!';
+                        resultado = 'You hide in the wolf\'s den and are severely mauled!';
                     } else {
-                        showAlert('Opção Inválida!');
+                        showAlert('Invalid option!');
                         transitionTo('floresta2');
                         return;
                     }
 
                     if (checkGameOver()) return;
 
-                    showAlert(`${resultado}\n\nDano Recebido:\n- Vida atual: ${Vida}%`);
+                    showAlert(`${resultado}\n\nDamage taken:\n- Current health: ${Vida}%`);
                     transitionTo('floresta2');
                 });
-            } else if (c === 3) { // Voltar
+            } else if (c === 3) {
                 transitionTo('floresta2');
             } else {
-                showAlert('Opção Inválida!');
+                showAlert('Invalid option!');
                 transitionTo('floresta2');
             }
         });
         return;
 
-    } else if (choice === 3) { // LESTE (Avançar)
+    } else if (choice === 3) {
         L = true;
-        showAlert('Você atravessa as folhas e galhos, e encontra uma outra bifurcação');
+        showAlert('You push through the leaves and branches, and reach another fork in the path.');
         transitionTo('floresta3');
         return;
     } else if (choice === 4) {
         inventarioScene('floresta2');
         return;
     } else if (choice === 5) {
-        showAlert(`VIDA: {green-fg}${Vida}%{/}\nSANIDADE: {cyan-fg}${valorsanidade}%{/}`);
+        showAlert(`HEALTH: {green-fg}${Vida}%{/}\nSANITY: {cyan-fg}${valorsanidade}%{/}`);
         transitionTo('floresta2');
         return;
     }
@@ -608,36 +599,35 @@ function sceneFloresta2(choice) {
 function sceneFloresta3(choice) {
     let asciiArt = renderAscii(ASCII_FLORESTA_1);
     
-    // REMOVIDO: Linhas de separação
-    let narrativeText = "\n\n{center}Pegue sua recompensa. A lua pálida sorri para você.\n";
-    narrativeText += "Você está em uma floresta, Existem caminhos para o NORTE, SUL e OESTE:{/center}";
+    let narrativeText = "\n\n{center}Claim your reward. The pale moon smiles at you.\n";
+    narrativeText += "You are in a forest. There are paths leading NORTH, SOUTH and WEST:{/center}";
     
     let currentText = asciiArt + narrativeText;
 
     const choices = [
-        { text: `Ir para NORTE`, action: 1 },
-        { text: `Ir para SUL`, action: 2 },
-        { text: `Ir para OESTE`, action: 3 },
-        { text: `INVENTÁRIO`, action: 4 },
-        { text: `VER STATUS`, action: 5 }
+        { text: `Go NORTH`, action: 1 },
+        { text: `Go SOUTH`, action: 2 },
+        { text: `Go WEST`, action: 3 },
+        { text: `INVENTORY`, action: 4 },
+        { text: `VIEW STATUS`, action: 5 }
     ];
 
-    if (choice === 1) { // NORTE (Escavar/Foto)
+    if (choice === 1) {
         N = true;
         const choicesObjeto = [
-            { text: 'Escavar o chão', action: 1 },
-            { text: 'Ignorar o objeto', action: 2 }
+            { text: 'Dig the ground', action: 1 },
+            { text: 'Ignore the object', action: 2 }
         ];
 
-        displayScene("{center}Você encontra algo brilhante no chão.{/center}", choicesObjeto, (c) => {
-            if (c === 1) { // Escavar
+        displayScene("{center}You spot something shiny on the ground.{/center}", choicesObjeto, (c) => {
+            if (c === 1) {
                 if (papega) {
                     const choicesFoto = [
-                        { text: 'Ler o que está escrito (Perde Sanidade)', action: 1 },
-                        { text: 'Ignorar a foto', action: 2 }
+                        { text: 'Read what is written (Loses Sanity)', action: 1 },
+                        { text: 'Ignore the photo', action: 2 }
                     ];
 
-                    displayScene("{center}Você escava e encontra uma foto de uma criança. Há algo escrito atrás.{/center}", choicesFoto, (c2) => {
+                    displayScene("{center}You dig and find a photo of a child. Something is written on the back.{/center}", choicesFoto, (c2) => {
                         fotopega = true;
                         if (c2 === 1) {
                             leufoto = true;
@@ -645,55 +635,55 @@ function sceneFloresta3(choice) {
                             
                             if (checkGameOver()) return;
 
-                            showAlert(`A foto diz: 'VOCÊ NÃO DEVERIA TER VINDO AQUI'.\nSua sanidade caiu para ${valorsanidade}%.\nVocê chega em uma bifurcação.`);
+                            showAlert(`The photo reads: 'YOU SHOULD NOT HAVE COME HERE'.\nYour sanity dropped to ${valorsanidade}%.\nYou reach a fork in the path.`);
                             transitionTo('floresta4');
                         } else if (c2 === 2) {
                             leufoto = false;
-                            showAlert('Você ignora a foto e continua.\nVocê chega em uma bifurcação.');
+                            showAlert('You ignore the photo and move on.\nYou reach a fork in the path.');
                             transitionTo('floresta4');
                         } else {
-                            showAlert('Opção Inválida!');
+                            showAlert('Invalid option!');
                             transitionTo('floresta3');
                         }
                     });
                 } else {
-                    showAlert('Você não pode escavar, porque você não tem uma pá!');
+                    showAlert('You cannot dig — you don\'t have a shovel!');
                     transitionTo('floresta3');
                 }
-            } else if (c === 2) { // Ignorar
-                showAlert('Você ignora o objeto e continua.\nVocê chega em uma bifurcação.');
+            } else if (c === 2) {
+                showAlert('You ignore the object and keep moving.\nYou reach a fork in the path.');
                 transitionTo('floresta4');
             } else {
-                showAlert('Opção Inválida!');
+                showAlert('Invalid option!');
                 transitionTo('floresta3');
             }
         });
         return;
-    } else if (choice === 2) { // SUL (Morte)
+    } else if (choice === 2) {
         S = true;
         const choicesLobo = [
-            { text: 'Correr', action: 1 },
-            { text: 'Se esconder', action: 2 }
+            { text: 'Run', action: 1 },
+            { text: 'Hide', action: 2 }
         ];
         
-        displayScene("{center}Você vai pelo caminho do Sul...\nVocê encontra um lobo{/center}", choicesLobo, (c) => {
+        displayScene("{center}You head South...\nYou encounter a wolf.{/center}", choicesLobo, (c) => {
             if (c === 1 || c === 2) {
-                endGame('Você corre, mas o lobo é mais rápido e te mata!');
+                endGame('You run, but the wolf is faster — it catches and kills you!');
             } else {
-                showAlert('Opção Inválida!');
+                showAlert('Invalid option!');
                 transitionTo('floresta3');
             }
         });
         return;
-    } else if (choice === 3) { // OESTE (Morte)
+    } else if (choice === 3) {
         O = true;
-        endGame('Você decide ir pelo Oeste, cai dentro do rio e morre afogado!');
+        endGame('You decide to head West, fall into a river, and drown!');
         return;
     } else if (choice === 4) {
         inventarioScene('floresta3');
         return;
     } else if (choice === 5) {
-        showAlert(`VIDA: {green-fg}${Vida}%{/}\nSANIDADE: {cyan-fg}${valorsanidade}%{/}`);
+        showAlert(`HEALTH: {green-fg}${Vida}%{/}\nSANITY: {cyan-fg}${valorsanidade}%{/}`);
         transitionTo('floresta3');
         return;
     }
@@ -702,120 +692,119 @@ function sceneFloresta3(choice) {
 }
 
 function sceneFloresta4(choice) {
-    // REMOVIDO: Linhas de separação
-    let text = "{center}A lua pálida sorri para você\n";
-    text += "A sua frente existem caminhos, ao NORTE e SUL{/center}";
+    let text = "{center}The pale moon smiles at you.\n";
+    text += "Ahead of you there are paths leading NORTH and SOUTH.{/center}";
     
     let currentText = text;
 
     const choices = [
-        { text: `Ir para NORTE (Estrada)`, action: 1 },
-        { text: `Ir para SUL (Casa)`, action: 2 },
-        { text: `INVENTÁRIO`, action: 3 },
-        { text: `VER STATUS`, action: 4 }
+        { text: `Go NORTH (Road)`, action: 1 },
+        { text: `Go SOUTH (House)`, action: 2 },
+        { text: `INVENTORY`, action: 3 },
+        { text: `VIEW STATUS`, action: 4 }
     ];
 
-    if (choice === 1) { // NORTE (Carro - ENDINGS RUINS/BONS)
+    if (choice === 1) {
         N = true;
         const choicesCarro = [
-            { text: 'Tentar ligar o carro', action: 1 },
-            { text: 'Ignorar o carro', action: 2 },
-            { text: 'Sair andando pela estrada (MORTE)', action: 3 }
+            { text: 'Try to start the car', action: 1 },
+            { text: 'Ignore the car', action: 2 },
+            { text: 'Walk down the road (DEATH)', action: 3 }
         ];
 
-        displayScene("{center}Você encontra um carro encostado na beira de uma estrada.{/center}", choicesCarro, (c) => {
-            if (c === 1) { // Ligar o carro
+        displayScene("{center}You find a car parked on the side of a road.{/center}", choicesCarro, (c) => {
+            if (c === 1) {
                 const choicesCarroFinal = [
-                    { text: 'Ir embora (Final)', action: 1 },
-                    { text: 'Voltar para o caminho', action: 2 }
+                    { text: 'Drive away (Ending)', action: 1 },
+                    { text: 'Go back to the path', action: 2 }
                 ];
                 
-                displayScene("{center}Você consegue ligar o carro. Ir embora?{/center}", choicesCarroFinal, (c2) => {
-                    if (c2 === 1) { // Ir embora
+                displayScene("{center}You manage to start the car. Drive away?{/center}", choicesCarroFinal, (c2) => {
+                    if (c2 === 1) {
                         if (fotopega && leufoto) {
                             GOOD_ENDING = true;
-                            endGame('Você chama a polícia (GOOD ENDING)');
+                            endGame('You call the police. (GOOD ENDING)');
                         } else if (fotopega && !leufoto) {
                             BAD_ENDING_2 = true;
-                            endGame('Você ignora a foto (BAD ENDING 2)');
+                            endGame('You drive away, ignoring the photo. (BAD ENDING 2)');
                         } else {
                             BAD_ENDING_3 = true;
-                            endGame('Você vai embora sem pensar (BAD ENDING 3)');
+                            endGame('You drive away without a second thought. (BAD ENDING 3)');
                         }
                     } else if (c2 === 2) {
-                        showAlert('Você resolve voltar.');
+                        showAlert('You decide to go back.');
                         transitionTo('floresta4');
                     } else {
-                        showAlert('Opção Inválida!');
+                        showAlert('Invalid option!');
                         transitionTo('floresta4');
                     }
                 });
-            } else if (c === 2) { // Ignorar o carro
-                showAlert('Você ignora o carro e precisa voltar para a bifurcação.');
+            } else if (c === 2) {
+                showAlert('You ignore the car and have to return to the fork.');
                 transitionTo('floresta4');
-            } else if (c === 3) { // Andar (Morte)
-                endGame('Você é atropelado por um carro sem farol. Você Morreu!');
+            } else if (c === 3) {
+                endGame('You are hit by a car with no headlights. You died!');
             } else {
-                showAlert('Opção Inválida!');
+                showAlert('Invalid option!');
                 transitionTo('floresta4');
             }
         });
         return;
-    } else if (choice === 2) { // SUL (Casa - REAL/SECRET ENDING)
+    } else if (choice === 2) {
         S = true;
         const choicesCasa = [
-            { text: 'Entrar na casa', action: 1 },
-            { text: 'Ignorar a casa e seguir o caminho', action: 2 }
-        ]
+            { text: 'Enter the house', action: 1 },
+            { text: 'Ignore the house and follow the path', action: 2 }
+        ];
 
-        displayScene("{center}Você encontra uma casa que parece normal.{/center}", choicesCasa, (c) => {
-            if (c === 1) { // Entrar na casa
+        displayScene("{center}You find a house that looks ordinary.{/center}", choicesCasa, (c) => {
+            if (c === 1) {
                 const choicesMapa = [
-                    { text: 'Seguir mapa', action: 1 },
-                    { text: 'Não seguir o mapa (MORTE)', action: 2 }
+                    { text: 'Follow the map', action: 1 },
+                    { text: 'Ignore the map (DEATH)', action: 2 }
                 ];
 
-                displayScene("{center}Você encontra um bilhete com um mapa rudimentar desenhado com setas.{/center}", choicesMapa, (c2) => {
-                    if (c2 === 1) { // Seguir mapa
+                displayScene("{center}You find a note with a rough map drawn with arrows.{/center}", choicesMapa, (c2) => {
+                    if (c2 === 1) {
                         const choicesCavar = [
-                            { text: 'Escavar em busca de algo', action: 1 },
-                            { text: 'Não escavar (MORTE)', action: 2 }
+                            { text: 'Dig in search of something', action: 1 },
+                            { text: 'Don\'t dig (DEATH)', action: 2 }
                         ];
 
-                        displayScene("{center}Você segue o mapa. No 'X' marcado, o chão soa oco. O que fazer?{/center}", choicesCavar, (c3) => {
-                            if (c3 === 1) { // Escavar
+                        displayScene("{center}You follow the map. At the marked 'X', the ground sounds hollow. What do you do?{/center}", choicesCavar, (c3) => {
+                            if (c3 === 1) {
                                 if (destruir) {
                                     SECRET_ENDING = true;
-                                    endGame("O corpo da criança levanta: 'VOCÊ DESTRUIU MEU PERGUMINHO...' (FINAL SECRETO)");
+                                    endGame("The child's body rises: 'YOU DESTROYED MY PARCHMENT...' (SECRET ENDING)");
                                 } else {
                                     REAL_ENDING = true;
-                                    endGame("Você encontra o corpo de uma criança e a coordenada '—— 40.24248 —— -121.4434 ——' (FINAL REAL)");
+                                    endGame("You uncover a child's body and the coordinates '—— 40.24248 —— -121.4434 ——' (REAL ENDING)");
                                 }
-                            } else if (c3 === 2) { // Não escavar (Morte)
-                                endGame('Você decide não cavar. Uma figura o ataca e o mata.');
+                            } else if (c3 === 2) {
+                                endGame('You decide not to dig. A figure attacks and kills you.');
                             } else {
-                                showAlert('Opção Inválida!');
+                                showAlert('Invalid option!');
                                 transitionTo('floresta4');
                             }
                         });
-                    } else if (c2 === 2) { // Não seguir o mapa (Morte)
-                        endGame('Você ignora o mapa. O dono volta e o mata.');
+                    } else if (c2 === 2) {
+                        endGame('You ignore the map. The owner returns and kills you.');
                     } else {
-                        showAlert('Opção Inválida!');
+                        showAlert('Invalid option!');
                         transitionTo('floresta4');
                     }
                 });
-            } else if (c === 2) { // Ignorar a casa
+            } else if (c === 2) {
                 if (!casafora) {
                     casafora = true;
-                    showAlert('Você ignora a casa. O caminho o leva em círculos. Você precisa voltar.');
+                    showAlert('You ignore the house. The path leads you in circles. You have to go back.');
                     transitionTo('floresta4');
                 } else {
-                    showAlert('Você já tentou fazer isso, o caminho está te levando em círculos.');
+                    showAlert('You\'ve already tried this. The path keeps leading you in circles.');
                     transitionTo('floresta4');
                 }
             } else {
-                showAlert('Opção Inválida!');
+                showAlert('Invalid option!');
                 transitionTo('floresta4');
             }
         });
@@ -824,7 +813,7 @@ function sceneFloresta4(choice) {
         inventarioScene('floresta4');
         return;
     } else if (choice === 4) {
-        showAlert(`VIDA: {green-fg}${Vida}%{/}\nSANIDADE: {cyan-fg}${valorsanidade}%{/}`);
+        showAlert(`HEALTH: {green-fg}${Vida}%{/}\nSANITY: {cyan-fg}${valorsanidade}%{/}`);
         transitionTo('floresta4');
         return;
     }
@@ -833,7 +822,7 @@ function sceneFloresta4(choice) {
 }
 
 function endGame(message) {
-    let finalType = 'MORTE/LOUCURA';
+    let finalType = 'DEATH / MADNESS';
     
     if (BAD_ENDING) finalType = 'BAD ENDING';
     else if (GOOD_ENDING) finalType = 'GOOD ENDING';
@@ -842,24 +831,23 @@ function endGame(message) {
     else if (BAD_ENDING_2) finalType = 'BAD ENDING 2';
     else if (BAD_ENDING_3) finalType = 'BAD ENDING 3';
 
-    console.log(`[CONQUISTA DESBLOQUEADA] Final: ${finalType}`);
+    console.log(`[ACHIEVEMENT UNLOCKED] Ending: ${finalType}`);
 
-    // REMOVIDO: Linhas de separação
     let content = renderAscii(ASCII_GAMEOVER);
-    content += `<br><br>{center}FIM DE JOGO{/}<br><br>{red-fg}${message}{/}<br><br>FINAL CONCLUÍDO: [{yellow-fg}${finalType}{/}]{/center}`;
+    content += `<br><br>{center}GAME OVER{/}<br><br>{red-fg}${message}{/}<br><br>ENDING REACHED: [{yellow-fg}${finalType}{/}]{/center}`;
     
     textBox.innerHTML = replaceTags(content).replace(/\n/g, '<br>');
     choiceBox.innerHTML = '';
     
     const restartButton = document.createElement('button');
-    restartButton.textContent = 'Reiniciar Jogo (Recarregar a Página)';
+    restartButton.textContent = 'Restart Game (Reload Page)';
     restartButton.onclick = () => window.location.reload();
     choiceBox.appendChild(restartButton);
 
     updateStatus();
 }
 
-// --- Início do Jogo ---
+// --- Game Start ---
 document.addEventListener('DOMContentLoaded', () => {
     updateStatus();
     sceneIntro();
