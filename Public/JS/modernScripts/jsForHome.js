@@ -91,3 +91,7 @@ const observer = new IntersectionObserver((entries) => {
 
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+
+console.log(`%cLukzxdd%c
+Welcome to a darkness world!`,'filter: invert(1); font-size: 28px; font-weight: bolder; font-family: "Rubik"; margin-top: 20px; margin-bottom: 8px;','color: #f76f53; font-size: 16px; font-family: "Rubik"; margin-bottom: 20px;');
