@@ -12,34 +12,105 @@ body {
     transform: translateY(0);
   }
 }
+.brand-card {
+  background: #090909;
+  border: 3px solid var(--zen-subtle);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.brand-card:hover {
+  border-color: var(--zen-coral);
+  transform: translateY(-4px);
+}
+
+.color-swatch {
+  width: 80px;
+  height: 80px;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid var(--zen-subtle);
+}
+
+.logo-preview {
+  background: #090909;
+  padding: 2rem;
+  border-radius: 1rem;
+  display: inline-block;
+  border: 1px solid var(--zen-subtle);
+}
+
+.font-demo {
+  font-family: "Bricolage Grotesque", sans-serif;
+}
+
+.font-demo-junicode {
+  font-family: "Junicode", serif;
+}
+
 .download-btn {
   background: var(--zen-dark);
   color: var(--zen-paper);
-  padding: 1rem 2rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 0.75rem;
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
   transition: all 0.3s ease;
-  font-weight: 600;
 }
 
 .download-btn:hover {
   background: var(--zen-coral);
-  transform: scale(1.02);
+  transform: scale(1.05);
 }
 
-.soon-badge {
-  animation: pulse 2s infinite;
+.section-spacing {
+  margin-bottom: 2rem;
 }
 
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
+.card-spacing {
+  margin-bottom: 2rem;
+}
+html,
+body {
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  html,
+  body {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
-  50% {
-    opacity: 0.5;
+
+  body::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
+
+  body {
+    scrollbar-width: none;
+  }
+}
+@media (max-width: 768px) {
+  .font-demo p,
+  .font-demo-junicode p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .font-demo,
+  .font-demo-junicode {
+    overflow: hidden;
+    width: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .section-spacing {
+    margin-bottom: 2rem;
   }
 }
 .menu-toggle {
@@ -177,27 +248,5 @@ body {
   }
   .back-to-top i {
     font-size: 1rem;
-  }
-}
-
-html,
-body {
-  overflow-x: hidden;
-}
-
-@media (max-width: 768px) {
-  html,
-  body {
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  body::-webkit-scrollbar {
-    width: 0;
-    background: transparent;
-  }
-
-  body {
-    scrollbar-width: none;
   }
 }
