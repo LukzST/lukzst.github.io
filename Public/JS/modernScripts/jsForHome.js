@@ -49,6 +49,11 @@ function screenshot2() { window.open("/Public/IMG/screen2.png", "_blank"); }
 function screenshot3() { window.open("/Public/IMG/screen3.png", "_blank"); }
 function screenshot4() { window.open("/Public/IMG/screen4.png", "_blank"); }
 
+function mudarPagina() {
+    document.body.style.animation = 'none';
+    document.body.offsetHeight;
+    document.body.style.animation = 'fadeInPage 0.5s ease-out';
+}
 
 // const popup = document.getElementById('retroPopup');
 // const closePopupBtn = document.getElementById('closePopup');
