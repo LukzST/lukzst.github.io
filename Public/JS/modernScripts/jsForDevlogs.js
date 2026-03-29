@@ -73,6 +73,9 @@
             return;
         }
 
+        folders.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }));
+        folders.reverse();
+
         container.innerHTML = '';
 
         folders.forEach(folder => {
