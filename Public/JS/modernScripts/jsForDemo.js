@@ -46,14 +46,18 @@
             document.body.style.animation = 'fadeInPage 0.5s ease-out';
         }
 
-        const downloadBtn = document.querySelector('.download-button');
-const twilightInfo = document.getElementById('twilight-info');
+        const downloadBtn = document.querySelector('#windows-x86_64-downloads .download-button');
+        const twilightInfo = document.getElementById('twilight-info');
+        let leaveTimer;
 
-if (downloadBtn && twilightInfo) {
-    downloadBtn.addEventListener('mouseenter', () => {
-        twilightInfo.dataset.twilight = 'true';
-    });
-    downloadBtn.addEventListener('mouseleave', () => {
-        twilightInfo.dataset.twilight = 'false';
-    });
-}
+        if (downloadBtn && twilightInfo) {
+            downloadBtn.addEventListener('mouseenter', () => {
+                clearTimeout(leaveTimer);
+                twilightInfo.dataset.twilight = 'true';
+            });
+            downloadBtn.addEventListener('mouseleave', () => {
+                leaveTimer = setTimeout(() => {
+                    twilightInfo.dataset.twilight = 'false';
+                }, 100);
+            });
+        }
