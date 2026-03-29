@@ -51,9 +51,7 @@
 
         if (downloadBtn && twilightInfo) {
             downloadBtn.addEventListener('mouseover', () => {
-                twilightInfo.dataset.twilight = 'true';
-                twilightInfo.style.opacity = '0';
-                twilightInfo.style.transition = 'opacity 0.3s ease';
+                twilightInfo.style.display = 'flex';
                 requestAnimationFrame(() => {
                     twilightInfo.style.opacity = '1';
                 });
@@ -61,7 +59,7 @@
             downloadBtn.addEventListener('mouseout', () => {
                 twilightInfo.style.opacity = '0';
                 setTimeout(() => {
-                    twilightInfo.dataset.twilight = 'false';
+                    twilightInfo.style.display = 'none';
                 }, 300);
             });
         }

@@ -201,3 +201,14 @@ body {
     scrollbar-width: none;
   }
 }
+
+#twilight-info {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#twilight-info.visible {
+    display: flex;
+    opacity: 1;
+}
