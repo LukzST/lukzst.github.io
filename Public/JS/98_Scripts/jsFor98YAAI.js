@@ -278,6 +278,8 @@ function showRescueBox() {
         if (rickrollAudio) {
             rickrollAudio.pause();
         }
+
+        window.location.href = '/';
     });
 
     document.getElementById('closeRescueBtn').addEventListener('click', () => {
@@ -285,6 +287,7 @@ function showRescueBox() {
         if (rickrollAudio) {
             rickrollAudio.pause();
         }
+        window.location.href = '/';
     });
 
     document.getElementById('sendEmailBtn').addEventListener('click', () => {

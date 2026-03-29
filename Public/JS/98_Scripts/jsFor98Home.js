@@ -393,7 +393,7 @@ if (dismissNotificationBtn) {
 
 if (claimOfferBtn) {
     claimOfferBtn.addEventListener('click', () => {
-        window.location.href = '/youareanidiot.html';
+        window.location.href = '/98/yaai/';
     });
 }
 
