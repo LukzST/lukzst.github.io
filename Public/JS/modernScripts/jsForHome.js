@@ -88,16 +88,6 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.15 });
 
-const downloadBtn = document.querySelector('.download-button');
-const twilightInfo = document.getElementById('twilight-info');
 
-if (downloadBtn && twilightInfo) {
-    downloadBtn.addEventListener('mouseenter', () => {
-        twilightInfo.dataset.twilight = 'true';
-    });
-    downloadBtn.addEventListener('mouseleave', () => {
-        twilightInfo.dataset.twilight = 'false';
-    });
-}
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
