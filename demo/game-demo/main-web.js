@@ -1,4 +1,4 @@
-// --- DOM Elements ---
+
 const statusBar = document.getElementById('status-bar');
 const textBox = document.getElementById('text-box');
 const choiceBox = document.getElementById('choice-box');
@@ -8,7 +8,6 @@ function mudarPagina() {
     document.body.style.animation = 'fadeInPage 0.5s ease-out';
 }
 
-// --- Game State Variables ---
 let nomeJogador = "Michael Nevins";
 let Vida = 100;
 let valorsanidade = 100;
@@ -23,10 +22,8 @@ let destruir = false;
 let jafoinorte = false; 
 let casafora = false;
 
-// Visited path states
 let N = false, L = false, O = false, S = false;
 
-// --- Ending Controls ---
 let BAD_ENDING = false;
 let BAD_ENDING_2 = false;
 let BAD_ENDING_3 = false;
@@ -34,7 +31,6 @@ let GOOD_ENDING = false;
 let REAL_ENDING = false;
 let SECRET_ENDING = false;
 
-// --- ASCII ART ---
 const ASCII_GAMEOVER = [
     "",
     " ███████████████    ████████████    █████████████████████     █████████████",
@@ -89,7 +85,6 @@ const ASCII_FLORESTA_1 = [
     "██████████████████████████████████████████████████████         ████"
 ];
 
-// --- Web Interface Helper Functions ---
 
 function renderAscii(asciiArray) {
     return `<div class="ascii-art">${asciiArray.join('\n')}</div>`;
@@ -145,7 +140,7 @@ function displayScene(text, choices, choiceHandler) {
     textBox.scrollTop = textBox.scrollHeight;
 }
 
-// --- State & Effect Functions ---
+
 
 function checkGameOver() {
     if (Vida < 20) return 'DEATH';
@@ -210,7 +205,7 @@ function inventarioScene(currentSceneName) {
     transitionTo(currentSceneName, 0);
 }
 
-// --- Scene Logic & Transition ---
+
 let currentScene = 'intro';
 
 function transitionTo(sceneName, optionSelected = 0) {
@@ -852,7 +847,7 @@ function endGame(message) {
     updateStatus();
 }
 
-// --- Game Start ---
+
 document.addEventListener('DOMContentLoaded', () => {
     updateStatus();
     sceneIntro();
