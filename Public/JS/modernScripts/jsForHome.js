@@ -55,30 +55,30 @@ function mudarPagina() {
     document.body.style.animation = 'fadeInPage 0.5s ease-out';
 }
 
-const popup = document.getElementById('retroPopup');
-const closePopupBtn = document.getElementById('closePopup');
+// const popup = document.getElementById('retroPopup');
+// const closePopupBtn = document.getElementById('closePopup');
 
-if (!localStorage.getItem('retroPopupShown')) {
-    setTimeout(() => {
-        if (popup) popup.classList.add('show');
-    }, 1500);
-}
+// if (!localStorage.getItem('retroPopupShown')) {
+//     setTimeout(() => {
+//         if (popup) popup.classList.add('show');
+//     }, 1500);
+// }
 
-if (closePopupBtn) {
-    closePopupBtn.addEventListener('click', () => {
-        if (popup) popup.classList.remove('show');
-        localStorage.setItem('retroPopupShown', 'true');
-    });
-}
+// if (closePopupBtn) {
+//     closePopupBtn.addEventListener('click', () => {
+//         if (popup) popup.classList.remove('show');
+//         localStorage.setItem('retroPopupShown', 'true');
+//     });
+// }
 
-if (popup) {
-    popup.addEventListener('click', (e) => {
-        if (e.target === popup) {
-            popup.classList.remove('show');
-            localStorage.setItem('retroPopupShown', 'true');
-        }
-    });
-}
+// if (popup) {
+//     popup.addEventListener('click', (e) => {
+//         if (e.target === popup) {
+//             popup.classList.remove('show');
+//             localStorage.setItem('retroPopupShown', 'true');
+//         }
+//     });
+// }
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
