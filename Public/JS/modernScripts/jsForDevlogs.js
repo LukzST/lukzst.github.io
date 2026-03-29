@@ -54,7 +54,6 @@
     if (!container) return;
     
     try {
-        // 1. Busca as pastas e as Releases em paralelo
         const [repoRes, releasesRes] = await Promise.all([
             fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${targetPath}`),
             fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/releases`)
@@ -77,10 +76,8 @@
         container.innerHTML = '';
 
         folders.forEach(folder => {
-            // Encontra a release que tem o mesmo nome da pasta (ou tag)
             const releaseInfo = releases.find(r => r.tag_name === folder.name || r.name === folder.name);
             
-            // Pega a descrição da release ou usa um texto padrão se não houver
             const githubDescription = releaseInfo ? releaseInfo.body : "No description provided in GitHub release.";
 
             const section = document.createElement('section');
