@@ -1,6 +1,3 @@
-// ==================== MAIN SITE SCRIPT ====================
-
-// Back to Top
 const backToTop = document.getElementById('backToTop');
 
 window.addEventListener('scroll', () => {
@@ -18,7 +15,6 @@ backToTop.addEventListener('click', () => {
     });
 });
 
-// Mobile Menu
 const menuToggle = document.getElementById('menuToggle');
 const mobileMenu = document.getElementById('mobileMenu');
 const menuOverlay = document.getElementById('menuOverlay');
@@ -40,7 +36,6 @@ menuToggle.addEventListener('click', openMenu);
 menuClose.addEventListener('click', closeMenu);
 menuOverlay.addEventListener('click', closeMenu);
 
-// Functions
 function itch() {
     window.open('https://lukzxdd.itch.io/light/purchase?popup=1', 'Popup', 'width=500,height=400,scrollbars=no');
 }
@@ -60,7 +55,6 @@ function mudarPagina() {
     document.body.style.animation = 'fadeInPage 0.5s ease-out';
 }
 
-// Retro Popup
 const popup = document.getElementById('retroPopup');
 const closePopupBtn = document.getElementById('closePopup');
 

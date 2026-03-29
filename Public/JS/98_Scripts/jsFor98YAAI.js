@@ -1,7 +1,3 @@
-// ============================================================
-// jsfor98YAAI.js — Scripts extraídos de youareanidiot.html
-// Coloque em: /public/js/jsfor98YAAI.js
-// ============================================================
 
 let windowCount = 0;
 let closeAttempts = 0;
@@ -302,8 +298,6 @@ function showRescueBox() {
     });
 }
 
-// --- Init ---
-
 setTimeout(() => {
     createWindow(100, 100);
     createWindow(350, 180);
@@ -347,7 +341,6 @@ setInterval(() => {
 console.log('%c⚠️ IT WAS JUST A JOKE! ⚠️', 'color: #2f498c; font-size: 16px; font-weight: bold;');
 console.log('%cYou survived! Check the screen for your LIGHT game token!', 'color: #2f498c; font-size: 12px;');
 
-// --- Rescue Box Draggable ---
 
 function makeRescueBoxDraggable() {
     const rescueBox = document.getElementById('rescueBox');

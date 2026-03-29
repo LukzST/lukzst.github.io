@@ -1,6 +1,4 @@
-// ==================== WINDOWS 98 EDITION SCRIPT ====================
 
-// Clock
 function updateClock() {
     const now = new Date();
     const hours = now.getHours().toString().padStart(2, '0');
@@ -11,7 +9,6 @@ function updateClock() {
 updateClock();
 setInterval(updateClock, 1000);
 
-// Start Menu
 const startButton = document.getElementById('startButton');
 const startMenu = document.getElementById('startMenu');
 
@@ -28,12 +25,10 @@ if (startButton && startMenu) {
     });
 }
 
-// Support function
 function support() {
     window.open('mailto:contatosadberry@gmail.com', '_blank');
 }
 
-// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -44,7 +39,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Draggable Windows
 function makeWindowDraggable(windowElement) {
     const titleBar = windowElement.querySelector('.title-bar');
     if (!titleBar) return;
@@ -178,7 +172,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Modern Mode Shutdown
 function modernModeShutdown() {
     const startMenu = document.getElementById('startMenu');
     if (startMenu && startMenu.classList.contains('open')) {
@@ -248,7 +241,6 @@ function modernModeShutdown() {
     }, 3000);
 }
 
-// Shutdown Function
 const shutdownBtn = document.getElementById('shutdownBtn');
 const shutdownOverlay = document.getElementById('shutdownOverlay');
 const shutdownDots = document.getElementById('shutdownDots');
@@ -306,7 +298,6 @@ if (shutdownBtn) {
     });
 }
 
-// Window Closure Tracking & Promotion
 let closedWindowCount = 0;
 let notificationShown = false;
 const promoPopup = document.getElementById('promoPopup');
@@ -445,7 +436,6 @@ makeNotificationDraggable();
 
 setTimeout(() => addTrackingToOkButtons(), 1000);
 
-// Retro Popup
 const retroPopup = document.getElementById('retroPopup');
 const closePopupBtn98 = document.getElementById('closePopupBtn');
 const gotItBtn = document.getElementById('gotItBtn');

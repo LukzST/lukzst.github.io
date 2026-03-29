@@ -1,6 +1,4 @@
-// ==================== WINDOWS 98 DEVLOGS SCRIPT ====================
 
-// Clock
 function updateClock() {
     const now = new Date();
     const hours = now.getHours().toString().padStart(2, '0');
@@ -11,7 +9,6 @@ function updateClock() {
 updateClock();
 setInterval(updateClock, 1000);
 
-// Start Menu
 const startButton = document.getElementById('startButton');
 const startMenu = document.getElementById('startMenu');
 
@@ -28,7 +25,6 @@ if (startButton && startMenu) {
     });
 }
 
-// Shutdown Function
 const shutdownBtn = document.getElementById('shutdownBtn');
 const shutdownOverlay = document.getElementById('shutdownOverlay');
 const shutdownDots = document.getElementById('shutdownDots');
@@ -86,7 +82,6 @@ if (shutdownBtn) {
     });
 }
 
-// Date and GitHub fetch
 function setCurrentDate() {
     const dateElement = document.getElementById('current-date');
     if (dateElement) {
@@ -154,7 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchVersions();
 });
 
-// Draggable Windows
 function makeWindowDraggable(windowElement) {
     const titleBar = windowElement.querySelector('.title-bar');
     if (!titleBar) return;
