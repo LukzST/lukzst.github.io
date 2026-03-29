@@ -48,16 +48,20 @@
 
         const downloadBtn = document.querySelector('#windows-x86_64-downloads .download-button');
         const twilightInfo = document.getElementById('twilight-info');
-        let leaveTimer;
 
         if (downloadBtn && twilightInfo) {
-            downloadBtn.addEventListener('mouseenter', () => {
-                clearTimeout(leaveTimer);
+            downloadBtn.addEventListener('mouseover', () => {
                 twilightInfo.dataset.twilight = 'true';
+                twilightInfo.style.opacity = '0';
+                twilightInfo.style.transition = 'opacity 0.3s ease';
+                requestAnimationFrame(() => {
+                    twilightInfo.style.opacity = '1';
+                });
             });
-            downloadBtn.addEventListener('mouseleave', () => {
-                leaveTimer = setTimeout(() => {
+            downloadBtn.addEventListener('mouseout', () => {
+                twilightInfo.style.opacity = '0';
+                setTimeout(() => {
                     twilightInfo.dataset.twilight = 'false';
-                }, 100);
+                }, 300);
             });
         }
