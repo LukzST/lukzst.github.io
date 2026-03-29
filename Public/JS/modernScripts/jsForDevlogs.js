@@ -50,81 +50,77 @@
         }
 
         async function fetchVersions() {
-            const container = document.getElementById('version-container');
-            if (!container) return;
-            
-            try {
-                const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${targetPath}`);
-                if (!response.ok) throw new Error('Failed to fetch');
-                
-                const data = await response.json();
-                
-                        const folders = data.filter(item => {
-                            return item.type === 'dir' && 
-                                item.name !== 'BETA_V1.0' && 
-                                item.name !== 'V1.0.1' &&
-                                item.name !== 'BETA' &&
-                                !item.name.includes('BETA');
-                        });
-                
-                if (folders.length === 0) {
-                    container.innerHTML = '<div class="error-message">No versions found yet. Check back soon!</div>';
-                    return;
-                }
-                
-                container.innerHTML = '';
-                
-                folders.forEach(folder => {
-    // 1. Criar o elemento de seção (estilo Zen)
-                const section = document.createElement('section');
-                section.className = "release-note-item relative mt-12 flex flex-col pt-24 lg:flex-row";
-                section.style.borderTop = "1px solid var(--zen-subtle)";
-                section.id = folder.name;
+    const container = document.getElementById('version-container');
+    if (!container) return;
+    
+    try {
+        // 1. Busca as pastas e as Releases em paralelo
+        const [repoRes, releasesRes] = await Promise.all([
+            fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${targetPath}`),
+            fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/releases`)
+        ]);
 
-                // 2. Injetar o HTML de texto limpo
-                section.innerHTML = `
-                    <div class="flex w-full flex-col gap-2 px-5 md:px-10 md:pr-32 text-left">
-                        
-                        <div class="w-full justify-between sm:flex items-center">
-                            <div class="flex flex-col gap-1 text-sm font-bold opacity-80 sm:flex-row sm:items-center sm:gap-0">
-                                <span style="font-family: 'Bricolage Grotesque'; font-size: 1.3rem; color: var(--zen-dark);">${folder.name.toUpperCase()}</span>
-                                <span class="text-muted-foreground mx-3 hidden sm:block opacity-30">•</span> 
-                                <a href="https://github.com/${repoOwner}/${repoName}/tree/main/${targetPath}/${folder.name}" 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                class="zen-link text-xs !no-underline font-bold"
-                                style="color: var(--zen-coral);">
-                                VIEW ON GITHUB →
-                                </a>
-                            </div>
-                            <div class="text-xs font-bold opacity-40" style="color: var(--zen-dark);">FINAL BUILD</div>
-                        </div>
+        const folderData = await repoRes.json();
+        const releases = await releasesRes.json();
 
-                        <div class="mt-6 flex flex-col gap-8">
-                            <ul class="flex flex-col gap-1" style="list-style: none; padding: 0;">
-                                <li class="flex gap-4 items-start">
-                                    <div style="color: var(--zen-coral); min-width: 65px; font-weight: 800; font-size: 0.85rem; text-transform: uppercase;">Note</div>
-                                    <div>
-                                        <span class="text-base opacity-80" style="color: var(--zen-dark); line-height: 1.7;">
-                                            Final build for ${folder.name} is available. This release includes all compiled assets. 
-                                            Access the repository link above to see full details and source code.
-                                        </span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+        const folders = folderData.filter(item => {
+            return item.type === 'dir' && 
+                !['BETA_V1.0', 'V1.0.1', 'BETA'].includes(item.name) &&
+                !item.name.includes('BETA');
+        });
 
-                    </div>
-                `;
-
-                container.appendChild(section);
-            });
-                
-            } catch (error) {
-                console.error('Error fetching versions:', error);
-                container.innerHTML = '<div class="error-message">Unable to load versions. Please try again later.</div>';
-            }
+        if (folders.length === 0) {
+            container.innerHTML = '<div class="text-center opacity-50 py-12">No versions found.</div>';
+            return;
         }
+
+        container.innerHTML = '';
+
+        folders.forEach(folder => {
+            // Encontra a release que tem o mesmo nome da pasta (ou tag)
+            const releaseInfo = releases.find(r => r.tag_name === folder.name || r.name === folder.name);
+            
+            // Pega a descrição da release ou usa um texto padrão se não houver
+            const githubDescription = releaseInfo ? releaseInfo.body : "No description provided in GitHub release.";
+
+            const section = document.createElement('section');
+            section.className = "release-note-item relative mt-12 flex flex-col pt-24 lg:flex-row";
+            section.style.borderTop = "1px solid var(--zen-subtle)";
+
+            section.innerHTML = `
+                <div class="flex w-full flex-col gap-2 px-5 md:px-10 md:pr-32 text-left">
+                    <div class="w-full justify-between sm:flex items-center">
+                        <div class="flex flex-col gap-1 text-sm font-bold opacity-80 sm:flex-row sm:items-center sm:gap-0">
+                            <span style="font-family: 'Bricolage Grotesque'; font-size: 1.3rem; color: var(--zen-dark);">${folder.name.toUpperCase()}</span>
+                            <span class="text-muted-foreground mx-3 hidden sm:block opacity-30">•</span> 
+                            <a href="${releaseInfo ? releaseInfo.html_url : `https://github.com/${repoOwner}/${repoName}/tree/main/${targetPath}/${folder.name}`}" 
+                               target="_blank" rel="noopener noreferrer" class="zen-link text-xs !no-underline font-bold" style="color: var(--zen-coral);">
+                               VIEW RELEASE →
+                            </a>
+                        </div>
+                        <div class="text-xs font-bold opacity-40" style="color: var(--zen-dark);">${releaseInfo ? 'OFFICIAL RELEASE' : 'FINAL BUILD'}</div>
+                    </div>
+
+                    <div class="mt-6 flex flex-col gap-8">
+                        <ul class="flex flex-col gap-1" style="list-style: none; padding: 0;">
+                            <li class="flex gap-4 items-start">
+                                <div style="color: var(--zen-coral); min-width: 65px; font-weight: 800; font-size: 0.85rem; text-transform: uppercase;">Note</div>
+                                <div>
+                                    <div class="text-base opacity-80 github-body-text" style="color: var(--zen-dark); line-height: 1.7; white-space: pre-wrap;">${githubDescription}</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+            container.appendChild(section);
+        });
+        
+    } catch (error) {
+        console.error('Error:', error);
+        container.innerHTML = '<div class="text-center py-12" style="color: var(--zen-coral)">Error loading release notes.</div>';
+    }
+}
 
         function support() {
             window.location.href = "/support/";
