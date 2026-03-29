@@ -75,45 +75,22 @@
                 container.innerHTML = '';
                 
                 folders.forEach(folder => {
-                const section = document.createElement('section');
-                section.className = "release-note-item relative mt-12 flex flex-col pt-24 lg:flex-row";
-                section.id = folder.name;
-
-                section.innerHTML = `
-                    <div class="flex w-full flex-col gap-2 px-5 md:px-10 md:pr-32">
-                        
-                        <div class="w-full justify-between sm:flex">
-                            <div class="flex flex-col gap-1 text-sm font-bold opacity-80 sm:flex-row sm:items-center sm:gap-0">
-                                <span style="font-family: 'Bricolage Grotesque';">${folder.name.toUpperCase()}</span>
-                                <span class="text-muted-foreground mx-3 hidden sm:block">•</span> 
-                                <a href="https://github.com/${repoOwner}/${repoName}/tree/main/${targetPath}/${folder.name}" 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                class="zen-link whitespace-nowrap text-xs !no-underline opacity-80">
-                                GitHub Release
-                                </a>
-                            </div>
-                            <div class="text-xs font-bold opacity-80">Final Build</div>
+                    const card = document.createElement('a');
+                    card.href = `https://github.com/${repoOwner}/${repoName}/tree/main/${targetPath}/${folder.name}`;
+                    card.target = "_blank";
+                    card.className = 'version-card';
+                    card.rel = "noopener noreferrer";
+                    
+                    card.innerHTML = `
+                        <h2 style="font-family: Bricolage Grotesque;">${folder.name.toUpperCase()}</h2>
+                        <p>Final build located in the repository. Click to access the files for this version.</p>
+                        <div class="explore-link">
+                            EXPLORE →
                         </div>
-
-                        <div class="mt-4 flex flex-col gap-8">
-                            <ul class="flex flex-col gap-1">
-                                <li class="flex gap-2">
-                                    <div class="text-[#bf3316] dark:text-[#ffb1a1] min-w-16 font-bold opacity-80">Note</div>
-                                    <div>
-                                        <span class="text-base opacity-80">
-                                            Final build located in the repository. Click the GitHub link above to access the version files.
-                                        </span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-                `;
-
-                container.appendChild(section);
-            });
+                    `;
+                    
+                    container.appendChild(card);
+                });
                 
             } catch (error) {
                 console.error('Error fetching versions:', error);
