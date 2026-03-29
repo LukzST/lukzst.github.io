@@ -2,6 +2,11 @@
 const statusBar = document.getElementById('status-bar');
 const textBox = document.getElementById('text-box');
 const choiceBox = document.getElementById('choice-box');
+function mudarPagina() {
+    document.body.style.animation = 'none';
+    document.body.offsetHeight;
+    document.body.style.animation = 'fadeInPage 0.5s ease-out';
+}
 
 // --- Game State Variables ---
 let nomeJogador = "Michael Nevins";
