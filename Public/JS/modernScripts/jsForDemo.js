@@ -50,16 +50,20 @@
         const twilightInfo = document.getElementById('twilight-info');
 
         if (downloadBtn && twilightInfo) {
-            downloadBtn.addEventListener('mouseover', () => {
+            twilightInfo.style.transition = 'opacity 0.3s ease';
+            twilightInfo.style.opacity = '0';
+
+            downloadBtn.addEventListener('click', () => {
                 twilightInfo.style.display = 'flex';
                 requestAnimationFrame(() => {
                     twilightInfo.style.opacity = '1';
                 });
-            });
-            downloadBtn.addEventListener('mouseout', () => {
-                twilightInfo.style.opacity = '0';
+
                 setTimeout(() => {
-                    twilightInfo.style.display = 'none';
-                }, 300);
+                    twilightInfo.style.opacity = '0';
+                    setTimeout(() => {
+                        twilightInfo.style.display = 'none';
+                    }, 300);
+                }, 4000);
             });
         }
