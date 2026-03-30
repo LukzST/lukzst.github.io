@@ -67,8 +67,8 @@ async function fetchVersions() {
     const folders = folderData.filter((item) => {
       return (
         item.type === "dir" &&
-        !["BETA_V1.0", "V1.0.1", "BETA"].includes(item.name) &&
-        !item.name.includes("BETA")
+        !["BETA", "OLD"].includes(item.name) &&
+        !item.name.includes("BETA", "OLD")
       );
     });
 
