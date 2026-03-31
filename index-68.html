@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>LIGHT - Atmospheric Horror Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-main: #ffffff;
+            --bg-secondary: #f8f8f8;
+            --bg-card: #f5f5f5;
+            --text-main: #0a0a0a;
+            --text-secondary: #666666;
+            --border-color: #e0e0e0;
+            --accent-color: #ff5252;
+            --accent-light: #ff6b6b;
+        }
+
+        html.dark-mode {
+            --bg-main: #0a0a0a;
+            --bg-secondary: #121212;
+            --bg-card: #1a1a1a;
+            --text-main: #ffffff;
+            --text-secondary: #b0b0b0;
+            --border-color: #2a2a2a;
+            --accent-color: #ff5252;
+            --accent-light: #ff6b6b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            overflow-x: hidden;
+            transition: background-color 0.4s ease, color 0.4s ease;
+            line-height: 1.6;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-main);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-light);
+        }
+
+        /* Navigation */
+        nav {
+            position: relative;
+            z-index: 20;
+            background-color: var(--bg-main);
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1rem;
+            gap: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-main);
+            transition: color 0.3s ease;
+        }
+
+        .logo svg {
+            width: 70px;
+            height: 70px;
+            fill: var(--accent-color);
+        }
+
+        .logo:hover {
+            color: var(--accent-color);
+        }
+
+        .desktop-nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .desktop-nav a {
+            color: var(--text-main);
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .desktop-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .desktop-nav a:hover::after,
+        .desktop-nav a:hover {
+            color: var(--accent-color);
+            width: 100%;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: color 0.3s ease, transform 0.3s ease;
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+
+        .theme-toggle:hover {
+            color: var(--accent-color);
+            transform: scale(1.1) rotate(20deg);
+        }
+
+        .btn-download {
+            background-color: var(--text-main);
+            color: var(--bg-main);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-download:hover {
+            background-color: transparent;
+            color: var(--text-main);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        html.dark-mode .btn-download:hover {
+            box-shadow: 0 4px 12px rgba(255, 82, 82, 0.2);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-main);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Hero Section */
+        header {
+            padding: 6rem 1rem;
+        }
+
+        .reveal {
+            animation: reveal 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes reveal {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        h1 b {
+            display: block;
+        }
+
+        h1 .accent {
+            color: var(--accent-color);
+        }
+
+        .subtitle {
+            max-width: 600px;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: var(--text-main);
+            color: var(--bg-main);
+            border: 2px solid var(--text-main);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(255, 82, 82, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: var(--bg-card);
+            color: var(--text-main);
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            border: 2px solid transparent;
+        }
+
+        .social-icon:hover {
+            background-color: var(--accent-color);
+            color: white;
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(255, 82, 82, 0.3);
+        }
+
+        .video-container {
+            margin-top: 3rem;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .video-container:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 30px rgba(255, 82, 82, 0.2);
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        h2 .accent {
+            color: var(--accent-color);
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 800px;
+        }
+
+        /* Screenshots Grid */
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .screenshot-card {
+            border-radius: 1.25rem;
+            overflow: hidden;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background-color: var(--bg-card);
+        }
+
+        .screenshot-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(255, 82, 82, 0.2);
+        }
+
+        .screenshot-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Feature Cards */
+        .feature-section {
+            margin-top: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            background-color: var(--bg-card);
+            border-radius: 1.25rem;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(255, 82, 82, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-main);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Stats */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--bg-card);
+            border-radius: 1rem;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            border-color: var(--accent-color);
+            background-color: var(--bg-card);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .team-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            border: 3px solid var(--border-color);
+            transition: all 0.3s ease;
+            background-color: var(--bg-card);
+        }
+
+        .team-member:hover .team-image {
+            border-color: var(--accent-color);
+            transform: scale(1.05);
+        }
+
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .team-member h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            color: var(--text-main);
+        }
+
+        .team-member p {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Download Section */
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .download-card {
+            padding: 2rem;
+            background-color: var(--bg-card);
+            border-radius: 1.25rem;
+            border: 2px solid var(--border-color);
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .download-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(255, 82, 82, 0.15);
+        }
+
+        .download-card img {
+            height: 60px;
+            margin-bottom: 1.5rem;
+            object-fit: contain;
+        }
+
+        .download-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .download-card a {
+            color: var(--accent-color);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .download-card a:hover {
+            gap: 1rem;
+        }
+
+        /* CTA Section */
+        .cta-box {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 1.5rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .cta-box h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-box p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .cta-box .btn {
+            background-color: white;
+            color: var(--accent-color);
+            border: none;
+        }
+
+        .cta-box .btn:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 4rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section a {
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--bg-main);
+            z-index: 1000;
+            padding: 5rem 1rem 2rem;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-main);
+            cursor: pointer;
+        }
+
+        .mobile-menu nav ul {
+            list-style: none;
+        }
+
+        .mobile-menu nav li {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .mobile-menu nav a {
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 1rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            z-index: 99;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(255, 82, 82, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .desktop-nav {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            header {
+                padding: 3rem 1rem;
+            }
+
+            h1 {
+                font-size: clamp(1.8rem, 6vw, 3rem);
+            }
+
+            h2 {
+                font-size: clamp(1.5rem, 4vw, 2.5rem);
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .button-group .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .back-to-top {
+                width: 50px;
+                height: 50px;
+                padding: 0;
+                border-radius: 50%;
+                right: 1rem;
+                bottom: 1rem;
+                justify-content: center;
+            }
+
+            .back-to-top span {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 2rem 1rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .subtitle {
+                font-size: 0.95rem;
+            }
+
+            .social-icons {
+                gap: 1rem;
+            }
+
+            .social-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .screenshot-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid,
+            .team-grid,
+            .download-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">
+                <svg version="1.1" width="32" height="32" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M 1284.57 406.421 C 1397.04 398.909 1574.71 426.698 1639.78 530.011 C 1660.15 562.687 1666.54 602.18 1657.5 639.611 C 1632.76 745.043 1508.05 794.393 1426.51 845.072 L 1501.2 887.775 C 1515.65 896.005 1538.23 908.203 1551.08 917.579 C 1543.82 922.811 1530.89 929.798 1522.67 934.589 C 1504.93 944.974 1487.13 955.261 1469.27 965.45 C 1428.93 988.481 1388.81 1012.67 1348.16 1035 C 1316.95 1017.49 1285.85 999.782 1254.85 981.886 L 893.136 774.042 L 766.731 701.32 L 726.5 678.084 C 720.033 674.345 712.896 670.882 706.814 666.601 C 704.995 665.32 703.654 663.987 702.891 661.832 C 702.417 660.493 702.626 659.85 703.417 658.679 C 708.386 651.315 789.377 607.252 802.242 599.86 L 948.207 515.43 C 972.77 501.249 999.885 484.219 1024.81 471.584 C 1108.38 429.22 1192.01 412.361 1284.57 406.421 Z M 1255.64 563.401 C 1274.94 561.626 1295.57 562.781 1314.89 565.701 C 1346.67 570.504 1400.97 595.464 1390.78 636.107 C 1382.21 670.291 1336.76 690.725 1308.19 707.18 C 1288.51 718.436 1268.91 729.826 1249.39 741.35 C 1242.99 738.197 1234.84 733.293 1228.47 729.714 C 1213.18 721.706 1194.58 710.449 1179.43 701.709 C 1146.22 682.401 1112.85 663.371 1079.33 644.622 C 1095.98 634.127 1113.84 624.309 1130.87 614.381 C 1174.15 589.145 1204.04 568.642 1255.64 563.401 Z" />
+                    <path d="M 498.332 1149.1 C 508.103 1150.39 544.645 1173.24 555.721 1179.65 L 651.823 1235.04 L 1118.57 1504.22 C 1117.01 1446.49 1118.31 1383.56 1118.45 1325.47 C 1170.49 1294.2 1224.08 1264.69 1276.43 1233.87 C 1289.97 1225.9 1306.88 1215.13 1320.72 1208.8 L 1320.02 1392.3 C 1297.46 1407.43 1260.95 1427.18 1236.61 1441.31 C 1173.15 1477.77 1108.71 1514.04 1045.75 1551.17 C 1019.64 1566.59 993.428 1581.84 967.125 1596.93 C 954.384 1604.28 931.637 1618.26 918.916 1622.75 C 906.2 1617.6 890.216 1607.94 878.086 1600.96 C 860.326 1590.68 842.51 1580.49 824.641 1570.39 L 606.79 1445.51 L 386.672 1318.96 L 331.224 1287.05 C 322.34 1281.93 304.062 1271.96 297.025 1265.48 C 303.738 1259.96 489.346 1151.75 498.332 1149.1 z" />
+                    <path d="M 698.77 846.81 C 708.599 848.406 826.327 918.404 842.561 927.687 L 1154.26 1107.05 C 1207.49 1137.78 1264.99 1169.27 1317.08 1201.37 C 1307.87 1207.69 1292.15 1216.19 1281.83 1222.22 L 1210.75 1263.42 C 1181.2 1280.39 1144.84 1303.64 1115.58 1318.7 C 1116.13 1318.79 510.514 974.309 498.134 963.089 C 504.936 956.614 526.563 945.194 535.739 940.012 C 553.695 929.874 571.595 919.637 589.438 909.302 L 654.046 871.836 C 667.827 863.782 684.67 853.268 698.77 846.81 z" />
+                    <path d="M 1552.29 925.717 L 1553.76 926.324 C 1555.47 932.043 1553.98 992.787 1553.98 1003.74 L 1554.09 1257.81 C 1531.9 1272.58 1370.43 1367.66 1355.06 1371.49 C 1350.33 1365.33 1351.97 1335.44 1351.97 1325.76 L 1352.01 1252.99 C 1352 1183.23 1350.92 1110.8 1352.3 1041.33 L 1552.29 925.717 z" />
+                </svg>
+            </a>
+
+            <div class="desktop-nav">
+                <a href="#about">About</a>
+                <a href="#screenshots">Media</a>
+                <a href="#download">Download</a>
+                <a href="#team">Team</a>
+            </div>
+
+            <div class="nav-right">
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="https://lukzxdd.itch.io/" target="_blank" class="btn-download">
+                    Store <i class="fas fa-arrow-right"></i>
+                </a>
+                <button class="menu-toggle" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" onclick="toggleMobileMenu()">
+            <i class="fas fa-times"></i>
+        </button>
+        <nav>
+            <ul>
+                <li><a href="#about" onclick="toggleMobileMenu()">About</a></li>
+                <li><a href="#screenshots" onclick="toggleMobileMenu()">Media</a></li>
+                <li><a href="#download" onclick="toggleMobileMenu()">Download</a></li>
+                <li><a href="#team" onclick="toggleMobileMenu()">Team</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <header>
+        <div class="container">
+            <div class="reveal">
+                <h1>
+                    <b>welcome to a</b>
+                    <b><span class="accent">darkness</span> world</b>
+                </h1>
+                <p class="subtitle">
+                    In LIGHT, you are Operator 07. The Fade has consumed the stars. Keep the generator running. Don't let the light die.
+                </p>
+
+                <div class="button-group">
+                    <a href="https://lukzxdd.itch.io/LIGHT" target="_blank" class="btn btn-primary">
+                        Download Now <i class="fas fa-chevron-right"></i>
+                    </a>
+                    <a href="#" class="btn btn-secondary">
+                        Try Demo <i class="fas fa-play"></i>
+                    </a>
+                </div>
+
+                <div class="social-icons">
+                    <a href="https://github.com/LukzST" target="_blank" class="social-icon" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.instagram.com/PlayLightGame" target="_blank" class="social-icon" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://lukzxdd.itch.io" target="_blank" class="social-icon" title="Itch.io">
+                        <i class="fab fa-itch-io"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@PlayLightGame" target="_blank" class="social-icon" title="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="reveal video-container" style="animation-delay: 0.2s;">
+                <video autoplay loop muted playsinline poster="./Public/IMG/trailer-poster.webp">
+                    <source src="./Public/VID/Trailer.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>The <span class="accent">Mission</span></h2>
+            <p class="section-subtitle">
+                You are the last sentinel in an isolated relay bunker. Outside, the "Fade" has consumed cities and hope. In the silence of the darkness, something stirs.
+            </p>
+
+            <div id="screenshots" class="screenshot-grid">
+                <div class="screenshot-card">
+                    <img src="./Public/IMG/screen1.png" alt="LIGHT Screenshot 1">
+                </div>
+                <div class="screenshot-card">
+                    <img src="./Public/IMG/screen2.png" alt="LIGHT Screenshot 2">
+                </div>
+                <div class="screenshot-card">
+                    <img src="./Public/IMG/screen3.png" alt="LIGHT Screenshot 3">
+                </div>
+                <div class="screenshot-card">
+                    <img src="./Public/IMG/screen4.png" alt="LIGHT Screenshot 4">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="feature-section">
+        <div class="container">
+            <h2>Our Core <span class="accent">Values</span></h2>
+            <p class="section-subtitle">
+                We make it a priority to ensure LIGHT strikes the right balance between beauty, atmosphere, and storytelling.
+            </p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-github"></i>
+                    </div>
+                    <h3>Free and Open Source</h3>
+                    <p>Complete source code available. Support the community and contribute to the project's development.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h3>Simple Yet Powerful</h3>
+                    <p>Intuitive gameplay mechanics with deep atmospheric storytelling for maximum impact.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-ghost"></i>
+                    </div>
+                    <h3>Atmospheric Horror</h3>
+                    <p>Immersive sound design, compelling narrative, and haunting environments create pure dread.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download">
+        <div class="container">
+            <h2 style="text-align: center;">Available <span class="accent">On</span></h2>
+            <p class="section-subtitle" style="text-align: center; margin-left: auto; margin-right: auto;">
+                Download LIGHT on your favorite platforms
+            </p>
+
+            <div class="download-grid">
+                <div class="download-card">
+                    <i class="fab fa-itch-io" style="font-size: 3rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                    <h3>Itch.io</h3>
+                    <a href="https://lukzxdd.itch.io/LIGHT" target="_blank">
+                        Download <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="download-card">
+                    <i class="fab fa-github" style="font-size: 3rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                    <h3>GitHub</h3>
+                    <a href="https://github.com/LukzST/LIGHT" target="_blank">
+                        View Repo <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="cta-box">
+                <h2>Ready to Experience the Darkness?</h2>
+                <p>Download LIGHT now and begin your journey as Operator 07</p>
+                <a href="https://lukzxdd.itch.io/LIGHT" target="_blank" class="btn">
+                    Download Now <i class="fas fa-download"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team">
+        <div class="container">
+            <h2 style="text-align: center;">Meet the <span class="accent">Team</span></h2>
+            <p class="section-subtitle" style="text-align: center; margin-left: auto; margin-right: auto;">
+                The passionate minds behind LIGHT. We're dedicated to crafting an unforgettable horror experience.
+            </p>
+
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="./Public/IMG/lukz.jpg" alt="Lukzxdd">
+                    </div>
+                    <h3>Lukzxdd</h3>
+                    <p>Game Designer, Programmer</p>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://img.itch.zone/aW1nLzI1Mjg4NDI5LmdpZg==/80x80%23/iGX%2FHx.gif" alt="Hagrajag">
+                    </div>
+                    <h3>Hagrajag (ROSE)</h3>
+                    <p>Special Thanks</p>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="./Public/IMG/luiz.jpg" alt="Luiz">
+                    </div>
+                    <h3>Luiz</h3>
+                    <p>Beta Tester</p>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="./Public/IMG/isabella.jpg" alt="Isabella">
+                    </div>
+                    <h3>Isabella Sanches</h3>
+                    <p>Sound Designer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>LIGHT</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">
+                        Beautifully atmospheric, horror-focused, and made with passion. We care about the light, not the void.
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>About Us</h4>
+                    <ul>
+                        <li><a href="#about">About the Game</a></li>
+                        <li><a href="https://github.com/LukzST/LIGHT" target="_blank">GitHub Repository</a></li>
+                        <li><a href="https://lukzxdd.itch.io" target="_blank">Itch.io Page</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Get Started</h4>
+                    <ul>
+                        <li><a href="#download">Download Game</a></li>
+                        <li><a href="#screenshots">Screenshots</a></li>
+                        <li><a href="#team">Meet the Team</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="https://www.instagram.com/PlayLightGame" target="_blank">Instagram</a></li>
+                        <li><a href="https://github.com/LukzST" target="_blank">GitHub</a></li>
+                        <li><a href="https://www.youtube.com/@PlayLightGame" target="_blank">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Made by <a href="https://github.com/LukzST">Lukzxdd</a> with passion for horror games.</p>
+                <p style="margin-top: 0.5rem;">© 2024 Pale Luna Developer. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <span>Top</span> <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Theme Toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const isDark = html.classList.toggle('dark-mode');
+            const icon = document.querySelector('.theme-toggle i');
+            
+            if (isDark) {
+                localStorage.setItem('theme', 'dark');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                localStorage.setItem('theme', 'light');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+
+        // Load theme from localStorage
+        function loadTheme() {
+            const theme = localStorage.getItem('theme') || 'light';
+            const html = document.documentElement;
+            const icon = document.querySelector('.theme-toggle i');
+            
+            if (theme === 'dark') {
+                html.classList.add('dark-mode');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                html.classList.remove('dark-mode');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+
+        // Mobile Menu
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileMenu').classList.remove('active');
+            });
+        });
+
+        // Scroll to Top
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    document.getElementById('mobileMenu').classList.remove('active');
+                }
+            });
+        });
+
+        // Intersection Observer for reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section, .video-container').forEach(el => {
+            if (!el.classList.contains('reveal')) {
+                observer.observe(el);
+            }
+        });
+
+        // Initialize theme on load
+        loadTheme();
+    </script>
+</body>
+</html>
