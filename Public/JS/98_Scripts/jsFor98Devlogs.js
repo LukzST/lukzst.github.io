@@ -110,9 +110,9 @@ async function fetchVersions() {
         const folders = data.filter(item => {
             return item.type === 'dir' && 
                 item.name !== 'BETA_V1.0' && 
-                item.name !== 'V1.0.1' &&
+                item.name !== 'OLD_V1.0.1' &&
                 item.name !== 'BETA' &&
-                !item.name.includes('BETA');
+                !item.name.includes('BETA', 'OLD_V1.0.1');
         });
         
         if (folders.length === 0) {
