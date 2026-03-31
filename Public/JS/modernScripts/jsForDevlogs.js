@@ -112,7 +112,7 @@ async function fetchVersions() {
                                VIEW RELEASE →
                             </a>
                         </div>
-                        <div class="text-xs font-bold opacity-40" style="color: var(--zen-dark);">${releaseInfo ? "OFFICIAL RELEASE" : "FINAL BUILD"}</div>
+                        <div class="text-xs font-bold opacity-40" style="color: var(--zen-dark);">${releaseInfo ? "OFFICIAL RELEASE" : "IN PRODUCTION BUILD"}</div>
                     </div>
 
                     <div class="mt-6 flex flex-col gap-8">
