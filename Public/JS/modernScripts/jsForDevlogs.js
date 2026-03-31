@@ -99,7 +99,7 @@ async function fetchVersions() {
 
       const section = document.createElement("section");
       section.className =
-        "release-note-item relative mt-12 flex flex-col pt-24 lg:flex-row";
+        "release-note-item relative mt-12 flex flex-col lg:flex-row";
 
       section.innerHTML = `
                 <div class="flex w-full flex-col gap-2 px-5 md:px-10 md:pr-32 text-left">
