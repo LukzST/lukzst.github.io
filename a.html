@@ -555,10 +555,10 @@
             <section id="media-section" class="container reveal" style="padding: 40px 0;">
                 <h2 class="display-large" style="font-size: 2rem;">Visual <span style="color:var(--md-expressive-coral)">Atmosphere</span></h2>
                 <div class="media-grid">
-                    <div class="media-item" onclick="alert('Generator room')"><img src="/Public/IMG/screen1.png" alt="screen"></div>
-                    <div class="media-item" onclick="alert('The Fade')"><img src="/Public/IMG/screen2.png" alt="screen"></div>
-                    <div class="media-item" onclick="alert('Last light')"><img src="/Public/IMG/screen3.png" alt="screen"></div>
-                    <div class="media-item" onclick="alert('Transmission')"><img src="/Public/IMG/screen4.png" alt="screen"></div>
+                    <div class="media-item" onclick="screenshot1()"><img src="/Public/IMG/screen1.png" alt="screen"></div>
+                    <div class="media-item" onclick="screenshot2()"><img src="/Public/IMG/screen2.png" alt="screen"></div>
+                    <div class="media-item" onclick="screenshot3()"><img src="/Public/IMG/screen3.png" alt="screen"></div>
+                    <div class="media-item" onclick="screenshot4()"><img src="/Public/IMG/screen4.png" alt="screen"></div>
                 </div>
             </section>
 
@@ -665,80 +665,6 @@
 
     <button class="back-to-top" id="backToTopBtn">Back to Top <i class="fa-solid fa-arrow-up"></i></button>
 
-    <script>
-        // SIDEBAR TOGGLE MOBILE
-        const sidebar = document.getElementById('m3Sidebar');
-        const overlay = document.getElementById('sidebarOverlay');
-        const menuBtn = document.getElementById('menuButtonSide');
-        
-        function openSidebar() { 
-            if (window.innerWidth <= 768) {
-                sidebar.classList.add('open'); 
-                overlay.classList.add('active'); 
-                document.body.style.overflow = 'hidden';
-            }
-        }
-        function closeSidebar() { 
-            sidebar.classList.remove('open'); 
-            overlay.classList.remove('active'); 
-            document.body.style.overflow = ''; 
-        }
-        
-        if (menuBtn) menuBtn.addEventListener('click', openSidebar);
-        if (overlay) overlay.addEventListener('click', closeSidebar);
-        
-        // NAVIGATION
-        const navItems = document.querySelectorAll('.nav-item');
-        const sectionsMap = {
-            home: document.getElementById('home-section'),
-            about: document.getElementById('about-section'),
-            media: document.getElementById('media-section'),
-            download: document.getElementById('download-section'),
-            demo: document.getElementById('demo-section'),
-            devlogs: document.getElementById('devlogs-section'),
-            brandkit: document.getElementById('brandkit-section')
-        };
-        
-        function setActive(selectedId) {
-            navItems.forEach(item => {
-                item.classList.remove('active');
-                if (item.getAttribute('data-section') === selectedId) item.classList.add('active');
-            });
-        }
-        
-        navItems.forEach(item => {
-            item.addEventListener('click', (e) => {
-                e.preventDefault();
-                const sectionId = item.getAttribute('data-section');
-                if (sectionId && sectionsMap[sectionId]) {
-                    sectionsMap[sectionId].scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    setActive(sectionId);
-                    closeSidebar();
-                }
-            });
-        });
-        
-        // BACK TO TOP
-        const backBtn = document.getElementById('backToTopBtn');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) backBtn.classList.add('visible');
-            else backBtn.classList.remove('visible');
-        });
-        backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-        
-        // REVEAL
-        const reveals = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('revealed'); });
-        }, { threshold: 0.1 });
-        reveals.forEach(r => observer.observe(r));
-        
-        // RESIZE: fechar sidebar mobile ao redimensionar para desktop
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-                closeSidebar();
-            }
-        });
-    </script>
+<script src="/Public/JS/modernScripts/jsForHome.js"></script>
 </body>
 </html>
