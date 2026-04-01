@@ -6,10 +6,21 @@ function support() {
     window.open('mailto:contatosadberry@gmail.com', 'Popup', 'width=500,height=400,scrollbars=no');
 }
 
-function screenshot1() { window.open("/Public/IMG/screen1.png", 'popup, width=800,height=600'); }
-function screenshot2() { window.open("/Public/IMG/screen2.png", 'popup, width=800,height=600'); }
-function screenshot3() { window.open("/Public/IMG/screen3.png", 'popup, width=800,height=600'); }
-function screenshot4() { window.open("/Public/IMG/screen4.png", 'popup, width=800,height=600'); }
+function screenshot1() { 
+    window.open("/Public/IMG/screen1.png", "screenshot1", "width=800,height=600,resizable=yes,scrollbars=yes"); 
+}
+
+function screenshot2() { 
+    window.open("/Public/IMG/screen2.png", "screenshot2", "width=800,height=600,resizable=yes,scrollbars=yes"); 
+}
+
+function screenshot3() { 
+    window.open("/Public/IMG/screen3.png", "screenshot3", "width=800,height=600,resizable=yes,scrollbars=yes"); 
+}
+
+function screenshot4() { 
+    window.open("/Public/IMG/screen4.png", "screenshot4", "width=800,height=600,resizable=yes,scrollbars=yes"); 
+}
 
 const sidebar = document.getElementById('m3Sidebar');
 const overlay = document.getElementById('sidebarOverlay');
