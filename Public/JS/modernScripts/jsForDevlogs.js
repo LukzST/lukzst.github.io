@@ -237,7 +237,7 @@ function getChangeIcon(type) {
         case 'improved':
             return '<i class="fa-solid fa-bolt" style="color: #ff8a7a;"></i>';
         case 'removed':
-            return '<i class="fa-solid fa-trash-alt" style="color: #ff8a7a;"></i>';
+            return '<i class="fa-solid fa-times-circle" style="color: #ff8a7a;"></i>';
         default:
             return '<i class="fa-solid fa-pen" style="color: var(--md-expressive-coral);"></i>';
     }
