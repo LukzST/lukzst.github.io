@@ -3,7 +3,7 @@ const sidebar = document.getElementById('m3Sidebar');
 const overlay = document.getElementById('sidebarOverlay');
 const menuBtn = document.getElementById('menuButtonSide');
 
-
+// BACK TO TOP
 if (backToTop) {
     window.addEventListener("scroll", () => {
         if (window.scrollY > 500) {
@@ -21,7 +21,7 @@ if (backToTop) {
     });
 }
 
-
+// SIDEBAR TOGGLE MOBILE
 function openSidebar() {
     if (window.innerWidth <= 768) {
         sidebar.classList.add('open');
@@ -39,7 +39,7 @@ function closeSidebar() {
 if (menuBtn) menuBtn.addEventListener('click', openSidebar);
 if (overlay) overlay.addEventListener('click', closeSidebar);
 
-
+// NAVIGATION ACTIVE
 const navItems = document.querySelectorAll('.nav-item');
 
 navItems.forEach(item => {
@@ -53,14 +53,14 @@ navItems.forEach(item => {
     });
 });
 
-
+// RESIZE: fechar sidebar mobile ao redimensionar para desktop
 window.addEventListener('resize', () => {
     if (window.innerWidth > 768) {
         closeSidebar();
     }
 });
 
-
+// REVEAL ANIMATION
 const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -68,7 +68,6 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.1 });
 reveals.forEach(r => observer.observe(r));
-
 
 const repoOwner = "lukzst";
 const repoName = "light";
@@ -89,8 +88,8 @@ async function fetchVersions() {
 
     try {
         const [repoRes, releasesRes] = await Promise.all([
-            fetch(`https:
-            fetch(`https:
+            fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${targetPath}`),
+            fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/releases`),
         ]);
 
         const folderData = await repoRes.json();
@@ -128,12 +127,9 @@ async function fetchVersions() {
             const githubDescription = releaseInfo
                 ? releaseInfo.body
                 : "No description provided in GitHub release.";
-
-            
             const changes = parseDescription(githubDescription);
             const releaseDate = releaseInfo ? formatDate(releaseInfo.published_at) : "Development";
 
-            
             const card = document.createElement("div");
             card.className = "version-card reveal";
 
@@ -173,13 +169,13 @@ async function fetchVersions() {
                             <span class="material-symbols-rounded">arrow_forward</span>
                         </a>
                     ` : `
-                        <a href="https:
+                        <a href="https://github.com/${repoOwner}/${repoName}/tree/main/${targetPath}/${folder.name}" 
                            target="_blank" rel="noopener noreferrer" class="github-link">
                             <span class="material-symbols-rounded">folder_open</span>
                             View in Repository
                         </a>
                     `}
-                    <a href="https:
+                    <a href="https://github.com/${repoOwner}/${repoName}/releases" target="_blank" rel="noopener noreferrer" class="github-link">
                         <span class="material-symbols-rounded">history</span>
                         All Releases
                     </a>
@@ -189,7 +185,7 @@ async function fetchVersions() {
             container.appendChild(card);
         });
 
-        
+        // Re-trigger reveal animation for new elements
         const newReveals = document.querySelectorAll('.reveal:not(.revealed)');
         newReveals.forEach(r => observer.observe(r));
 
@@ -225,7 +221,7 @@ function parseDescription(description) {
             }
         }
 
-        
+        // Clean up the line
         let cleanText = trimmedLine
             .replace(/^[•\-\*\d\.\s]+/, '')
             .replace(/^added:|fixed:|improved:|removed:/i, '')
@@ -236,7 +232,7 @@ function parseDescription(description) {
         }
     });
 
-    return changes.slice(0, 8); 
+    return changes.slice(0, 8); // Limit to 8 changes per version
 }
 
 function getChangeIcon(type) {
@@ -257,7 +253,7 @@ function getChangeIcon(type) {
 function formatDescription(description) {
     if (!description) return 'No description available.';
     
-    
+    // Get first paragraph or first few lines as summary
     const lines = description.split('\n');
     let summary = '';
     
@@ -290,7 +286,7 @@ function support() {
     window.location.href = "mailto:contatosadberry@gmail.com";
 }
 
-
+// Initialize on DOM load
 document.addEventListener("DOMContentLoaded", () => {
     setCurrentDate();
     fetchVersions();

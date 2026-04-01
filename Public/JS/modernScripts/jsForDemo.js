@@ -3,7 +3,6 @@ const sidebar = document.getElementById('m3Sidebar');
 const overlay = document.getElementById('sidebarOverlay');
 const menuBtn = document.getElementById('menuButtonSide');
 
-
 if (backToTop) {
     window.addEventListener('scroll', () => {
         if (window.scrollY > 500) {
@@ -20,7 +19,6 @@ if (backToTop) {
         });
     });
 }
-
 
 function openSidebar() {
     if (window.innerWidth <= 768) {
@@ -39,7 +37,6 @@ function closeSidebar() {
 if (menuBtn) menuBtn.addEventListener('click', openSidebar);
 if (overlay) overlay.addEventListener('click', closeSidebar);
 
-
 const navItems = document.querySelectorAll('.nav-item');
 
 navItems.forEach(item => {
@@ -53,14 +50,13 @@ navItems.forEach(item => {
     });
 });
 
-
 window.addEventListener('resize', () => {
     if (window.innerWidth > 768) {
         closeSidebar();
     }
 });
 
-
+// REVEAL ANIMATION
 const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -69,7 +65,7 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 reveals.forEach(r => observer.observe(r));
 
-
+// DEMO SPECIFIC FUNCTIONS
 const downloadBtn = document.querySelector('.download-button');
 const twilightInfo = document.getElementById('twilight-info');
 

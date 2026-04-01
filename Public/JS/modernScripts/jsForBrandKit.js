@@ -7,7 +7,6 @@ const menuOverlay = document.getElementById('menuOverlay');
 const menuClose = document.getElementById('menuClose');
 const menuToggle = document.getElementById('menuToggle');
 
-
 if (backToTop) {
     window.addEventListener('scroll', () => {
         if (window.scrollY > 500) {
@@ -25,7 +24,6 @@ if (backToTop) {
     });
 }
 
-
 function openSidebar() {
     if (window.innerWidth <= 768) {
         sidebar.classList.add('open');
@@ -42,7 +40,6 @@ function closeSidebar() {
 
 if (menuBtn) menuBtn.addEventListener('click', openSidebar);
 if (overlay) overlay.addEventListener('click', closeSidebar);
-
 
 if (menuToggle) {
     function openMenu() {
@@ -62,13 +59,11 @@ if (menuToggle) {
     if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
 }
 
-
 window.addEventListener('resize', () => {
     if (window.innerWidth > 768) {
         closeSidebar();
     }
 });
-
 
 const navItems = document.querySelectorAll('.nav-item');
 
@@ -83,7 +78,6 @@ navItems.forEach(item => {
     });
 });
 
-
 const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -92,9 +86,8 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 reveals.forEach(r => observer.observe(r));
 
-
 function itch() {
-    window.open('https:
+    window.open('https://lukzxdd.itch.io/light/purchase?popup=1', 'Popup', 'width=500,height=400,scrollbars=no');
 }
 
 function support() {
@@ -176,7 +169,6 @@ function downloadStudioLogo(version) {
 function downloadAllAssets() {
     alert('Full package will be available soon!');
 }
-
 
 const style = document.createElement('style');
 style.textContent = `
