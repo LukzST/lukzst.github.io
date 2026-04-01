@@ -271,7 +271,7 @@ body {
 .download-card {
     background: var(--md-sys-color-surface-dim);
     border-radius: var(--md-shape-large);
-    border: 1px solid var(--md-sys-color-outline-variant);
+    border: 2px solid var(--md-sys-color-outline-variant);
     padding: 48px 40px;
     text-align: center;
     transition: all var(--md-motion-standard);
