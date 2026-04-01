@@ -1,155 +1,316 @@
-const backToTop = document.getElementById("backToTop");
+const backToTop = document.getElementById("backToTopBtn");
+const sidebar = document.getElementById('m3Sidebar');
+const overlay = document.getElementById('sidebarOverlay');
+const menuBtn = document.getElementById('menuButtonSide');
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 300) {
-    backToTop.classList.add("show");
-  } else {
-    backToTop.classList.remove("show");
-  }
-});
+// BACK TO TOP
+if (backToTop) {
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 500) {
+            backToTop.classList.add("visible");
+        } else {
+            backToTop.classList.remove("visible");
+        }
+    });
 
-backToTop.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-});
-
-const menuToggle = document.getElementById("menuToggle");
-const mobileMenu = document.getElementById("mobileMenu");
-const menuOverlay = document.getElementById("menuOverlay");
-const menuClose = document.getElementById("menuClose");
-
-function openMenu() {
-  mobileMenu.classList.add("open");
-  menuOverlay.classList.add("open");
-  document.body.style.overflow = "hidden";
+    backToTop.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    });
 }
 
-function closeMenu() {
-  mobileMenu.classList.remove("open");
-  menuOverlay.classList.remove("open");
-  document.body.style.overflow = "";
+// SIDEBAR TOGGLE MOBILE
+function openSidebar() {
+    if (window.innerWidth <= 768) {
+        sidebar.classList.add('open');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
 }
 
-menuToggle.addEventListener("click", openMenu);
-menuClose.addEventListener("click", closeMenu);
-menuOverlay.addEventListener("click", closeMenu);
+function closeSidebar() {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+}
 
+if (menuBtn) menuBtn.addEventListener('click', openSidebar);
+if (overlay) overlay.addEventListener('click', closeSidebar);
+
+// NAVIGATION ACTIVE
+const navItems = document.querySelectorAll('.nav-item');
+
+navItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = item.getAttribute('href');
+        if (href && href !== '#') {
+            window.location.href = href;
+        }
+        closeSidebar();
+    });
+});
+
+// RESIZE: fechar sidebar mobile ao redimensionar para desktop
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+        closeSidebar();
+    }
+});
+
+// REVEAL ANIMATION
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('revealed');
+    });
+}, { threshold: 0.1 });
+reveals.forEach(r => observer.observe(r));
+
+// ========== DEVLOGS SPECIFIC FUNCTIONS ==========
 const repoOwner = "lukzst";
 const repoName = "light";
 const targetPath = "FINAL";
 
 function setCurrentDate() {
-  const dateElement = document.getElementById("current-date");
-  if (dateElement) {
-    const today = new Date();
-    const options = { day: "2-digit", month: "2-digit", year: "numeric" };
-    dateElement.innerText = today.toLocaleDateString("pt-BR", options);
-  }
+    const dateElement = document.getElementById("current-date");
+    if (dateElement) {
+        const today = new Date();
+        const options = { day: "2-digit", month: "2-digit", year: "numeric" };
+        dateElement.innerText = today.toLocaleDateString("pt-BR", options);
+    }
 }
 
 async function fetchVersions() {
-  const container = document.getElementById("version-container");
-  if (!container) return;
+    const container = document.getElementById("version-container");
+    if (!container) return;
 
-  try {
-    const [repoRes, releasesRes] = await Promise.all([
-      fetch(
-        `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${targetPath}`,
-      ),
-      fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/releases`),
-    ]);
+    try {
+        const [repoRes, releasesRes] = await Promise.all([
+            fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${targetPath}`),
+            fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/releases`),
+        ]);
 
-    const folderData = await repoRes.json();
-    const releases = await releasesRes.json();
+        const folderData = await repoRes.json();
+        const releases = await releasesRes.json();
 
-    const folders = folderData.filter((item) => {
-      return (
-        item.type === "dir" &&
-        !["BETA", "OLD_V1.0.1"].includes(item.name) &&
-        !item.name.includes("BETA", "OLD_V1.0.1")
-      );
-    });
+        const folders = folderData.filter((item) => {
+            return (
+                item.type === "dir" &&
+                !["BETA", "OLD_V1.0.1"].includes(item.name) &&
+                !item.name.includes("BETA") &&
+                !item.name.includes("OLD_V1.0.1")
+            );
+        });
 
-    if (folders.length === 0) {
-      container.innerHTML =
-        '<div class="text-center opacity-50 py-12">No versions found.</div>';
-      return;
-    }
+        if (folders.length === 0) {
+            container.innerHTML = '<div class="loader-wrapper"><p class="note-text">No versions found.</p></div>';
+            return;
+        }
 
-    folders.sort((a, b) =>
-      a.name.localeCompare(b.name, undefined, {
-        numeric: true,
-        sensitivity: "base",
-      }),
-    );
-    folders.reverse();
+        folders.sort((a, b) =>
+            a.name.localeCompare(b.name, undefined, {
+                numeric: true,
+                sensitivity: "base",
+            })
+        );
+        folders.reverse();
 
-    container.innerHTML = "";
+        container.innerHTML = "";
 
-    folders.forEach((folder) => {
-      const releaseInfo = releases.find(
-        (r) => r.tag_name === folder.name || r.name === folder.name,
-      );
+        folders.forEach((folder) => {
+            const releaseInfo = releases.find(
+                (r) => r.tag_name === folder.name || r.name === folder.name
+            );
 
-      const githubDescription = releaseInfo
-        ? releaseInfo.body
-        : "No description provided in GitHub release.";
+            const githubDescription = releaseInfo
+                ? releaseInfo.body
+                : "No description provided in GitHub release.";
 
-      const section = document.createElement("section");
-      section.className =
-        "release-note-item relative mt-12 flex flex-col lg:flex-row";
+            // Parse the description to extract changes
+            const changes = parseDescription(githubDescription);
+            const releaseDate = releaseInfo ? formatDate(releaseInfo.published_at) : "Development";
 
-      section.innerHTML = `
-                <div class="flex w-full flex-col gap-2 px-5 md:px-10 md:pr-32 text-left">
-                    <div class="w-full justify-between sm:flex items-center">
-                        <div class="flex flex-col gap-1 text-sm font-bold opacity-80 sm:flex-row sm:items-center sm:gap-0">
-                            <span style="font-family: 'Bricolage Grotesque'; font-size: 1.3rem; color: var(--zen-dark);">${folder.name.toUpperCase()}</span>
-                            <span class="text-muted-foreground mx-3 hidden sm:block opacity-30">•</span> 
-                            <a href="${releaseInfo ? releaseInfo.html_url : `https://github.com/${repoOwner}/${repoName}/tree/main/${targetPath}/${folder.name}`}" 
-                               target="_blank" rel="noopener noreferrer" class="zen-link text-xs !no-underline font-bold" style="color: var(--zen-coral);">
-                               VIEW RELEASE →
-                            </a>
-                        </div>
-                        <div class="text-xs font-bold opacity-40" style="color: var(--zen-dark);">${releaseInfo ? "OFFICIAL RELEASE" : "UNDEV DEVELOPMENT"}</div>
+            // Create version card
+            const card = document.createElement("div");
+            card.className = "version-card reveal";
+
+            card.innerHTML = `
+                <div class="version-header">
+                    <div class="version-name">
+                        <span class="material-symbols-rounded">code_blocks</span>
+                        ${folder.name.toUpperCase()}
                     </div>
-
-                    <div class="mt-6 flex flex-col gap-8">
-                        <ul class="flex flex-col gap-1" style="list-style: none; padding: 0;">
-                            <li class="flex gap-4 items-start">
-                                <div style="color: var(--zen-coral); min-width: 65px; font-weight: 800; font-size: 0.85rem; text-transform: uppercase;">Note</div>
-                                <div>
-                                    <div class="text-base opacity-80 github-body-text" style="color: var(--zen-dark); line-height: 1.7; white-space: pre-wrap;">${githubDescription}</div>
-                                </div>
-                            </li>
-                        </ul>
+                    <div class="version-date">
+                        <span class="material-symbols-rounded">calendar_today</span>
+                        ${releaseDate}
                     </div>
                 </div>
+                <div class="version-content">
+                    <div class="version-description">
+                        ${releaseInfo ? formatDescription(githubDescription) : githubDescription}
+                    </div>
+                    ${changes.length > 0 ? `
+                        <ul class="version-changes">
+                            ${changes.map(change => `
+                                <li>
+                                    <span class="change-icon ${change.type}">
+                                        ${getChangeIcon(change.type)}
+                                    </span>
+                                    <span class="change-text">${change.text}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    ` : ''}
+                </div>
+                <div class="version-footer">
+                    ${releaseInfo ? `
+                        <a href="${releaseInfo.html_url}" target="_blank" rel="noopener noreferrer" class="download-link">
+                            <span class="material-symbols-rounded">download</span>
+                            Download Release
+                            <span class="material-symbols-rounded">arrow_forward</span>
+                        </a>
+                    ` : `
+                        <a href="https://github.com/${repoOwner}/${repoName}/tree/main/${targetPath}/${folder.name}" 
+                           target="_blank" rel="noopener noreferrer" class="github-link">
+                            <span class="material-symbols-rounded">folder_open</span>
+                            View in Repository
+                        </a>
+                    `}
+                    <a href="https://github.com/${repoOwner}/${repoName}/releases" target="_blank" rel="noopener noreferrer" class="github-link">
+                        <span class="material-symbols-rounded">history</span>
+                        All Releases
+                    </a>
+                </div>
             `;
-      container.appendChild(section);
+
+            container.appendChild(card);
+        });
+
+        // Re-trigger reveal animation for new elements
+        const newReveals = document.querySelectorAll('.reveal:not(.revealed)');
+        newReveals.forEach(r => observer.observe(r));
+
+    } catch (error) {
+        console.error("Error:", error);
+        container.innerHTML = '<div class="loader-wrapper"><p class="note-text" style="color: var(--md-expressive-coral);">Error loading release notes.</p></div>';
+    }
+}
+
+function parseDescription(description) {
+    const changes = [];
+    if (!description) return changes;
+
+    const lines = description.split('\n');
+    const changeTypes = {
+        added: ['added', 'add', 'new', '+'],
+        fixed: ['fixed', 'fix', 'bugfix', 'patch', 'resolve'],
+        improved: ['improved', 'improve', 'update', 'enhance', 'optimize'],
+        removed: ['removed', 'remove', 'delete', '-']
+    };
+
+    lines.forEach(line => {
+        const trimmedLine = line.trim();
+        if (!trimmedLine || trimmedLine.startsWith('#') || trimmedLine.startsWith('*') && trimmedLine.length < 5) return;
+
+        let type = 'improved';
+        const lowerLine = trimmedLine.toLowerCase();
+
+        for (const [key, keywords] of Object.entries(changeTypes)) {
+            if (keywords.some(kw => lowerLine.includes(kw))) {
+                type = key;
+                break;
+            }
+        }
+
+        // Clean up the line
+        let cleanText = trimmedLine
+            .replace(/^[•\-\*\d\.\s]+/, '')
+            .replace(/^added:|fixed:|improved:|removed:/i, '')
+            .trim();
+
+        if (cleanText && cleanText.length > 3) {
+            changes.push({ type, text: cleanText });
+        }
     });
-  } catch (error) {
-    console.error("Error:", error);
-    container.innerHTML =
-      '<div class="text-center py-12" style="color: var(--zen-coral)">Error loading release notes.</div>';
-  }
+
+    return changes.slice(0, 8); // Limit to 8 changes per version
+}
+
+function getChangeIcon(type) {
+    switch (type) {
+        case 'added':
+            return '✨';
+        case 'fixed':
+            return '🐛';
+        case 'improved':
+            return '⚡';
+        case 'removed':
+            return '🗑️';
+        default:
+            return '📝';
+    }
+}
+
+function formatDescription(description) {
+    if (!description) return 'No description available.';
+    
+    // Get first paragraph or first few lines as summary
+    const lines = description.split('\n');
+    let summary = '';
+    
+    for (const line of lines) {
+        const trimmed = line.trim();
+        if (trimmed && !trimmed.startsWith('-') && !trimmed.startsWith('*') && !trimmed.startsWith('#')) {
+            summary = trimmed;
+            break;
+        }
+    }
+    
+    if (!summary && lines.length > 0) {
+        summary = lines[0].trim().replace(/^[•\-\*\d\.\s]+/, '');
+    }
+    
+    return summary || 'Check the release notes on GitHub for more details.';
+}
+
+function formatDate(dateString) {
+    if (!dateString) return 'Unknown';
+    const date = new Date(dateString);
+    return date.toLocaleDateString('pt-BR', {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric'
+    });
 }
 
 function support() {
-  window.location.href = "/support/";
+    window.location.href = "mailto:contatosadberry@gmail.com";
 }
 
-function soundtrack() {
-  window.location.href = "/soundtrack/";
-}
-
+// Initialize on DOM load
 document.addEventListener("DOMContentLoaded", () => {
-  setCurrentDate();
-  fetchVersions();
+    setCurrentDate();
+    fetchVersions();
+    
+    // Add class to body for animations
+    document.body.style.animation = "fadeInPage 0.5s ease-out";
 });
-function mudarPagina() {
-  document.body.style.animation = "none";
-  document.body.offsetHeight;
-  document.body.style.animation = "fadeInPage 0.5s ease-out";
-}
+
+// Fade in animation
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes fadeInPage {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+`;
+document.head.appendChild(style);
