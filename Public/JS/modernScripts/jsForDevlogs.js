@@ -294,23 +294,4 @@ function support() {
 document.addEventListener("DOMContentLoaded", () => {
     setCurrentDate();
     fetchVersions();
-    
-    // Add class to body for animations
-    document.body.style.animation = "fadeInPage 0.5s ease-out";
 });
-
-// Fade in animation
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes fadeInPage {
-        from {
-            opacity: 0;
-            transform: translateY(10px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-`;
-document.head.appendChild(style);
