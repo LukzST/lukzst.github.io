@@ -451,38 +451,6 @@
             transform: translateY(0);
         }
 
-        /* ========== RESPONSIVIDADE COMPLETA PARA MOBILE ========== */
-/* Design profissional - otimizado para todos os dispositivos */
-
-/* Tablet e Desktop (base) */
-@media (min-width: 1024px) {
-    .display-large {
-        font-size: 5rem !important;
-    }
-    
-    .hero-title {
-        font-size: 4rem !important;
-    }
-    
-    .media-grid {
-        grid-template-columns: repeat(4, 1fr) !important;
-        gap: 24px !important;
-    }
-    
-    .media-item img {
-        height: 220px !important;
-    }
-    
-    .team-avatar {
-        width: 200px !important;
-        height: 200px !important;
-    }
-    
-    .about {
-        grid-template-columns: 2fr 1fr 1fr 1fr !important;
-        gap: 48px !important;
-    }
-}
 
 /* Tablet (768px - 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
