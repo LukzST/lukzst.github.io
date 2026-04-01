@@ -207,11 +207,6 @@ body {
     transition: 0.3s all ease;
 }
 
-.btn-filled:hover {
-    background-color: var(--md-expressive-coral);
-    transform: scale(1.02);
-}
-
 .hero-section {
     padding: 60px 0 40px 0;
 }

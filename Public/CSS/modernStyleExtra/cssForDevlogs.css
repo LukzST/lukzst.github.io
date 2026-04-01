@@ -234,11 +234,6 @@ body {
     transition: 0.3s all ease;
 }
 
-.btn-filled:hover {
-    background-color: var(--md-expressive-coral);
-    transform: scale(1.02);
-}
-
 .btn-outlined {
     background: transparent;
     border: 1px solid var(--md-sys-color-outline);
