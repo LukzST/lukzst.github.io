@@ -1,9 +1,9 @@
-/* ============================================ */
-/* DEVLOGS PAGE - MATERIAL DESIGN 3 EXPRESSIVE */
-/* LIGHT GAME - COMPLETE STYLESHEET             */
-/* ============================================ */
 
-/* ---------- RESET & BASE ---------- */
+
+
+
+
+
 * {
             margin: 0;
             padding: 0;
@@ -16,7 +16,7 @@
 
 
 :root {
-    /* M3 Color System */
+   
     --md-sys-color-primary: #FFB4AB;
     --md-sys-color-on-primary: #5C2E2A;
     --md-sys-color-primary-container: #8C4A42;
@@ -33,28 +33,28 @@
     --md-sys-color-outline: #938F99;
     --md-sys-color-outline-variant: #49454F;
     
-    /* Expressive Coral */
+   
     --md-expressive-coral: #FF8A7A;
     --md-expressive-coral-dark: #E06E5E;
     --md-expressive-coral-glow: rgba(255, 138, 122, 0.2);
     
-    /* Typography */
+   
     --md-font-display: 'Inter', sans-serif;
     --md-font-body: 'Inter', sans-serif;
     
-    /* Shape */
+   
     --md-shape-small: 8px;
     --md-shape-medium: 12px;
     --md-shape-large: 28px;
     --md-shape-extra-large: 36px;
     --md-shape-full: 9999px;
     
-    /* Elevation */
+   
     --md-elevation-1: 0 1px 2px 0 rgba(0,0,0,0.3), 0 1px 3px 1px rgba(0,0,0,0.15);
     --md-elevation-2: 0 1px 2px 0 rgba(0,0,0,0.3), 0 2px 6px 2px rgba(0,0,0,0.15);
     --md-elevation-3: 0 4px 8px 3px rgba(0,0,0,0.15), 0 1px 3px 0 rgba(0,0,0,0.3);
     
-    /* Motion */
+   
     --md-motion-emphasized: 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     --md-motion-standard: 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
@@ -67,7 +67,7 @@ body {
     overflow-x: hidden;
 }
 
-/* ---------- SIDEBAR ---------- */
+
 .m3-sidebar {
             position: fixed;
             top: 0;
@@ -181,7 +181,7 @@ body {
     color: var(--md-expressive-coral);
 }
 
-/* ---------- TOP BAR ---------- */
+
 .top-bar {
     display: flex;
     justify-content: space-between;
@@ -205,7 +205,7 @@ body {
     background-color: var(--md-sys-color-surface-dim);
 }
 
-/* ---------- CONTAINER ---------- */
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -218,7 +218,7 @@ body {
     }
 }
 
-/* ---------- BUTTONS ---------- */
+
 .btn-filled {
     background-color: var(--md-sys-color-primary);
     color: var(--md-sys-color-on-primary);
@@ -254,7 +254,7 @@ body {
     color: var(--md-expressive-coral);
 }
 
-/* ---------- HERO SECTION ---------- */
+
 .hero-section {
     padding: 60px 0 40px 0;
 }
@@ -313,7 +313,7 @@ body {
     }
 }
 
-/* ---------- VERSIONS GRID ---------- */
+
 .versions-section {
     padding: 40px 0;
 }
@@ -462,7 +462,7 @@ body {
     color: var(--md-expressive-coral);
 }
 
-/* ---------- LOADER ---------- */
+
 .loader-wrapper {
     display: flex;
     justify-content: center;
@@ -483,7 +483,7 @@ body {
     to { transform: rotate(360deg); }
 }
 
-/* ---------- FOOTER NOTE ---------- */
+
 .footer-note {
     padding: 40px 0 60px 0;
     text-align: center;
@@ -495,7 +495,7 @@ body {
     opacity: 0.7;
 }
 
-/* ---------- MAIN FOOTER ---------- */
+
 .mio-footer {
     margin-top: 80px;
     background: var(--md-sys-color-surface-dim);
@@ -596,7 +596,7 @@ body {
     }
 }
 
-/* ---------- BACK TO TOP ---------- */
+
 .back-to-top {
     position: fixed;
     bottom: 24px;
@@ -624,7 +624,7 @@ body {
     transform: scale(1.05);
 }
 
-/* ---------- REVEAL ANIMATION ---------- */
+
 .reveal {
     opacity: 0;
     transform: translateY(20px);
@@ -636,7 +636,7 @@ body {
     transform: translateY(0);
 }
 
-/* ---------- UTILITIES ---------- */
+
 .coral {
     color: var(--md-expressive-coral);
 }

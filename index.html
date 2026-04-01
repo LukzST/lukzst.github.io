@@ -14,56 +14,53 @@
 </head>
 <body>
 
-    <!-- OVERLAY MOBILE -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-    <!-- SIDEBAR FIXA (ESTILO MATERIAL DESIGN, ACESSÍVEL) -->
-<aside class="m3-sidebar" id="m3Sidebar">
-    <div class="sidebar-nav">
-        <div class="nav-section">
-            <a href="/" class="nav-item" id="nav-home">
-                <span class="material-symbols-rounded">home</span>
-                <span>Home</span>
-            </a>
-            <a href="/#about" class="nav-item" id="nav-about">
-                <span class="material-symbols-rounded">info</span>
-                <span>About</span>
-            </a>
-            <a href="/#screenshots" class="nav-item" id="nav-media">
-                <span class="material-symbols-rounded">image</span>
-                <span>Media</span>
-            </a>
-            <a href="/#download" class="nav-item" id="nav-download">
-                <span class="material-symbols-rounded">download</span>
-                <span>Download</span>
-            </a>
-            <a href="/demo/" class="nav-item" id="nav-demo">
-                <span class="material-symbols-rounded">stadia_controller</span>
-                <span>Demo</span>
-            </a>
-            <a href="/devlogs/" class="nav-item" id="nav-devlogs">
-                <span class="material-symbols-rounded">developer_mode</span>
-                <span>DevLogs</span>
-            </a>
-            <a href="/brand-kit/" class="nav-item" id="nav-brandkit">
-                <span class="material-symbols-rounded">palette</span>
-                <span>Brand Kit</span>
-            </a>
+    <aside class="m3-sidebar" id="m3Sidebar">
+        <div class="sidebar-nav">
+            <div class="nav-section">
+                <a href="#" class="nav-item active" data-section="home">
+                    <span class="material-symbols-rounded">home</span>
+                    <span>Home</span>
+                </a>
+                <a href="#" class="nav-item" data-section="about">
+                    <span class="material-symbols-rounded">info</span>
+                    <span>About</span>
+                </a>
+                <a href="#" class="nav-item" data-section="media">
+                    <span class="material-symbols-rounded">image</span>
+                    <span>Media</span>
+                </a>
+                <a href="#" class="nav-item" data-section="download">
+                    <span class="material-symbols-rounded">download</span>
+                    <span>Download</span>
+                </a>
+                <a href="/demo/" class="nav-item">
+                    <span class="material-symbols-rounded">stadia_controller</span>
+                    <span>Demo</span>
+                </a>
+                <a href="/devlogs/" class="nav-item">
+                    <span class="material-symbols-rounded">developer_mode</span>
+                    <span>DevLogs</span>
+                </a>
+                <a href="/brand-kit/" class="nav-item">
+                    <span class="material-symbols-rounded">palette</span>
+                    <span>Brand Kit</span>
+                </a>
+            </div>
         </div>
-    </div>
-    <div class="sidebar-footer">
-        <div class="social-row">
-            <a href="https://github.com/LukzST" class="social-icon-md"><i class="fab fa-github"></i></a>
-            <a href="https://www.instagram.com/PlayLightGame" class="social-icon-md"><i class="fab fa-instagram"></i></a>
-            <a href="https://lukzxdd.itch.io" class="social-icon-md"><i class="fab fa-itch-io"></i></a>
-            <a href="https://www.youtube.com/@PlayLightGame" class="social-icon-md"><i class="fab fa-youtube"></i></a>
+        <div class="sidebar-footer">
+            <div class="social-row">
+                <a href="https://github.com/LukzST" class="social-icon-md"><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/PlayLightGame" class="social-icon-md"><i class="fab fa-instagram"></i></a>
+                <a href="https://lukzxdd.itch.io" class="social-icon-md"><i class="fab fa-itch-io"></i></a>
+                <a href="https://www.youtube.com/@PlayLightGame" class="social-icon-md"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p style="text-align:center; font-size:0.75rem; opacity:0.6;">© 2026 Pale Luna Developer</p>
         </div>
-        <p style="text-align:center; font-size:0.75rem; opacity:0.6;">© 2026 Pale Luna Developer</p>
-    </div>
-</aside>
+    </aside>
 
     <div class="main-content">
-        <!-- TOP BAR MOBILE -->
         <nav class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 16px 20px;">
             <button class="menu-button-md" id="menuButtonSide">
                 <span class="material-symbols-rounded" style="font-size: 28px;">menu</span>
@@ -72,7 +69,6 @@
         </nav>
 
         <main>
-            <!-- HOME SECTION -->
             <section id="home-section" class="container reveal" style="padding: 40px 0 60px 0;">
                 <div style="text-align: center;">
                     <h1 class="display-large">welcome to a <span style="color: var(--md-expressive-coral);">darkness</span> world</h1>
@@ -89,13 +85,11 @@
                 </div>
             </section>
 
-            <!-- ABOUT SECTION -->
             <section id="about-section" class="container reveal" style="padding: 40px 0;">
                 <h2 class="display-large" style="font-size: 2.5rem;">The <span style="color:var(--md-expressive-coral)">Mission</span></h2>
                 <p class="body-large" style="max-width: 700px; margin-top: 16px;">You are the last sentinel in an isolated relay bunker. Outside, the "Fade" has consumed cities and hope. In the silence of the darkness, something stirs.</p>
             </section>
 
-            <!-- MEDIA SECTION -->
             <section id="media-section" class="container reveal" style="padding: 40px 0;">
                 <h2 class="display-large" style="font-size: 2rem;">Visual <span style="color:var(--md-expressive-coral)">Atmosphere</span></h2>
                 <div class="media-grid">
@@ -106,7 +100,6 @@
                 </div>
             </section>
 
-            <!-- DOWNLOAD SECTION -->
             <section id="download-section" class="container reveal" style="padding: 40px 0; text-align: center;">
                 <h2 class="display-large" style="font-size: 2rem;">Available on</h2>
                 <div style="display: flex; justify-content: center; gap: 48px; margin-top: 32px; flex-wrap: wrap;">
@@ -115,28 +108,24 @@
                 </div>
             </section>
 
-            <!-- DEMO SECTION -->
             <section id="demo-section" class="container reveal" style="padding: 40px 0;">
                 <h2 class="display-large" style="font-size: 2rem;">Try the <span style="color:var(--md-expressive-coral)">Demo</span></h2>
                 <p class="body-large">Experience the atmosphere before the full release. Play the demo version now.</p>
                 <div style="margin-top: 24px;"><a href="/demo/" class="btn-filled">Play Demo <i class="fa-solid fa-play"></i></a></div>
             </section>
 
-            <!-- DEVLOGS SECTION -->
             <section id="devlogs-section" class="container reveal" style="padding: 40px 0;">
                 <h2 class="display-large" style="font-size: 2rem;">Dev<span style="color:var(--md-expressive-coral)">Logs</span></h2>
                 <p class="body-large">Follow the development journey, updates, and behind-the-scenes content.</p>
                 <div style="margin-top: 24px;"><a href="/devlogs/" class="btn-outlined">Read DevLogs →</a></div>
             </section>
 
-            <!-- BRAND KIT SECTION -->
             <section id="brandkit-section" class="container reveal" style="padding: 40px 0 80px 0;">
                 <h2 class="display-large" style="font-size: 2rem;">Brand <span style="color:var(--md-expressive-coral)">Kit</span></h2>
                 <p class="body-large">Assets, logos, and guidelines for press and community.</p>
                 <div style="margin-top: 24px;"><a href="/brand-kit/" class="btn-outlined">Download Assets →</a></div>
             </section>
 
-            <!-- TEAM SECTION (MANTIDO) -->
             <section class="container reveal" style="padding: 40px 0 60px; text-align: center;">
                 <h2 class="display-large" style="font-size: 2rem;">Meet the <span style="color:var(--md-expressive-coral)">Team</span></h2>
                 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 48px;">
@@ -148,7 +137,6 @@
             </section>
         </main>
 
-        <!-- FOOTER IGUALZINHO DO SITE MATERIAL DESIGN -->
         <div class="mio-footer">
             <div class="squiggle">
                 <svg aria-hidden="true" width="100%" height="8" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -42,7 +42,7 @@
             overflow-x: hidden;
         }
 
-        /* ========== SIDEBAR FIXA (ESTILO MATERIAL DESIGN, ACESSÍVEL SEM BOTÃO) ========== */
+       
         .m3-sidebar {
             position: fixed;
             top: 0;
@@ -58,7 +58,7 @@
             transition: transform var(--md-motion-emphasized);
         }
 
-        /* Versão mobile: escondida por padrão */
+       
         @media (max-width: 768px) {
             .m3-sidebar {
                 transform: translateX(-100%);
@@ -201,7 +201,7 @@
             color: var(--md-expressive-coral);
         }
 
-        /* menu button mobile */
+       
         .menu-button-md {
             background: none;
             border: none;
@@ -227,7 +227,7 @@
             padding: 0 32px;
         }
 
-        /* ========== FOOTER IGUALZINHO DO SITE MATERIAL DESIGN ========== */
+       
         .mio-footer {
             margin-top: 80px;
             background: var(--md-sys-color-surface-dim);
@@ -339,7 +339,7 @@
             }
         }
 
-        /* TYPOGRAPHY */
+       
         .display-large {
             font-family: var(--md-font-display);
             font-size: 5rem;

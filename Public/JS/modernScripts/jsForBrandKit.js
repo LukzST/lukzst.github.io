@@ -7,7 +7,7 @@ const menuOverlay = document.getElementById('menuOverlay');
 const menuClose = document.getElementById('menuClose');
 const menuToggle = document.getElementById('menuToggle');
 
-// BACK TO TOP
+
 if (backToTop) {
     window.addEventListener('scroll', () => {
         if (window.scrollY > 500) {
@@ -25,7 +25,7 @@ if (backToTop) {
     });
 }
 
-// SIDEBAR TOGGLE (para o novo layout com sidebar fixa)
+
 function openSidebar() {
     if (window.innerWidth <= 768) {
         sidebar.classList.add('open');
@@ -43,7 +43,7 @@ function closeSidebar() {
 if (menuBtn) menuBtn.addEventListener('click', openSidebar);
 if (overlay) overlay.addEventListener('click', closeSidebar);
 
-// MENU MOBILE (para o menu antigo, mantido para compatibilidade)
+
 if (menuToggle) {
     function openMenu() {
         if (mobileMenu) mobileMenu.classList.add('open');
@@ -62,14 +62,14 @@ if (menuToggle) {
     if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
 }
 
-// RESIZE: fechar sidebar mobile ao redimensionar para desktop
+
 window.addEventListener('resize', () => {
     if (window.innerWidth > 768) {
         closeSidebar();
     }
 });
 
-// NAVIGATION ACTIVE
+
 const navItems = document.querySelectorAll('.nav-item');
 
 navItems.forEach(item => {
@@ -83,7 +83,7 @@ navItems.forEach(item => {
     });
 });
 
-// REVEAL ANIMATION
+
 const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -92,9 +92,9 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 reveals.forEach(r => observer.observe(r));
 
-// BRAND KIT FUNCTIONS
+
 function itch() {
-    window.open('https://lukzxdd.itch.io/light/purchase?popup=1', 'Popup', 'width=500,height=400,scrollbars=no');
+    window.open('https:
 }
 
 function support() {
@@ -177,7 +177,7 @@ function downloadAllAssets() {
     alert('Full package will be available soon!');
 }
 
-// Fade in animation
+
 const style = document.createElement('style');
 style.textContent = `
     @keyframes fadeInPage {
