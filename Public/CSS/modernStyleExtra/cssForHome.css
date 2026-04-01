@@ -452,43 +452,113 @@
         }
 
         /* ========== RESPONSIVIDADE COMPLETA PARA MOBILE ========== */
-/* Design profissional otimizado para todos os dispositivos */
+/* Design profissional - otimizado para todos os dispositivos */
 
-/* Extra Small Devices (iPhone SE, Galaxy Fold, etc) */
-@media (max-width: 380px) {
-    .container {
-        padding: 0 16px !important;
-    }
-    
+/* Tablet e Desktop (base) */
+@media (min-width: 1024px) {
     .display-large {
-        font-size: 1.8rem !important;
-        line-height: 1.2 !important;
-    }
-    
-    .display-large[style*="font-size: 2.5rem"] {
-        font-size: 1.6rem !important;
-    }
-    
-    .display-large[style*="font-size: 2rem"] {
-        font-size: 1.4rem !important;
+        font-size: 5rem !important;
     }
     
     .hero-title {
-        font-size: 2rem !important;
-    }
-    
-    .hero-description {
-        font-size: 0.875rem !important;
-    }
-    
-    .btn-filled, .btn-outlined {
-        padding: 8px 18px !important;
-        font-size: 0.8rem !important;
+        font-size: 4rem !important;
     }
     
     .media-grid {
-        grid-template-columns: 1fr !important;
-        gap: 16px !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 24px !important;
+    }
+    
+    .media-item img {
+        height: 220px !important;
+    }
+    
+    .team-avatar {
+        width: 200px !important;
+        height: 200px !important;
+    }
+    
+    .about {
+        grid-template-columns: 2fr 1fr 1fr 1fr !important;
+        gap: 48px !important;
+    }
+}
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .container {
+        padding: 0 32px !important;
+    }
+    
+    .display-large {
+        font-size: 3.5rem !important;
+    }
+    
+    .hero-title {
+        font-size: 3rem !important;
+    }
+    
+    .hero-description {
+        font-size: 1rem !important;
+        max-width: 80% !important;
+    }
+    
+    .media-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 24px !important;
+    }
+    
+    .media-item img {
+        height: 200px !important;
+    }
+    
+    .team-avatar {
+        width: 160px !important;
+        height: 160px !important;
+    }
+    
+    .about {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 40px !important;
+    }
+    
+    .about-material {
+        grid-column: span 2 !important;
+    }
+    
+    .btn-filled, .btn-outlined {
+        padding: 12px 28px !important;
+        font-size: 0.9rem !important;
+    }
+}
+
+/* Mobile Grande (481px - 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+    .container {
+        padding: 0 24px !important;
+    }
+    
+    .display-large {
+        font-size: 2.8rem !important;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem !important;
+    }
+    
+    .hero-description {
+        font-size: 1rem !important;
+        max-width: 90% !important;
+    }
+    
+    .btn-filled, .btn-outlined {
+        padding: 12px 28px !important;
+        font-size: 0.9rem !important;
+    }
+    
+    .media-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important;
     }
     
     .media-item img {
@@ -496,41 +566,182 @@
     }
     
     .team-avatar {
+        width: 140px !important;
+        height: 140px !important;
+    }
+    
+    .about {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+    }
+    
+    .social-links, .library-links, .versions {
+        text-align: center !important;
+    }
+    
+    .social-links ul, .library-links ul, .versions ul {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 16px !important;
+    }
+    
+    .legal {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 20px !important;
+    }
+    
+    .legal ul {
+        justify-content: center !important;
+        gap: 20px !important;
+    }
+    
+    section[style*="padding: 40px 0"] {
+        padding: 48px 0 !important;
+    }
+    
+    section[style*="padding: 40px 0 60px 0"] {
+        padding: 48px 0 60px 0 !important;
+    }
+}
+
+/* Mobile Pequeno (320px - 480px) */
+@media (min-width: 320px) and (max-width: 480px) {
+    .container {
+        padding: 0 20px !important;
+    }
+    
+    .display-large {
+        font-size: 2.2rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    .hero-title {
+        font-size: 2rem !important;
+    }
+    
+    .hero-description {
+        font-size: 0.9rem !important;
+        max-width: 100% !important;
+    }
+    
+    .btn-filled, .btn-outlined {
+        padding: 10px 24px !important;
+        font-size: 0.85rem !important;
+    }
+    
+    .media-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+    
+    .media-item img {
+        height: 200px !important;
+    }
+    
+    .team-avatar {
         width: 120px !important;
         height: 120px !important;
     }
     
-    .m3-sidebar {
-        width: 260px !important;
-    }
-    
-    .mio-footer footer {
-        padding: 32px 16px 24px !important;
-    }
-    
     .about {
-        gap: 28px !important;
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+    }
+    
+    .about-material p {
+        font-size: 0.85rem !important;
+    }
+    
+    .social-links h3, .library-links h3, .versions h3 {
+        font-size: 1rem !important;
+        margin-bottom: 12px !important;
+    }
+    
+    .social-links a, .library-links a, .versions a {
+        font-size: 0.85rem !important;
+    }
+    
+    .legal ul {
+        gap: 16px !important;
+    }
+    
+    .legal-link a {
+        font-size: 0.75rem !important;
+    }
+    
+    .back-to-top {
+        bottom: 20px !important;
+        right: 20px !important;
+        padding: 10px 16px !important;
+        font-size: 0.8rem !important;
+    }
+    
+    section[style*="padding: 40px 0"] {
+        padding: 40px 0 !important;
+    }
+    
+    section[style*="padding: 40px 0 60px 0"] {
+        padding: 40px 0 48px 0 !important;
+    }
+    
+    section[style*="padding: 40px 0 80px 0"] {
+        padding: 40px 0 60px 0 !important;
+    }
+    
+    div[style*="display: flex; gap: 40px"] {
+        gap: 24px !important;
+    }
+    
+    .version-badge {
+        font-size: 0.75rem !important;
+        padding: 6px 12px !important;
+    }
+    
+    .version-note {
+        font-size: 0.75rem !important;
+    }
+}
+
+/* iPhone SE / Galaxy Fold (320px) */
+@media (max-width: 320px) {
+    .container {
+        padding: 0 16px !important;
+    }
+    
+    .display-large {
+        font-size: 1.8rem !important;
+    }
+    
+    .hero-title {
+        font-size: 1.6rem !important;
+    }
+    
+    .hero-description {
+        font-size: 0.8rem !important;
+    }
+    
+    .btn-filled, .btn-outlined {
+        padding: 8px 20px !important;
+        font-size: 0.8rem !important;
+    }
+    
+    .media-item img {
+        height: 180px !important;
+    }
+    
+    .team-avatar {
+        width: 100px !important;
+        height: 100px !important;
     }
     
     .about-material p {
         font-size: 0.8rem !important;
     }
     
-    .social-links h3, .library-links h3, .versions h3 {
-        font-size: 0.85rem !important;
-    }
-    
     .social-links a, .library-links a, .versions a {
         font-size: 0.8rem !important;
-    }
-    
-    .legal {
-        gap: 16px !important;
-        padding-top: 24px !important;
-    }
-    
-    .legal ul {
-        gap: 16px !important;
     }
     
     .legal-link a {
@@ -540,292 +751,201 @@
     .back-to-top {
         bottom: 16px !important;
         right: 16px !important;
-        padding: 8px 14px !important;
-        font-size: 0.75rem !important;
+        padding: 8px 12px !important;
+        font-size: 0.7rem !important;
+    }
+}
+
+/* Landscape Mode */
+@media (max-width: 896px) and (orientation: landscape) {
+    .hero-section {
+        padding: 20px 0 !important;
+    }
+    
+    .display-large {
+        font-size: 1.8rem !important;
+    }
+    
+    .hero-title {
+        font-size: 1.6rem !important;
+    }
+    
+    .media-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px !important;
+    }
+    
+    .media-item img {
+        height: 140px !important;
+    }
+    
+    .team-avatar {
+        width: 80px !important;
+        height: 80px !important;
+    }
+    
+    .about {
+        gap: 24px !important;
     }
     
     section[style*="padding: 40px 0"] {
         padding: 24px 0 !important;
     }
-    
-    section[style*="padding: 40px 0 60px 0"] {
-        padding: 24px 0 40px 0 !important;
+}
+
+/* Sidebar Mobile Ajustes */
+@media (max-width: 768px) {
+    .m3-sidebar {
+        width: 280px !important;
     }
     
-    section[style*="padding: 40px 0 80px 0"] {
-        padding: 24px 0 48px 0 !important;
+    .sidebar-nav {
+        padding: 16px 12px !important;
     }
     
-    .body-large {
-        font-size: 0.85rem !important;
+    .nav-item {
+        padding: 12px 16px !important;
+        gap: 16px !important;
     }
     
-    p[style*="margin-top: 24px"] {
-        margin-top: 16px !important;
+    .nav-item .material-symbols-rounded {
+        font-size: 24px !important;
+    }
+    
+    .nav-item span:last-child {
+        font-size: 1rem !important;
+    }
+    
+    .sidebar-footer {
+        padding: 20px 24px !important;
+    }
+    
+    .social-icon-md {
+        font-size: 1.3rem !important;
+    }
+    
+    .menu-button-md {
+        padding: 10px !important;
+    }
+    
+    .menu-button-md .material-symbols-rounded {
+        font-size: 28px !important;
     }
 }
 
-/* Small Devices (iPhone 6/7/8, Android small) */
-@media (min-width: 381px) and (max-width: 480px) {
-    .container {
-        padding: 0 20px !important;
+/* Footer Mobile Ajustes */
+@media (max-width: 768px) {
+    .mio-footer {
+        margin-top: 60px !important;
     }
     
-    .display-large {
-        font-size: 2.2rem !important;
-    }
-    
-    .display-large[style*="font-size: 2.5rem"] {
-        font-size: 1.9rem !important;
-    }
-    
-    .display-large[style*="font-size: 2rem"] {
-        font-size: 1.6rem !important;
-    }
-    
-    .hero-title {
-        font-size: 2.2rem !important;
-    }
-    
-    .btn-filled, .btn-outlined {
-        padding: 10px 20px !important;
-        font-size: 0.85rem !important;
-    }
-    
-    .media-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px !important;
-    }
-    
-    .media-item img {
-        height: 160px !important;
-    }
-    
-    .team-avatar {
-        width: 140px !important;
-        height: 140px !important;
+    .mio-footer footer {
+        padding: 40px 24px 32px !important;
     }
     
     .about {
         gap: 32px !important;
     }
     
-    .legal ul {
-        gap: 18px !important;
+    .about-material {
+        text-align: center !important;
     }
     
-    section[style*="padding: 40px 0"] {
-        padding: 32px 0 !important;
+    .about-material .material-symbols-rounded {
+        font-size: 40px !important;
+        margin-bottom: 8px !important;
     }
     
-    section[style*="padding: 40px 0 60px 0"] {
-        padding: 32px 0 48px 0 !important;
+    .about-material p {
+        text-align: center !important;
+    }
+    
+    .social-links, .library-links, .versions {
+        text-align: center !important;
+    }
+    
+    .social-links ul, .library-links ul, .versions ul {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 20px !important;
+    }
+    
+    .social-links li, .library-links li, .versions li {
+        margin-bottom: 0 !important;
     }
 }
 
-/* Medium Small Devices (iPhone X, 11, 12, 13, 14, 15) */
-@media (min-width: 481px) and (max-width: 768px) {
-    .container {
-        padding: 0 24px !important;
+/* Video Responsivo */
+@media (max-width: 768px) {
+    div[style*="border-radius: 28px"] {
+        border-radius: 20px !important;
     }
     
-    .display-large {
-        font-size: 2.8rem !important;
+    video {
+        width: 100% !important;
+        height: auto !important;
+    }
+}
+
+/* Botões de Download */
+@media (max-width: 768px) {
+    .download-button {
+        padding: 12px 24px !important;
+        font-size: 0.9rem !important;
     }
     
-    .display-large[style*="font-size: 2.5rem"] {
-        font-size: 2.2rem !important;
-    }
-    
-    .display-large[style*="font-size: 2rem"] {
-        font-size: 1.8rem !important;
-    }
-    
-    .hero-title {
+    .download-icon i {
         font-size: 2.5rem !important;
     }
     
-    .hero-description {
-        font-size: 1rem !important;
+    .download-title {
+        font-size: 1.5rem !important;
     }
     
-    .media-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 20px !important;
-    }
-    
-    .media-item img {
-        height: 180px !important;
-    }
-    
-    .team-avatar {
-        width: 160px !important;
-        height: 160px !important;
-    }
-    
-    .about {
-        gap: 36px !important;
-    }
-    
-    .legal ul {
-        gap: 20px !important;
-    }
-    
-    section[style*="padding: 40px 0"] {
-        padding: 48px 0 !important;
+    .download-description {
+        font-size: 0.85rem !important;
     }
 }
 
-/* Landscape Mode */
-@media (max-height: 600px) and (orientation: landscape) {
-    .m3-sidebar {
-        overflow-y: auto !important;
-    }
-    
-    .sidebar-nav {
-        padding: 8px 12px !important;
+/* Touch Targets */
+@media (max-width: 768px) {
+    .btn-filled, .btn-outlined, .menu-button-md, .nav-item, .back-to-top, .download-button, .social-icon-md {
+        min-height: 44px !important;
     }
     
     .nav-item {
-        padding: 6px 16px !important;
-    }
-    
-    .team-avatar {
-        width: 100px !important;
-        height: 100px !important;
-    }
-    
-    .media-item img {
-        height: 140px !important;
-    }
-    
-    section[style*="padding: 40px 0"] {
-        padding: 20px 0 !important;
-    }
-    
-    section[style*="padding: 40px 0 60px 0"] {
-        padding: 20px 0 32px 0 !important;
-    }
-    
-    .hero-section {
-        padding: 20px 0 !important;
-    }
-}
-
-/* Foldable Devices (Galaxy Fold, etc) */
-@media (max-width: 280px) {
-    .display-large {
-        font-size: 1.4rem !important;
-    }
-    
-    .hero-title {
-        font-size: 1.6rem !important;
-    }
-    
-    .btn-filled, .btn-outlined {
-        padding: 6px 12px !important;
-        font-size: 0.7rem !important;
-    }
-    
-    .nav-item {
-        padding: 6px 12px !important;
-        gap: 12px !important;
-    }
-    
-    .nav-item .material-symbols-rounded {
-        font-size: 18px !important;
-    }
-    
-    .nav-item span:last-child {
-        font-size: 0.8rem !important;
-    }
-    
-    .media-item img {
-        height: 140px !important;
-    }
-    
-    .team-avatar {
-        width: 100px !important;
-        height: 100px !important;
-    }
-    
-    .sidebar-footer p {
-        font-size: 0.65rem !important;
+        min-height: 48px !important;
     }
     
     .social-icon-md {
-        font-size: 1rem !important;
-    }
-    
-    .legal ul {
-        gap: 12px !important;
-        flex-direction: column;
-        align-items: center;
+        min-width: 44px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
 }
 
-/* Touch Device Optimizations */
-@media (hover: none) and (pointer: coarse) {
-    .nav-item:active {
-        background-color: var(--md-sys-color-surface-dim) !important;
-        opacity: 0.7;
-    }
-    
-    .btn-filled:active, .btn-outlined:active {
-        transform: scale(0.97) !important;
-    }
-    
-    .media-item:active {
-        transform: scale(0.98) !important;
-    }
-    
-    .social-icon-md:active {
-        transform: scale(0.9) !important;
-    }
-    
-    .download-button:active {
-        transform: scale(0.98) !important;
-    }
-}
-
-/* Safe Area for Notch (iPhone X and newer) */
+/* Safe Area (Notch) */
 @supports (padding: env(safe-area-inset-top)) {
-    @media (max-width: 812px) and (orientation: portrait) {
+    @media (max-width: 812px) {
         .m3-sidebar {
             padding-top: env(safe-area-inset-top);
         }
         
-        .main-content {
-            padding-top: env(safe-area-inset-top);
-        }
-        
         .sidebar-header {
-            padding-top: calc(28px + env(safe-area-inset-top)) !important;
-        }
-    }
-}
-
-/* Dynamic Island Compatibility (iPhone 14 Pro/15 Pro) */
-@supports (padding-top: env(safe-area-inset-top)) {
-    @media (max-width: 430px) and (min-height: 800px) {
-        .sidebar-header {
-            padding-top: calc(28px + env(safe-area-inset-top)) !important;
+            padding-top: calc(20px + env(safe-area-inset-top)) !important;
         }
         
         .top-bar {
-            padding-top: calc(16px + env(safe-area-inset-top)) !important;
+            padding-top: calc(12px + env(safe-area-inset-top)) !important;
         }
     }
 }
 
-/* Prevent Horizontal Scroll */
+/* Prevenir Scroll Horizontal */
 @media (max-width: 768px) {
-    body {
-        overflow-x: hidden !important;
-        width: 100% !important;
-    }
-    
-    .main-content {
+    body, .main-content {
         overflow-x: hidden !important;
         width: 100% !important;
     }
@@ -834,134 +954,16 @@
         max-width: 100% !important;
         height: auto !important;
     }
-    
-    .media-grid {
-        overflow-x: hidden !important;
-    }
 }
 
-/* Touch Target Size Enhancement (WCAG compliant) */
+/* Animações em Mobile */
 @media (max-width: 768px) {
-    .btn-filled, .btn-outlined, .menu-button-md, .nav-item, .back-to-top, .download-button {
-        min-height: 44px !important;
-    }
-    
-    .social-icon-md {
-        min-width: 44px !important;
-        min-height: 44px !important;
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
-    
-    .nav-item {
-        min-height: 48px !important;
-    }
-}
-
-/* Fluid Typography for Dynamic Scaling */
-@media (max-width: 768px) {
-    .display-large {
-        font-size: clamp(1.8rem, 8vw, 2.8rem) !important;
-    }
-    
-    .hero-title {
-        font-size: clamp(1.8rem, 7vw, 2.5rem) !important;
-    }
-    
-    .body-large {
-        font-size: clamp(0.85rem, 4vw, 1rem) !important;
-    }
-    
-    .nav-item span:last-child {
-        font-size: clamp(0.85rem, 3vw, 1rem) !important;
-    }
-    
-    .sidebar-header h2 {
-        font-size: clamp(1.2rem, 5vw, 1.5rem) !important;
-    }
-}
-
-/* Smooth Scroll Behavior */
-@media (max-width: 768px) {
-    html {
-        scroll-behavior: smooth;
-    }
-}
-
-/* Reduced Motion Preference */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-    
     .reveal {
-        transition: none !important;
-        opacity: 1 !important;
-        transform: none !important;
-    }
-    
-    .media-item:hover {
-        transform: none !important;
-    }
-    
-    .btn-filled:hover {
-        transform: none !important;
+        transition: opacity 0.4s ease, transform 0.4s ease !important;
     }
 }
 
-/* High Contrast Mode Support */
-@media (prefers-contrast: high) {
-    .btn-filled, .btn-outlined {
-        border: 2px solid currentColor !important;
-    }
-    
-    .nav-item.active {
-        border: 2px solid var(--md-expressive-coral) !important;
-    }
-    
-    .media-item {
-        border: 1px solid currentColor !important;
-    }
-}
-
-/* Dark Mode Safe Colors */
-@media (prefers-color-scheme: dark) {
-    .back-to-top {
-        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    }
-}
-
-/* Print Styles */
-@media print {
-    .m3-sidebar, .menu-button-md, .back-to-top, .squiggle, .social-row, .sidebar-overlay {
-        display: none !important;
-    }
-    
-    .main-content {
-        margin-left: 0 !important;
-    }
-    
-    body {
-        background: white !important;
-        color: black !important;
-    }
-    
-    .btn-filled, .btn-outlined {
-        border: 1px solid black !important;
-        background: transparent !important;
-        color: black !important;
-    }
-    
-    .media-item img {
-        break-inside: avoid;
-    }
-}
-
-/* Custom Scrollbar for Mobile (optional) */
+/* Scrollbar Customizada */
 @media (max-width: 768px) {
     .m3-sidebar::-webkit-scrollbar {
         width: 4px;
@@ -974,105 +976,5 @@
     .m3-sidebar::-webkit-scrollbar-thumb {
         background: var(--md-sys-color-outline-variant);
         border-radius: 4px;
-    }
-}
-
-/* Loading State Optimization */
-@media (max-width: 768px) {
-    .loader {
-        width: 32px !important;
-        height: 32px !important;
-    }
-}
-
-/* Video Container Responsive */
-@media (max-width: 768px) {
-    div[style*="border-radius: 28px"] {
-        border-radius: 20px !important;
-        margin-top: 32px !important;
-    }
-    
-    video {
-        width: 100% !important;
-        height: auto !important;
-    }
-}
-
-/* Grid Gap Adjustments */
-@media (max-width: 480px) {
-    div[style*="display: flex; gap: 40px"] {
-        gap: 24px !important;
-    }
-    
-    .team-member div[style*="margin-top: 12px"] {
-        font-size: 0.85rem !important;
-    }
-}
-
-/* Footer Mobile Specific */
-@media (max-width: 768px) {
-    .about-material .material-symbols-rounded {
-        font-size: 28px !important;
-    }
-    
-    .social-links li, .library-links li, .versions li {
-        margin-bottom: 10px !important;
-    }
-    
-    .google-logo svg {
-        width: 80px !important;
-        height: auto !important;
-    }
-    
-    .mio-footer {
-        margin-top: 48px !important;
-    }
-}
-
-/* Animation Performance Fixes */
-@media (max-width: 768px) {
-    .reveal {
-        will-change: transform, opacity;
-    }
-    
-    .media-item, .btn-filled, .btn-outlined {
-        will-change: transform;
-    }
-}
-
-/* Z-Index Management */
-@media (max-width: 768px) {
-    .sidebar-overlay {
-        z-index: 998 !important;
-    }
-    
-    .m3-sidebar {
-        z-index: 999 !important;
-    }
-    
-    .back-to-top {
-        z-index: 100 !important;
-    }
-}
-
-/* Landscape Mode Sidebar Behavior */
-@media (max-width: 768px) and (orientation: landscape) {
-    .m3-sidebar {
-        width: 260px !important;
-    }
-    
-    .nav-item {
-        padding: 6px 12px !important;
-    }
-    
-    .sidebar-header {
-        padding: 12px 20px !important;
-    }
-}
-
-/* High DPI Screens (Retina) */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .media-item img {
-        image-rendering: -webkit-optimize-contrast;
     }
 }
