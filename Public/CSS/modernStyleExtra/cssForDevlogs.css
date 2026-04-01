@@ -5,12 +5,15 @@
 
 /* ---------- RESET & BASE ---------- */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-    text-decoration: none;
-}
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            text-decoration: none;
+            font-weight: normal;
+            font-family: var(--md-font-body);
+        }
+
 
 :root {
     /* M3 Color System */

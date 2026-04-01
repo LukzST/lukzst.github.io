@@ -5,13 +5,15 @@
 
 /* ========== RESET E VARIÁVEIS ========== */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-    text-decoration: none;
-    font-weight: normal;
-}
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            text-decoration: none;
+            font-weight: normal;
+            font-family: var(--md-font-body);
+        }
+
 
 :root {
     --md-sys-color-primary: #FFB4AB;
