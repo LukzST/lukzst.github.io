@@ -231,15 +231,15 @@ function parseDescription(description) {
 function getChangeIcon(type) {
     switch (type) {
         case 'added':
-            return '<i class="fa-solid fa-plus-circle" style="color: #4caf50;"></i>';
+            return '<i class="fa-solid fa-plus-circle change-icon-added"></i>';
         case 'fixed':
-            return '<i class="fa-solid fa-bug" style="color: #ff9800;"></i>';
+            return '<i class="fa-solid fa-bug change-icon-fixed"></i>';
         case 'improved':
-            return '<i class="fa-solid fa-bolt" style="color: #2196f3;"></i>';
+            return '<i class="fa-solid fa-bolt change-icon-improved"></i>';
         case 'removed':
-            return '<i class="fa-solid fa-trash-alt" style="color: #f44336;"></i>';
+            return '<i class="fa-solid fa-trash-alt change-icon-removed"></i>';
         default:
-            return '<i class="fa-solid fa-pen" style="color: var(--md-expressive-coral);"></i>';
+            return '<i class="fa-solid fa-pen change-icon-default"></i>';
     }
 }
 
