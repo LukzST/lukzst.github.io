@@ -378,7 +378,7 @@ body {
 
 .download-btn:hover {
     background: var(--md-expressive-coral);
-    transform: scale(1.02);
+    color: #090909;
     gap: 12px;
 }
 
