@@ -130,30 +130,31 @@ body {
 }
 
 .nav-item {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 10px 16px;
-    border-radius: var(--md-shape-large);
-    color: var(--md-sys-color-on-surface);
-    font-weight: 500;
-    transition: all var(--md-motion-standard);
-    margin: 4px 0;
-    cursor: pointer;
-}
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 10px 16px;
+            border-radius: var(--md-shape-large);
+            color: var(--md-sys-color-on-surface);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all var(--md-motion-standard);
+            margin: 2px 0;
+            cursor: pointer;
+        }
 
-.nav-item:hover {
-    background-color: var(--md-sys-color-surface-dim);
-}
+        .nav-item:hover {
+            background-color: var(--md-sys-color-surface-dim);
+        }
 
-.nav-item.active {
-    background-color: var(--md-sys-color-primary-container);
-    color: var(--md-sys-color-on-primary-container);
-}
+        .nav-item.active {
+            background-color: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
+        }
 
-.nav-item .material-symbols-rounded {
-    font-size: 22px;
-}
+        .nav-item .material-symbols-rounded {
+            font-size: 22px;
+        }
 
 .sidebar-footer {
     padding: 20px 24px;
