@@ -1,5 +1,5 @@
 function itch() {
-    window.open('https://lukzxdd.itch.io/light/purchase?popup=1', 'Popup', 'width=500,height=400,scrollbars=no');
+    window.open('https:
 }
 
 function support() {
@@ -32,10 +32,10 @@ function closeSidebar() {
 if (menuBtn) menuBtn.addEventListener('click', openSidebar);
 if (overlay) overlay.addEventListener('click', closeSidebar);
 
-// ========== NAVIGATION CORRIGIDA ==========
+
 const navItems = document.querySelectorAll('.nav-item');
 
-// Mapeamento das seções na página home
+
 const sectionsMap = {
     home: document.getElementById('home-section'),
     about: document.getElementById('about-section'),
@@ -49,7 +49,6 @@ const sectionsMap = {
 function setActive(selectedId) {
     navItems.forEach(item => {
         item.classList.remove('active');
-        // Verifica tanto pelo data-section quanto pelo href
         if (item.getAttribute('data-section') === selectedId) {
             item.classList.add('active');
         }
@@ -58,26 +57,28 @@ function setActive(selectedId) {
 
 navItems.forEach(item => {
     item.addEventListener('click', (e) => {
-        e.preventDefault();
         
-        // Pega o href e data-section
         const href = item.getAttribute('href');
         const sectionId = item.getAttribute('data-section');
         
-        // Se tem href que não é # e não é vazio, vai para outra página
-        if (href && href !== '#' && href !== '/') {
-            window.location.href = href;
+        
+        if (href && href !== '#' && href !== '/' && href !== '') {
+            
+            
             closeSidebar();
-            return;
+            return; 
         }
         
-        // Se tem data-section e a seção existe na página atual
+        
+        e.preventDefault();
+        
+        
         if (sectionId && sectionsMap[sectionId]) {
             sectionsMap[sectionId].scrollIntoView({ behavior: 'smooth', block: 'start' });
             setActive(sectionId);
             closeSidebar();
         }
-        // Se for home (href="/" ou href="#")
+        
         else if (href === '/' || href === '#') {
             window.scrollTo({ top: 0, behavior: 'smooth' });
             setActive('home');
@@ -86,7 +87,7 @@ navItems.forEach(item => {
     });
 });
 
-// ========== BACK TO TOP ==========
+
 const backBtn = document.getElementById('backToTopBtn');
 if (backBtn) {
     window.addEventListener('scroll', () => {
@@ -96,7 +97,7 @@ if (backBtn) {
     backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
-// ========== REVEAL ANIMATION ==========
+
 const reveals = document.querySelectorAll('.reveal');
 if (reveals.length > 0) {
     const observer = new IntersectionObserver((entries) => {
@@ -107,14 +108,14 @@ if (reveals.length > 0) {
     reveals.forEach(r => observer.observe(r));
 }
 
-// ========== RESIZE: fechar sidebar mobile ==========
+
 window.addEventListener('resize', () => {
     if (window.innerWidth > 768) {
         closeSidebar();
     }
 });
 
-// ========== ATUALIZAR ITEM ATIVO BASEADO NA URL/HASH ==========
+
 function updateActiveFromHash() {
     const hash = window.location.hash;
     if (hash) {
@@ -129,7 +130,7 @@ function updateActiveFromHash() {
     }
 }
 
-// Executar ao carregar a página
+
 updateActiveFromHash();
 
 console.log(`%cLukzxdd%c
