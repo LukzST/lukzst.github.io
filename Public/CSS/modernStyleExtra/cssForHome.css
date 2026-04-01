@@ -209,7 +209,7 @@
             cursor: pointer;
             padding: 8px;
             border-radius: var(--md-shape-full);
-            display: flex;
+            display: none;
             align-items: center;
             justify-content: center;
         }
