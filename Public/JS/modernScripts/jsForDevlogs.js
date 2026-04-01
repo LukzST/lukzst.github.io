@@ -231,15 +231,15 @@ function parseDescription(description) {
 function getChangeIcon(type) {
     switch (type) {
         case 'added':
-            return '✨';
+            return '<i class="fa-solid fa-plus-circle" style="color: #4caf50;"></i>';
         case 'fixed':
-            return '🐛';
+            return '<i class="fa-solid fa-bug" style="color: #ff9800;"></i>';
         case 'improved':
-            return '⚡';
+            return '<i class="fa-solid fa-bolt" style="color: #2196f3;"></i>';
         case 'removed':
-            return '🗑️';
+            return '<i class="fa-solid fa-trash-alt" style="color: #f44336;"></i>';
         default:
-            return '📝';
+            return '<i class="fa-solid fa-pen" style="color: var(--md-expressive-coral);"></i>';
     }
 }
 

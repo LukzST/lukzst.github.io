@@ -620,6 +620,7 @@ body {
 }
 
 
+
 .reveal {
     opacity: 0;
     transform: translateY(20px);
@@ -644,3 +645,19 @@ body {
 .mt-8 { margin-top: 2rem; }
 .mb-4 { margin-bottom: 1rem; }
 .mb-8 { margin-bottom: 2rem; }
+
+.change-icon-added { color: #4caf50; }
+.change-icon-fixed { color: #ff9800; }
+.change-icon-improved { color: #2196f3; }
+.change-icon-removed { color: #f44336; }
+.change-icon-default { color: var(--md-expressive-coral); }
+
+.change-icon-added,
+.change-icon-fixed,
+.change-icon-improved,
+.change-icon-removed,
+.change-icon-default {
+    font-size: 1rem;
+    width: 20px;
+    text-align: center;
+}
