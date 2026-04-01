@@ -619,11 +619,6 @@ body {
     visibility: visible;
 }
 
-.back-to-top:hover {
-    background: var(--md-expressive-coral);
-    transform: scale(1.05);
-}
-
 
 .reveal {
     opacity: 0;

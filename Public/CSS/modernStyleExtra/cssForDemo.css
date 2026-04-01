@@ -645,10 +645,6 @@ body {
     visibility: visible;
 }
 
-.back-to-top:hover {
-    background: var(--md-expressive-coral);
-}
-
 
 .reveal {
     opacity: 0;
