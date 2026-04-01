@@ -56,7 +56,6 @@ window.addEventListener('resize', () => {
     }
 });
 
-// REVEAL ANIMATION
 const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -65,7 +64,6 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 reveals.forEach(r => observer.observe(r));
 
-// DEMO SPECIFIC FUNCTIONS
 const downloadBtn = document.querySelector('.download-button');
 const twilightInfo = document.getElementById('twilight-info');
 
