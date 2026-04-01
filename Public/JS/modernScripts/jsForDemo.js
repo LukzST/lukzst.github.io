@@ -1,69 +1,88 @@
-         const backToTop = document.getElementById('backToTop');
+const backToTop = document.getElementById('backToTop');
+const sidebar = document.getElementById('m3Sidebar');
+const overlay = document.getElementById('sidebarOverlay');
+const menuBtn = document.getElementById('menuButtonSide');
 
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTop.classList.add('show');
-            } else {
-                backToTop.classList.remove('show');
-            }
+// BACK TO TOP
+if (backToTop) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            backToTop.classList.add('show');
+        } else {
+            backToTop.classList.remove('show');
+        }
+    });
+
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
+    });
+}
 
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
+// SIDEBAR TOGGLE MOBILE
+function openSidebar() {
+    if (window.innerWidth <= 768) {
+        sidebar.classList.add('open');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
 
-        const menuToggle = document.getElementById('menuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const menuOverlay = document.getElementById('menuOverlay');
-        const menuClose = document.getElementById('menuClose');
+function closeSidebar() {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+}
 
-        function openMenu() {
-            mobileMenu.classList.add('open');
-            menuOverlay.classList.add('open');
-            document.body.style.overflow = 'hidden';
+if (menuBtn) menuBtn.addEventListener('click', openSidebar);
+if (overlay) overlay.addEventListener('click', closeSidebar);
+
+// NAVIGATION ACTIVE
+const navItems = document.querySelectorAll('.nav-item');
+
+navItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = item.getAttribute('href');
+        if (href && href !== '#') {
+            window.location.href = href;
         }
+        closeSidebar();
+    });
+});
 
-        function closeMenu() {
-            mobileMenu.classList.remove('open');
-            menuOverlay.classList.remove('open');
-            document.body.style.overflow = '';
-        }
+// RESIZE: fechar sidebar mobile ao redimensionar para desktop
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+        closeSidebar();
+    }
+});
 
-        menuToggle.addEventListener('click', openMenu);
-        menuClose.addEventListener('click', closeMenu);
-        menuOverlay.addEventListener('click', closeMenu);
+// REVEAL ANIMATION
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('revealed');
+    });
+}, { threshold: 0.1 });
+reveals.forEach(r => observer.observe(r));
+
+// DEMO SPECIFIC FUNCTIONS
+const downloadBtn = document.querySelector('.download-button');
+const twilightInfo = document.getElementById('twilight-info');
+
+if (downloadBtn && twilightInfo) {
+    downloadBtn.addEventListener('click', () => {
+        twilightInfo.classList.add('show');
         
-        function support() {
-            window.location.href = "/support/";
-        }
-        
-        function mudarPagina() {
-            document.body.style.animation = 'none';
-            document.body.offsetHeight;
-            document.body.style.animation = 'fadeInPage 0.5s ease-out';
-        }
+        setTimeout(() => {
+            twilightInfo.classList.remove('show');
+        }, 4000);
+    });
+}
 
-        const downloadBtn = document.querySelector('#windows-x86_64-downloads .download-button');
-        const twilightInfo = document.getElementById('twilight-info');
-
-        if (downloadBtn && twilightInfo) {
-            twilightInfo.style.transition = 'opacity 0.3s ease';
-            twilightInfo.style.opacity = '0';
-
-            downloadBtn.addEventListener('click', () => {
-                twilightInfo.style.display = 'flex';
-                requestAnimationFrame(() => {
-                    twilightInfo.style.opacity = '1';
-                });
-
-                setTimeout(() => {
-                    twilightInfo.style.opacity = '0';
-                    setTimeout(() => {
-                        twilightInfo.style.display = 'none';
-                    }, 300);
-                }, 4000);
-            });
-        }
+function support() {
+    window.location.href = "mailto:contatosadberry@gmail.com";
+}
