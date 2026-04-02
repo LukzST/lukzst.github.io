@@ -489,3 +489,77 @@
     }
 
 }
+
+/* ========== MENU-ZINHO (SIDEBAR) APENAS NO CELULAR ========== */
+
+/* Esconder sidebar em desktop */
+@media (min-width: 769px) {
+    .m3-sidebar {
+        display: none !important;
+    }
+    
+    .sidebar-overlay {
+        display: none !important;
+    }
+    
+    .menu-button-md {
+        display: none !important;
+    }
+    
+    .main-content {
+        margin-left: 0 !important;
+    }
+}
+
+/* Mostrar sidebar apenas no celular com toggle */
+@media (max-width: 768px) {
+    .m3-sidebar {
+        display: flex !important;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 280px;
+        background-color: var(--md-sys-color-surface);
+        border-right: 1px solid var(--md-sys-color-outline-variant);
+        z-index: 1000;
+        transform: translateX(-100%);
+        transition: transform var(--md-motion-emphasized);
+    }
+    
+    .m3-sidebar.open {
+        transform: translateX(0);
+    }
+    
+    .sidebar-overlay {
+        position: fixed;
+        inset: 0;
+        background-color: rgba(0,0,0,0.6);
+        backdrop-filter: blur(4px);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.25s ease;
+    }
+    
+    .sidebar-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .menu-button-md {
+        display: flex !important;
+        background: none;
+        border: none;
+        color: var(--md-sys-color-on-surface);
+        cursor: pointer;
+        padding: 8px;
+        border-radius: var(--md-shape-full);
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .main-content {
+        margin-left: 0 !important;
+    }
+}
