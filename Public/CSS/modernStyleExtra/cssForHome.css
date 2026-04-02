@@ -451,6 +451,20 @@
             transform: translateY(0);
         }
 
+        @media (max-width: 900px) {
+            .display-large {
+                font-size: 4rem !important;
+                line-height: 1.2 !important;
+                word-break: break-word !important;
+            }
+
+            .display-large span {
+                display: inline-block !important;
+                white-space: normal !important;
+            }
+            
+        }
+
 @media (max-width: 768px) {
     
     .display-large {
