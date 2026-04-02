@@ -451,6 +451,16 @@
             transform: translateY(0);
         }
 
+        @media (max-width: 1150px) {
+            .display-large {
+                font-size: 5rem;
+            }
+            .display-large span {
+                display: inline-block;
+                white-space: normal;
+            }
+        }
+
         @media (max-width: 900px) {
             .display-large {
                 font-size: 4rem !important;
@@ -462,7 +472,7 @@
                 display: inline-block !important;
                 white-space: normal !important;
             }
-            
+
         }
 
 @media (max-width: 768px) {
