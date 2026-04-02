@@ -490,3 +490,86 @@
 
 
 }
+
+
+/* ========== VISUAL ATMOSPHERE - IMAGENS MAIORES COM FLEX WRAP ========== */
+
+/* Estilo base para a seção */
+.media-section {
+    width: 100%;
+    padding: 40px 0;
+}
+
+/* Container com flex-wrap */
+.media-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 24px !important;
+    margin-top: 32px !important;
+}
+
+/* Cards das imagens */
+.media-item {
+    flex: 1 1 280px !important;
+    min-width: 280px !important;
+    max-width: 350px !important;
+    border-radius: 24px !important;
+    overflow: hidden !important;
+    background: var(--md-sys-color-surface-dim) !important;
+    cursor: pointer !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.media-item:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: var(--md-elevation-3) !important;
+}
+
+/* Imagens maiores */
+.media-item img {
+    width: 100% !important;
+    height: 260px !important;
+    object-fit: cover !important;
+    display: block !important;
+    transition: transform 0.3s ease !important;
+}
+
+.media-item:hover img {
+    transform: scale(1.02) !important;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .media-item {
+        flex: 1 1 300px !important;
+        min-width: 280px !important;
+        max-width: 100% !important;
+    }
+    
+    .media-item img {
+        height: 220px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .media-item {
+        flex: 1 1 100% !important;
+        min-width: 100% !important;
+    }
+    
+    .media-item img {
+        height: 200px !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .media-item {
+        flex: 1 1 320px !important;
+        max-width: 380px !important;
+    }
+    
+    .media-item img {
+        height: 280px !important;
+    }
+}
