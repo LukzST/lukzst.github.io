@@ -463,6 +463,10 @@
         display: inline-block !important;
         white-space: normal !important;
     }
+
+    .body-large {
+        max-width: 350px;
+    }
 }
 
 @media (max-width: 480px) {
