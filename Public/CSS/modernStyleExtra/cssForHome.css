@@ -492,15 +492,3 @@
         max-width: 350px;
     }
 }
-
-@media (max-width: 480px) {
-    .display-large {
-        font-size: 2rem !important;
-    }
-}
-
-@media (max-width: 360px) {
-    .display-large {
-        font-size: 1.6rem !important;
-    }
-}
