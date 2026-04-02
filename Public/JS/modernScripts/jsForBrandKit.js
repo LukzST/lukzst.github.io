@@ -170,6 +170,27 @@ function downloadAllAssets() {
     alert('Full package will be available soon!');
 }
 
+function checkTypographyOverflow() {
+    const containers = document.querySelectorAll('.font-demo, .font-demo-junicode');
+    
+    containers.forEach(container => {
+        const paragraphs = container.querySelectorAll('p');
+        
+        paragraphs.forEach(p => {
+            if (p.scrollWidth > p.clientWidth) {
+                p.style.overflow = 'hidden';
+                p.style.textOverflow = 'ellipsis';
+                p.style.whiteSpace = 'nowrap';
+            } else {
+                p.style.whiteSpace = 'normal';
+            }
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', checkTypographyOverflow);
+window.addEventListener('resize', checkTypographyOverflow);
+
 const style = document.createElement('style');
 style.textContent = `
     @keyframes fadeInPage {
