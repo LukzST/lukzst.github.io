@@ -479,6 +479,7 @@
     
     .display-large {
         font-size: 3rem !important;
+        text-align:center;
         line-height: 1.2 !important;
         word-break: break-word !important;
     }
@@ -492,15 +493,11 @@
 }
 
 
-/* ========== VISUAL ATMOSPHERE - IMAGENS MAIORES COM FLEX WRAP ========== */
-
-/* Estilo base para a seção */
 .media-section {
     width: 100%;
     padding: 40px 0;
 }
 
-/* Container com flex-wrap */
 .media-grid {
     display: flex !important;
     flex-wrap: wrap !important;
@@ -509,7 +506,6 @@
     margin-top: 32px !important;
 }
 
-/* Cards das imagens */
 .media-item {
     flex: 1 1 280px !important;
     min-width: 280px !important;
@@ -526,20 +522,13 @@
     box-shadow: var(--md-elevation-3) !important;
 }
 
-/* Imagens maiores */
 .media-item img {
     width: 100% !important;
-    height: 260px !important;
     object-fit: cover !important;
     display: block !important;
     transition: transform 0.3s ease !important;
 }
 
-.media-item:hover img {
-    transform: scale(1.02) !important;
-}
-
-/* Responsividade */
 @media (max-width: 768px) {
     .media-item {
         flex: 1 1 300px !important;
