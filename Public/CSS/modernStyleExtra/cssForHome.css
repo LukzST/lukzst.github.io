@@ -520,11 +520,6 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
 
-.media-item:hover {
-    transform: translateY(-6px) !important;
-    box-shadow: var(--md-elevation-3) !important;
-}
-
 .media-item img {
     width: 100% !important;
     object-fit: cover !important;
