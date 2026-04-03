@@ -8,6 +8,11 @@
     font-family: var(--md-font-body);
 }
 
+::selection {
+  background: #ffb7b7;
+  color: #000000;
+}
+
 :root {
     --md-sys-color-primary: #FFB4AB;
     --md-sys-color-on-primary: #5C2E2A;
