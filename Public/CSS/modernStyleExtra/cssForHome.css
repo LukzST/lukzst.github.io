@@ -504,6 +504,7 @@
     border-color: var(--md-expressive-coral) !important;
 }
 
+
 @media (max-width: 768px) {
     [style*="display: flex; flex-wrap: wrap; gap: 32px; padding: 32px"] {
         padding: 20px !important;
@@ -515,11 +516,6 @@
 }
 
 @media (max-width: 768px) {
-
-    .text-title-team {
-        text-align: center !important;
-        font-size: 2.5rem;
-    }
     
     #demo-section > div > div,
     #devlogs-section > div > div,
