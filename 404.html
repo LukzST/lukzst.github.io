@@ -34,8 +34,8 @@
         :root {
             --md-sys-color-primary: #FFB4AB;
             --md-sys-color-on-primary: #5C2E2A;
-            --md-sys-color-primary-container: #8C4A42;
-            --md-sys-color-on-primary-container: #FFDAD6;
+            --md-sys-color-primary-container: #ffb4ab;
+            --md-sys-color-on-primary-container: #090909;
             --md-sys-color-secondary: #E6E1E5;
             --md-sys-color-on-secondary: #2B2930;
             --md-sys-color-tertiary: #CAC4D0;
@@ -134,6 +134,9 @@
 
         .nav-section {
             margin-bottom: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
         }
 
         .nav-item {
@@ -148,20 +151,20 @@
             transition: all var(--md-motion-standard);
             margin: 2px 0;
             cursor: pointer;
-        }
+            }
 
-        .nav-item:hover {
-            background-color: var(--md-sys-color-surface-dim);
-        }
+            .nav-item:hover {
+            background-color: #8c494228;
+            }
 
-        .nav-item.active {
-            background-color: var(--md-sys-color-primary-container);
-            color: var(--md-sys-color-on-primary-container);
-        }
+            .nav-item.active {
+            background-color: #ffb4ab;
+            color: #090909;
+            }
 
-        .nav-item .material-symbols-rounded {
+            .nav-item .material-symbols-rounded {
             font-size: 22px;
-        }
+            }
 
         .sidebar-footer {
             padding: 20px 24px;
@@ -225,8 +228,8 @@
         }
 
         .btn-filled {
-            background-color: var(--md-sys-color-primary);
-            color: var(--md-sys-color-on-primary);
+            background-color: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
             border: none;
             padding: 10px 24px;
             border-radius: 100px;
@@ -242,7 +245,6 @@
 
         .btn-filled:hover {
             background-color: var(--md-expressive-coral);
-            transform: scale(1.05);
         }
 
         .btn-outlined {

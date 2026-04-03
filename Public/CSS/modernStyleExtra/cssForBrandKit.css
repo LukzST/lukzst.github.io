@@ -200,8 +200,8 @@ body {
 }
 
 .btn-filled {
-  background-color: var(--md-sys-color-primary);
-  color: var(--md-sys-color-on-primary);
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
   border: none;
   padding: 10px 24px;
   border-radius: 100px;
@@ -211,7 +211,12 @@ body {
   align-items: center;
   gap: 8px;
   cursor: pointer;
+  text-decoration: none;
   transition: 0.3s all ease;
+}
+
+.btn-filled:hover {
+  background-color: var(--md-expressive-coral);
 }
 
 .hero-section {
