@@ -110,6 +110,9 @@ body {
 
 .nav-section {
   margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .nav-item {
