@@ -178,8 +178,8 @@ body {
 }
 
 .nav-item.active {
-  background-color: var(--md-sys-color-primary-container);
-  color: var(--md-sys-color-on-primary-container);
+  background-color: #ffb4ab;
+  color: #090909;
 }
 
 .nav-item .material-symbols-rounded {
