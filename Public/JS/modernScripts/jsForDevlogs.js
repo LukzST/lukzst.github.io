@@ -197,7 +197,7 @@ function renderLocalVersions(container) {
                     View Release
                     <span class="material-symbols-rounded">arrow_forward</span>
                 </a>
-                <a href="${version.download}" target="_blank" class="github-link">
+                <a href="${version.download}" target="_blank" class="btn-outlined" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
                     <span class="material-symbols-rounded">file_download</span>
                     Download
                 </a>
@@ -324,7 +324,6 @@ async function fetchVersions() {
                         <a href="${releaseInfo.html_url}" target="_blank" rel="noopener noreferrer" class="btn-filled">
                             <span class="material-symbols-rounded">download</span>
                             Download Release
-                            <span class="material-symbols-rounded">arrow_forward</span>
                         </a>
                     ` : `
                         <a href="https://github.com/${repoOwner}/${repoName}/tree/main/${targetPath}/${folder.name}" 
