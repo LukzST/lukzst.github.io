@@ -79,67 +79,69 @@
             </section>
 
             <section class="container reveal" style="padding: 40px 20px;">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px;">
-                    
-                    <div style="background: var(--md-sys-color-surface-container-low); border-radius: 28px; border: 1px solid var(--md-sys-color-outline-variant); overflow: hidden; transition: all 0.3s var(--md-motion-standard);">
-                        <div style="padding: 24px; border-bottom: 1px solid var(--md-sys-color-outline-variant);">
-                            <h3 style="font-size: 1.25rem; font-weight: 600; display: flex; align-items: center; gap: 8px;">
-                                <span class="material-symbols-rounded" style="color: var(--md-expressive-coral);">brand_awareness</span>
-                                Studio Logo
-                            </h3>
-                        </div>
-                        <div style="padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
-                            <div style="text-align: center;">
-                                <p style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--md-expressive-coral); margin-bottom: 12px;">Light Version</p>
-                                <div style="background: var(--md-sys-color-surface); border-radius: 20px; padding: 24px; display: flex; justify-content: center; border: 1px solid var(--md-sys-color-outline-variant);">
-                                    <img src="/Public/IMG/studio-logo-without.png" alt="Studio Logo Light" style="width: 100px; height: auto;">
-                                </div>
-                                <a href="#" onclick="downloadStudioLogo('light'); return false;" style="display: inline-flex; align-items: center; gap: 8px; background: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); padding: 8px 20px; border-radius: 100px; font-weight: 600; font-size: 0.8rem; margin-top: 16px; text-decoration: none; transition: all 0.2s;">
-                                    <i class="fa-solid fa-download"></i> Download PNG
-                                </a>
-                            </div>
-                            <div style="text-align: center;">
-                                <p style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--md-expressive-coral); margin-bottom: 12px;">Dark Version</p>
-                                <div style="background: #1a1a1a; border-radius: 20px; padding: 24px; display: flex; justify-content: center; border: 1px solid var(--md-sys-color-outline-variant);">
-                                    <img src="/Public/IMG/studio-logo-without.png" alt="Studio Logo Dark" style="width: 100px; height: auto; filter: invert(1);">
-                                </div>
-                                <a href="#" onclick="downloadStudioLogo('dark'); return false;" style="display: inline-flex; align-items: center; gap: 8px; background: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); padding: 8px 20px; border-radius: 100px; font-weight: 600; font-size: 0.8rem; margin-top: 16px; text-decoration: none; transition: all 0.2s;">
-                                    <i class="fa-solid fa-download"></i> Download PNG
-                                </a>
-                            </div>
-                        </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px;">
+        
+        <!-- Studio Logo Card -->
+        <div style="background: var(--md-sys-color-surface-container-low); border-radius: 28px; border: 1px solid var(--md-sys-color-outline-variant); overflow: hidden; transition: all 0.3s var(--md-motion-standard);">
+            <div style="padding: 24px; border-bottom: 1px solid var(--md-sys-color-outline-variant);">
+                <h3 style="font-size: 1.25rem; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                    <span class="material-symbols-rounded" style="color: var(--md-expressive-coral);">brand_awareness</span>
+                    Studio Logo
+                </h3>
+            </div>
+            <div class="logo-grid" style="padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                <div style="text-align: center;">
+                    <p style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--md-expressive-coral); margin-bottom: 12px;">Light Version</p>
+                    <div style="background: var(--md-sys-color-surface); border-radius: 20px; padding: 24px; display: flex; justify-content: center; border: 1px solid var(--md-sys-color-outline-variant);">
+                        <img src="/Public/IMG/studio-logo-without.png" alt="Studio Logo Light" style="width: 100px; height: auto; max-width: 100%;">
                     </div>
-
-                    <div style="background: var(--md-sys-color-surface-container-low); border-radius: 28px; border: 1px solid var(--md-sys-color-outline-variant); overflow: hidden; transition: all 0.3s var(--md-motion-standard);">
-                        <div style="padding: 24px; border-bottom: 1px solid var(--md-sys-color-outline-variant);">
-                            <h3 style="font-size: 1.25rem; font-weight: 600; display: flex; align-items: center; gap: 8px;">
-                                <span class="material-symbols-rounded" style="color: var(--md-expressive-coral);">sports_esports</span>
-                                Game Logo
-                            </h3>
-                        </div>
-                        <div style="padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
-                            <div style="text-align: center;">
-                                <p style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--md-expressive-coral); margin-bottom: 12px;">Light Version</p>
-                                <div style="background: var(--md-sys-color-surface); border-radius: 20px; padding: 24px; display: flex; justify-content: center; border: 1px solid var(--md-sys-color-outline-variant);">
-                                    <img src="/Public/IMG/light_logo.png" alt="Game Logo Light" style="width: 100px; height: auto;">
-                                </div>
-                                <a href="#" onclick="downloadGameLogo('light'); return false;" style="display: inline-flex; align-items: center; gap: 8px; background: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); padding: 8px 20px; border-radius: 100px; font-weight: 600; font-size: 0.8rem; margin-top: 16px; text-decoration: none; transition: all 0.2s;">
-                                    <i class="fa-solid fa-download"></i> Download PNG
-                                </a>
-                            </div>
-                            <div style="text-align: center;">
-                                <p style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--md-expressive-coral); margin-bottom: 12px;">Dark Version</p>
-                                <div style="background: #1a1a1a; border-radius: 20px; padding: 24px; display: flex; justify-content: center; border: 1px solid var(--md-sys-color-outline-variant);">
-                                    <img src="/Public/IMG/light_logo.png" alt="Game Logo Dark" style="width: 100px; height: auto; filter: invert(1);">
-                                </div>
-                                <a href="#" onclick="downloadGameLogo('dark'); return false;" style="display: inline-flex; align-items: center; gap: 8px; background: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); padding: 8px 20px; border-radius: 100px; font-weight: 600; font-size: 0.8rem; margin-top: 16px; text-decoration: none; transition: all 0.2s;">
-                                    <i class="fa-solid fa-download"></i> Download PNG
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    <a href="#" onclick="downloadStudioLogo('light'); return false;" style="display: inline-flex; align-items: center; gap: 8px; background: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); padding: 8px 20px; border-radius: 100px; font-weight: 600; font-size: 0.8rem; margin-top: 16px; text-decoration: none; transition: all 0.2s;">
+                        <i class="fa-solid fa-download"></i> Download PNG
+                    </a>
                 </div>
-            </section>
+                <div style="text-align: center;">
+                    <p style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--md-expressive-coral); margin-bottom: 12px;">Dark Version</p>
+                    <div style="background: #1a1a1a; border-radius: 20px; padding: 24px; display: flex; justify-content: center; border: 1px solid var(--md-sys-color-outline-variant);">
+                        <img src="/Public/IMG/studio-logo-without.png" alt="Studio Logo Dark" style="width: 100px; height: auto; max-width: 100%; filter: invert(1);">
+                    </div>
+                    <a href="#" onclick="downloadStudioLogo('dark'); return false;" style="display: inline-flex; align-items: center; gap: 8px; background: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); padding: 8px 20px; border-radius: 100px; font-weight: 600; font-size: 0.8rem; margin-top: 16px; text-decoration: none; transition: all 0.2s;">
+                        <i class="fa-solid fa-download"></i> Download PNG
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Logo Card -->
+        <div style="background: var(--md-sys-color-surface-container-low); border-radius: 28px; border: 1px solid var(--md-sys-color-outline-variant); overflow: hidden; transition: all 0.3s var(--md-motion-standard);">
+            <div style="padding: 24px; border-bottom: 1px solid var(--md-sys-color-outline-variant);">
+                <h3 style="font-size: 1.25rem; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                    <span class="material-symbols-rounded" style="color: var(--md-expressive-coral);">sports_esports</span>
+                    Game Logo
+                </h3>
+            </div>
+            <div class="logo-grid" style="padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                <div style="text-align: center;">
+                    <p style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--md-expressive-coral); margin-bottom: 12px;">Light Version</p>
+                    <div style="background: var(--md-sys-color-surface); border-radius: 20px; padding: 24px; display: flex; justify-content: center; border: 1px solid var(--md-sys-color-outline-variant);">
+                        <img src="/Public/IMG/light_logo.png" alt="Game Logo Light" style="width: 100px; height: auto; max-width: 100%;">
+                    </div>
+                    <a href="#" onclick="downloadGameLogo('light'); return false;" style="display: inline-flex; align-items: center; gap: 8px; background: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); padding: 8px 20px; border-radius: 100px; font-weight: 600; font-size: 0.8rem; margin-top: 16px; text-decoration: none; transition: all 0.2s;">
+                        <i class="fa-solid fa-download"></i> Download PNG
+                    </a>
+                </div>
+                <div style="text-align: center;">
+                    <p style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--md-expressive-coral); margin-bottom: 12px;">Dark Version</p>
+                    <div style="background: #1a1a1a; border-radius: 20px; padding: 24px; display: flex; justify-content: center; border: 1px solid var(--md-sys-color-outline-variant);">
+                        <img src="/Public/IMG/light_logo.png" alt="Game Logo Dark" style="width: 100px; height: auto; max-width: 100%; filter: invert(1);">
+                    </div>
+                    <a href="#" onclick="downloadGameLogo('dark'); return false;" style="display: inline-flex; align-items: center; gap: 8px; background: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); padding: 8px 20px; border-radius: 100px; font-weight: 600; font-size: 0.8rem; margin-top: 16px; text-decoration: none; transition: all 0.2s;">
+                        <i class="fa-solid fa-download"></i> Download PNG
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
             <section class="container reveal" style="padding: 40px 20px;">
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px;">
