@@ -177,9 +177,6 @@ function renderLocalVersions(container) {
                 </div>
             </div>
             <div class="version-content">
-                <div class="version-description">
-                    ${formatDescription(version.body)}
-                </div>
                 ${changes.length > 0 ? `
                     <ul class="version-changes">
                         ${changes.map(change => `
@@ -305,9 +302,6 @@ async function fetchVersions() {
                     </div>
                 </div>
                 <div class="version-content">
-                    <div class="version-description">
-                        ${releaseInfo ? formatDescription(githubDescription) : githubDescription}
-                    </div>
                     ${changes.length > 0 ? `
                         <ul class="version-changes">
                             ${changes.map(change => `
