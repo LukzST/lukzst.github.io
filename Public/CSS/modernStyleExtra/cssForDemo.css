@@ -259,10 +259,6 @@ body {
     }
 }
 
-.download-section {
-    padding: 40px 0;
-}
-
 .download-card {
     background: var(--md-sys-color-surface-dim);
     border-radius: var(--md-shape-large);
