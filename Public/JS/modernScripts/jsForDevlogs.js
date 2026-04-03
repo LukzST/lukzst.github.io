@@ -106,29 +106,35 @@ function showRateLimitError(container, resetTime) {
     const timeString = resetDate.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
     
     container.innerHTML = `
-        <div style="text-align: center; padding: 48px 24px; background: var(--md-sys-color-surface-container-low); border-radius: 28px; border: 1px solid var(--md-sys-color-outline-variant); max-width: 500px; margin: 0 auto;">
-            <div style="width: 64px; height: 64px; background: rgba(255, 138, 122, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto;">
-                <span class="material-symbols-rounded" style="font-size: 32px; color: var(--md-expressive-coral);">hourglass_empty</span>
+    <div style="text-align: center; padding: 48px 24px; background: var(--md-sys-color-surface-container-low); border-radius: 28px; border: 1px solid var(--md-sys-color-outline-variant); max-width: 500px; margin: 0 auto;">
+        <div style="width: 64px; height: 64px; background: rgba(255, 138, 122, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto;">
+            <span class="material-symbols-rounded" style="font-size: 32px; color: var(--md-expressive-coral);">hourglass_empty</span>
+        </div>
+        <h3 style="font-family: var(--md-font-display); font-size: 1.5rem; font-weight: 600; margin-bottom: 12px;">Rate Limit Exceeded</h3>
+        <p style="color: var(--md-sys-color-on-surface-variant); margin-bottom: 16px;">The GitHub API limit has been reached. Too many requests in a short period.</p>
+        <div style="background: rgba(255, 138, 122, 0.08); border-radius: 20px; padding: 16px; margin: 20px 0;">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 8px;">
+                <span class="material-symbols-rounded" style="color: var(--md-expressive-coral);">schedule</span>
+                <span style="font-weight: 600;">Resets at: ${timeString}</span>
             </div>
-            <h3 style="font-family: var(--md-font-display); font-size: 1.5rem; font-weight: 600; margin-bottom: 12px;">Rate Limit Exceeded</h3>
-            <p style="color: var(--md-sys-color-on-surface-variant); margin-bottom: 16px;">The GitHub API limit has been reached. Too many requests in a short period.</p>
-            <div style="background: rgba(255, 138, 122, 0.08); border-radius: 20px; padding: 16px; margin: 20px 0;">
-                <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 8px;">
-                    <span class="material-symbols-rounded" style="color: var(--md-expressive-coral);">schedule</span>
-                    <span style="font-weight: 600;">Resets at: ${timeString}</span>
-                </div>
-                <div style="height: 4px; background: var(--md-sys-color-outline-variant); border-radius: 2px; overflow: hidden; margin-top: 12px;">
-                    <div id="rate-limit-progress" style="width: 0%; height: 100%; background: var(--md-expressive-coral); transition: width 1s linear;"></div>
-                </div>
+            <div style="height: 4px; background: var(--md-sys-color-outline-variant); border-radius: 2px; overflow: hidden; margin-top: 12px;">
+                <div id="rate-limit-progress" style="width: 0%; height: 100%; background: var(--md-expressive-coral); transition: width 1s linear;"></div>
             </div>
-            <p style="font-size: 0.75rem; color: var(--md-sys-color-on-surface-variant);">The limit resets automatically after 1 hour. Showing cached versions below.</p>
-            <button onclick="location.reload()" style="margin-top: 24px; background: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); border: none; padding: 10px 24px; border-radius: 100px; font-weight: 600; cursor: pointer; transition: all 0.2s;">
-                <span class="material-symbols-rounded" style="font-size: 18px; vertical-align: middle;">refresh</span>
+        </div>
+        <p style="font-size: 0.75rem; color: var(--md-sys-color-on-surface-variant); margin-bottom: 24px;">The limit resets automatically after 1 hour. Showing cached versions below.</p>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;">
+            <button onclick="location.reload()" class="btn-filled" style="display: inline-flex; align-items: center; gap: 8px;">
+                <span class="material-symbols-rounded" style="font-size: 18px;">refresh</span>
                 Try Again
             </button>
+            <a href="https://github.com/${repoOwner}/${repoName}/releases" target="_blank" class="btn-outlined" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
+                <span class="material-symbols-rounded" style="font-size: 18px;">open_in_new</span>
+                View on GitHub
+            </a>
         </div>
-        <div id="fallback-versions" style="margin-top: 32px;"></div>
-    `;
+    </div>
+    <div id="fallback-versions" style="margin-top: 32px;"></div>
+`;
     
     if (resetTime) {
         const updateProgress = () => {
@@ -315,7 +321,7 @@ async function fetchVersions() {
                 </div>
                 <div class="version-footer">
                     ${releaseInfo ? `
-                        <a href="${releaseInfo.html_url}" target="_blank" rel="noopener noreferrer" class="download-link">
+                        <a href="${releaseInfo.html_url}" target="_blank" rel="noopener noreferrer" class="btn-filled">
                             <span class="material-symbols-rounded">download</span>
                             Download Release
                             <span class="material-symbols-rounded">arrow_forward</span>
@@ -327,9 +333,9 @@ async function fetchVersions() {
                             View in Repository
                         </a>
                     `}
-                    <a href="https://github.com/${repoOwner}/${repoName}/releases" target="_blank" rel="noopener noreferrer" class="github-link">
+                    <a href="https://github.com/${repoOwner}/${repoName}/releases" target="_blank" rel="noopener noreferrer" style="display:flex; justify-content: center; align-items: center;" class="btn-outlined">
                         <span class="material-symbols-rounded">history</span>
-                        All Releases
+                        <p style=" margin-left: 8px;">All Releases</p>
                     </a>
                 </div>
             `;
