@@ -78,114 +78,126 @@
                 </div>
             </section>
 
-            <section class="container reveal">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 section-spacing">
-                    <div class="brand-card">
-                        <h2 class="text-2xl font-bold mb-6">Studio Logo</h2>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div class="text-center">
-                                <p class="text-sm opacity-60 mb-3">Light Version</p>
-                                <div class="logo-preview">
-                                    <img src="/Public/IMG/studio-logo-without.png" alt="Studio Logo Light" class="w-32 h-auto">
+            <section class="container reveal" style="padding: 40px 20px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px;">
+                    
+                    <div style="background: var(--md-sys-color-surface-container-low); border-radius: 28px; border: 1px solid var(--md-sys-color-outline-variant); overflow: hidden; transition: all 0.3s var(--md-motion-standard);">
+                        <div style="padding: 24px; border-bottom: 1px solid var(--md-sys-color-outline-variant);">
+                            <h3 style="font-size: 1.25rem; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                                <span class="material-symbols-rounded" style="color: var(--md-expressive-coral);">brand_awareness</span>
+                                Studio Logo
+                            </h3>
+                        </div>
+                        <div style="padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                            <div style="text-align: center;">
+                                <p style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--md-expressive-coral); margin-bottom: 12px;">Light Version</p>
+                                <div style="background: var(--md-sys-color-surface); border-radius: 20px; padding: 24px; display: flex; justify-content: center; border: 1px solid var(--md-sys-color-outline-variant);">
+                                    <img src="/Public/IMG/studio-logo-without.png" alt="Studio Logo Light" style="width: 100px; height: auto;">
                                 </div>
-                                <div class="flex justify-center mt-4">
-                                    <a href="#" onclick="downloadStudioLogo('light'); return false;" class="download-btn">
-                                        <i class="fa-solid fa-download"></i>
-                                        Download PNG
-                                    </a>
-                                </div>
+                                <a href="#" onclick="downloadStudioLogo('light'); return false;" style="display: inline-flex; align-items: center; gap: 8px; background: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); padding: 8px 20px; border-radius: 100px; font-weight: 600; font-size: 0.8rem; margin-top: 16px; text-decoration: none; transition: all 0.2s;">
+                                    <i class="fa-solid fa-download"></i> Download PNG
+                                </a>
                             </div>
-                            <div class="text-center">
-                                <p class="text-sm opacity-60 mb-3">Dark Version</p>
-                                <div class="logo-preview bg-dark">
-                                    <img src="/Public/IMG/studio-logo-without.png" alt="Studio Logo Dark" class="w-32 h-auto invert" id="studio-dark-img">
+                            <div style="text-align: center;">
+                                <p style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--md-expressive-coral); margin-bottom: 12px;">Dark Version</p>
+                                <div style="background: #1a1a1a; border-radius: 20px; padding: 24px; display: flex; justify-content: center; border: 1px solid var(--md-sys-color-outline-variant);">
+                                    <img src="/Public/IMG/studio-logo-without.png" alt="Studio Logo Dark" style="width: 100px; height: auto; filter: invert(1);">
                                 </div>
-                                <div class="flex justify-center mt-4">
-                                    <a href="#" onclick="downloadStudioLogo('dark'); return false;" class="download-btn">
-                                        <i class="fa-solid fa-download"></i>
-                                        Download PNG
-                                    </a>
-                                </div>
+                                <a href="#" onclick="downloadStudioLogo('dark'); return false;" style="display: inline-flex; align-items: center; gap: 8px; background: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); padding: 8px 20px; border-radius: 100px; font-weight: 600; font-size: 0.8rem; margin-top: 16px; text-decoration: none; transition: all 0.2s;">
+                                    <i class="fa-solid fa-download"></i> Download PNG
+                                </a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="brand-card">
-                        <h2 class="text-2xl font-bold mb-6">Game Logo</h2>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div class="text-center">
-                                <p class="text-sm opacity-60 mb-3">Light Version</p>
-                                <div class="logo-preview">
-                                    <img src="/Public/IMG/light_logo.png" alt="Game Logo Light" class="w-32 h-auto" id="game-light-img">
+                    <div style="background: var(--md-sys-color-surface-container-low); border-radius: 28px; border: 1px solid var(--md-sys-color-outline-variant); overflow: hidden; transition: all 0.3s var(--md-motion-standard);">
+                        <div style="padding: 24px; border-bottom: 1px solid var(--md-sys-color-outline-variant);">
+                            <h3 style="font-size: 1.25rem; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                                <span class="material-symbols-rounded" style="color: var(--md-expressive-coral);">sports_esports</span>
+                                Game Logo
+                            </h3>
+                        </div>
+                        <div style="padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                            <div style="text-align: center;">
+                                <p style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--md-expressive-coral); margin-bottom: 12px;">Light Version</p>
+                                <div style="background: var(--md-sys-color-surface); border-radius: 20px; padding: 24px; display: flex; justify-content: center; border: 1px solid var(--md-sys-color-outline-variant);">
+                                    <img src="/Public/IMG/light_logo.png" alt="Game Logo Light" style="width: 100px; height: auto;">
                                 </div>
-                                <div class="flex justify-center mt-4">
-                                    <a href="#" onclick="downloadGameLogo('light'); return false;" class="download-btn">
-                                        <i class="fa-solid fa-download"></i>
-                                        Download PNG
-                                    </a>
-                                </div>
+                                <a href="#" onclick="downloadGameLogo('light'); return false;" style="display: inline-flex; align-items: center; gap: 8px; background: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); padding: 8px 20px; border-radius: 100px; font-weight: 600; font-size: 0.8rem; margin-top: 16px; text-decoration: none; transition: all 0.2s;">
+                                    <i class="fa-solid fa-download"></i> Download PNG
+                                </a>
                             </div>
-                            <div class="text-center">
-                                <p class="text-sm opacity-60 mb-3">Dark Version</p>
-                                <div class="logo-preview bg-dark">
-                                    <img src="/Public/IMG/light_logo.png" alt="Game Logo Dark" class="w-32 h-auto invert" id="game-dark-img">
+                            <div style="text-align: center;">
+                                <p style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--md-expressive-coral); margin-bottom: 12px;">Dark Version</p>
+                                <div style="background: #1a1a1a; border-radius: 20px; padding: 24px; display: flex; justify-content: center; border: 1px solid var(--md-sys-color-outline-variant);">
+                                    <img src="/Public/IMG/light_logo.png" alt="Game Logo Dark" style="width: 100px; height: auto; filter: invert(1);">
                                 </div>
-                                <div class="flex justify-center mt-4">
-                                    <a href="#" onclick="downloadGameLogo('dark'); return false;" class="download-btn">
-                                        <i class="fa-solid fa-download"></i>
-                                        Download PNG
-                                    </a>
-                                </div>
+                                <a href="#" onclick="downloadGameLogo('dark'); return false;" style="display: inline-flex; align-items: center; gap: 8px; background: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); padding: 8px 20px; border-radius: 100px; font-weight: 600; font-size: 0.8rem; margin-top: 16px; text-decoration: none; transition: all 0.2s;">
+                                    <i class="fa-solid fa-download"></i> Download PNG
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="container reveal">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 section-spacing">
-                    <div class="brand-card">
-                        <h2 class="text-2xl font-bold mb-6">Color Palette</h2>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                            <div class="text-center">
-                                <div class="color-swatch mx-auto" style="background: #FF8A7A;"></div>
-                                <p class="font-mono text-sm mt-2">#FF8A7A</p>
-                                <p class="text-sm opacity-60">Coral (Primary)</p>
-                            </div>
-                            <div class="text-center">
-                                <div class="color-swatch mx-auto" style="background: #090909;"></div>
-                                <p class="font-mono text-sm mt-2">#090909</p>
-                                <p class="text-sm opacity-60">Surface</p>
-                            </div>
-                            <div class="text-center">
-                                <div class="color-swatch mx-auto" style="background: #E6E1E5;"></div>
-                                <p class="font-mono text-sm mt-2">#E6E1E5</p>
-                                <p class="text-sm opacity-60">On Surface</p>
-                            </div>
-                            <div class="text-center">
-                                <div class="color-swatch mx-auto" style="background: #49454F;"></div>
-                                <p class="font-mono text-sm mt-2">#49454F</p>
-                                <p class="text-sm opacity-60">Outline</p>
+            <section class="container reveal" style="padding: 40px 20px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px;">
+                    
+                    <div style="background: var(--md-sys-color-surface-container-low); border-radius: 28px; border: 1px solid var(--md-sys-color-outline-variant); overflow: hidden; transition: all 0.3s var(--md-motion-standard);">
+                        <div style="padding: 24px; border-bottom: 1px solid var(--md-sys-color-outline-variant);">
+                            <h3 style="font-size: 1.25rem; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                                <span class="material-symbols-rounded" style="color: var(--md-expressive-coral);">palette</span>
+                                Color Palette
+                            </h3>
+                        </div>
+                        <div style="padding: 24px;">
+                            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+                                <div style="text-align: center;">
+                                    <div style="width: 80px; height: 80px; background: #FF8A7A; border-radius: 20px; margin: 0 auto; border: 1px solid var(--md-sys-color-outline-variant);"></div>
+                                    <p style="font-family: monospace; font-size: 0.75rem; margin-top: 8px;">#FF8A7A</p>
+                                    <p style="font-size: 0.7rem; color: var(--md-sys-color-on-surface-variant);">Coral (Primary)</p>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div style="width: 80px; height: 80px; background: #090909; border-radius: 20px; margin: 0 auto; border: 1px solid var(--md-sys-color-outline-variant);"></div>
+                                    <p style="font-family: monospace; font-size: 0.75rem; margin-top: 8px;">#090909</p>
+                                    <p style="font-size: 0.7rem; color: var(--md-sys-color-on-surface-variant);">Surface</p>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div style="width: 80px; height: 80px; background: #E6E1E5; border-radius: 20px; margin: 0 auto; border: 1px solid var(--md-sys-color-outline-variant);"></div>
+                                    <p style="font-family: monospace; font-size: 0.75rem; margin-top: 8px;">#E6E1E5</p>
+                                    <p style="font-size: 0.7rem; color: var(--md-sys-color-on-surface-variant);">On Surface</p>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div style="width: 80px; height: 80px; background: #49454F; border-radius: 20px; margin: 0 auto; border: 1px solid var(--md-sys-color-outline-variant);"></div>
+                                    <p style="font-family: monospace; font-size: 0.75rem; margin-top: 8px;">#49454F</p>
+                                    <p style="font-size: 0.7rem; color: var(--md-sys-color-on-surface-variant);">Outline</p>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="brand-card">
-                        <h2 class="text-2xl font-bold mb-6">Typography</h2>
-                        <div class="space-y-6">
+                    <div style="background: var(--md-sys-color-surface-container-low); border-radius: 28px; border: 1px solid var(--md-sys-color-outline-variant); overflow: hidden; transition: all 0.3s var(--md-motion-standard);">
+                        <div style="padding: 24px; border-bottom: 1px solid var(--md-sys-color-outline-variant);">
+                            <h3 style="font-size: 1.25rem; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                                <span class="material-symbols-rounded" style="color: var(--md-expressive-coral);">text_fields</span>
+                                Typography
+                            </h3>
+                        </div>
+                        <div style="padding: 24px;">
+                            <div style="margin-bottom: 24px;">
+                                <p style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--md-expressive-coral); margin-bottom: 12px;">Primary Font - Inter</p>
+                                <div style="background: var(--md-sys-color-surface); border-radius: 20px; padding: 20px; border: 1px solid var(--md-sys-color-outline-variant);">
+                                    <p style="font-family: 'Inter', sans-serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 8px;">ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+                                    <p style="font-family: 'Inter', sans-serif; font-size: 1rem; margin-bottom: 8px;">abcdefghijklmnopqrstuvwxyz</p>
+                                    <p style="font-family: 'Inter', sans-serif; font-size: 0.9rem;">0123456789 !@#$%^&*()</p>
+                                </div>
+                            </div>
                             <div>
-                                <p class="text-sm opacity-60 mb-3">Primary Font - Inter</p>
-                                <div class="font-demo">
-                                    <p class="text-2xl font-bold mb-2">ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
-                                    <p class="text-xl mb-2">abcdefghijklmnopqrstuvwxyz</p>
-                                    <p class="text-lg">0123456789 !@#$%^&*()</p>
-                                </div>
-                            </div>
-                            <div>
-                                <p class="text-sm opacity-60 mb-3">Display Font - Inter (Bold)</p>
-                                <div class="font-demo">
-                                    <p class="text-3xl font-black mb-2">LIGHT Game</p>
-                                    <p class="text-xl font-bold">Atmospheric Horror</p>
+                                <p style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--md-expressive-coral); margin-bottom: 12px;">Display Font - Inter (Bold)</p>
+                                <div style="background: var(--md-sys-color-surface); border-radius: 20px; padding: 20px; border: 1px solid var(--md-sys-color-outline-variant);">
+                                    <p style="font-family: 'Inter', sans-serif; font-size: 1.5rem; font-weight: 800;">LIGHT Game</p>
+                                    <p style="font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 700; color: var(--md-expressive-coral);">Atmospheric Horror</p>
                                 </div>
                             </div>
                         </div>
@@ -193,72 +205,82 @@
                 </div>
             </section>
 
-            <section class="container reveal">
-                <div class="brand-card section-spacing">
-                    <h2 class="text-2xl font-bold mb-6">Icons & Assets</h2>
-                    <div class="grid grid-cols-3 md:grid-cols-6 gap-6">
-                        <div class="icon-item">
-                            <i class="fa-solid fa-gamepad"></i>
-                            <p>Gamepad</p>
-                        </div>
-                        <div class="icon-item">
-                            <i class="fa-solid fa-download"></i>
-                            <p>Download</p>
-                        </div>
-                        <div class="icon-item">
-                            <i class="fa-solid fa-music"></i>
-                            <p>Music</p>
-                        </div>
-                        <div class="icon-item">
-                            <i class="fa-solid fa-image"></i>
-                            <p>Media</p>
-                        </div>
-                        <div class="icon-item">
-                            <i class="fa-solid fa-lightbulb"></i>
-                            <p>Light</p>
-                        </div>
-                        <div class="icon-item">
-                            <i class="fa-solid fa-skull"></i>
-                            <p>Darkness</p>
+            <section class="container reveal" style="padding: 40px 20px;">
+                <div style="background: var(--md-sys-color-surface-container-low); border-radius: 28px; border: 1px solid var(--md-sys-color-outline-variant); overflow: hidden;">
+                    <div style="padding: 24px; border-bottom: 1px solid var(--md-sys-color-outline-variant);">
+                        <h3 style="font-size: 1.25rem; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                            <span class="material-symbols-rounded" style="color: var(--md-expressive-coral);">grid_view</span>
+                            Icons & Assets
+                        </h3>
+                    </div>
+                    <div style="padding: 32px;">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 24px;">
+                            <div style="text-align: center; padding: 16px; background: var(--md-sys-color-surface); border-radius: 20px; border: 1px solid var(--md-sys-color-outline-variant); transition: all 0.2s;">
+                                <i class="fa-solid fa-gamepad" style="font-size: 1.8rem; color: var(--md-expressive-coral);"></i>
+                                <p style="font-size: 0.7rem; margin-top: 8px;">Gamepad</p>
+                            </div>
+                            <div style="text-align: center; padding: 16px; background: var(--md-sys-color-surface); border-radius: 20px; border: 1px solid var(--md-sys-color-outline-variant); transition: all 0.2s;">
+                                <i class="fa-solid fa-download" style="font-size: 1.8rem; color: var(--md-expressive-coral);"></i>
+                                <p style="font-size: 0.7rem; margin-top: 8px;">Download</p>
+                            </div>
+                            <div style="text-align: center; padding: 16px; background: var(--md-sys-color-surface); border-radius: 20px; border: 1px solid var(--md-sys-color-outline-variant); transition: all 0.2s;">
+                                <i class="fa-solid fa-music" style="font-size: 1.8rem; color: var(--md-expressive-coral);"></i>
+                                <p style="font-size: 0.7rem; margin-top: 8px;">Music</p>
+                            </div>
+                            <div style="text-align: center; padding: 16px; background: var(--md-sys-color-surface); border-radius: 20px; border: 1px solid var(--md-sys-color-outline-variant); transition: all 0.2s;">
+                                <i class="fa-solid fa-image" style="font-size: 1.8rem; color: var(--md-expressive-coral);"></i>
+                                <p style="font-size: 0.7rem; margin-top: 8px;">Media</p>
+                            </div>
+                            <div style="text-align: center; padding: 16px; background: var(--md-sys-color-surface); border-radius: 20px; border: 1px solid var(--md-sys-color-outline-variant); transition: all 0.2s;">
+                                <i class="fa-solid fa-lightbulb" style="font-size: 1.8rem; color: var(--md-expressive-coral);"></i>
+                                <p style="font-size: 0.7rem; margin-top: 8px;">Light</p>
+                            </div>
+                            <div style="text-align: center; padding: 16px; background: var(--md-sys-color-surface); border-radius: 20px; border: 1px solid var(--md-sys-color-outline-variant); transition: all 0.2s;">
+                                <i class="fa-solid fa-skull" style="font-size: 1.8rem; color: var(--md-expressive-coral);"></i>
+                                <p style="font-size: 0.7rem; margin-top: 8px;">Darkness</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="container reveal">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 section-spacing">
-                    <div class="image-card" onclick="window.open('/Public/IMG/screen1.png', '_blank')">
-                        <img src="/Public/IMG/screen1.png" alt="Screenshot Template">
-                        <div class="image-card-content">
-                            <h3>Screenshot Template</h3>
-                            <p>Game scene preview</p>
+            <section class="container reveal" style="padding: 40px 20px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
+                    <div style="background: var(--md-sys-color-surface-container-low); border-radius: 28px; border: 1px solid var(--md-sys-color-outline-variant); overflow: hidden; cursor: pointer; transition: all 0.3s var(--md-motion-standard);" onclick="window.open('/Public/IMG/screen1.png', '_blank')">
+                        <img src="/Public/IMG/screen1.png" alt="Screenshot Template" style="width: 100%; height: 180px; object-fit: cover;">
+                        <div style="padding: 20px; text-align: center;">
+                            <h4 style="font-weight: 600; margin-bottom: 4px;">Screenshot Template</h4>
+                            <p style="font-size: 0.75rem; color: var(--md-sys-color-on-surface-variant);">Game scene preview</p>
                         </div>
                     </div>
-                    <div class="image-card" onclick="window.open('/Public/IMG/trailer-poster-2.jpg', '_blank')">
-                        <img src="/Public/IMG/trailer-poster-2.jpg" alt="Cover Art">
-                        <div class="image-card-content">
-                            <h3>Cover Art</h3>
-                            <p>Key art template</p>
+                    <div style="background: var(--md-sys-color-surface-container-low); border-radius: 28px; border: 1px solid var(--md-sys-color-outline-variant); overflow: hidden; cursor: pointer; transition: all 0.3s var(--md-motion-standard);" onclick="window.open('/Public/IMG/trailer-poster-2.jpg', '_blank')">
+                        <img src="/Public/IMG/trailer-poster-2.jpg" alt="Cover Art" style="width: 100%; height: 180px; object-fit: cover;">
+                        <div style="padding: 20px; text-align: center;">
+                            <h4 style="font-weight: 600; margin-bottom: 4px;">Cover Art</h4>
+                            <p style="font-size: 0.75rem; color: var(--md-sys-color-on-surface-variant);">Key art template</p>
                         </div>
                     </div>
-                    <div class="image-card" onclick="window.open('/Public/IMG/backgroundhomestock.png', '_blank')">
-                        <img src="/Public/IMG/backgroundhomestock.png" alt="Wallpaper">
-                        <div class="image-card-content">
-                            <h3>Wallpaper</h3>
-                            <p>Background template</p>
+                    <div style="background: var(--md-sys-color-surface-container-low); border-radius: 28px; border: 1px solid var(--md-sys-color-outline-variant); overflow: hidden; cursor: pointer; transition: all 0.3s var(--md-motion-standard);" onclick="window.open('/Public/IMG/backgroundhomestock.png', '_blank')">
+                        <img src="/Public/IMG/backgroundhomestock.png" alt="Wallpaper" style="width: 100%; height: 180px; object-fit: cover;">
+                        <div style="padding: 20px; text-align: center;">
+                            <h4 style="font-weight: 600; margin-bottom: 4px;">Wallpaper</h4>
+                            <p style="font-size: 0.75rem; color: var(--md-sys-color-on-surface-variant);">Background template</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="container reveal">
-                <div class="brand-card text-center section-spacing" style="margin-bottom: 80px;">
-                    <h2 class="text-2xl font-bold mb-4">Download All Assets</h2>
-                    <p class="opacity-70 mb-6">Get everything in one package</p>
-                    <a href="#" onclick="downloadAllAssets(); return false;" class="download-btn text-lg px-8 py-4 inline-flex items-center gap-2">
+            <section class="container reveal" style="padding: 40px 20px 80px;">
+                <div style="background: linear-gradient(135deg, rgba(255, 138, 122, 0.08), rgba(255, 180, 171, 0.03)); border-radius: 28px; border: 1px solid var(--md-sys-color-outline-variant); text-align: center; padding: 48px 32px;">
+                    <div style="width: 64px; height: 64px; background: rgba(255, 138, 122, 0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto;">
+                        <span class="material-symbols-rounded" style="font-size: 32px; color: var(--md-expressive-coral);">file_download</span>
+                    </div>
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 8px;">Download All Assets</h3>
+                    <p style="color: var(--md-sys-color-on-surface-variant); margin-bottom: 24px;">Get everything in one package</p>
+                    <a href="#" onclick="downloadAllAssets(); return false;" style="display: inline-flex; align-items: center; gap: 12px; background: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); padding: 12px 32px; border-radius: 100px; font-weight: 600; text-decoration: none; transition: all 0.2s;">
                         <i class="fa-solid fa-download"></i>
                         Download Brand Kit ZIP
-                        <i class="fa-solid fa-chevron-right"></i>
+                        <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
             </section>
@@ -268,7 +290,7 @@
             <div class="squiggle">
                 <svg aria-hidden="true" width="100%" height="8" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <pattern id="wavePattern" width="91" height="8" patternUnits="userSpaceOnUse">
-                        <path d="M114 4c-5.067 4.667-10.133 4.667-15.2 0S88.667-.667 83.6 4 73.467 8.667 68.4 4 58.267-.667 53.2 4 43.067 8.667 38 4 27.867-.667 22.8 4 12.667 8.667 7.6 4-2.533-.667-7.6 4s-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0" stroke="var(--md-sys-color-outline-variant)" stroke-linecap="square"/>
+                        <path d="M114 4c-5.067 4.667-10.133 4.667-15.2 0S88.667-.667 83.6 4 73.467 8.667 68.4 4 58.267-.667 53.2 4 43.067 8.667 38 4 27.867-.667 22.8 4 12.667 8.667 7.6 4-2.533-.667-7.6 4s-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0" stroke="var(--md-sys-color-outline-variant)" stroke-linecap="square"/>
                     </pattern>
                     <rect width="100%" height="100%" fill="url(#wavePattern)"></rect>
                 </svg>
@@ -301,10 +323,10 @@
                 </section>
                 <section class="legal">
                     <div class="google-logo" style="display: flex; align-items: center; gap: 8px;">
-                                <span style="font-weight: 500;">Lukzxdd, Ltd. © 2026</span>
-                            </div>
+                        <span style="font-weight: 500;">Lukzxdd, Ltd. © 2026</span>
+                    </div>
                     <ul>
-                        <li class="legal-link"><a href="#" onclick="alert('Privacy Policy - We value your privacy. No data collected.'); return false;">Privacy Policy</a></li>
+                        <li class="legal-link"><a href="#" onclick="alert('Privacy Policy - We value your privacy.'); return false;">Privacy Policy</a></li>
                         <li class="legal-link"><a href="#" onclick="alert('Terms of Service - LIGHT is free and open-source.'); return false;">Terms of Service</a></li>
                         <li class="legal-link"><a href="https://github.com/LukzST/LIGHT/issues" target="_blank">Report Issue</a></li>
                         <li class="legal-link"><a href="#" onclick="window.location.href='mailto:contact@playlightgame.com'; return false;">Feedback</a></li>
