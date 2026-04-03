@@ -420,7 +420,7 @@ body {
 }
 
 .version-footer {
-  padding: 16px 24px;
+  padding: 16px 16px;
   border-top: 1px solid var(--md-sys-color-outline-variant);
   display: flex;
   gap: 16px;
