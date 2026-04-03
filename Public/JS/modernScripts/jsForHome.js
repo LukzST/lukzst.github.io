@@ -128,6 +128,10 @@ function updateActiveFromHash() {
     }
 }
 
+function openEmailPopup() {
+    window.open('mailto:lucaseduarte6@gmail.com', '_blank', 'width=500,height=400,resizable=yes,scrollbars=yes');
+}
+
 updateActiveFromHash();
 
 console.log(`%cLukzxdd%c
