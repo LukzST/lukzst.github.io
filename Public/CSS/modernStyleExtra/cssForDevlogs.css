@@ -16,8 +16,8 @@
 :root {
   --md-sys-color-primary: #ffb4ab;
   --md-sys-color-on-primary: #5c2e2a;
-  --md-sys-color-primary-container: #8c4a42;
-  --md-sys-color-on-primary-container: #ffdad6;
+  --md-sys-color-primary-container: #ffb4ab;
+  --md-sys-color-on-primary-container: #090909;
   --md-sys-color-secondary: #e6e1e5;
   --md-sys-color-on-secondary: #2b2930;
   --md-sys-color-tertiary: #cac4d0;
