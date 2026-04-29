@@ -5,7 +5,7 @@
       - file, You can obtain one at http://mozilla.org/MPL/2.0/.
       -->
    <!-- TODO: Get a job -->
-   <img src="./src/assets/images/icon-21.png" width="100px" height="100px" style="border-radius: 100%" align="left">
+   <img src="./src/assets/images/aaaa.png" width="100px" height="100px" style="border-radius: 100%" align="left">
    
    ### `Unburied Pixels Website`
    
