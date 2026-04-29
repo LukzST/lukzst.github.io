@@ -1,16 +1,34 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+   <!--
+      - This Source Code Form is subject to the terms of the Mozilla Public
+      - License, v. 2.0. If a copy of the MPL was not distributed with this
+      - file, You can obtain one at http://mozilla.org/MPL/2.0/.
+      -->
+   <!-- TODO: Get a job -->
+   <img src="./src/assets/images/icon-21.png" width="100px" height="100px" style="border-radius: 100%" align="left">
+   
+   ### `Undead Pixel Games Website`
+   
+   ![Status](https://img.shields.io/badge/STATUS-OPERATIONAL-green)
+   ![Version](https://img.shields.io/badge/VERSION-1.0-gold)
+   ![OS](https://img.shields.io/badge/OS-WEB-red)
+   
+   **Undead Pixel Games** - Website of the developers behind LIGHT and Pale Luna.
+   
+   <div flex="true">
+     <a href="https://lukzst.github.io">
+       Check Out
+     </a>
+     •
+     <a href="https://lukzst.github.io/games">
+       Games
+     </a>
+     •
+     <a href="https://github.com/LukzST/lukzst.github.io/deployments">
+       Release Notes
+     </a>
+   </div>
+   
+   ### Contributing
+   
+   If you'd like to report a bug, please do so on our [GitHub Issues page](https://github.com/lukzst/lukzst.github.io/issues/new/choose)
