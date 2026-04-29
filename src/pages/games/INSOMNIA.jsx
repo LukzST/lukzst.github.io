@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import insomniaLogo from "../../assets/images/i2.png";
-import insomniaTrailer from "../../assets/videos/INSOMNIA.mp4";
+import insomniaTrailer from "../../assets/videos/INSOMNIA - Official Reveal Trailer.mp4";
 import useExternalStyle from "../../hooks/useExternalStyle";
 
 export default function GamesINSOMNIA() {
@@ -21,7 +21,7 @@ export default function GamesINSOMNIA() {
                 <p>Coming Soon</p>
 
                 <div className="action">
-                    <a href="https://undpixelgames.itch.io/insomnia" target="_blank" className="link" rel="noreferrer">
+                    <a href="https://UnburiedPixels.itch.io/insomnia" target="_blank" className="link" rel="noreferrer">
                         <div className="border">itch.io</div>
                     </a>
                     <Link to="/games/insomnia/404.html" className="link">

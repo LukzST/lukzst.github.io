@@ -56,7 +56,7 @@ export default function Games() {
                                 <span className="feature">story-rich</span>
                                 <span className="feature">corporate mystery</span>
                             </div>
-                            <a href="https://undpixelgames.itch.io/light" target="_blank" rel="noreferrer" className="game-btn">
+                            <a href="https://UnburiedPixels.itch.io/light" target="_blank" rel="noreferrer" className="game-btn">
                                 AVAILABLE NOW
                             </a>
                         </div>
@@ -66,13 +66,10 @@ export default function Games() {
 
             <footer>
                 <div className="social-icons">
-                    <a href="https://www.instagram.com/UndPixelGames" target="_blank" rel="noreferrer">
+                    <a href="https://www.instagram.com/UnburiedPixels" target="_blank" rel="noreferrer">
                         <i className="fa-brands fa-instagram"></i>
                     </a>
-                    <a href="https://x.com/UndPixelStudio" target="_blank" rel="noreferrer" className="social-icon">
-                        <i className="fa-brands fa-x-twitter"></i>
-                    </a>
-                    <a href="https://github.com/UndeadPixelGames" target="_blank" rel="noreferrer">
+                    <a href="https://github.com/LukzST" target="_blank" rel="noreferrer">
                         <i className="fa-brands fa-github"></i>
                     </a>
                 </div>
