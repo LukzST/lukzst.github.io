@@ -12,7 +12,7 @@ export default function Home() {
         <div className="home-wrapper">
             <header>
                 <Link to="/">
-                    <img src={iconLogo} alt="Undead Pixel Games" />
+                    <img src={iconLogo} alt="Unburied Pixels" />
                 </Link>
             </header>
 
@@ -42,7 +42,7 @@ export default function Home() {
                         <i className="fa-brands fa-github"></i>
                     </a>
                 </div>
-                <p>© 2026 Undead Pixel Games. All rights reserved.</p>
+                <p>© 2026 Unburied Pixels. All rights reserved.</p>
             </footer>
         </div>
         </>

@@ -9,12 +9,12 @@ export default function Contact() {
     return (
         <>
 
-        <title>Contact - Undead Pixel Games</title>
+        <title>Contact - Unburied Pixels</title>
 
         <div className="contact-page-wrapper">
             <header>
                 <Link to="/">
-                    <img src={iconLogo} alt="Undead Pixel Games" />
+                    <img src={iconLogo} alt="Unburied Pixels" />
                 </Link>
             </header>
 
@@ -92,7 +92,7 @@ export default function Contact() {
                     </a>
                 </div>
             </main>
-            
+
             <footer>
                 <div className="social-icons">
                     <a href="https://www.instagram.com/UndPixelGames" target="_blank" rel="noreferrer">
@@ -105,7 +105,7 @@ export default function Contact() {
                         <i className="fa-brands fa-github"></i>
                     </a>
                 </div>
-                <p>© 2026 Undead Pixel Games. All rights reserved.</p>
+                <p>© 2026 Unburied Pixels. All rights reserved.</p>
             </footer>
         </div>
         </>

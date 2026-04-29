@@ -7,13 +7,13 @@
    <!-- TODO: Get a job -->
    <img src="./src/assets/images/icon-21.png" width="100px" height="100px" style="border-radius: 100%" align="left">
    
-   ### `Undead Pixel Games Website`
+   ### `Unburied Pixels Website`
    
    ![Status](https://img.shields.io/badge/STATUS-OPERATIONAL-green)
    ![Version](https://img.shields.io/badge/VERSION-1.0-gold)
    ![OS](https://img.shields.io/badge/OS-WEB-red)
    
-   **Undead Pixel Games** - Website of the developers behind LIGHT and Pale Luna.
+   **Unburied Pixels** - Website of the developers behind LIGHT and Pale Luna.
    
    <div flex="true">
      <a href="https://lukzst.github.io">

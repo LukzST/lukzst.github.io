@@ -13,7 +13,7 @@ export default function GamesINSOMNIA() {
 
             <header>
                 <Link to="/" className="header">
-                    <img className="img" src={insomniaLogo} alt="Undead Pixel Games" />
+                    <img className="img" src={insomniaLogo} alt="Unburied Pixels" />
                 </Link>
             </header>
 
@@ -42,7 +42,7 @@ export default function GamesINSOMNIA() {
                     <p>Back to games page</p>
                 </Link>
                 <p className="copy">
-                    © 2026 Undead Pixel Games. All rights reserved.
+                    © 2026 Unburied Pixels. All rights reserved.
                 </p>
             </footer>
         </>

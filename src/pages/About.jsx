@@ -8,12 +8,12 @@ export default function About() {
     return (
         <>
 
-        <title>About - Undead Pixel Games</title>
+        <title>About - Unburied Pixels</title>
 
             <div className="about-page-wrapper">
                 <header>
                     <Link to="/">
-                        <img src={iconLogo} alt="Undead Pixel Games" />
+                        <img src={iconLogo} alt="Unburied Pixels" />
                     </Link>
                 </header>
 
@@ -25,7 +25,7 @@ export default function About() {
                     <div className="studio-mission">
                         <h2>Our Mission</h2>
                         <p>
-                            Undead Pixel Games is an independent game studio dedicated to creating 
+                            Unburied Pixels is an independent game studio dedicated to creating 
                             experiences that blend retro aesthetics with modern gameplay mechanics. 
                             We believe that great games don't need millions of dollars — just passion, 
                             creativity, and a relentless drive to push pixels.
@@ -95,7 +95,7 @@ export default function About() {
                             <i className="fa-brands fa-github"></i>
                         </a>
                     </div>
-                    <p>© 2026 Undead Pixel Games. All rights reserved.</p>
+                    <p>© 2026 Unburied Pixels. All rights reserved.</p>
                 </footer>
             </div>
         </>

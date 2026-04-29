@@ -8,12 +8,12 @@ export default function Games() {
     return (
         <>
 
-        <title>Games - Undead Pixel Games</title>
+        <title>Games - Unburied Pixels</title>
 
         <div className="games-page-wrapper">
             <header>
                 <Link to="/">
-                    <img src={iconLogo} alt="Undead Pixel Games" />
+                    <img src={iconLogo} alt="Unburied Pixels" />
                 </Link>
             </header>
             
@@ -76,7 +76,7 @@ export default function Games() {
                         <i className="fa-brands fa-github"></i>
                     </a>
                 </div>
-                <p>© 2026 Undead Pixel Games. All rights reserved.</p>
+                <p>© 2026 Unburied Pixels. All rights reserved.</p>
             </footer>
         </div>
         </>
