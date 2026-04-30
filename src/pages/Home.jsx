@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import useExternalStyle from "../hooks/useExternalStyle";
-import iconLogo from "../assets/images/icon.png";
-import lightImg from "../assets/images/LIGHT.png";
+import iconLogo from "../assets/images/logonew.png";
+import lightImg from "../assets/images/logonew2.png";
 
 export default function Home() {
     useExternalStyle('home.css');

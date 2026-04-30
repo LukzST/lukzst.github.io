@@ -13,6 +13,10 @@
 .home-wrapper {
     background-color: #281d2b;
     display: flex;
+    background-image: url('../images/backnew2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     flex-direction: column;
     min-height: 100vh;
     overflow-x: hidden;
@@ -57,25 +61,25 @@ header img {
 
 .action a {
     text-decoration: none;
-    color: #281d2b;
+    color: #000000;
     transition: all 0.1s ease;
     padding: 10px 30px;
     font-size: 1.2rem;
     font-weight: bold;
     text-transform: uppercase;
-    box-shadow: 0px 5px 0px 0px #5e6b18;
-    background-color: #a2ba28;
+    box-shadow: 0px 5px 0px 0px #000000;
+    background-color: #ffffff;
 }
 
 .action a:hover {
     transform: translateY(5px);
-    box-shadow: 0px 0px 0px 0px #5e6b18;
+    box-shadow: 0px 0px 0px 0px #ffffff;
 }
 
 .title {
     font-size: 6rem;
     max-width: 1200px;
-    color: #a2ba28;
+    color: #ffffff;
     text-align: center;
     display: flex;
     gap: 40px;
@@ -86,7 +90,7 @@ header img {
 }
 
 .title img {
-    width: 300px;
+    width: 500px;
 }
 
 footer {
@@ -105,7 +109,7 @@ footer {
 }
 
 .social-icons a {
-    color: #a2ba28;
+    color: #ffffff;
     font-size: 2rem;
     transition: all 0.2s ease;
 }
@@ -115,7 +119,7 @@ footer {
 }
 
 .social-icon svg {
-    fill: #a2ba28;
+    fill: #ffffff;
     transition: all 0.2s ease;
 }
 
@@ -124,7 +128,8 @@ footer {
 }
 
 footer p {
-    color: #a2ba28;
+    color: #ffffff;
+    text-shadow: 2px 2px 0px #000000;
     font-size: 1rem;
 }
 

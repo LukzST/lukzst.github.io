@@ -12,6 +12,11 @@
 
 .contact-page-wrapper {
     background-color: #281d2b;
+    background-image: url('../images/backnew2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -25,7 +30,6 @@ header {
     align-items: center;
     width: 100%;
     height: 70px;
-    background-color: #281d2b;
 }
 
 header img {
@@ -48,8 +52,9 @@ header img {
 
 .page-title h1 {
     font-size: 3rem;
-    color: #a2ba28;
+    color: #ffffff;
     text-transform: uppercase;
+    text-shadow: 3px 3px 0px #000000;
 }
 
 .contact-links {
@@ -60,23 +65,23 @@ header img {
     display: flex;
     align-items: center;
     gap: 30px;
-    background: #1e1520;
-    border: 4px solid #a2ba2844;
+    background: #000000; /* Fundo do card preto */
+    border: 2px solid #ffffff; /* Borda branca fina */
     padding: 20px 30px;
     margin-bottom: 20px;
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: none; /* Removido efeitos de hover/shadow */
 }
 
 .contact-row:hover {
-    border-color: #a2ba28;
+    border-color: #ffffff; /* Mantém a borda branca no hover */
 }
 
 .contact-icon {
     width: 60px;
     height: 60px;
-    background: #2a1f2e;
-    border: 3px solid #a2ba28;
+    background: #ffffff; /* Ícone com fundo branco */
+    border: 2px solid #000000;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -85,7 +90,7 @@ header img {
 
 .contact-icon i {
     font-size: 1.8rem;
-    color: #a2ba28;
+    color: #000000; /* Ícone preto */
 }
 
 .contact-info {
@@ -93,27 +98,22 @@ header img {
 }
 
 .contact-info h3 {
-    color: #a2ba28;
+    color: #ffffff;
     font-size: 1.3rem;
     text-transform: uppercase;
     margin-bottom: 5px;
 }
 
 .contact-info p {
-    color: #9e8da8;
+    color: #cccccc; /* Cinza claro para descrição */
     font-size: 0.8rem;
     text-transform: uppercase;
 }
 
 .contact-arrow {
-    color: #a2ba28;
+    color: #ffffff;
     font-size: 1.2rem;
-    opacity: 0.6;
-    transition: all 0.2s ease;
-}
-
-.contact-row:hover .contact-arrow {
-    opacity: 1;
+    opacity: 0.8;
 }
 
 footer {
@@ -132,7 +132,7 @@ footer {
 }
 
 .social-icons a {
-    color: #a2ba28;
+    color: #ffffff;
     font-size: 2rem;
     transition: all 0.2s ease;
 }
@@ -142,7 +142,7 @@ footer {
 }
 
 .social-icon svg {
-    fill: #a2ba28;
+    fill: #ffffff;
     transition: all 0.2s ease;
 }
 
@@ -151,9 +151,11 @@ footer {
 }
 
 footer p {
-    color: #a2ba28;
+    color: #ffffff;
+    text-shadow: 2px 2px 0px #000000;
     font-size: 1rem;
 }
+
 
 @media (max-width: 768px) {
     .contact-row {

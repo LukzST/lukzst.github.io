@@ -12,6 +12,11 @@
 
 .games-page-wrapper {
     background-color: #281d2b;
+    background-image: url('../images/backnew2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -25,7 +30,6 @@ header {
     align-items: center;
     width: 100%;
     height: 70px;
-    background-color: #281d2b;
 }
 
 header img {
@@ -41,15 +45,13 @@ header img {
     width: 100%;
 }
 
-.page-title {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
 .page-title h1 {
     font-size: 3rem;
-    color: #a2ba28;
+    color: #ffffff;
+    text-align: center;
     text-transform: uppercase;
+    margin-bottom: 50px;
+    text-shadow: 3px 3px 0px #000000; /* Sombra para ler melhor sobre a imagem */
 }
 
 .games-grid {
@@ -62,15 +64,15 @@ header img {
 }
 
 .game-card {
-    background: #1e1520;
+    background: #000000; /* Fundo do card preto */
     overflow: hidden;
-    transition: all 0.2s ease;
     width: 360px;
-    border: 4px solid #a2ba2844;
+    border: 2px solid #ffffff; /* Borda branca */
 }
 
+/* Sem hover de movimento ou sombra no card, apenas no botão */
 .game-card:hover {
-    border-color: #a2ba28;
+    transform: none;
 }
 
 .game-img-1 { background-image: url('../images/light-2.png'); }
@@ -85,8 +87,7 @@ header img {
     background-repeat: no-repeat;
     align-items: center;
     justify-content: center;
-    position: relative;
-    overflow: hidden;
+    border-bottom: 2px solid #ffffff;
 }
 
 .game-info {
@@ -94,28 +95,27 @@ header img {
 }
 
 .game-info h2 {
-    color: #a2ba28;
+    color: #ffffff;
     font-size: 1.8rem;
     text-transform: uppercase;
     margin-bottom: 12px;
 }
 
 .game-genre {
-    color: #9e8da8;
+    color: #000000;
     font-size: 0.8rem;
     text-transform: uppercase;
     margin-bottom: 15px;
     display: inline-block;
-    background: #2a1f2e;
+    background: #ffffff;
     padding: 4px 12px;
 }
 
 .game-description {
-    color: #d4cce0;
+    color: #ffffff;
     font-size: 0.9rem;
     line-height: 1.5;
     margin-bottom: 20px;
-    font-family: monospace;
 }
 
 .game-features {
@@ -127,22 +127,23 @@ header img {
 
 .feature {
     font-size: 0.7rem;
-    color: #a2ba28;
-    background: #2a1f2e;
+    color: #ffffff;
+    border: 1px solid #ffffff;
     padding: 4px 10px;
     text-transform: uppercase;
 }
 
+/* Mantendo o Box Shadow apenas no botão */
 .game-btn {
     display: inline-block;
     text-decoration: none;
-    background-color: #a2ba28;
-    color: #281d2b;
+    background-color: #ffffff;
+    color: #000000;
     padding: 12px 25px;
     font-size: 1rem;
     text-transform: uppercase;
     font-weight: bold;
-    box-shadow: 0px 5px 0px 0px #5e6b18;
+    box-shadow: 0px 5px 0px 0px #444444; 
     transition: all 0.1s ease;
     text-align: center;
     width: 100%;
@@ -150,7 +151,7 @@ header img {
 
 .game-btn:hover {
     transform: translateY(3px);
-    box-shadow: 0px 2px 0px 0px #5e6b18;
+    box-shadow: 0px 2px 0px 0px #444444;
 }
 
 footer {
@@ -160,7 +161,6 @@ footer {
     align-items: center;
     width: 100%;
     height: 150px;
-    background-color: #281d2b;
     gap: 15px;
 }
 
@@ -170,7 +170,7 @@ footer {
 }
 
 .social-icons a {
-    color: #a2ba28;
+    color: #ffffff;
     font-size: 2rem;
     transition: all 0.2s ease;
 }
@@ -180,7 +180,7 @@ footer {
 }
 
 .social-icon svg {
-    fill: #a2ba28;
+    fill: #ffffff;
     transition: all 0.2s ease;
 }
 
@@ -189,14 +189,13 @@ footer {
 }
 
 footer p {
-    color: #a2ba28;
+    color: #ffffff;
+    text-shadow: 2px 2px 0px #000000;
     font-size: 1rem;
 }
 
+
 @media (max-width: 768px) {
-    .games-grid {
-        gap: 30px;
-    }
     .game-card {
         width: 100%;
     }

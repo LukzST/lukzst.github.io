@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import useExternalStyle from "../hooks/useExternalStyle";
-import iconLogo from "../assets/images/icon.png";
+import iconLogo from "../assets/images/logonew.png";
 
 export default function Games() {
     useExternalStyle('games.css');
