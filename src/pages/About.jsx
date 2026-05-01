@@ -88,6 +88,9 @@ export default function About() {
                         <a href="https://www.instagram.com/UnburiedPixels" target="_blank" rel="noreferrer">
                             <i className="fa-brands fa-instagram"></i>
                         </a>
+                        <a href="https://twitter.com/UnburiedPixels" target="_blank" rel="noreferrer">
+                            <i className="fa-brands fa-x-twitter"></i>
+                        </a>
                         <a href="https://github.com/LukzST" target="_blank" rel="noreferrer">
                             <i className="fa-brands fa-github"></i>
                         </a>
