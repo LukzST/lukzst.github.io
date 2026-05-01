@@ -12,7 +12,7 @@
 
 .error-page-wrapper {
     background-color: #281d2b;
-    background-image: url('../images/backnew2.png');
+    background-image: url('../images/back3.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -116,7 +116,7 @@ footer {
 }
 
 .social-icons a:hover {
-    color: #ffffff;
+    color: #ff0000;
 }
 
 .social-icon svg {
@@ -125,7 +125,7 @@ footer {
 }
 
 .social-icon:hover svg {
-    fill: #ffffff;
+    fill: #ff0000;
 }
 
 footer p {

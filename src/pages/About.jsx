@@ -19,7 +19,7 @@ export default function About() {
 
                 <main className="about-container">
                     <div className="page-title">
-                        <h1>About Us</h1>
+                        <h1>About</h1>
                     </div>
 
                     <div className="studio-mission">
@@ -90,6 +90,12 @@ export default function About() {
                         </a>
                         <a href="https://github.com/LukzST" target="_blank" rel="noreferrer">
                             <i className="fa-brands fa-github"></i>
+                        </a>
+                        <a href="https://UnburiedPixels.itch.io" target="_blank" rel="noreferrer">
+                            <i className="fa-brands fa-itch-io"></i>
+                        </a>
+                        <a href="https://youtube.com/@UnburiedPixels" target="_blank" rel="noreferrer">
+                            <i className="fa-brands fa-youtube"></i>
                         </a>
                     </div>
                     <p>© 2026 Unburied Pixels. All rights reserved.</p>

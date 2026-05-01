@@ -72,6 +72,12 @@ export default function Games() {
                     <a href="https://github.com/LukzST" target="_blank" rel="noreferrer">
                         <i className="fa-brands fa-github"></i>
                     </a>
+                    <a href="https://UnburiedPixels.itch.io" target="_blank" rel="noreferrer">
+                        <i className="fa-brands fa-itch-io"></i>
+                    </a>
+                    <a href="https://youtube.com/@UnburiedPixels" target="_blank" rel="noreferrer">
+                        <i className="fa-brands fa-youtube"></i>
+                    </a>
                 </div>
                 <p>© 2026 Unburied Pixels. All rights reserved.</p>
             </footer>

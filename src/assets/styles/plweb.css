@@ -255,7 +255,7 @@ footer {
 }
 
 .social-icons a:hover {
-    color: #ffffff;
+    color: #ff0000;
 }
 
 .social-icon svg {
@@ -264,7 +264,7 @@ footer {
 }
 
 .social-icon:hover svg {
-    fill: #ffffff;
+    fill: #ff0000;
 }
 
 footer p {
