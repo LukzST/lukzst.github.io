@@ -13,7 +13,9 @@ export default function About() {
 
             <section className="about-container">
                 <div className="title">
-                    <img src={iconLogo} className="img" alt="" />
+                    <Link to={'/'}>
+                        <img src={iconLogo} className="img" alt="" />
+                    </Link>
                     <p className="tagline">
                         ABOUT UNBURIED PIXELS
                     </p>
@@ -101,7 +103,7 @@ export default function About() {
                         <i className="fab fa-youtube"></i>
                     </a>
                 </div>
-                <p>© 2026 UNBURIED PIXELS. ALL RIGHTS RESERVED.</p>
+                <p>© 2026 Unburied Pixels. All rights reserved.</p>
             </footer>
         </div>
     );

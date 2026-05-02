@@ -54,6 +54,12 @@ body {
     margin-top: 2rem;
 }
 
+.title a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .contact-container {
     flex: 1;
     max-width: 900px;
@@ -191,8 +197,7 @@ body {
 
 .pixel-footer p {
     color: #e0e0e0;
-    font-size: 0.75rem;
-    letter-spacing: 1px;
+     font-size: 1rem;
 }
 
 @keyframes blink {

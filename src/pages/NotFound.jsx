@@ -2,22 +2,24 @@ import { Link } from "react-router-dom";
 import useExternalStyle from "../hooks/useExternalStyle";
 
 export default function NotFound() {
-    useExternalStyle('insomnia2.css');
+    useExternalStyle('notfound.css');
 
     return (
-        <div className="error-page-wrapper">
-            <title>Page Not Found</title>
+        <div className="home-wrapper">
+            <header className="pixel-header">
+            </header>
 
-            <div className="error-container">
+            <section className="error-container">
+
                 <div className="error-content">
                     <div className="error-code">404</div>
                     <div className="error-glitch">PAGE NOT FOUND</div>
                     
                     <div className="error-pixel">
-                        <div className="pixel"></div>
-                        <div className="pixel"></div>
-                        <div className="pixel"></div>
-                        <div className="pixel"></div>
+                        <span className="pixel-block">■</span>
+                        <span className="pixel-block">■</span>
+                        <span className="pixel-block">■</span>
+                        <span className="pixel-block">■</span>
                     </div>
 
                     <div className="error-message">
@@ -26,27 +28,27 @@ export default function NotFound() {
                     </div>
 
                     <div className="action">
-                        <Link to="/" className="error-btn">Return to Light</Link>
+                        <Link to="/" className="pixel-btn">RETURN TO LIGHT</Link>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <footer>
+            <footer className="pixel-footer">
                 <div className="social-icons">
-                    <a href="https://www.instagram.com/UnburiedPixels" target="_blank" rel="noreferrer">
-                        <i className="fa-brands fa-instagram"></i>
+                    <a href="https://www.instagram.com/UnburiedPixels" target="_blank" rel="noreferrer" className="social-link">
+                        <i className="fab fa-instagram"></i>
                     </a>
-                    <a href="https://twitter.com/UnburiedPixels" target="_blank" rel="noreferrer">
-                        <i className="fa-brands fa-x-twitter"></i>
+                    <a href="https://twitter.com/UnburiedPixels" target="_blank" rel="noreferrer" className="social-link">
+                        <i className="fab fa-x-twitter"></i>
                     </a>
-                    <a href="https://github.com/LukzST" target="_blank" rel="noreferrer">
-                        <i className="fa-brands fa-github"></i>
+                    <a href="https://github.com/LukzST" target="_blank" rel="noreferrer" className="social-link">
+                        <i className="fab fa-github"></i>
                     </a>
-                    <a href="https://UnburiedPixels.itch.io" target="_blank" rel="noreferrer">
-                        <i className="fa-brands fa-itch-io"></i>
+                    <a href="https://UnburiedPixels.itch.io" target="_blank" rel="noreferrer" className="social-link">
+                        <i className="fab fa-itch-io"></i>
                     </a>
-                    <a href="https://youtube.com/@UnburiedPixels" target="_blank" rel="noreferrer">
-                        <i className="fa-brands fa-youtube"></i>
+                    <a href="https://youtube.com/@UnburiedPixels" target="_blank" rel="noreferrer" className="social-link">
+                        <i className="fab fa-youtube"></i>
                     </a>
                 </div>
                 <p>© 2026 Unburied Pixels. All rights reserved.</p>

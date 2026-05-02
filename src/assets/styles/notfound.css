@@ -54,130 +54,55 @@ body {
     margin-top: 2rem;
 }
 
-.title a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.games-container {
+.error-container {
     flex: 1;
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 3rem 1rem;
-    width: 100%;
-}
-
-.tagline {
-    color: #c0c0c0;
-    font-size: 1.5rem;
-    letter-spacing: 2px;
-    max-width: 1200px;
-    display: inline-block;
-    margin-top: 2rem;
-}
-
-.games-grid {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 50px;
-    margin: 4rem 0;
-}
-
-.game-card {
-    background: transparent;
-    overflow: hidden;
-    width: 360px;
-    border: 2px solid #2a2a2a;
-    transition: all 0.1s step-end;
-}
-
-.game-card:hover {
-    border-color: #3a6ea5;
-}
-
-.game-img-1, .game-img-3 {
-    width: 100%;
-    height: 260px;
-    display: flex;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-bottom: 2px solid #2a2a2a;
+    padding: 3rem 1rem;
 }
 
-.game-img-1 { 
-    background-image: url('../images/light-2.png'); 
-}
-
-.game-img-3 { 
-    background-image: url('../images/i.png'); 
-}
-
-.game-info {
-    padding: 25px 22px;
-}
-
-.game-info h2 {
-    color: #c0c0c0;
-    font-size: 1.5rem;
-    letter-spacing: 2px;
-    margin-bottom: 12px;
-}
-
-.game-genre {
-    color: #0a0a0a;
-    font-size: 0.7rem;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
-    display: inline-block;
-    background: #3a6ea5;
-    padding: 4px 12px;
-}
-
-.game-description {
-    color: #c0c0c0;
-    font-size: 0.85rem;
-    line-height: 1.5;
-    margin-bottom: 20px;
-}
-
-.game-features {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 25px;
-    flex-wrap: wrap;
-}
-
-.feature {
-    font-size: 0.65rem;
-    color: #5a5a5a;
-    border: 1px solid #2a2a2a;
-    padding: 4px 10px;
-    letter-spacing: 1px;
-}
-
-.game-btn {
-    display: inline-block;
-    text-decoration: none;
-    background: transparent;
-    color: #c0c0c0;
-    padding: 12px 25px;
-    font-size: 0.85rem;
-    letter-spacing: 2px;
-    border: 2px solid #2a2a2a;
-    transition: all 0.1s step-end;
+.error-content {
     text-align: center;
+    max-width: 600px;
     width: 100%;
+    padding: 2rem;
 }
 
-.game-btn:hover {
-    background: #ffffff57;
-    color: #ffffff;
-    border-color: #8a8a8a;
+.error-code {
+    font-size: 8rem;
+    color: #3a6ea5;
+    line-height: 1;
+    letter-spacing: 8px;
+}
+
+.error-glitch {
+    font-size: 2rem;
+    color: #c0c0c0;
+    margin-bottom: 20px;
+    letter-spacing: 4px;
+}
+
+.error-pixel {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 30px 0;
+}
+
+.pixel-block {
+    color: #3a6ea5;
+    font-size: 1.5rem;
+    animation: blink 2s step-end infinite;
+}
+
+.error-message {
+    color: #c0c0c0;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
 }
 
 .action {
@@ -185,7 +110,7 @@ body {
     gap: 2rem;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 3rem 0;
+    margin-top: 1rem;
 }
 
 .pixel-btn {
@@ -198,11 +123,6 @@ body {
     transition: all 0.1s step-end;
     letter-spacing: 2px;
 }
-
-.img {
-    max-width: 40%;
-}
-
 
 .pixel-btn:hover {
     background: #ffffff57;
@@ -237,20 +157,29 @@ body {
 
 .pixel-footer p {
     color: #e0e0e0;
-     font-size: 1rem;
+    font-size: 1rem;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 @media (max-width: 768px) {
-    .tagline {
-        font-size: 0.9rem;
+    .error-code { 
+        font-size: 5rem; 
     }
     
-    .game-card {
-        width: 100%;
+    .error-glitch { 
+        font-size: 1.2rem; 
     }
     
-    .game-info h2 {
-        font-size: 1.2rem;
+    .error-content { 
+        padding: 1.5rem; 
+    }
+    
+    .error-message {
+        font-size: 0.85rem;
     }
     
     .pixel-btn {

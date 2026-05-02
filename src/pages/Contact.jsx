@@ -13,7 +13,9 @@ export default function Contact() {
 
             <section className="contact-container">
                 <div className="title">
-                    <img src={iconLogo} className="img" alt="" />
+                    <Link to={'/'}>
+                        <img src={iconLogo} className="img" alt="" />
+                    </Link>
                     <p className="tagline">
                         GET IN TOUCH
                     </p>
@@ -96,7 +98,7 @@ export default function Contact() {
                         <i className="fab fa-youtube"></i>
                     </a>
                 </div>
-                <p>© 2026 UNBURIED PIXELS. ALL RIGHTS RESERVED.</p>
+                <p>© 2026 Unburied Pixels. All rights reserved.</p>
             </footer>
         </div>
     );

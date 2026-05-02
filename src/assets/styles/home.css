@@ -139,8 +139,7 @@ body {
 
 .pixel-footer p {
     color: #e0e0e0;
-    font-size: 0.75rem;
-    letter-spacing: 1px;
+     font-size: 1rem;
 }
 
 @keyframes blink {

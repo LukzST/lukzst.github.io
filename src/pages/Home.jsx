@@ -45,7 +45,7 @@ export default function Home() {
                         <i className="fab fa-youtube"></i>
                     </a>
                 </div>
-                <p>© 2026 UNBURIED PIXELS. ALL RIGHTS RESERVED.</p>
+                <p>© 2026 Unburied Pixels. All rights reserved.</p>
             </footer>
         </div>
     );
