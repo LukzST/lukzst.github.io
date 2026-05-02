@@ -159,11 +159,14 @@ body {
     .action {
         gap: 1rem;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
     
     .pixel-btn {
-        padding: 0.5rem 1rem;
-        font-size: 0.85rem;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        width: 70%;
     }
     
     .social-link {
