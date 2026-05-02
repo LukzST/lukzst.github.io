@@ -1,9 +1,40 @@
 import { Link } from "react-router-dom";
 import useExternalStyle from "../hooks/useExternalStyle";
 import iconLogo from "../assets/images/logonew2.png";
+import { useState } from "react";
 
 export default function Contact() {
     useExternalStyle('contact.css');
+
+    const [showEmailPopup, setShowEmailPopup] = useState(false);
+
+    const handleEmailClick = (e) => {
+        e.preventDefault();
+        setShowEmailPopup(true);
+    };
+
+    const closePopup = () => {
+        setShowEmailPopup(false);
+    };
+
+    const copyEmail = () => {
+        navigator.clipboard.writeText('contatosadberry@gmail.com');
+        alert('Email copied to clipboard!');
+    };
+
+    const openEmailClient = () => {
+        const width = 800;
+        const height = 600;
+        const left = (window.screen.width - width) / 2;
+        const top = (window.screen.height - height) / 2;
+        
+        window.open(
+            'mailto:contatosadberry@gmail.com',
+            '_blank',
+            `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`
+        );
+        closePopup();
+    };
 
     return (
         <div className="home-wrapper">
@@ -22,7 +53,7 @@ export default function Contact() {
                 </div>
 
                 <div className="contact-links">
-                    <a href="mailto:contatosadberry@gmail.com" className="contact-row">
+                    <a href="#" onClick={handleEmailClick} className="contact-row">
                         <div className="contact-icon">
                             <i className="fas fa-envelope"></i>
                         </div>
@@ -79,6 +110,31 @@ export default function Contact() {
                     <Link to="/" className="pixel-btn">BACK TO HOME</Link>
                 </div>
             </section>
+
+            {showEmailPopup && (
+                <div className="email-popup-overlay" onClick={closePopup}>
+                    <div className="email-popup" onClick={(e) => e.stopPropagation()}>
+                        <div className="popup-header">
+                            <h3>CONTACT VIA EMAIL</h3>
+                            <button className="popup-close" onClick={closePopup}>×</button>
+                        </div>
+                        <div className="popup-content">
+                            <p>How would you like to proceed?</p>
+                            <div className="popup-buttons">
+                                <button onClick={openEmailClient} className="popup-btn">
+                                    OPEN EMAIL CLIENT
+                                </button>
+                                <button onClick={copyEmail} className="popup-btn">
+                                    COPY EMAIL ADDRESS
+                                </button>
+                            </div>
+                            <div className="popup-email">
+                                <span>contatosadberry@gmail.com</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
 
             <footer className="pixel-footer">
                 <div className="social-icons">

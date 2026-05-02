@@ -87,10 +87,11 @@ body {
     gap: 30px;
     background: transparent;
     border: 2px solid #2a2a2a;
+    background-color: #0a0a0a;
     padding: 20px 30px;
     margin-bottom: 20px;
     text-decoration: none;
-    transition: all 0.1s step-end;
+    transition: all 0.1s ease;
 }
 
 .contact-row:hover {
@@ -133,7 +134,7 @@ body {
 .contact-arrow {
     color: #2a2a2a;
     font-size: 1.2rem;
-    transition: all 0.1s step-end;
+    transition: all 0.1s ease;
 }
 
 .img {
@@ -159,13 +160,13 @@ body {
     font-size: 1rem;
     padding: 0.75rem 1.5rem;
     border: 2px solid #2a2a2a;
-    background: transparent;
-    transition: all 0.1s step-end;
+    background-color: #0a0a0a;
+    transition: all 0.1s ease;
     letter-spacing: 2px;
 }
 
 .pixel-btn:hover {
-    background: #ffffff57;
+    background-color: #0a0a0a;
     color: #ffffff;
     border-color: #8a8a8a;
 }
@@ -188,7 +189,7 @@ body {
     color: #c0c0c0;
     text-decoration: none;
     font-size: 2rem;
-    transition: all 0.1s step-end;
+    transition: all 0.1s ease;
 }
 
 .social-link:hover {
@@ -198,6 +199,113 @@ body {
 .pixel-footer p {
     color: #e0e0e0;
      font-size: 1rem;
+}
+
+.email-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.email-popup {
+    background: #0a0a0a;
+    border: 2px solid #2a2a2a;
+    max-width: 400px;
+    width: 90%;
+    padding: 2rem;
+    position: relative;
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #2a2a2a;
+    padding-bottom: 0.75rem;
+}
+
+.popup-header h3 {
+    color: #3a6ea5;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+}
+
+.popup-close {
+    background: transparent;
+    border: none;
+    color: #c0c0c0;
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: all 0.1s ease;
+}
+
+.popup-close:hover {
+    color: #3a6ea5;
+}
+
+.popup-content p {
+    color: #c0c0c0;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.popup-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.popup-btn {
+    background: transparent;
+    color: #c0c0c0;
+    border: 2px solid #2a2a2a;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    font-family: 'retropix', monospace;
+}
+
+.popup-btn:hover {
+    background: #ffffff57;
+    color: #ffffff;
+    border-color: #8a8a8a;
+}
+
+.popup-email {
+    text-align: center;
+    padding: 1rem;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+}
+
+.popup-email span {
+    color: #3a6ea5;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    .popup-buttons {
+        flex-direction: column;
+    }
+    
+    .popup-btn {
+        width: 100%;
+    }
 }
 
 @keyframes blink {
