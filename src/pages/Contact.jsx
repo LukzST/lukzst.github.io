@@ -1,26 +1,22 @@
 import { Link } from "react-router-dom";
 import useExternalStyle from "../hooks/useExternalStyle";
-
-import iconLogo from "../assets/images/logonew.png";
+import iconLogo from "../assets/images/logonew2.png";
 
 export default function Contact() {
     useExternalStyle('contact.css');
 
     return (
-        <>
-
-        <title>Contact - Unburied Pixels</title>
-
-        <div className="contact-page-wrapper">
-            <header>
-                <Link to="/">
-                    <img src={iconLogo} alt="Unburied Pixels" />
-                </Link>
+        <div className="home-wrapper">
+            <header className="pixel-header">
+ 
             </header>
 
-            <main className="contact-container">
-                <div className="page-title">
-                    <h1>Contact</h1>
+            <section className="contact-container">
+                <div className="title">
+                    <img src={iconLogo} className="img" alt="" />
+                    <p className="tagline">
+                        GET IN TOUCH
+                    </p>
                 </div>
 
                 <div className="contact-links">
@@ -29,7 +25,7 @@ export default function Contact() {
                             <i className="fas fa-envelope"></i>
                         </div>
                         <div className="contact-info">
-                            <h3>Email</h3>
+                            <h3>EMAIL</h3>
                             <p>contatosadberry@gmail.com</p>
                         </div>
                         <div className="contact-arrow">
@@ -42,7 +38,7 @@ export default function Contact() {
                             <i className="fab fa-instagram"></i>
                         </div>
                         <div className="contact-info">
-                            <h3>Instagram</h3>
+                            <h3>INSTAGRAM</h3>
                             <p>@UnburiedPixels</p>
                         </div>
                         <div className="contact-arrow">
@@ -55,7 +51,7 @@ export default function Contact() {
                             <i className="fab fa-github"></i>
                         </div>
                         <div className="contact-info">
-                            <h3>GitHub</h3>
+                            <h3>GITHUB</h3>
                             <p>/LukzST</p>
                         </div>
                         <div className="contact-arrow">
@@ -68,7 +64,7 @@ export default function Contact() {
                             <i className="fab fa-itch-io"></i>
                         </div>
                         <div className="contact-info">
-                            <h3>Itch.io</h3>
+                            <h3>ITCH.IO</h3>
                             <p>UnburiedPixels.itch.io</p>
                         </div>
                         <div className="contact-arrow">
@@ -76,29 +72,32 @@ export default function Contact() {
                         </div>
                     </a>
                 </div>
-            </main>
 
-            <footer>
+                <div className="action">
+                    <Link to="/" className="pixel-btn">BACK TO HOME</Link>
+                </div>
+            </section>
+
+            <footer className="pixel-footer">
                 <div className="social-icons">
-                    <a href="https://www.instagram.com/UnburiedPixels" target="_blank" rel="noreferrer">
-                        <i className="fa-brands fa-instagram"></i>
+                    <a href="https://www.instagram.com/UnburiedPixels" target="_blank" rel="noreferrer" className="social-link">
+                        <i className="fab fa-instagram"></i>
                     </a>
-                    <a href="https://twitter.com/UnburiedPixels" target="_blank" rel="noreferrer">
-                        <i className="fa-brands fa-x-twitter"></i>
+                    <a href="https://twitter.com/UnburiedPixels" target="_blank" rel="noreferrer" className="social-link">
+                        <i className="fab fa-x-twitter"></i>
                     </a>
-                    <a href="https://github.com/LukzST" target="_blank" rel="noreferrer">
-                        <i className="fa-brands fa-github"></i>
+                    <a href="https://github.com/LukzST" target="_blank" rel="noreferrer" className="social-link">
+                        <i className="fab fa-github"></i>
                     </a>
-                    <a href="https://UnburiedPixels.itch.io" target="_blank" rel="noreferrer">
-                        <i className="fa-brands fa-itch-io"></i>
+                    <a href="https://UnburiedPixels.itch.io" target="_blank" rel="noreferrer" className="social-link">
+                        <i className="fab fa-itch-io"></i>
                     </a>
-                    <a href="https://youtube.com/@UnburiedPixels" target="_blank" rel="noreferrer">
-                        <i className="fa-brands fa-youtube"></i>
+                    <a href="https://youtube.com/@UnburiedPixels" target="_blank" rel="noreferrer" className="social-link">
+                        <i className="fab fa-youtube"></i>
                     </a>
                 </div>
-                <p>© 2026 Unburied Pixels. All rights reserved.</p>
+                <p>© 2026 UNBURIED PIXELS. ALL RIGHTS RESERVED.</p>
             </footer>
         </div>
-        </>
     );
 }
