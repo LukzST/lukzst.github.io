@@ -249,6 +249,10 @@ body {
     .game-card {
         width: 100%;
     }
+
+    .img {
+        max-width: 60%;
+    }
     
     .game-info h2 {
         font-size: 1.2rem;
