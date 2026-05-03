@@ -78,11 +78,30 @@ main p {
     padding: 2px;
     border: 2px solid #000000;
 }
+.link-4 {
+    text-decoration: none;
+    color: #ffffff;
+    transition: all 0.1s ease;
+    width: 160px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 1rem;
+    text-transform: uppercase;
+    background-color: #000000;
+    padding: 2px;
+    border: 2px solid #000000;
+}
 
 .border {
     border: 2px solid #ffffff;
     padding: 10px;
     width: 100px;
+}
+.border2 {
+    border: 2px solid #ffffff;
+    padding: 10px;
+    width: 150px;
 }
 
 .link:hover {
@@ -90,8 +109,16 @@ main p {
     color:#000;
     font-weight: bold;
 }
+.link-4:hover {
+    background-color: #fff;
+    color:#000;
+    font-weight: bold;
+}
 
 .border:hover {
+    border-color: #000;
+}
+.border2:hover {
     border-color: #000;
 }
 
