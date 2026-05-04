@@ -24,7 +24,7 @@ export default function GamesINSOMNIA() {
                     <a href="https://UnburiedPixels.itch.io/insomnia" target="_blank" className="link" rel="noreferrer">
                         <div className="border">itch.io</div>
                     </a>
-                    <a href="https://media.githubusercontent.com/media/LukzST/INSOMNIA/refs/heads/main/files/0.0.2/insomnia_v002a_setup.exe" target="_blank" className="link-4" rel="noreferrer">
+                    <a href="https://media.githubusercontent.com/media/LuxJson/INSOMNIA/refs/heads/main/files/0.0.2/insomnia_v002a_setup.exe" target="_blank" className="link-4" rel="noreferrer">
                         <div className="border2">Download Alpha</div>
                     </a>
                     <Link to="/games/insomnia/404.html" className="link">

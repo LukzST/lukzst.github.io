@@ -16,15 +16,15 @@
    **Unburied Pixels** - Website of the developers behind LIGHT and Pale Luna.
    
    <div flex="true">
-     <a href="https://lukzst.github.io">
+     <a href="https://LuxJson.github.io">
        Check Out
      </a>
      •
-     <a href="https://lukzst.github.io/games">
+     <a href="https://LuxJson.github.io/games">
        Games
      </a>
      •
-     <a href="https://github.com/LukzST/lukzst.github.io/deployments">
+     <a href="https://github.com/LuxJson/LuxJson.github.io/deployments">
        Release Notes
      </a>
    </div>
@@ -32,4 +32,4 @@
    
    ### Contributing
    
-   If you'd like to report a bug, please do so on our [GitHub Issues page](https://github.com/lukzst/lukzst.github.io/issues/new/choose)
+   If you'd like to report a bug, please do so on our [GitHub Issues page](https://github.com/LuxJson/LuxJson.github.io/issues/new/choose)

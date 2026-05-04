@@ -79,13 +79,13 @@ export default function Contact() {
                         </div>
                     </a>
 
-                    <a href="https://github.com/LukzST" target="_blank" rel="noreferrer" className="contact-row">
+                    <a href="https://github.com/LuxJson" target="_blank" rel="noreferrer" className="contact-row">
                         <div className="contact-icon">
                             <i className="fab fa-github"></i>
                         </div>
                         <div className="contact-info">
                             <h3>GITHUB</h3>
-                            <p>/LukzST</p>
+                            <p>/LuxJson</p>
                         </div>
                         <div className="contact-arrow">
                             <i className="fas fa-arrow-right"></i>
@@ -144,7 +144,7 @@ export default function Contact() {
                     <a href="https://twitter.com/UnburiedPixels" target="_blank" rel="noreferrer" className="social-link">
                         <i className="fab fa-x-twitter"></i>
                     </a>
-                    <a href="https://github.com/LukzST" target="_blank" rel="noreferrer" className="social-link">
+                    <a href="https://github.com/LuxJson" target="_blank" rel="noreferrer" className="social-link">
                         <i className="fab fa-github"></i>
                     </a>
                     <a href="https://UnburiedPixels.itch.io" target="_blank" rel="noreferrer" className="social-link">

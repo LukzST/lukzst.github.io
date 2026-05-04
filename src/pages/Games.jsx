@@ -76,7 +76,7 @@ export default function Games() {
                     <a href="https://twitter.com/UnburiedPixels" target="_blank" rel="noreferrer" className="social-link">
                         <i className="fab fa-x-twitter"></i>
                     </a>
-                    <a href="https://github.com/LukzST" target="_blank" rel="noreferrer" className="social-link">
+                    <a href="https://github.com/LuxJson" target="_blank" rel="noreferrer" className="social-link">
                         <i className="fab fa-github"></i>
                     </a>
                     <a href="https://UnburiedPixels.itch.io" target="_blank" rel="noreferrer" className="social-link">

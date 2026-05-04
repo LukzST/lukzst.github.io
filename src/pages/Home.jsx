@@ -86,7 +86,7 @@ export default function Home() {
             newOutput.push("  https://twitter.com/UnburiedPixels");
             newOutput.push("");
             newOutput.push("GITHUB:");
-            newOutput.push("  https://github.com/LukzST");
+            newOutput.push("  https://github.com/LuxJson");
             newOutput.push("");
             newOutput.push("ITCH.IO:");
             newOutput.push("  https://UnburiedPixels.itch.io");
@@ -209,7 +209,7 @@ export default function Home() {
                     <a href="https://twitter.com/UnburiedPixels" target="_blank" rel="noreferrer" className="social-link">
                         <i className="fab fa-x-twitter"></i>
                     </a>
-                    <a href="https://github.com/LukzST" target="_blank" rel="noreferrer" className="social-link">
+                    <a href="https://github.com/LuxJson" target="_blank" rel="noreferrer" className="social-link">
                         <i className="fab fa-github"></i>
                     </a>
                     <a href="https://UnburiedPixels.itch.io" target="_blank" rel="noreferrer" className="social-link">
