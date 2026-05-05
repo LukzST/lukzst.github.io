@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
 import insomniaLogo from "../../assets/images/i2.png";
-import insomniaTrailer from "../../assets/videos/INSOMNIA - Official Reveal Trailer.mp4";
+import trailer1 from "../../assets/videos/trailer.mp4";
+import trailer2 from "../../assets/videos/trailer2.mp4";
 import useExternalStyle from "../../hooks/useExternalStyle";
 
 export default function GamesINSOMNIA() {
     useExternalStyle('insomnia.css');
+
+    const hoje = new Date();
+    const dataStoryTrailer = new Date('2026-10-31T12:00:00-03:00');
+    const mostrarStoryTrailer = hoje >= dataStoryTrailer;
     
     return (
         <>
@@ -33,10 +38,26 @@ export default function GamesINSOMNIA() {
                 </div>
 
                 <div className="trailer">
+                    <h2>
+                        Official Reveal Trailer - 01.05.2026
+                    </h2>
                     <video controls width="50%">
-                        <source src={insomniaTrailer} type="video/mp4" />
+                        <source src={trailer1} type="video/mp4" />
                         Seu navegador não suporta vídeos.
                     </video>
+                    
+                    {mostrarStoryTrailer && (
+                        <>
+                            <h2 style={{ marginTop: '2rem' }}>
+                                Official Story Trailer - 31.10.2026
+                            </h2>
+                            <video controls width="50%">
+                                <source src={trailer2} type="video/mp4" />
+                                Seu navegador não suporta vídeos.
+                            </video>
+                        </>
+                    )}
+
                 </div>
             </main>
 
