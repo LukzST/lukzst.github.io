@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import insomniaLogo from "../../assets/images/i2.png";
-import trailer1 from "../../assets/videos/trailer.mp4";
+import trailer1 from "../../assets/videos/trailer1.mp4";
 import trailer2 from "../../assets/videos/trailer2.mp4";
 import useExternalStyle from "../../hooks/useExternalStyle";
 
