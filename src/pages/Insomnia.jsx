@@ -18,43 +18,58 @@ import dreamsMusic from "../assets/music/dreams.mp3";
 export default function Insomnia() {
     useExternalStyle('insomnia.css');
 
-    const [downloadUrl, setDownloadUrl] = useState('https://githubusercontent.com');
-    const [isMuted, setIsMuted] = useState(true);
+    const [downloadUrl, setDownloadUrl] = useState('https://github.com/luxjson/INSOMNIA/releases/latest');
     const audioRef = useRef(null);
+    const [isPlaying, setIsPlaying] = useState(false);
 
     const toggleMute = () => {
         const audio = audioRef.current;
-        if (audio.paused) {
-            audio.play().catch(() => {});
+        if (audio) {
+            if (audio.paused) {
+                audio.play().catch(e => console.log(e));
+                setIsPlaying(true);
+            } else {
+                audio.pause();
+                setIsPlaying(false);
+            }
         }
-        audio.muted = !audio.muted;
-        setIsMuted(audio.muted);
     };
 
     useEffect(() => {
-        async function fetchLatestVersion() {
-            try {
-                const response = await fetch('https://github.com');
-                const data = await response.json();
-
-                if (Array.isArray(data)) {
-                    const folders = data
-                        .filter(item => item.type === 'dir')
-                        .sort((a, b) => b.name.localeCompare(a.name, undefined, { numeric: true }));
-
-                    if (folders.length > 0) {
-                        const latestVersion = folders[0].name;
-                        const fileVersion = latestVersion.replace(/\./g, ''); 
-                        const newUrl = `https://githubusercontent.com{latestVersion}/insomnia_v${fileVersion}a_setup.exe`;
-                        setDownloadUrl(newUrl);
-                    }
-                }
-            } catch (error) {
-                console.error(error);
+        const audio = audioRef.current;
+        if (audio) {
+            audio.volume = 0.5;
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    setIsPlaying(true);
+                }).catch(e => {
+                    console.log("Browser bloqueou autoplay:", e);
+                    setIsPlaying(false);
+                });
             }
         }
-        fetchLatestVersion();
     }, []);
+
+    useEffect(() => {
+    async function fetchLatestVersion() {
+        try {
+            const response = await fetch('https://api.github.com/repos/luxjson/INSOMNIA/releases/latest');
+            const data = await response.json();
+            
+            if (data && data.assets && data.assets.length > 0) {
+                const exeAsset = data.assets.find(asset => asset.name.endsWith('.exe'));
+                if (exeAsset) {
+                    setDownloadUrl(exeAsset.browser_download_url);
+                }
+            }
+        } catch (error) {
+            console.error(error);
+            setDownloadUrl('https://github.com/luxjson/INSOMNIA/releases/latest');
+        }
+    }
+    fetchLatestVersion();
+}, []);
 
     const hoje = new Date();
     const dataStoryTrailer = new Date('2026-10-31T12:00:00-03:00');
@@ -64,13 +79,9 @@ export default function Insomnia() {
     
     return (
         <>
-            <audio ref={audioRef} src={dreamsMusic} loop muted={isMuted} />
+            <audio ref={audioRef} src={dreamsMusic} loop />
 
-            <div style={{ position: 'fixed', bottom: '20px', right: '20px', display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '8px' }}>
-    
-                <p style={{ margin: 0, fontFamily: 'cursive', fontSize: '14px', fontWeight: 'bold' }}>
-                    Listen to Dreams now!
-                </p>
+            <div style={{ position: 'fixed', bottom: '20px', right: '20px', display: 'flex', flexDirection: 'row', alignItems: 'flex-end', gap: '8px' }}>
 
                 <button 
                     id="mute-btn" 
@@ -79,7 +90,7 @@ export default function Insomnia() {
                     style={{ position: 'static' }} 
                 >
                     <span id="icon">
-                        <i className={`fas ${isMuted ? 'fa-volume-mute' : 'fa-volume-up'}`}></i>
+                        <i className={`fas ${isPlaying ? 'fa-volume-up' : 'fa-volume-mute'}`}></i>
                     </span>
                 </button>
             </div>
@@ -118,7 +129,7 @@ export default function Insomnia() {
                             <a href={downloadUrl} target="_blank" className="link-4" rel="noreferrer">
                                 <div className="border2">Download Alpha</div>
                             </a>
-                            <Link to="/games/insomnia/404.html" className="link">
+                            <Link to="/games/insomnia/preorder/steam" className="link">
                                 <div className="border">Steam</div>
                             </Link>
                         </>    
@@ -129,7 +140,7 @@ export default function Insomnia() {
                             <a href={downloadUrl} target="_blank" className="link-4" rel="noreferrer">
                                 <div className="border2">Download Beta</div>
                             </a>
-                            <Link to="/games/insomnia/preorders" className="link-4">
+                            <Link to="/games/insomnia/preorder" className="link-4">
                                 <div className="border2">Pre-order</div>
                             </Link>
                         </>    
@@ -137,7 +148,7 @@ export default function Insomnia() {
                     )}
                     {mostrarLaunch && mostrarStoryTrailer && (
                         <>
-                            <Link to="/games/insomnia/downloads" className="link" rel="noreferrer">
+                            <Link to="/games/insomnia/download" className="link" rel="noreferrer">
                                 <div className="border">Download</div>
                             </Link>
                             <a href="https://github.com/luxjson/INSOMNIA/releases/latest" target="_blank" className="link-4" rel="noreferrer">
