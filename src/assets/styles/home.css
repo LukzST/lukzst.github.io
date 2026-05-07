@@ -215,6 +215,6 @@ body {
 @media (max-width: 1024px) {
     .hero-body { grid-template-columns: 1fr; }
     .info-cell { border-right: none; border-bottom: 1px solid var(--line-color); }
-    .hero-title { letter-spacing: -8px; }
+    .hero-title { letter-spacing: -6px; }
     .footer-grid { grid-template-columns: 1fr; gap: 50px; }
 }
