@@ -1,57 +1,69 @@
 import { Link } from "react-router-dom";
 import useExternalStyle from "../hooks/useExternalStyle";
+import iconLogo from "../assets/images/avc.png";
 
 export default function NotFound() {
     useExternalStyle('notfound.css');
 
     return (
-        <div className="home-wrapper">
-            <header className="pixel-header">
-            </header>
-
-            <section className="error-container">
-
-                <div className="error-content">
-                    <div className="error-code">404</div>
-                    <div className="error-glitch">PAGE NOT FOUND</div>
-                    
-                    <div className="error-pixel">
-                        <span className="pixel-block">■</span>
-                        <span className="pixel-block">■</span>
-                        <span className="pixel-block">■</span>
-                        <span className="pixel-block">■</span>
+        <div className="ubp-editorial-wrapper">
+            <nav className="ubp-nav">
+                <div className="nav-container">
+                    <div className="brand">
+                        <Link to="/">
+                            <img src={iconLogo} alt="Unburied Pixels" />
+                        </Link>
                     </div>
-
-                    <div className="error-message">
-                        The page you're looking for has been consumed by the Fade.<br />
-                        Maybe it never existed. Or maybe it's waiting in the darkness.
-                    </div>
-
-                    <div className="action">
-                        <Link to="/" className="pixel-btn">RETURN TO LIGHT</Link>
+                    <div className="nav-links">
+                        <Link to="/games">PROJECTS</Link>
+                        <Link to="/about">ABOUT</Link>
+                        <Link to="/contact">CONTACT</Link>
                     </div>
                 </div>
-            </section>
+            </nav>
 
-            <footer className="pixel-footer">
-                <div className="social-icons">
-                    <a href="https://www.instagram.com/UnburiedPixels" target="_blank" rel="noreferrer" className="social-link">
-                        <i className="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://twitter.com/UnburiedPixels" target="_blank" rel="noreferrer" className="social-link">
-                        <i className="fab fa-x-twitter"></i>
-                    </a>
-                    <a href="https://github.com/LuxJson" target="_blank" rel="noreferrer" className="social-link">
-                        <i className="fab fa-github"></i>
-                    </a>
-                    <a href="https://UnburiedPixels.itch.io" target="_blank" rel="noreferrer" className="social-link">
-                        <i className="fab fa-itch-io"></i>
-                    </a>
-                    <a href="https://youtube.com/@UnburiedPixels" target="_blank" rel="noreferrer" className="social-link">
-                        <i className="fab fa-youtube"></i>
-                    </a>
+            <main className="ubp-content">
+                <section className="error-section">
+                    <div className="hero-header">
+                        <h1 className="hero-title">ERROR</h1>
+                        <h1 className="hero-title outline">404</h1>
+                    </div>
+
+                    <div className="hero-body">
+                        <div className="info-cell">
+                            <p className="slogan-text">
+                                LEVEL <span className="text-red">NOT FOUND</span>. <br/>
+                                YOU'VE VENTURED <span className="text-magenta">BEYOND</span> THE GRID.
+                            </p>
+                            <Link to="/" className="cta-button">
+                                RETURN TO BASE <span>→</span>
+                            </Link>
+                        </div>
+                        <div className="visual-cell glitch-bg">
+                            <div className="pixel-matrix">
+                                <div className="p-box red"></div>
+                                <div className="p-box dark"></div>
+                                <div className="p-box red"></div>
+                                <div className="p-box dark"></div>
+                                <div className="p-box magenta"></div>
+                                <div className="p-box dark"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div className="ubp-marquee error-variant">
+                    <div className="marquee-inner">
+                        SYSTEM FAILURE • PAGE MISSING • 404 • PIXEL LOST • SYSTEM FAILURE • PAGE MISSING • 404 • PIXEL LOST • SYSTEM FAILURE • PAGE MISSING • 404 • PIXEL LOST •
+                    </div>
                 </div>
-                <p>© 2026 Unburied Pixels. All rights reserved.</p>
+            </main>
+
+            <footer className="ubp-footer">
+                <div className="footer-bottom">
+                    <span>© UNBURIED PIXELS</span>
+                    <span>LOST IN THE MATRIX</span>
+                </div>
             </footer>
         </div>
     );
