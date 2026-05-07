@@ -152,6 +152,31 @@ footer {
 }
 
 @media (max-width: 768px) {
+    .post {
+        max-width: 90%;
+    }
+
+    .action {
+        gap: 15px;
+        flex-direction: column;
+    }
+    
+
+    .link, .link-4 {
+        width: 250px;
+    }
+
+    .border {
+        border: 2px solid #ffffff;
+        padding: 10px;
+        width: 245px;
+    }
+    .border2 {
+        border: 2px solid #ffffff;
+        padding: 10px;
+        width: 245px;
+    }
+
     .img {
         max-width: 90%;
     }

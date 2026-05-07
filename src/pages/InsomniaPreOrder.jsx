@@ -58,9 +58,9 @@ export default function InsomniaPreOrder() {
                     </Link>
                 </header>
                 <main style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1, justifyContent: 'center' }}>
-                    <div style={{ textAlign: 'center', width: '700px', marginTop: '40px', padding: '40px', border: '3px solid #000', backgroundColor: '#f9f9f9' }}>
-                        <h2 style={{ marginBottom: '15px', fontSize: '1.8rem' }}>Pre-order Not Available Yet</h2>
-                        <p style={{ fontSize: '1.1rem', lineHeight: '1.5', marginBottom: '10px' }}>
+                    <div style={{ textAlign: 'center', width: '380px', marginTop: '40px', padding: '40px', border: '3px solid #000' }}>
+                        <h2 style={{ marginBottom: '15px', fontSize: '1.5rem' }}>Pre-order Not Available Yet</h2>
+                        <p style={{ fontSize: '0.8rem', lineHeight: '1.5', marginBottom: '10px' }}>
                             Pre-order will open on
                         </p>
                         <p style={{ fontSize: '1.3rem', fontWeight: 'bold', margin: '20px 0' }}>
