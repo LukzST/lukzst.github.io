@@ -8,7 +8,7 @@ export default function InsomniaSteam() {
     return (
         <>
             <header>
-                <Link to="/" className="header">
+                <Link to="/games/insomnia" className="header">
                     <img className="img" src={insomniaLogo} alt="Unburied Pixels" />
                 </Link>
             </header>
