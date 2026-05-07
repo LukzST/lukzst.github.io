@@ -123,7 +123,7 @@ export default function Insomnia() {
                 <div className="action">
                     {!mostrarStoryTrailer && !mostrarLaunch && (
                         <>
-                            <a href="https://itch.io" target="_blank" className="link" rel="noreferrer">
+                            <a href="https://UnburiedPixels.itch.io/insomnia" target="_blank" className="link" rel="noreferrer">
                                 <div className="border">itch.io</div>
                             </a>
                             <a href={downloadUrl} target="_blank" className="link-4" rel="noreferrer">
