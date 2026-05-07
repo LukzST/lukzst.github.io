@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import useExternalStyle from "../hooks/useExternalStyle";
-import iconLogo from "../assets/images/logonew2.png";
+import iconLogo from "../assets/images/avc.png";
 import { useState } from "react";
 
 export default function Contact() {
@@ -23,138 +23,106 @@ export default function Contact() {
     };
 
     const openEmailClient = () => {
-        const width = 800;
-        const height = 600;
-        const left = (window.screen.width - width) / 2;
-        const top = (window.screen.height - height) / 2;
-        
-        window.open(
-            'mailto:contatosadberry@gmail.com',
-            '_blank',
-            `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`
-        );
+        window.location.href = 'mailto:contatosadberry@gmail.com';
         closePopup();
     };
 
     return (
-        <div className="home-wrapper">
-            <header className="pixel-header">
- 
-            </header>
-
-            <section className="contact-container">
-                <div className="title">
-                    <Link to={'/'}>
-                        <img src={iconLogo} className="img" alt="" />
+        <div className="ubp-editorial-wrapper dark-theme">
+            <nav className="ubp-nav">
+                <div className="nav-container">
+                    <Link to="/" className="brand">
+                        <img src={iconLogo} alt="Unburied Pixels" />
                     </Link>
-                    <p className="tagline">
-                        GET IN TOUCH
-                    </p>
+                    <div className="nav-links">
+                        <Link to="/games">PROJECTS</Link>
+                        <Link to="/about">ABOUT</Link>
+                        <Link to="/contact" className="active">CONTACT</Link>
+                    </div>
                 </div>
+            </nav>
 
-                <div className="contact-links">
+            <main className="ubp-main">
+                <header className="page-header">
+                    <h1 className="page-title">GET IN</h1>
+                    <h1 className="page-title outline">TOUCH</h1>
+                </header>
+
+                <section className="contact-list">
+                    
                     <a href="#" onClick={handleEmailClick} className="contact-row">
-                        <div className="contact-icon">
-                            <i className="fas fa-envelope"></i>
+                        <div className="row-label">DIRECT_CHANNEL</div>
+                        <div className="row-content">
+                            <span className="contact-type">EMAIL</span>
+                            <span className="contact-val">contatosadberry@gmail.com</span>
                         </div>
-                        <div className="contact-info">
-                            <h3>EMAIL</h3>
-                            <p>contatosadberry@gmail.com</p>
-                        </div>
-                        <div className="contact-arrow">
-                            <i className="fas fa-arrow-right"></i>
-                        </div>
+                        <div className="row-arrow">↗</div>
                     </a>
 
                     <a href="https://www.instagram.com/UnburiedPixels" target="_blank" rel="noreferrer" className="contact-row">
-                        <div className="contact-icon">
-                            <i className="fab fa-instagram"></i>
+                        <div className="row-label">SOCIAL_LINK</div>
+                        <div className="row-content">
+                            <span className="contact-type">INSTAGRAM</span>
+                            <span className="contact-val">@UnburiedPixels</span>
                         </div>
-                        <div className="contact-info">
-                            <h3>INSTAGRAM</h3>
-                            <p>@UnburiedPixels</p>
-                        </div>
-                        <div className="contact-arrow">
-                            <i className="fas fa-arrow-right"></i>
-                        </div>
+                        <div className="row-arrow">↗</div>
                     </a>
 
                     <a href="https://github.com/LuxJson" target="_blank" rel="noreferrer" className="contact-row">
-                        <div className="contact-icon">
-                            <i className="fab fa-github"></i>
+                        <div className="row-label">SOURCE_CODE</div>
+                        <div className="row-content">
+                            <span className="contact-type">GITHUB</span>
+                            <span className="contact-val">/LuxJson</span>
                         </div>
-                        <div className="contact-info">
-                            <h3>GITHUB</h3>
-                            <p>/LuxJson</p>
-                        </div>
-                        <div className="contact-arrow">
-                            <i className="fas fa-arrow-right"></i>
-                        </div>
+                        <div className="row-arrow">↗</div>
                     </a>
 
                     <a href="https://UnburiedPixels.itch.io/" target="_blank" rel="noreferrer" className="contact-row">
-                        <div className="contact-icon">
-                            <i className="fab fa-itch-io"></i>
+                        <div className="row-label">GAMES_STORE</div>
+                        <div className="row-content">
+                            <span className="contact-type">ITCH.IO</span>
+                            <span className="contact-val">UnburiedPixels.itch.io</span>
                         </div>
-                        <div className="contact-info">
-                            <h3>ITCH.IO</h3>
-                            <p>UnburiedPixels.itch.io</p>
-                        </div>
-                        <div className="contact-arrow">
-                            <i className="fas fa-arrow-right"></i>
-                        </div>
+                        <div className="row-arrow">↗</div>
                     </a>
-                </div>
+                </section>
 
-                <div className="action">
-                    <Link to="/" className="pixel-btn">BACK TO HOME</Link>
-                </div>
-            </section>
-
+                <section className="back-section">
+                    <Link to="/" className="back-link">BACK TO HOME</Link>
+                </section>
+            </main>
+            
             {showEmailPopup && (
-                <div className="email-popup-overlay" onClick={closePopup}>
-                    <div className="email-popup" onClick={(e) => e.stopPropagation()}>
+                <div className="om-popup-overlay" onClick={closePopup}>
+                    <div className="om-popup" onClick={(e) => e.stopPropagation()}>
                         <div className="popup-header">
-                            <h3>CONTACT VIA EMAIL</h3>
-                            <button className="popup-close" onClick={closePopup}>×</button>
+                            <span className="popup-tag">SYSTEM_MSG</span>
+                            <button className="close-btn" onClick={closePopup}>[ CLOSE ]</button>
                         </div>
-                        <div className="popup-content">
-                            <p>How would you like to proceed?</p>
-                            <div className="popup-buttons">
-                                <button onClick={openEmailClient} className="popup-btn">
-                                    OPEN EMAIL CLIENT
-                                </button>
-                                <button onClick={copyEmail} className="popup-btn">
-                                    COPY EMAIL ADDRESS
-                                </button>
-                            </div>
-                            <div className="popup-email">
-                                <span>contatosadberry@gmail.com</span>
+                        <div className="popup-body">
+                            <h3 className="popup-title">CONTACT_INITIATED</h3>
+                            <p className="popup-email-text">contatosadberry@gmail.com</p>
+                            <div className="popup-actions">
+                                <button onClick={openEmailClient} className="om-btn-fill">OPEN CLIENT</button>
+                                <button onClick={copyEmail} className="om-btn-outline">COPY ADDRESS</button>
                             </div>
                         </div>
                     </div>
                 </div>
             )}
 
-            <footer className="pixel-footer">
-                <div className="social-icons">
-                    <a href="https://www.instagram.com/UnburiedPixels" target="_blank" rel="noreferrer" className="social-link">
-                        <i className="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://twitter.com/UnburiedPixels" target="_blank" rel="noreferrer" className="social-link">
-                        <i className="fab fa-x-twitter"></i>
-                    </a>
-                    <a href="https://github.com/LuxJson" target="_blank" rel="noreferrer" className="social-link">
-                        <i className="fab fa-github"></i>
-                    </a>
-                    <a href="https://UnburiedPixels.itch.io" target="_blank" rel="noreferrer" className="social-link">
-                        <i className="fab fa-itch-io"></i>
-                    </a>
-                    <a href="https://youtube.com/@UnburiedPixels" target="_blank" rel="noreferrer" className="social-link">
-                        <i className="fab fa-youtube"></i>
-                    </a>
+            <footer className="ubp-footer">
+                <div className="footer-bottom">
+                    <span>© UNBURIED PIXELS</span>
+                    <div className="footer-socials">
+                        <a href="https://youtube.com/@UnburiedPixels">
+                            <i className="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://twitter.com/UnburiedPixels">
+                            <i className="fab fa-x-twitter"></i>
+                        </a>
+                    </div>
                 </div>
-                <p>© 2026 Unburied Pixels. All rights reserved.</p>
             </footer>
         </div>
     );
