@@ -4,7 +4,6 @@ import insomniaLogo from "../assets/images/i2.png";
 import trailer1 from "../assets/videos/trailer1.mp4";
 import trailer2 from "../assets/videos/trailer2.mp4";
 import useExternalStyle from "../hooks/useExternalStyle";
-import dreamsMusic from "../assets/music/dreams.mp3";
 // import screenshot1 from "../assets/images/screenshot1.png";
 // import screenshot2 from "../assets/images/screenshot2.png";
 // import screenshot3 from "../assets/images/screenshot3.png";
@@ -19,37 +18,6 @@ export default function Insomnia() {
     useExternalStyle('insomnia.css');
 
     const [downloadUrl, setDownloadUrl] = useState('https://github.com/luxjson/INSOMNIA/releases/latest');
-    const audioRef = useRef(null);
-    const [isPlaying, setIsPlaying] = useState(false);
-
-    const toggleMute = () => {
-        const audio = audioRef.current;
-        if (audio) {
-            if (audio.paused) {
-                audio.play().catch(e => console.log(e));
-                setIsPlaying(true);
-            } else {
-                audio.pause();
-                setIsPlaying(false);
-            }
-        }
-    };
-
-    useEffect(() => {
-        const audio = audioRef.current;
-        if (audio) {
-            audio.volume = 0.5;
-            const playPromise = audio.play();
-            if (playPromise !== undefined) {
-                playPromise.then(() => {
-                    setIsPlaying(true);
-                }).catch(e => {
-                    console.log("Browser bloqueou autoplay:", e);
-                    setIsPlaying(false);
-                });
-            }
-        }
-    }, []);
 
     useEffect(() => {
     async function fetchLatestVersion() {
@@ -79,21 +47,6 @@ export default function Insomnia() {
     
     return (
         <>
-            <audio ref={audioRef} src={dreamsMusic} loop />
-
-            <div style={{ position: 'fixed', bottom: '20px', right: '20px', display: 'flex', flexDirection: 'row', alignItems: 'flex-end', gap: '8px' }}>
-
-                <button 
-                    id="mute-btn" 
-                    className="sketch-button" 
-                    onClick={toggleMute}
-                    style={{ position: 'static' }} 
-                >
-                    <span id="icon">
-                        <i className={`fas ${isPlaying ? 'fa-volume-up' : 'fa-volume-mute'}`}></i>
-                    </span>
-                </button>
-            </div>
 
 
             <header>
