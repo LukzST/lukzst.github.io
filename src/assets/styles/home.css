@@ -60,7 +60,7 @@ body {
 .nav-links a {
     text-decoration: none;
     color: var(--text-color);
-    margin-left: 35px;
+    margin-left: 30px;
     font-size: 0.8rem;
     letter-spacing: 1px;
     opacity: 0.7;
