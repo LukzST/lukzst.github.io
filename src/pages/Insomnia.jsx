@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import insomniaLogo from "../assets/images/i2.png";
 import trailer1 from "../assets/videos/trailer1.mp4";
 import trailer2 from "../assets/videos/trailer2.mp4";
@@ -82,8 +82,8 @@ export default function Insomnia() {
                             <a href={downloadUrl} target="_blank" className="link-4" rel="noreferrer">
                                 <div className="border2">Download Alpha</div>
                             </a>
-                            <Link to="/games/insomnia/preorder/steam" className="link">
-                                <div className="border">Steam</div>
+                            <Link to="/games/insomnia/Newswire" className="link-4">
+                                <div className="border2">Newswire</div>
                             </Link>
                         </>    
                     )}
@@ -101,9 +101,14 @@ export default function Insomnia() {
                     )}
                     {mostrarLaunch && mostrarStoryTrailer && (
                         <>
-                            <Link to="/games/insomnia/download" className="link" rel="noreferrer">
-                                <div className="border">Download</div>
+                            <Link to="/games/insomnia/download" className="link-4" rel="noreferrer">
+                                <div className="border2">Download</div>
                             </Link>
+
+                            <Link to="/games/insomnia/Newswire" className="link-4" rel="noreferrer">
+                                <div className="border2">Newswire</div>
+                            </Link>
+
                             <a href="https://github.com/luxjson/INSOMNIA/releases/latest" target="_blank" className="link-4" rel="noreferrer">
                                 <div className="border2">View Changelog</div>
                             </a>
