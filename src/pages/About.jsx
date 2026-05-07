@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import useExternalStyle from "../hooks/useExternalStyle";
-import iconLogo from "../assets/images/logonew2.png";
+import iconLogo from "../assets/images/avc.png";
 
 export default function About() {
     useExternalStyle('about.css');
