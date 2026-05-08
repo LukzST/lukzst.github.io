@@ -14,7 +14,6 @@
     --accent-magenta: #FF00FF;
 }
 
-/* Reset e Correção de Scroll */
 * { 
     margin: 0; 
     padding: 0; 
@@ -24,7 +23,7 @@
 html, body {
     height: 100%;
     max-width: 100%;
-    overflow-x: hidden; /* Impede scroll lateral fantasma no mobile */
+    overflow-x: hidden;
     background-color: var(--bg-color);
 }
 
@@ -34,20 +33,18 @@ body {
     line-height: 1.5;
 }
 
-/* Layout Principal para empurrar o footer */
 .ubp-editorial-wrapper {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Garante que o site tenha no mínimo a altura da tela */
+    min-height: 100vh; 
 }
 
 .ubp-content {
-    flex: 1; /* Faz o conteúdo crescer e ocupar o espaço vazio */
+    flex: 1;
     display: flex;
     flex-direction: column;
 }
 
-/* Navegação */
 .ubp-nav {
     border-bottom: 1px solid var(--line-color);
     padding: 20px 40px;
@@ -77,7 +74,6 @@ body {
 
 .nav-links a:hover { opacity: 1; color: var(--accent-red); }
 
-/* Seção de Erro */
 .hero-header {
     padding: 80px 40px;
     border-bottom: 1px solid var(--line-color);
@@ -135,7 +131,6 @@ body {
     color: white;
 }
 
-/* Visual - Grid de Pixels */
 .pixel-matrix {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -147,7 +142,6 @@ body {
 .p-box.magenta { background: var(--accent-magenta); }
 .p-box.dark { background: #000; }
 
-/* Letreiro (Marquee) */
 .ubp-marquee.error-variant {
     background: var(--accent-red);
     color: white;
@@ -168,7 +162,6 @@ body {
     to { transform: translateX(-50%); }
 }
 
-/* Footer (Rodapé) */
 .footer-bottom {
     padding: 40px;
     display: flex;
@@ -177,7 +170,6 @@ body {
     opacity: 0.4;
 }
 
-/* --- MEDIA QUERIES (CORREÇÕES MOBILE) --- */
 
 @media (max-width: 1024px) {
     .ubp-nav {
@@ -194,7 +186,7 @@ body {
 
     .hero-body { 
         grid-template-columns: 1fr; 
-        min-height: auto; /* Remove altura fixa no mobile */
+        min-height: auto;
     }
 
     .info-cell { 
@@ -208,7 +200,7 @@ body {
     }
 
     .visual-cell {
-        height: 200px; /* Dá uma altura para os blocos coloridos no mobile */
+        height: 200px;
     }
 
     .footer-bottom {
