@@ -13,7 +13,7 @@
    ![Version](https://img.shields.io/badge/VERSION-1.0-gold)
    ![OS](https://img.shields.io/badge/OS-WEB-red)
    
-   **Unburied Pixels** - Website of the developers behind LIGHT and Pale Luna.
+   **Unburied Pixels** - Website of the developers behind INSOMNIA.
    
    <div flex="true">
      <a href="https://LuxJson.github.io">
