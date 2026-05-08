@@ -52,7 +52,7 @@ export default function Home() {
 
                 <div className="ubp-marquee">
                     <div className="marquee-inner">
-                        UNBURIED PIXELS • BEYOND THE GRID • EST. 2026 • HIGH FIDELITY • PIXEL ART • UNBURIED PIXELS • BEYOND THE GRID • EST. 2026 • HIGH FIDELITY • PIXEL ART •
+                        UNBURIED PIXELS • BEYOND THE GRID • EST. 2025 • HIGH FIDELITY • PIXEL ART • UNBURIED PIXELS • BEYOND THE GRID • EST. 2025 • HIGH FIDELITY • PIXEL ART •
                     </div>
                 </div>
             </main>
