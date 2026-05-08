@@ -97,8 +97,20 @@ body {
     transform: scale(1.02);
 }
 
-.img-insomnia { background-color: #222; }
-.img-light { background-color: #333; }
+.img-insomnia { 
+    background-color: #222;
+    background-image: url('../images/i.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.img-light { 
+    background-color: #333; 
+    background-image: url('../images/light-2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
 .game-details {
     padding: 60px;
