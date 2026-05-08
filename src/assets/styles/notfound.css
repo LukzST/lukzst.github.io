@@ -123,6 +123,7 @@ body {
     color: var(--text-color);
     text-decoration: none;
     width: fit-content;
+    border-radius: 1000px;
     transition: 0.3s;
 }
 
