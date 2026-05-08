@@ -73,9 +73,6 @@ body {
     padding: 80px 40px;
     border-bottom: 1px solid var(--line-color);
     text-align: left;
-    gap: 10px;
-    display: flex;
-    flex-direction: column;
 }
 
 .hero-title {
