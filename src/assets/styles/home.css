@@ -121,6 +121,7 @@ body {
     font-size: 1.1rem;
     width: fit-content;
     transition: 0.3s;
+    border-radius: 10000px;
 }
 
 .cta-button:hover {
@@ -215,6 +216,6 @@ body {
 @media (max-width: 1024px) {
     .hero-body { grid-template-columns: 1fr; }
     .info-cell { border-right: none; border-bottom: 1px solid var(--line-color); }
-    .hero-title { letter-spacing: -6px; }
+    .hero-title { letter-spacing: -3px; }
     .footer-grid { grid-template-columns: 1fr; gap: 50px; }
 }

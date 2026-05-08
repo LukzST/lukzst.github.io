@@ -1,9 +1,8 @@
 {
-  "name": "undeadpixelgames",
+  "name": "unburiedpixels",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://github.com/LuxJson/www",
   "scripts": {
     "dev": "vite",
     "predeploy": "npm run build",
