@@ -107,3 +107,102 @@
     font-family: 'a';
     letter-spacing: 4px;
 }
+
+.profile-viewport {
+    background-color: #0f0f0f !important;
+    min-height: 100vh;
+    color: #fff !important;
+    font-family: 'a', sans-serif;
+}
+
+.profile-viewport .ubp-nav {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-viewport .brand { text-decoration: none; color: #fff; font-weight: bold; letter-spacing: 2px; }
+
+.logout-btn { background: none; border: none; color: #FF0000; font-family: 'a'; cursor: pointer; font-size: 0.8rem; }
+
+.user-header-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.avatar-cell {
+    padding: 40px;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+}
+
+.user-photo {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #fff;
+    image-rendering: pixelated;
+    object-fit: cover;
+}
+
+.name-cell {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.id-tag { color: #39FF14; font-size: 0.7rem; letter-spacing: 2px; }
+.user-name { font-size: 5rem; line-height: 0.8; margin: 15px 0; }
+.user-link { color: #444; font-size: 0.9rem; }
+
+.library-header { padding: 40px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+
+.profile-viewport .massive-title { font-size: clamp(4rem, 10vw, 8rem); text-transform: uppercase; letter-spacing: -4px; margin: 0; }
+.profile-viewport .outline { -webkit-text-stroke: 1px #fff; color: transparent; }
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+}
+
+.game-card {
+    padding: 60px 40px;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 350px;
+}
+
+.game-card.locked { background: rgba(255, 255, 255, 0.02); opacity: 0.6; }
+.game-status { font-size: 0.6rem; color: #444; letter-spacing: 2px; }
+.game-title { font-size: 3rem; margin: 10px 0; }
+
+.action-btn {
+    width: 100%;
+    padding: 20px;
+    font-family: 'a';
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.action-btn.download { background: #39FF14; color: #000; border: none; }
+.action-btn.buy { background: transparent; border: 1px solid #fff; color: #fff; }
+.action-btn.buy:hover { background: #fff; color: #000; }
+
+.loading-vault {
+    height: 100vh;
+    background: #0f0f0f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: 'a';
+    letter-spacing: 4px;
+}

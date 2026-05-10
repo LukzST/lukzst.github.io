@@ -5,21 +5,16 @@ import useExternalStyle from "../hooks/useExternalStyle";
 export default function Login() {
     useExternalStyle('login.css');
 
-    const CLIENT_ID = "ccb6dd3304b379c7f65a92839bd0371f";
-    const REDIRECT_URI = window.location.origin + "/#/profile";
-    const AUTH_URL = `https://itch.io/user/oauth?client_id=${CLIENT_ID}&scope=profile:me&response_type=token&redirect_uri=${REDIRECT_URI}`;
-
     const handleLogin = () => {
-        window.location.href = AUTH_URL;
+        // O link exato que você configurou no Itch.io
+        window.location.href = "https://itch.io/user/oauth?client_id=ccb6dd3304b379c7f65a92839bd0371f&scope=profile%3Ame&response_type=token&redirect_uri=https%3A%2F%2Fluxjson.github.io%2F%23%2Fprofile";
     };
 
     return (
         <div className="login-viewport">
             <nav className="ubp-nav">
                 <div className="nav-container">
-                    <Link to="/" className="brand">
-                        <span className="brand-name">UNBURIED PIXELS</span>
-                    </Link>
+                    <Link to="/" className="brand">UNBURIED PIXELS_</Link>
                 </div>
             </nav>
 
@@ -31,16 +26,14 @@ export default function Login() {
 
                 <section className="login-form-cell">
                     <div className="login-box">
-                        <p className="login-tags">SYSTEM // AUTHENTICATION_REQUIRED</p>
-                        <h2 className="login-heading">CONNECT YOUR ITCH.IO ACCOUNT TO ACCESS THE VAULT.</h2>
+                        <span className="login-tags">SYSTEM // AUTH_REQUIRED</span>
+                        <h2 className="login-heading">CONNECT YOUR ACCOUNT TO ACCESS THE VAULT.</h2>
                         
                         <button onClick={handleLogin} className="itch-auth-btn">
                             <i className="fab fa-itch-io"></i> AUTHORIZE VIA ITCH.IO
                         </button>
 
-                        <div className="login-footer-info">
-                            <p>Direct encrypted connection to itch.io servers.</p>
-                        </div>
+                        <p className="login-footer-info">Secure OAuth2 handshake via itch.io</p>
                     </div>
                 </section>
             </main>

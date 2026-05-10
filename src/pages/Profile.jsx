@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useExternalStyle from "../hooks/useExternalStyle";
 
 export default function Profile() {
     useExternalStyle('profile.css');
     const navigate = useNavigate();
-    const location = useLocation();
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    // Lista de jogos do estúdio para mostrar na biblioteca
     const studioGames = [
         { id: "light", name: "LIGHT", owned: true, url: "https://unburiedpixels.itch.io/light" },
         { id: "insomnia", name: "INSOMNIA", owned: false, url: "https://unburiedpixels.itch.io/insomnia" },
@@ -17,11 +15,27 @@ export default function Profile() {
     ];
 
     useEffect(() => {
-        const hash = new URLSearchParams(location.hash.replace('#', '?'));
-        let token = hash.get('access_token') || localStorage.getItem('itch_token');
+        const parseToken = () => {
+            // Pega o token se ele vier na URL (mesmo com a bagunça do HashRouter)
+            const fullHash = window.location.hash;
+            let token = localStorage.getItem('itch_token');
 
-        if (token) {
-            localStorage.setItem('itch_token', token);
+            if (fullHash.includes("access_token=")) {
+                token = fullHash.split("access_token=")[1].split("&")[0];
+                localStorage.setItem('itch_token', token);
+                // Limpa a URL para ficar bonita: luxjson.github.io/#/profile
+                window.history.replaceState({}, document.title, window.location.pathname + window.location.search + "#/profile");
+            }
+
+            if (!token) {
+                navigate('/login');
+                return;
+            }
+
+            fetchUserData(token);
+        };
+
+        const fetchUserData = (token) => {
             fetch(`https://itch.io/api/1/key/me`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             })
@@ -31,22 +45,18 @@ export default function Profile() {
                     setUser(data.user);
                     setLoading(false);
                 } else {
-                    handleLogout();
+                    logout();
                 }
             })
-            .catch(handleLogout);
-        } else {
-            navigate('/login');
-        }
-    }, [navigate, location]);
+            .catch(logout);
+        };
 
-    const handleLogout = () => {
+        parseToken();
+    }, [navigate]);
+
+    const logout = () => {
         localStorage.removeItem('itch_token');
         navigate('/login');
-    };
-
-    const buyGame = (url) => {
-        window.open(url, 'itch-purchase', 'width=800,height=600');
     };
 
     if (loading) return <div className="loading-vault">DECRYPTING_VAULT...</div>;
@@ -55,14 +65,14 @@ export default function Profile() {
         <div className="profile-viewport">
             <nav className="ubp-nav">
                 <div className="nav-container">
-                    <Link to="/" className="brand">UNBURIED PIXELS</Link>
-                    <button onClick={handleLogout} className="logout-btn">LOGOUT_</button>
+                    <Link to="/" className="brand">UNBURIED PIXELS_</Link>
+                    <button onClick={logout} className="logout-btn">LOGOUT_</button>
                 </div>
             </nav>
 
             <header className="user-header-grid">
                 <div className="avatar-cell">
-                    <img src={user.cover_url} alt="Avatar" className="user-photo" />
+                    <img src={user.cover_url || "https://placehold.co/200x200/000/fff?text=?"} alt="User" className="user-photo" />
                 </div>
                 <div className="name-cell">
                     <span className="id-tag">SUBJECT_ID: {user.id}</span>
@@ -85,9 +95,9 @@ export default function Profile() {
                             </div>
                             <div className="card-action">
                                 {game.owned ? (
-                                    <button className="action-btn download">DOWNLOAD</button>
+                                    <button className="action-btn download">DOWNLOAD_DATA</button>
                                 ) : (
-                                    <button onClick={() => buyGame(game.url)} className="action-btn buy">BUY ON ITCH.IO ↗</button>
+                                    <button onClick={() => window.open(game.url)} className="action-btn buy">ACQUIRE_LICENSE ↗</button>
                                 )}
                             </div>
                         </div>
