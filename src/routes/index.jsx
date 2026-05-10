@@ -10,6 +10,8 @@ import InsomniaDownload from "../pages/InsomniaDownload";
 import InsomniaSteam from "../pages/InsomniaSteam";
 import InsomniaNewswire from "../pages/InsomniaNewswire";
 import NotFound from "../pages/NotFound";
+import Login from "../pages/Login";
+import Profile from "../pages/Profile";
 
 export default function Rotas() {
     return (
@@ -19,6 +21,8 @@ export default function Rotas() {
                 <Route path="/about" element={<About />} />
                 <Route path="/games" element={<Games />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/profile" element={<Profile />} />
                 <Route path="/games/INSOMNIA" element={<Insomnia />} />
                 <Route path="/games/INSOMNIA/preorder" element={<InsomniaPreOrder />} />
                 <Route path="/games/INSOMNIA/download" element={<InsomniaDownload />} />
