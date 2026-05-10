@@ -6,7 +6,7 @@ export default function Login() {
     useExternalStyle('login.css');
 
     const CLIENT_ID = "ccb6dd3304b379c7f65a92839bd0371f";
-    const REDIRECT_URI = window.location.origin + "/profile";
+    const REDIRECT_URI = window.location.origin + "#/profile";
     const AUTH_URL = `https://itch.io/user/oauth?client_id=${CLIENT_ID}&scope=profile:me&response_type=token&redirect_uri=${REDIRECT_URI}`;
 
     const handleLogin = () => {
