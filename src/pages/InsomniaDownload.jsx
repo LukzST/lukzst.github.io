@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import insomniaLogo from "../assets/images/i2.png";
 import useExternalStyle from "../hooks/useExternalStyle";
 
 export default function InsomniaDownload() {
     useExternalStyle('InsomniaDownload.css');
 
-    const hoje = new Date();
+    const [hoje, setHoje] = useState(new Date());
     const dataLiberacao = new Date('2027-12-25T12:00:00-03:00');
     const [copied, setCopied] = useState(false);
 
@@ -15,6 +15,22 @@ export default function InsomniaDownload() {
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
+
+     useEffect(() => {
+        async function fetchData() {
+            try {
+                const timeResponse = await fetch('https://worldtimeapi.org');
+                const timeData = await timeResponse.json();
+                if (timeData.datetime) {
+                    setHoje(new Date(timeData.datetime));
+                }
+
+            } catch (error) {
+                console.error("Erro ao carregar dados externos:", error);
+            }
+        }
+        fetchData();
+    }, []);
 
     if (hoje < dataLiberacao) {
         return (

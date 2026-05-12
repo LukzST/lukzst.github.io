@@ -16,30 +16,38 @@ import useExternalStyle from "../hooks/useExternalStyle";
 
 export default function Insomnia() {
     useExternalStyle('insomnia.css');
-
+    
     const [downloadUrl, setDownloadUrl] = useState('https://github.com/luxjson/INSOMNIA/releases/latest');
+    const [hoje, setHoje] = useState(new Date());
 
     useEffect(() => {
-    async function fetchLatestVersion() {
-        try {
-            const response = await fetch('https://api.github.com/repos/luxjson/INSOMNIA/releases/latest');
-            const data = await response.json();
-            
-            if (data && data.assets && data.assets.length > 0) {
-                const exeAsset = data.assets.find(asset => asset.name.endsWith('.exe'));
-                if (exeAsset) {
-                    setDownloadUrl(exeAsset.browser_download_url);
+        async function fetchLatestVersion() {
+            try {
+                const response = await fetch('https://api.github.com/repos/luxjson/INSOMNIA/releases/latest');
+                const data = await response.json();
+                
+                if (data && data.assets && data.assets.length > 0) {
+                    const exeAsset = data.assets.find(asset => asset.name.endsWith('.exe'));
+                    if (exeAsset) {
+                        setDownloadUrl(exeAsset.browser_download_url);
+                    }
                 }
+
+                const timeResponse = await fetch('https://worldtimeapi.org');
+                const timeData = await timeResponse.json();
+                if (timeData.datetime) {
+                    setHoje(new Date(timeData.datetime));
+                }
+                
+            } catch (error) {
+                console.error(error);
+                setDownloadUrl('https://github.com/luxjson/INSOMNIA/releases/latest');
             }
-        } catch (error) {
-            console.error(error);
-            setDownloadUrl('https://github.com/luxjson/INSOMNIA/releases/latest');
         }
-    }
     fetchLatestVersion();
 }, []);
 
-    const hoje = new Date();
+
     const dataStoryTrailer = new Date('2026-10-31T12:00:00-03:00');
     const dataLaunch = new Date('2027-12-25T12:00:00-03:00');
     const mostrarStoryTrailer = hoje >= dataStoryTrailer;

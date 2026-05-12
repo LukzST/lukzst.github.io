@@ -20,7 +20,7 @@ export default function Games() {
                         </div>
                     </div>
                 </nav>
-
+                
                 <main className="ubp-main">
                     <header className="page-header">
                         <h1 className="page-title">OUR</h1>

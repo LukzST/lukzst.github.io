@@ -11,7 +11,7 @@ export default function InsomniaPreOrder() {
     const [minutesLeft, setMinutesLeft] = useState(0);
     const [secondsLeft, setSecondsLeft] = useState(0);
 
-    const hoje = new Date();
+    const [hoje, setHoje] = useState(new Date());
     const dataInicioPreOrder = new Date('2026-12-12T00:00:00-03:00');
     const dataFimPreOrder = new Date('2027-05-25T23:59:59-03:00');
     const dataLancamento = new Date('2027-12-25T12:00:00-03:00');
@@ -48,6 +48,18 @@ export default function InsomniaPreOrder() {
             return () => clearInterval(interval);
         }
     }, [isPreOrderAvailable]);
+
+    useEffect(() => {
+        async function fetchData() {
+            const timeResponse = await fetch('https://worldtimeapi.org');
+                const timeData = await timeResponse.json();
+                if (timeData.datetime) {
+                    setHoje(new Date(timeData.datetime));
+                }
+        }
+
+        fetchData();
+    })
 
     if (hoje < dataInicioPreOrder) {
         return (

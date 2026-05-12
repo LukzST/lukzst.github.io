@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 export default function InsomniaNewswire() {
 
-    const hoje = new Date();
+    const [hoje, setHoje] = useState(new Date());
     const dataStoryTrailer = new Date('2026-10-31T12:00:00-03:00');
     const dataLaunch = new Date('2027-12-25T12:00:00-03:00');
     const mostrarStoryTrailer = hoje >= dataStoryTrailer;
@@ -24,6 +24,13 @@ export default function InsomniaNewswire() {
                     if (exeAsset) {
                         setDownloadUrl(exeAsset.browser_download_url);
                     }
+                }
+
+
+                const timeResponse = await fetch('https://worldtimeapi.org');
+                const timeData = await timeResponse.json();
+                if (timeData.datetime) {
+                    setHoje(new Date(timeData.datetime));
                 }
             } catch (error) {
                 console.error(error);

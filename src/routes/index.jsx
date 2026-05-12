@@ -19,11 +19,13 @@ export default function Rotas() {
                 <Route path="/about" element={<About />} />
                 <Route path="/games" element={<Games />} />
                 <Route path="/contact" element={<Contact />} />
+
                 <Route path="/games/INSOMNIA" element={<Insomnia />} />
                 <Route path="/games/INSOMNIA/preorder" element={<InsomniaPreOrder />} />
                 <Route path="/games/INSOMNIA/download" element={<InsomniaDownload />} />
                 <Route path="/games/INSOMNIA/preorder/steam" element={<InsomniaSteam />} />
                 <Route path="/games/INSOMNIA/Newswire" element={<InsomniaNewswire />} />
+                
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </>
