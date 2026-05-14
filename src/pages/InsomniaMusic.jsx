@@ -2,7 +2,7 @@ import useExternalStyle from "../hooks/useExternalStyle";
 import insomniaLogo from "../assets/images/asasas.png";
 import { Link } from "react-router-dom";
 import dreamsAudio from "../assets/music/dreams.mp3";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useState } from "react";
 
 export default function InsomniaMusic() {
     useExternalStyle("InsomniaMusic.css");
