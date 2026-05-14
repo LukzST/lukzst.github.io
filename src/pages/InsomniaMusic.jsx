@@ -90,7 +90,7 @@ export default function InsomniaMusic() {
                     src={dreamsAudio} 
                     style={{ display: 'none' }} 
                     onLoadedData={(e) => {
-                        e.target.volume = 0.1;
+                        e.target.volume = 0.05;
                     }}
                 />
             </main>
