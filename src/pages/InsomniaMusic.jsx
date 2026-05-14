@@ -1,7 +1,6 @@
 import useExternalStyle from "../hooks/useExternalStyle";
 import insomniaLogo from "../assets/images/asasas.png";
 import { Link } from "react-router-dom";
-import dreams from "../assets/videos/dreams.mp4";
 
 export default function InsomniaMusic() {
     useExternalStyle("InsomniaMusic.css");
@@ -55,16 +54,6 @@ export default function InsomniaMusic() {
                             <i class="fab fa-itunes" alt="Apple Music"></i>
                         </a>
                     </div>
-                </div>
-
-                <div className="trailer">
-                    <h2 className="titles">
-                        Tracks
-                    </h2>
-                        <video controls width="50%">
-                            <source src={dreams} type="video/mp4" />
-                            Seu navegador não suporta vídeos.
-                        </video>
                 </div>
             </main>
 
