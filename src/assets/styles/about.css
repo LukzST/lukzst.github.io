@@ -36,7 +36,9 @@ body {
 }
 
 .brand { text-decoration: none; color: white; display: flex; align-items: center; gap: 12px; }
-.brand img { height: 40px; image-rendering: pixelated; }
+.brand img { 
+    height: 40px; 
+}
 
 .nav-links a {
     text-decoration: none;
