@@ -60,7 +60,6 @@ body {
 
 .brand img { 
     height: 40px; 
-    image-rendering: pixelated; 
 }
 
 .nav-links a {
