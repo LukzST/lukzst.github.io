@@ -264,6 +264,10 @@ body {
         padding: 15px 10px;
     }
 
+    .nav-container {
+        padding: 10px 20px;
+    }
+
     .hero-body {
         grid-template-columns: 1fr;
     }

@@ -182,6 +182,10 @@ body {
         padding: 15px 10px;
     }
 
+    .nav-container {
+        padding: 10px 20px;
+    }
+
     .contact-row { grid-template-columns: 1fr; }
     .row-label { border-right: none; border-bottom: 1px solid var(--line-color); padding: 20px; }
     .row-arrow { display: none; }

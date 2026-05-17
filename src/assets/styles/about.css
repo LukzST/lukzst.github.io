@@ -179,6 +179,10 @@ body {
         padding: 15px 10px;
     }
 
+    .nav-container {
+        padding: 10px 20px;
+    }
+
     .mission-grid, .team-grid, .thanks-card { grid-template-columns: 1fr; }
     .mission-label, .member-card, .thanks-label { border-right: none; }
     .mission-content p { font-size: 1.5rem; }
