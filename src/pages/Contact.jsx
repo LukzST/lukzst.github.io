@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import useExternalStyle from "../hooks/useExternalStyle";
-import iconLogo from "../assets/images/avc.png";
+import iconLogo from "../assets/images/logo24.png";
 import { useState } from "react";
 export default function Contact() {
     useExternalStyle('contact.css');
