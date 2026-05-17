@@ -175,6 +175,10 @@ body {
 .footer-socials a { color: #444; margin-left: 20px; text-decoration: none; }
 
 @media (max-width: 900px) {
+    .ubp-nav {
+        padding: 15px 10px;
+    }
+
     .mission-grid, .team-grid, .thanks-card { grid-template-columns: 1fr; }
     .mission-label, .member-card, .thanks-label { border-right: none; }
     .mission-content p { font-size: 1.5rem; }

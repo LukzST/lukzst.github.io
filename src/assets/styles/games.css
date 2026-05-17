@@ -223,6 +223,10 @@ body {
 }
 
 @media (max-width: 900px) {
+
+    .ubp-nav {
+        padding: 15px 10px;
+    }
     .game-entry, .game-entry.invert { grid-template-columns: 1fr; }
     .game-details { border-right: none; border-left: none; order: 2; padding: 40px 20px; }
     .game-visual { height: 300px; order: 1; }

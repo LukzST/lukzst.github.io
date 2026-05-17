@@ -178,6 +178,10 @@ body {
 .footer-socials a { color: #444; margin-left: 20px; text-decoration: none; }
 
 @media (max-width: 768px) {
+    .ubp-nav {
+        padding: 15px 10px;
+    }
+
     .contact-row { grid-template-columns: 1fr; }
     .row-label { border-right: none; border-bottom: 1px solid var(--line-color); padding: 20px; }
     .row-arrow { display: none; }

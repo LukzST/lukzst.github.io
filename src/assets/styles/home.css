@@ -260,6 +260,10 @@ body {
 }
 
 @media (max-width: 1024px) {
+    .ubp-nav {
+        padding: 15px 10px;
+    }
+
     .hero-body {
         grid-template-columns: 1fr;
     }
